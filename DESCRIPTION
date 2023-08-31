@@ -20,5 +20,5 @@ Language: en-GB
 Imports: 
     dplyr
 RoxygenNote: 7.2.3
-URL: https://github.com/JauntyJJS/pretestcad
+URL: https://github.com/JauntyJJS/pretestcad, https://jauntyjjs.github.io/pretestcad/
 BugReports: https://github.com/JauntyJJS/pretestcad/issues
