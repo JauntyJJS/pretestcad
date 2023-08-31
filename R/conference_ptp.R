@@ -1,0 +1,162 @@
+#' @title Calculate ESC 2019 PTP for obstructive CAD
+#' @description This function returns a patient's
+#' pre-test Probability (PTP) of obstructive
+#' coronary artery disease (CAD) based on the
+#' European Society of Cardiology (ESC) 2019 guidelines.
+#' @param age Input integer to indicate the age of the patient.
+#' @param sex Input integer 0 or 1 to indicate the sex of the patient.
+#' Default: 0
+#' \itemize{
+#'   \item 0 stands for Male
+#'   \item 1 stands for Female
+#' }
+#' @param dyspnea_only Input integer 0 or 1 to indicate if the patient
+#' only has dyspnea symptoms.
+#' Default: 0
+#' \itemize{
+#'   \item 0 stands for not having dyspnea-only symptoms. If the patient
+#'   has chest pain symptoms, this value should also be set as 0 regardless
+#'   if the patient has dyspnea or not.
+#'   \item 1 stands for having dyspnea as the only primary symptom.
+#' }
+#' @param chest_pain Input integer 0 to 3 to indicate the chest pain
+#' characteristics of the patient.
+#' Default: 0
+#' \itemize{
+#'   \item 0 stands for the patient having no chest pain.
+#'   \item 1 stands for the patient having Nonanginal chest pain.
+#'   \item 2 stands for the patient having atypical chest pain.
+#'   \item 3 stands for the patient having typical chest pain.
+#' }
+#' @param output Input text to indicate the how pre-test
+#' probability results be expressed
+#' Default: c("grouping", "numeric", "percentage")
+#' \itemize{
+#'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
+#'   \itemize{
+#'      \item Low if PTP is less than 5%.
+#'      \item Intermediate if PTP is in between 5% to 15%.
+#'      \item High if PTP is more than 15%.
+#'   }
+#'   \item numeric means the PTP will be expressed as an integer probability (0-100).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
+#' }
+#' @return An integer or category representing the patient's PTP for obstructive CAD
+#' based on the ESC 2019 guidelines.
+#' See parameter option `output` for more information.
+#' @details The predictive model used to create the guidelines are based on
+#' patients from European countries with low cardiovascular disease (CVD) risk.
+#' @examples
+#' calculate_esc_2019_ptp(
+#'     age = 35,
+#'     sex = 0,
+#'     dyspnea_only = 0,
+#'     chest_pain = 3,
+#'     output = "percentage"
+#' )
+#' @rdname calculate_esc_2019_ptp
+#' @export
+calculate_esc_2019_ptp <- function(
+  age,
+  sex = c(0, 1),
+  dyspnea_only = c(0, 1),
+  chest_pain = c(0, 1, 2, 3),
+  output = c("grouping", "numeric", "percentage")
+  )
+{
+  # TODO: Work on case when age < 30
+
+  age_group <- dplyr::case_when(
+    dplyr::between(age, 30, 39) ~ "30-39",
+    dplyr::between(age, 40, 49) ~ "40-49",
+    dplyr::between(age, 50, 59) ~ "50-59",
+    dplyr::between(age, 60, 69) ~ "60-69",
+    age >= 70 ~ "70+"
+  )
+
+  sex_group <- dplyr::case_when(
+    sex == 0 ~ "Men",
+    sex == 1 ~ "Women"
+  )
+
+  dyspnea_only_group <- dplyr::case_when(
+    dyspnea_only == 0 | chest_pain != 0 ~ "No",
+    dyspnea_only == 1 & chest_pain == 0 ~ "Yes"
+  )
+
+  chest_pain_group <- dplyr::case_when(
+    chest_pain == 0 ~ "No Chest Pain",
+    chest_pain == 1 ~ "Nonanginal",
+    chest_pain == 2 ~ "Atypical",
+    chest_pain == 3 ~ "Typical"
+  )
+
+  ptp_percentage_group <- dplyr::case_when(
+    age_group == "30-39" & chest_pain_group == "Typical" & sex_group == "Men" ~ "3",
+    age_group == "30-39" & chest_pain_group == "Typical" & sex_group == "Women" ~ "5",
+    age_group == "40-49" & chest_pain_group == "Typical" & sex_group == "Men" ~ "22",
+    age_group == "40-49" & chest_pain_group == "Typical" & sex_group == "Women" ~ "10",
+    age_group == "50-59" & chest_pain_group == "Typical" & sex_group == "Men" ~ "32",
+    age_group == "50-59" & chest_pain_group == "Typical" & sex_group == "Women" ~ "13",
+    age_group == "60-69" & chest_pain_group == "Typical" & sex_group == "Men" ~ "44",
+    age_group == "60-69" & chest_pain_group == "Typical" & sex_group == "Women" ~ "16",
+    age_group == "70+" & chest_pain_group == "Typical" & sex_group == "Men" ~ "52",
+    age_group == "70+" & chest_pain_group == "Typical" & sex_group == "Women" ~ "27",
+    age_group == "30-39" & chest_pain_group == "Atypical" & sex_group == "Men" ~ "4",
+    age_group == "30-39" & chest_pain_group == "Atypical" & sex_group == "Women" ~ "3",
+    age_group == "40-49" & chest_pain_group == "Atypical" & sex_group == "Men" ~ "10",
+    age_group == "40-49" & chest_pain_group == "Atypical" & sex_group == "Women" ~ "6",
+    age_group == "50-59" & chest_pain_group == "Atypical" & sex_group == "Men" ~ "17",
+    age_group == "50-59" & chest_pain_group == "Atypical" & sex_group == "Women" ~ "6",
+    age_group == "60-69" & chest_pain_group == "Atypical" & sex_group == "Men" ~ "26",
+    age_group == "60-69" & chest_pain_group == "Atypical" & sex_group == "Women" ~ "11",
+    age_group == "70+" & chest_pain_group == "Atypical" & sex_group == "Men" ~ "34",
+    age_group == "70+" & chest_pain_group == "Atypical" & sex_group == "Women" ~ "19",
+    age_group == "30-39" & chest_pain_group == "Nonanginal" & sex_group == "Men" ~ "1",
+    age_group == "30-39" & chest_pain_group == "Nonanginal" & sex_group == "Women" ~ "1",
+    age_group == "40-49" & chest_pain_group == "Nonanginal" & sex_group == "Men" ~ "3",
+    age_group == "40-49" & chest_pain_group == "Nonanginal" & sex_group == "Women" ~ "2",
+    age_group == "50-59" & chest_pain_group == "Nonanginal" & sex_group == "Men" ~ "11",
+    age_group == "50-59" & chest_pain_group == "Nonanginal" & sex_group == "Women" ~ "3",
+    age_group == "60-69" & chest_pain_group == "Nonanginal" & sex_group == "Men" ~ "22",
+    age_group == "60-69" & chest_pain_group == "Nonanginal" & sex_group == "Women" ~ "6",
+    age_group == "70+" & chest_pain_group == "Nonanginal" & sex_group == "Men" ~ "24",
+    age_group == "70+" & chest_pain_group == "Nonanginal" & sex_group == "Women" ~ "10",
+    age_group == "30-39" & dyspnea_only_group == "Yes" & sex_group == "Men" ~ "0",
+    age_group == "30-39" & dyspnea_only_group == "Yes" & sex_group == "Women" ~ "3",
+    age_group == "40-49" & dyspnea_only_group == "Yes" & sex_group == "Men" ~ "12",
+    age_group == "40-49" & dyspnea_only_group == "Yes" & sex_group == "Women" ~ "3",
+    age_group == "50-59" & dyspnea_only_group == "Yes" & sex_group == "Men" ~ "20",
+    age_group == "50-59" & dyspnea_only_group == "Yes" & sex_group == "Women" ~ "9",
+    age_group == "60-69" & dyspnea_only_group == "Yes" & sex_group == "Men" ~ "27",
+    age_group == "60-69" & dyspnea_only_group == "Yes" & sex_group == "Women" ~ "14",
+    age_group == "70+" & dyspnea_only_group == "Yes" & sex_group == "Men" ~ "32",
+    age_group == "70+" & dyspnea_only_group == "Yes" & sex_group == "Women" ~ "12",
+    .default = "0"
+  )
+
+  if (isTRUE(output %in% c("numeric", "grouping"))) {
+    ptp_percentage_group <- ptp_percentage_group |>
+      as.integer() |>
+      # Symmetric rounding to the nearest integer
+      round_to_nearest_digit()
+
+    if (isTRUE(output == "numeric")) {
+      return(ptp_percentage_group)
+    }
+
+    ptp_percentage_group <- dplyr::case_when(
+      ptp_percentage_group < 5 ~ "Low",
+      dplyr::between(ptp_percentage_group, 5, 15) ~ "Intermediate",
+      ptp_percentage_group > 15 ~ "High"
+
+    )
+
+    return(ptp_percentage_group)
+  }
+
+  if (isTRUE(output == "percentage")) {
+    ptp_percentage_group <- paste0(ptp_percentage_group, "%")
+    return(ptp_percentage_group)
+  }
+}

@@ -1,0 +1,22 @@
+Package: pretestcad
+Type: Package
+Title: R Package for Pretest Probability for Coronary Artery Disease
+Version: 0.0.0.9000
+Authors@R:
+    person(given = "Jeremy",
+           family = "Selva",
+           role = c("aut", "cre"),
+           email = "jeremy1189.jjs@gmail.com",
+           comment = c(ORCID = "0000-0002-4498-2662"))
+Maintainer: Jeremy Selva <jeremy1189.jjs@gmail.com>
+Description: An R Package for computing different
+    pretest probability models for coronary artery disease.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    spelling
+Language: en-GB
+Imports: 
+    dplyr
+RoxygenNote: 7.2.3

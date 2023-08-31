@@ -1,0 +1,144 @@
+{
+  "R": {
+    "Version": "4.3.0",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+  "Packages": {
+    "Rcpp": {
+      "Package": "Rcpp",
+      "Version": "1.0.11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods",
+        "utils"
+      ],
+      "Hash": "ae6cbbe1492f4de79c45fce06f967ce8"
+    },
+    "commonmark": {
+      "Package": "commonmark",
+      "Version": "1.9.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d691c61bff84bd63c383874d2d0c3307"
+    },
+    "digest": {
+      "Package": "digest",
+      "Version": "0.6.33",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "utils"
+      ],
+      "Hash": "b18a9cf3c003977b0cc49d5e76ebe48d"
+    },
+    "evaluate": {
+      "Package": "evaluate",
+      "Version": "0.21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods"
+      ],
+      "Hash": "d59f3b464e8da1aef82dc04b588b8dfb"
+    },
+    "highr": {
+      "Package": "highr",
+      "Version": "0.10",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "xfun"
+      ],
+      "Hash": "06230136b2d2b9ba5805e1963fa6e890"
+    },
+    "hunspell": {
+      "Package": "hunspell",
+      "Version": "3.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "digest"
+      ],
+      "Hash": "656219b6f3f605499d7cdbe208656639"
+    },
+    "knitr": {
+      "Package": "knitr",
+      "Version": "1.43",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "evaluate",
+        "highr",
+        "methods",
+        "tools",
+        "xfun",
+        "yaml"
+      ],
+      "Hash": "9775eb076713f627c07ce41d8199d8f6"
+    },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.17.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "utils"
+      ],
+      "Hash": "4543b8cd233ae25c6aba8548be9e747e"
+    },
+    "spelling": {
+      "Package": "spelling",
+      "Version": "2.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "commonmark",
+        "hunspell",
+        "knitr",
+        "xml2"
+      ],
+      "Hash": "8ed9f010f7caeb8586523088b7f23dcd"
+    },
+    "xfun": {
+      "Package": "xfun",
+      "Version": "0.40",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "stats",
+        "tools"
+      ],
+      "Hash": "be07d23211245fc7d4209f54c4e4ffc8"
+    },
+    "xml2": {
+      "Package": "xml2",
+      "Version": "1.3.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods"
+      ],
+      "Hash": "6c40e5cfcc6aefd88110666e18c31f40"
+    },
+    "yaml": {
+      "Package": "yaml",
+      "Version": "2.3.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0d0056cc5383fbc240ccd0cb584bf436"
+    }
+  }
+}
