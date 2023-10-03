@@ -28,6 +28,7 @@
 #'   \item 2 stands for the patient having atypical chest pain.
 #'   \item 3 stands for the patient having typical chest pain.
 #' }
+#'
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
@@ -39,13 +40,24 @@
 #'      \item High if PTP is more than 15%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 #' }
+#'
 #' @return An integer or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2019 guidelines.
 #' See parameter option `output` for more information.
 #' @details The predictive model used to create the guidelines are based on
 #' patients from European countries with low cardiovascular disease (CVD) risk.
+#'
+#' The ESC 2019 PTP for CAD table is as follows:
+#'
+#' \if{html}{\figure{esc_2019.jpg}{alt="ESC 2019 pre-test probabilities of obstructive coronary artery disease table."}}
+#' \emph{ESC 2019 pre-test probabilities of obstructive coronary artery disease (CAD) table taken from}
+#' \href{https://doi.org/10.1007/s00059-020-04935-x}{\emph{Juhani Knuuti et. al.}} from
+#' \href{https://link.springer.com/}{\emph{SpringerLink}} \emph{is licensed under}
+#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
+#'
+#'
 #' @examples
 #' calculate_esc_2019_ptp(
 #'     age = 35,
