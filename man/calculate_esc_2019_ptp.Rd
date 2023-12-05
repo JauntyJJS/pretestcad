@@ -39,7 +39,7 @@ Default: 0
   \item 0 stands for the patient having no chest pain.
   \item 1 stands for the patient having typical chest pain.
   \item 2 stands for the patient having atypical chest pain.
-  \item 3 stands for the patient having non-specific chest pain.
+  \item 3 stands for the patient having non-anginal chest pain.
 }}
 
 \item{output}{Input text to indicate the how pre-test
@@ -80,7 +80,6 @@ The ESC 2019 PTP for CAD table is as follows:
 \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 }
 \examples{
-
 # 30 female with typical chest pain
 calculate_esc_2019_ptp(
     age = 35,

@@ -26,7 +26,7 @@
 #'   \item 0 stands for the patient having no chest pain.
 #'   \item 1 stands for the patient having typical chest pain.
 #'   \item 2 stands for the patient having atypical chest pain.
-#'   \item 3 stands for the patient having non-specific chest pain.
+#'   \item 3 stands for the patient having non-anginal chest pain.
 #' }
 #'
 #' @param output Input text to indicate the how pre-test
@@ -59,7 +59,6 @@
 #'
 #'
 #' @examples
-#'
 #' # 30 female with typical chest pain
 #' calculate_esc_2019_ptp(
 #'     age = 35,
@@ -111,7 +110,7 @@ calculate_esc_2019_ptp <- function(
     chest_pain == 0 ~ "No Chest Pain",
     chest_pain == 1 ~ "Typical",
     chest_pain == 2 ~ "Atypical",
-    chest_pain == 3 ~ "Non-specific"
+    chest_pain == 3 ~ "Non-anginal"
   )
 
   ptp_percentage_group <- dplyr::case_when(
@@ -135,16 +134,16 @@ calculate_esc_2019_ptp <- function(
     age_group == "60-69" & chest_pain_group == "Atypical" & sex_group == "Female" ~ "11",
     age_group == "70+" & chest_pain_group == "Atypical" & sex_group == "Male" ~ "34",
     age_group == "70+" & chest_pain_group == "Atypical" & sex_group == "Female" ~ "19",
-    age_group == "30-39" & chest_pain_group == "Non-specific" & sex_group == "Male" ~ "1",
-    age_group == "30-39" & chest_pain_group == "Non-specific" & sex_group == "Female" ~ "1",
-    age_group == "40-49" & chest_pain_group == "Non-specific" & sex_group == "Male" ~ "3",
-    age_group == "40-49" & chest_pain_group == "Non-specific" & sex_group == "Female" ~ "2",
-    age_group == "50-59" & chest_pain_group == "Non-specific" & sex_group == "Male" ~ "11",
-    age_group == "50-59" & chest_pain_group == "Non-specific" & sex_group == "Female" ~ "3",
-    age_group == "60-69" & chest_pain_group == "Non-specific" & sex_group == "Male" ~ "22",
-    age_group == "60-69" & chest_pain_group == "Non-specific" & sex_group == "Female" ~ "6",
-    age_group == "70+" & chest_pain_group == "Non-specific" & sex_group == "Male" ~ "24",
-    age_group == "70+" & chest_pain_group == "Non-specific" & sex_group == "Female" ~ "10",
+    age_group == "30-39" & chest_pain_group == "Non-anginal" & sex_group == "Male" ~ "1",
+    age_group == "30-39" & chest_pain_group == "Non-anginal" & sex_group == "Female" ~ "1",
+    age_group == "40-49" & chest_pain_group == "Non-anginal" & sex_group == "Male" ~ "3",
+    age_group == "40-49" & chest_pain_group == "Non-anginal" & sex_group == "Female" ~ "2",
+    age_group == "50-59" & chest_pain_group == "Non-anginal" & sex_group == "Male" ~ "11",
+    age_group == "50-59" & chest_pain_group == "Non-anginal" & sex_group == "Female" ~ "3",
+    age_group == "60-69" & chest_pain_group == "Non-anginal" & sex_group == "Male" ~ "22",
+    age_group == "60-69" & chest_pain_group == "Non-anginal" & sex_group == "Female" ~ "6",
+    age_group == "70+" & chest_pain_group == "Non-anginal" & sex_group == "Male" ~ "24",
+    age_group == "70+" & chest_pain_group == "Non-anginal" & sex_group == "Female" ~ "10",
     age_group == "30-39" & dyspnea_only_group == "Yes" & sex_group == "Male" ~ "0",
     age_group == "30-39" & dyspnea_only_group == "Yes" & sex_group == "Female" ~ "3",
     age_group == "40-49" & dyspnea_only_group == "Yes" & sex_group == "Male" ~ "12",
