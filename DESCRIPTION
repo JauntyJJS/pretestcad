@@ -14,11 +14,15 @@ Description: An R Package for computing different
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests:
-    spelling
 Language: en-GB
 Imports: 
     dplyr
+Suggests:
+    purrr,
+    tibble,
+    spelling,
+    testthat (>= 3.0.0)
 RoxygenNote: 7.2.3
 URL: https://github.com/JauntyJJS/pretestcad, https://jauntyjjs.github.io/pretestcad/
 BugReports: https://github.com/JauntyJJS/pretestcad/issues
+Config/testthat/edition: 3

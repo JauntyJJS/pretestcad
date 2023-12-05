@@ -18,8 +18,8 @@ calculate_esc_2019_ptp(
 \item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
 Default: 0
 \itemize{
-  \item 0 stands for Male
-  \item 1 stands for Female
+  \item 0 stands for Female
+  \item 1 stands for Male
 }}
 
 \item{dyspnea_only}{Input integer 0 or 1 to indicate if the patient
@@ -37,9 +37,9 @@ characteristics of the patient.
 Default: 0
 \itemize{
   \item 0 stands for the patient having no chest pain.
-  \item 1 stands for the patient having Nonanginal chest pain.
+  \item 1 stands for the patient having typical chest pain.
   \item 2 stands for the patient having atypical chest pain.
-  \item 3 stands for the patient having typical chest pain.
+  \item 3 stands for the patient having non-specific chest pain.
 }}
 
 \item{output}{Input text to indicate the how pre-test
@@ -84,7 +84,7 @@ calculate_esc_2019_ptp(
     age = 35,
     sex = 0,
     dyspnea_only = 0,
-    chest_pain = 3,
+    chest_pain = 1,
     output = "percentage"
 )
 }
