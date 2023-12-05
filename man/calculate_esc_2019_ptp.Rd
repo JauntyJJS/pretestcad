@@ -80,11 +80,22 @@ The ESC 2019 PTP for CAD table is as follows:
 \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 }
 \examples{
+
+# 30 female with typical chest pain
 calculate_esc_2019_ptp(
     age = 35,
     sex = 0,
     dyspnea_only = 0,
     chest_pain = 1,
+    output = "percentage"
+)
+
+# 75 male with only dyspnea
+calculate_esc_2019_ptp(
+    age = 75,
+    sex = 0,
+    dyspnea_only = 1,
+    chest_pain = 0,
     output = "percentage"
 )
 }
