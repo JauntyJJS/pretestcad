@@ -59,9 +59,9 @@ European Society of Cardiology (ESC) 2019 guidelines.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span>
 <span>  <span class="va">age</span>,</span>
-<span>  sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>  dyspnea_only <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>  chest_pain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  <span class="va">sex</span>,</span>
+<span>  <span class="va">dyspnea_only</span>,</span>
+<span>  <span class="va">chest_pain</span>,</span>
 <span>  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grouping"</span>, <span class="st">"numeric"</span>, <span class="st">"percentage"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -73,16 +73,14 @@ European Society of Cardiology (ESC) 2019 guidelines.</p>
 
 
 <dt>sex</dt>
-<dd><p>Input integer 0 or 1 to indicate the sex of the patient.
-Default: 0</p><ul><li><p>0 stands for Female</p></li>
+<dd><p>Input integer 0 or 1 to indicate the sex of the patient.</p><ul><li><p>0 stands for Female</p></li>
 <li><p>1 stands for Male</p></li>
 </ul></dd>
 
 
 <dt>dyspnea_only</dt>
 <dd><p>Input integer 0 or 1 to indicate if the patient
-only has dyspnea symptoms.
-Default: 0</p><ul><li><p>0 stands for not having dyspnea-only symptoms. If the patient
+only has dyspnea symptoms.</p><ul><li><p>0 stands for not having dyspnea-only symptoms. If the patient
   has chest pain symptoms, this value should also be set as 0 regardless
   if the patient has dyspnea or not.</p></li>
 <li><p>1 stands for having dyspnea as the only primary symptom.</p></li>
@@ -91,11 +89,10 @@ Default: 0</p><ul><li><p>0 stands for not having dyspnea-only symptoms. If the p
 
 <dt>chest_pain</dt>
 <dd><p>Input integer 0 to 3 to indicate the chest pain
-characteristics of the patient.
-Default: 0</p><ul><li><p>0 stands for the patient having no chest pain.</p></li>
+characteristics of the patient.</p><ul><li><p>0 stands for the patient having no chest pain.</p></li>
 <li><p>1 stands for the patient having typical chest pain.</p></li>
 <li><p>2 stands for the patient having atypical chest pain.</p></li>
-<li><p>3 stands for the patient having non-anginal chest pain.</p></li>
+<li><p>3 stands for the patient having non-anginal or non-specific chest pain.</p></li>
 </ul></dd>
 
 
@@ -115,7 +112,7 @@ Default: c("grouping", "numeric", "percentage")</p><ul><li><p>grouping means the
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>An integer or category representing the patient's PTP for obstructive CAD
+<p>An integer, percentage or category representing the patient's PTP for obstructive CAD
 based on the ESC 2019 guidelines.
 See parameter option `output` for more information.</p>
     </div>
@@ -132,7 +129,7 @@ patients from European countries with low cardiovascular disease (CVD) risk.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 30 female with typical chest pain</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 35 year old female with typical chest pain</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">35</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">0</span>,</span></span>
@@ -142,7 +139,7 @@ patients from European countries with low cardiovascular disease (CVD) risk.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5%"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 75 male with only dyspnea</span></span></span>
+<span class="r-in"><span><span class="co"># 75 year old male with only dyspnea</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">75</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">0</span>,</span></span>
