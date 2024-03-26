@@ -6,9 +6,9 @@
 \usage{
 calculate_esc_2019_ptp(
   age,
-  sex = c(0, 1),
-  dyspnea_only = c(0, 1),
-  chest_pain = c(0, 1, 2, 3),
+  sex,
+  dyspnea_only,
+  chest_pain,
   output = c("grouping", "numeric", "percentage")
 )
 }
@@ -16,7 +16,6 @@ calculate_esc_2019_ptp(
 \item{age}{Input integer to indicate the age of the patient.}
 
 \item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
-Default: 0
 \itemize{
   \item 0 stands for Female
   \item 1 stands for Male
@@ -24,7 +23,6 @@ Default: 0
 
 \item{dyspnea_only}{Input integer 0 or 1 to indicate if the patient
 only has dyspnea symptoms.
-Default: 0
 \itemize{
   \item 0 stands for not having dyspnea-only symptoms. If the patient
   has chest pain symptoms, this value should also be set as 0 regardless
@@ -34,12 +32,11 @@ Default: 0
 
 \item{chest_pain}{Input integer 0 to 3 to indicate the chest pain
 characteristics of the patient.
-Default: 0
 \itemize{
   \item 0 stands for the patient having no chest pain.
   \item 1 stands for the patient having typical chest pain.
   \item 2 stands for the patient having atypical chest pain.
-  \item 3 stands for the patient having non-anginal chest pain.
+  \item 3 stands for the patient having non-anginal or non-specific chest pain.
 }}
 
 \item{output}{Input text to indicate the how pre-test
@@ -57,7 +54,7 @@ Default: c("grouping", "numeric", "percentage")
 }}
 }
 \value{
-An integer or category representing the patient's PTP for obstructive CAD
+An integer, percentage or category representing the patient's PTP for obstructive CAD
 based on the ESC 2019 guidelines.
 See parameter option `output` for more information.
 }
@@ -80,7 +77,7 @@ The ESC 2019 PTP for CAD table is as follows:
 \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 }
 \examples{
-# 30 female with typical chest pain
+# 35 year old female with typical chest pain
 calculate_esc_2019_ptp(
     age = 35,
     sex = 0,
@@ -89,7 +86,7 @@ calculate_esc_2019_ptp(
     output = "percentage"
 )
 
-# 75 male with only dyspnea
+# 75 year old male with only dyspnea
 calculate_esc_2019_ptp(
     age = 75,
     sex = 0,

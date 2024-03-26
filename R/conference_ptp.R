@@ -5,14 +5,12 @@
 #' European Society of Cardiology (ESC) 2019 guidelines.
 #' @param age Input integer to indicate the age of the patient.
 #' @param sex Input integer 0 or 1 to indicate the sex of the patient.
-#' Default: 0
 #' \itemize{
 #'   \item 0 stands for Female
 #'   \item 1 stands for Male
 #' }
 #' @param dyspnea_only Input integer 0 or 1 to indicate if the patient
 #' only has dyspnea symptoms.
-#' Default: 0
 #' \itemize{
 #'   \item 0 stands for not having dyspnea-only symptoms. If the patient
 #'   has chest pain symptoms, this value should also be set as 0 regardless
@@ -21,12 +19,11 @@
 #' }
 #' @param chest_pain Input integer 0 to 3 to indicate the chest pain
 #' characteristics of the patient.
-#' Default: 0
 #' \itemize{
 #'   \item 0 stands for the patient having no chest pain.
 #'   \item 1 stands for the patient having typical chest pain.
 #'   \item 2 stands for the patient having atypical chest pain.
-#'   \item 3 stands for the patient having non-anginal chest pain.
+#'   \item 3 stands for the patient having non-anginal or non-specific chest pain.
 #' }
 #'
 #' @param output Input text to indicate the how pre-test
@@ -43,7 +40,7 @@
 #'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 #' }
 #'
-#' @return An integer or category representing the patient's PTP for obstructive CAD
+#' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2019 guidelines.
 #' See parameter option `output` for more information.
 #' @details The predictive model used to create the guidelines are based on
@@ -59,7 +56,7 @@
 #'
 #'
 #' @examples
-#' # 30 female with typical chest pain
+#' # 35 year old female with typical chest pain
 #' calculate_esc_2019_ptp(
 #'     age = 35,
 #'     sex = 0,
@@ -68,7 +65,7 @@
 #'     output = "percentage"
 #' )
 #'
-#' # 75 male with only dyspnea
+#' # 75 year old male with only dyspnea
 #' calculate_esc_2019_ptp(
 #'     age = 75,
 #'     sex = 0,
@@ -80,9 +77,9 @@
 #' @export
 calculate_esc_2019_ptp <- function(
   age,
-  sex = c(0, 1),
-  dyspnea_only = c(0, 1),
-  chest_pain = c(0, 1, 2, 3),
+  sex,
+  dyspnea_only,
+  chest_pain,
   output = c("grouping", "numeric", "percentage")
   )
 {

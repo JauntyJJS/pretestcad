@@ -2,8 +2,8 @@ test_that("calculate_esc_2019_ptp works on typical chest pain", {
 
   typical_medical_data <- tibble::tribble(
     ~unique_id,                          ~age, ~sex, ~have_dyspnea, ~chest_pain,
-    "30 male with typical chest pain",     35,    1,             0,           1,
-    "39 female with typical chest pain",   35,    0,             0,           1,
+    "30 male with typical chest pain",     30,    1,             0,           1,
+    "39 female with typical chest pain",   39,    0,             0,           1,
     "40 male with typical chest pain",     40,    1,             0,           1,
     "49 female with typical chest pain",   49,    0,             0,           1,
     "50 male with typical chest pain",     50,    1,             0,           1,
@@ -81,8 +81,8 @@ test_that("calculate_esc_2019_ptp works on atypical chest pain", {
 
   atypical_medical_data <- tibble::tribble(
     ~unique_id,                          ~age, ~sex, ~have_dyspnea, ~chest_pain,
-    "30 male with atypical chest pain",    35,    1,             0,           2,
-    "39 female with atypical chest pain",  35,    0,             0,           2,
+    "30 male with atypical chest pain",    30,    1,             0,           2,
+    "39 female with atypical chest pain",  39,    0,             0,           2,
     "40 male with atypical chest pain",    40,    1,             0,           2,
     "49 female with atypical chest pain",  49,    0,             0,           2,
     "50 male with atypical chest pain",    50,    1,             0,           2,
@@ -160,8 +160,8 @@ test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
 
   non_anginal_medical_data <- tibble::tribble(
     ~unique_id,                             ~age, ~sex, ~have_dyspnea, ~chest_pain,
-    "30 male with non-anginal chest pain",    35,    1,             0,           3,
-    "39 female with non-anginal chest pain",  35,    0,             0,           3,
+    "30 male with non-anginal chest pain",    30,    1,             0,           3,
+    "39 female with non-anginal chest pain",  39,    0,             0,           3,
     "40 male with non-anginal chest pain",    40,    1,             0,           3,
     "49 female with non-anginal chest pain",  49,    0,             0,           3,
     "50 male with non-anginal chest pain",    50,    1,             0,           3,
@@ -239,8 +239,8 @@ test_that("calculate_esc_2019_ptp works on dyspnea", {
 
   dyspnea_medical_data <- tibble::tribble(
     ~unique_id,              ~age, ~sex, ~have_dyspnea, ~chest_pain,
-    "30 male with dyspnea",    35,    1,             1,           0,
-    "39 female with dyspnea",  35,    0,             1,           0,
+    "30 male with dyspnea",    30,    1,             1,           0,
+    "39 female with dyspnea",  39,    0,             1,           0,
     "40 male with dyspnea",    40,    1,             1,           0,
     "49 female with dyspnea",  49,    0,             1,           0,
     "50 male with dyspnea",    50,    1,             1,           0,
