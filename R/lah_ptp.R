@@ -1,78 +1,8 @@
-#' @title Calculate 2012 CAD2 Basic PTP for obstructive CAD
+#' @title Calculate 2022 LAH Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease based on the
-#' 2012 CAD Consortium 2 (CAD2) basic model.
-#' @param age Input integer to indicate the age of the patient.
-#' @param sex Input integer 0 or 1 to indicate the sex of the patient.
-#' \itemize{
-#'   \item 0 stands for Female
-#'   \item 1 stands for Male
-#' }
-#' @param chest_pain Input integer 1 to 3 to indicate the chest pain
-#' characteristics of the patient.
-#' \itemize{
-#'   \item 1 stands for the patient having typical chest pain.
-#'   \item 2 stands for the patient having atypical chest pain.
-#'   \item 3 stands for the patient having non-anginal or non-specific chest pain.
-#' }
-#' @return A numeric value representing the patient's PTP for obstructive CAD
-#' based on the 2012 CAD Consortium 2 (CAD2) basic model.
-#' @details The predictive model is based on
-#' patients from 18 hospitals in Europe and the United States.
-#'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
-#'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
-#' @examples
-#' # 40 year old female with typical chest pain
-#' calculate_cad2_2012_basic_ptp(
-#'     age = 40,
-#'     sex = 0,
-#'     chest_pain = 1
-#' )
-#' @rdname calculate_cad2_2012_basic_ptp
-#' @export
-calculate_cad2_2012_basic_ptp <- function(
-    age,
-    sex,
-    chest_pain
-  )
-{
-
-  has_atypical_chest_pain <- dplyr::case_when(
-    chest_pain %in% c(1, 3) ~ 0,
-    chest_pain == 2 ~ 1
-  )
-
-  has_typical_chest_pain <- dplyr::case_when(
-    chest_pain %in% c(2, 3) ~ 0,
-    chest_pain == 1 ~ 1
-  )
-
-  cad2_2012_basic_ptp <- 1 /
-    (1 + exp(-(-6.917 +
-               (0.063 * age) +
-               (1.358 * sex) +
-               (0.658 * has_atypical_chest_pain) +
-               (1.975 * has_typical_chest_pain)
-    )
-    )
-    )
-
-  return(cad2_2012_basic_ptp)
-
-}
-
-#' @title Calculate 2012 CAD2 Clinical PTP for obstructive CAD
-#' @description This function returns a patient's
-#' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
-#' 2012 CAD Consortium 2 (CAD2) clinical model.
+#' 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @param age Input integer to indicate the age of the patient.
 #' @param sex Input integer 0 or 1 to indicate the sex of the patient.
 #' \itemize{
@@ -111,22 +41,22 @@ calculate_cad2_2012_basic_ptp <- function(
 #'   \item 1 stands for having a smoking history (current or past smoker).
 #' }
 #' @return A numeric value representing the patient's PTP for obstructive CAD
-#' based on the 2012 CAD Consortium 2 (CAD2) clinical model.
+#' based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @details The predictive model is based on
-#' patients from 18 hospitals in Europe and the United States.
+#' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
+#' The  2022 Local Assessment of the Heart (LAH) PTP models are as follows:
 #'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
+#' \if{html}{\figure{lah_2022.jpg}{alt="2022 Local Assessment of the Heart pre-test probabilities of obstructive coronary artery disease model."}}
+#' \emph{Local Assessment of the Heart (LAH) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
+#' \href{https://doi.org/10.1161/JAHA.121.022697}{\emph{Lohendran Baskaran et. al.}} from
+#' \href{https://www.ahajournals.org/}{\emph{Journal of the American Heart Association}} \emph{is licensed under}
 #' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia
 #' # and a non-smoker
-#' calculate_cad2_2012_clinical_ptp(
+#' calculate_lah_2022_clinical_ptp(
 #'     age = 40,
 #'     sex = 0,
 #'     chest_pain = 1,
@@ -136,9 +66,9 @@ calculate_cad2_2012_basic_ptp <- function(
 #'     has_smoking_history = 0
 #'
 #' )
-#' @rdname calculate_cad2_2012_clinical_ptp
+#' @rdname calculate_lah_2022_clinical_ptp
 #' @export
-calculate_cad2_2012_clinical_ptp <- function(
+calculate_lah_2022_clinical_ptp <- function(
     age,
     sex,
     chest_pain,
@@ -159,30 +89,29 @@ calculate_cad2_2012_clinical_ptp <- function(
     chest_pain == 1 ~ 1
   )
 
-  cad2_2012_clinical_ptp <- 1 /
-    (1 + exp(-(-7.539 +
-              (0.062 * age) +
-              (1.332 * sex) +
-              (0.633 * has_atypical_chest_pain) +
-              (1.998 * has_typical_chest_pain) +
-              (0.828 * has_diabetes) +
-              (0.338 * has_hypertension) +
-              (0.422 * has_dyslipidemia) +
-              (0.461 * has_smoking_history) +
-              (-0.402 * has_diabetes * has_typical_chest_pain)
+  lah_2022_clinical_ptp <- 1 /
+    (1 + exp(-(-6.268 +
+              (0.067 * age) +
+              (1.518 * sex) +
+              (-0.090 * has_atypical_chest_pain) +
+              (0.164 * has_typical_chest_pain) +
+              (0.417 * has_diabetes) +
+              (0.457 * has_hypertension) +
+              (0.370 * has_dyslipidemia) +
+              (-0.364 * has_smoking_history)
     )
     )
     )
 
-  return(cad2_2012_clinical_ptp)
+  return(lah_2022_clinical_ptp)
 
 }
 
-#' @title Calculate 2012 CAD2 Clinical and CCS PTP for obstructive CAD
+#' @title Calculate 2022 LAH Extended PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease based on the
-#' 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
+#' 2022 Local Assessment of the Heart (LAH) extended model.
 #' @param age Input integer to indicate the age of the patient.
 #' @param sex Input integer 0 or 1 to indicate the sex of the patient.
 #' \itemize{
@@ -223,22 +152,22 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' @param coronary_calcium_score Input positive numeric to indicate the
 #' total coronary calcium score of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
-#' based on the 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
+#' based on the 2022 Local Assessment of the Heart (LAH) extended model.
 #' @details The predictive model is based on
-#' patients from 18 hospitals in Europe and the United States.
+#' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
+#' The  2022 Local Assessment of the Heart (LAH) PTP models are as follows:
 #'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
+#' \if{html}{\figure{lah_2022.jpg}{alt="2022 Local Assessment of the Heart pre-test probabilities of obstructive coronary artery disease model."}}
+#' \emph{Local Assessment of the Heart (LAH) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
+#' \href{https://doi.org/10.1161/JAHA.121.022697}{\emph{Lohendran Baskaran et. al.}} from
+#' \href{https://www.ahajournals.org/}{\emph{Journal of the American Heart Association}} \emph{is licensed under}
 #' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia,
 #' # a non-smoker and a coronary calcium score of 0
-#' calculate_cad2_2012_clinical_ccs_ptp(
+#' calculate_lah_2022_extended_ptp(
 #'     age = 40,
 #'     sex = 0,
 #'     chest_pain = 1,
@@ -249,9 +178,9 @@ calculate_cad2_2012_clinical_ptp <- function(
 #'     coronary_calcium_score = 0
 #'
 #' )
-#' @rdname calculate_cad2_2012_clinical_ccs_ptp
+#' @rdname calculate_lah_2022_extended_ptp
 #' @export
-calculate_cad2_2012_clinical_ccs_ptp <- function(
+calculate_lah_2022_extended_ptp <- function(
     age,
     sex,
     chest_pain,
@@ -275,22 +204,21 @@ calculate_cad2_2012_clinical_ccs_ptp <- function(
 
   log_transformed_ccs <- log(coronary_calcium_score + 1)
 
-  cad2_2012_clinical_ccs_ptp <- 1 /
-    (1 + exp(-(-5.975 +
-              (0.011 * age) +
-              (0.786 * sex) +
-              (0.718 * has_atypical_chest_pain) +
-              (2.024 * has_typical_chest_pain) +
-              (0.658 * has_diabetes) +
-              (0.235 * has_hypertension) +
-              (0.185 * has_dyslipidemia) +
-              (0.207 * has_smoking_history) +
-              (0.577 * log_transformed_ccs) +
-              (-0.780 * has_diabetes * has_typical_chest_pain)
+  lah_2022_extended_ptp <- 1 /
+    (1 + exp(-(-4.241 +
+              (0 * age) +
+              (0.544 * sex) +
+              (-0.242 * has_atypical_chest_pain) +
+              (0.139 * has_typical_chest_pain) +
+              (-0.002 * has_diabetes) +
+              (-0.143 * has_hypertension) +
+              (-0.157 * has_dyslipidemia) +
+              (-0.315 * has_smoking_history) +
+              (0.905 * log_transformed_ccs)
     )
     )
     )
 
-  return(cad2_2012_clinical_ccs_ptp)
+  return(lah_2022_extended_ptp)
 
 }

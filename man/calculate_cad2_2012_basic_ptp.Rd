@@ -24,7 +24,7 @@ characteristics of the patient.
 }}
 }
 \value{
-A numeric value or percentage representing the patient's PTP for obstructive CAD
+A numeric value representing the patient's PTP for obstructive CAD
 based on the 2012 CAD Consortium 2 (CAD2) basic model.
 }
 \description{
@@ -34,7 +34,7 @@ coronary artery disease based on the
 2012 CAD Consortium 2 (CAD2) basic model.
 }
 \details{
-The predictive model used to create the guidelines are based on
+The predictive model is based on
 patients from 18 hospitals in Europe and the United States.
 
 The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
