@@ -54,7 +54,6 @@
 #' \href{https://link.springer.com/}{\emph{SpringerLink}} \emph{is licensed under}
 #' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #'
-#'
 #' @examples
 #' # 35 year old female with typical chest pain
 #' calculate_esc_2019_ptp(

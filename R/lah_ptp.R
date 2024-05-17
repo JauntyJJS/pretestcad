@@ -45,13 +45,6 @@
 #' @details The predictive model is based on
 #' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
-#' The  2022 Local Assessment of the Heart (LAH) PTP models are as follows:
-#'
-#' \if{html}{\figure{lah_2022.jpg}{alt="2022 Local Assessment of the Heart pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{Local Assessment of the Heart (LAH) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1161/JAHA.121.022697}{\emph{Lohendran Baskaran et. al.}} from
-#' \href{https://www.ahajournals.org/}{\emph{Journal of the American Heart Association}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia
@@ -156,13 +149,6 @@ calculate_lah_2022_clinical_ptp <- function(
 #' @details The predictive model is based on
 #' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
-#' The  2022 Local Assessment of the Heart (LAH) PTP models are as follows:
-#'
-#' \if{html}{\figure{lah_2022.jpg}{alt="2022 Local Assessment of the Heart pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{Local Assessment of the Heart (LAH) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1161/JAHA.121.022697}{\emph{Lohendran Baskaran et. al.}} from
-#' \href{https://www.ahajournals.org/}{\emph{Journal of the American Heart Association}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia,

@@ -27,7 +27,8 @@
 #' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
 #' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
 #' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
+#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
+#'
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_cad2_2012_basic_ptp(
@@ -121,7 +122,8 @@ calculate_cad2_2012_basic_ptp <- function(
 #' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
 #' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
 #' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
+#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
+#'
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia
@@ -233,7 +235,8 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
 #' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
 #' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
+#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
+#'
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia,
