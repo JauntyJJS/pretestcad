@@ -13,7 +13,6 @@ Description: An R Package for computing different
     pretest probability models for coronary artery disease.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Language: en-GB
 Imports: 
     cli,
