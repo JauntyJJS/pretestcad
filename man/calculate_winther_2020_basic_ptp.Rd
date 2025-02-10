@@ -36,7 +36,7 @@ coronary artery disease based on the
 \details{
 The predictive model is based on > 40000 symptomatic
 patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
-patients are registered under the Western Denmark Heart Registry (WDHR).
+patients are registered under the Western Denmark Heart Registry.
 }
 \examples{
 # 40 year old Male with typical chest pain

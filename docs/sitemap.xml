@@ -1,48 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_basic_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_clinical_ccs_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_clinical_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2019_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_lah_2022_clinical_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_lah_2022_extended_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_prms_2017_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_winther_2020_basic_ptp.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jauntyjjs.github.io/pretestcad/reference/round_to_nearest_digit.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jauntyjjs.github.io/pretestcad/404.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/authors.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/index.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/LICENSE-text.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/LICENSE.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_allow_na.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_integer.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_true_or_false.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_basic_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_clinical_ccs_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_cad2_2012_clinical_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2019_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2024_fig_4_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2024_fig_4_ptp_simplfied.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2024_num_of_rf.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_esc_2024_symptom_score.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_lah_2022_clinical_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_lah_2022_extended_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_prms_2017_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_winther_2020_basic_ptp.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_non_negative.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_numeric.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_positive.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/index.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/round_to_nearest_digit.html</loc></url>
 </urlset>
+
