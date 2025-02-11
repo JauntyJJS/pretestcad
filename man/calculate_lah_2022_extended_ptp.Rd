@@ -7,57 +7,57 @@
 calculate_lah_2022_extended_ptp(
   age,
   sex,
-  chest_pain,
-  has_diabetes,
-  has_hypertension,
-  has_dyslipidemia,
-  has_smoking_history,
+  chest_pain_type,
+  have_diabetes,
+  have_hypertension,
+  have_dyslipidemia,
+  have_smoking_history,
   coronary_calcium_score
 )
 }
 \arguments{
-\item{age}{Input integer to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient.}
 
-\item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
+\item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{
-  \item 0 stands for Female
-  \item 1 stands for Male
+  \item female
+  \item male
 }}
 
-\item{chest_pain}{Input integer 1 to 3 to indicate the chest pain
-characteristics of the patient.
+\item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
+to indicate the chest pain characteristics of the patient.
 \itemize{
-  \item 1 stands for the patient having typical chest pain.
-  \item 2 stands for the patient having atypical chest pain.
-  \item 3 stands for the patient having non-anginal or non-specific chest pain.
+  \item typical stands for the patient having typical chest pain.
+  \item atypical stands for the patient having atypical chest pain.
+  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 
-\item{has_diabetes}{Input integer 0 or 1 to indicate if the patient
-has diabetes.
+\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
+only has diabetes.
 \itemize{
-  \item 0 stands for not having diabetes.
-  \item 1 stands for having diabetes.
+  \item no stands for not having diabetes.
+  \item yes stands for having a diabetes.
 }}
 
-\item{has_hypertension}{Input integer 0 or 1 to indicate if the patient
-has hypertension.
+\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
+only has hypertension.
 \itemize{
-  \item 0 stands for not having hypertension.
-  \item 1 stands for having hypertension.
+  \item no stands for not having hypertension.
+  \item yes stands for having a hypertension.
 }}
 
-\item{has_dyslipidemia}{Input integer 0 or 1 to indicate if the patient
-has dyslipidemia.
+\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
+only has dyslipidemia.
 \itemize{
-  \item 0 stands for not having dyslipidemia.
-  \item 1 stands for having dyslipidemia.
+  \item no stands for not having dyslipidemia.
+  \item yes stands for having a dyslipidemia.
 }}
 
-\item{has_smoking_history}{Input integer 0 or 1 to indicate if the patient
-has a smoking history (current or past smoker).
+\item{have_smoking_history}{Input characters (no, yes) to indicate if the patient
+only has a smoking history (current or past smoker).
 \itemize{
-  \item 0 stands for not having a smoking history (non-smoker).
-  \item 1 stands for having a smoking history (current or past smoker).
+  \item no stands for not having a smoking history (non-smoker).
+  \item yes stands for having a smoking history (current or past smoker).
 }}
 
 \item{coronary_calcium_score}{Input positive numeric to indicate the
@@ -83,12 +83,12 @@ patients a mixed Asian cohort within Singapore with stable chest pain.
 # a non-smoker and a coronary calcium score of 0
 calculate_lah_2022_extended_ptp(
     age = 40,
-    sex = 0,
-    chest_pain = 1,
-    has_diabetes = 1,
-    has_hypertension = 0,
-    has_dyslipidemia = 0,
-    has_smoking_history = 0,
+    sex = "female",
+    chest_pain_type = "typical",
+    have_diabetes = "yes",
+    have_hypertension = "no",
+    have_dyslipidemia = "no",
+    have_smoking_history = "no",
     coronary_calcium_score = 0
 
 )
