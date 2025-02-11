@@ -5,7 +5,17 @@ probability of coronary artery disease (CAD) based on the
 ESC 2024 guidelines."><meta property="og:description" content="A function used to calculate the number of
 risk factors the patient has. This is used to calculate the pretest
 probability of coronary artery disease (CAD) based on the
-ESC 2024 guidelines."></head><body>
+ESC 2024 guidelines."></head><body><p>
+
+
+
+
+
+
+
+
+  # https://github.com/r-lib/pkgdown/issues/2704
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script></p>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -98,14 +108,14 @@ only has diabetes.</p><ul><li><p>no stands for not having diabetes.</p></li>
 
 <dt id="arg-max-na">max_na<a class="anchor" aria-label="anchor" href="#arg-max-na"></a></dt>
 <dd><p>Input integer 0 to 5 to indicate the maximum number of
-missing risk factors to tolerate before outputting an NA.
+missing risk factors to tolerate before outputting an <code>NA</code>.
 Default: 0</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An integer indicating the number of risk factors the patient has.
-It can also be `NA` if the number of missing risk factors exceeds the `max_na`
+It can also be <code>NA</code> if the number of missing risk factors exceeds the <code>max_na</code>
 input value</p>
     </div>
 
@@ -159,5 +169,6 @@ input value</p>
 
 
 
-  </body></html>
+  
+</body></html>
 

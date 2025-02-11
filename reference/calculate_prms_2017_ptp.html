@@ -7,7 +7,17 @@ coronary artery disease based on the
 a symptomatic (have chest pain or dyspnea) patient's
 minimal risk score for obstructive
 coronary artery disease based on the
-2017 PROMISE Minimal-Risk Score."></head><body>
+2017 PROMISE Minimal-Risk Score."></head><body><p>
+
+
+
+
+
+
+
+
+  # https://github.com/r-lib/pkgdown/issues/2704
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script></p>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -55,12 +65,12 @@ coronary artery disease based on the
 <span>  <span class="va">sex</span>,</span>
 <span>  <span class="va">hdl_mg_dl</span>,</span>
 <span>  <span class="va">is_minority_ethnicity</span>,</span>
-<span>  <span class="va">has_diabetes</span>,</span>
-<span>  <span class="va">has_hypertension</span>,</span>
-<span>  <span class="va">has_dyslipidemia</span>,</span>
-<span>  <span class="va">has_smoking_history</span>,</span>
-<span>  <span class="va">has_family_history_of_cad</span>,</span>
-<span>  has_stress_symptoms <span class="op">=</span> <span class="cn">NA</span></span>
+<span>  <span class="va">have_diabetes</span>,</span>
+<span>  <span class="va">have_hypertension</span>,</span>
+<span>  <span class="va">have_dyslipidemia</span>,</span>
+<span>  <span class="va">have_smoking_history</span>,</span>
+<span>  <span class="va">have_family_history</span>,</span>
+<span>  have_stress_symptoms <span class="op">=</span> <span class="cn">NA</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -69,12 +79,12 @@ coronary artery disease based on the
 
 
 <dl><dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
-<dd><p>Input integer to indicate the age of the patient.</p></dd>
+<dd><p>Input numeric value to indicate the age of the patient.</p></dd>
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate the sex of the patient.</p><ul><li><p>0 stands for Female</p></li>
-<li><p>1 stands for Male</p></li>
+<dd><p>Input characters (female, male) to indicate the sex of the patient.</p><ul><li><p>female</p></li>
+<li><p>male</p></li>
 </ul></dd>
 
 
@@ -84,55 +94,55 @@ patient's high-density lipoprotein (HDL) in \(mg/dL\).</p></dd>
 
 
 <dt id="arg-is-minority-ethnicity">is_minority_ethnicity<a class="anchor" aria-label="anchor" href="#arg-is-minority-ethnicity"></a></dt>
-<dd><p>Input integer 0 or 1
-to indicate if the patient is from a racial or minority ethnicity
-(or patient is not a non-Hispanic/Latino White).</p><ul><li><p>0 stands for patient is a non-Hispanic/Latino White.</p></li>
-<li><p>1 stands for patient is not a non-Hispanic/Latino White. E.g. Blacks, Asians, etc.</p></li>
+<dd><p>Input characters (no, yes) to indicate if the patient
+is from a racial or minority ethnicity
+(or patient is not a non-Hispanic/Latino White).</p><ul><li><p>no stands for patient is a non-Hispanic/Latino White.</p></li>
+<li><p>yes stands for patient is not a non-Hispanic/Latino White. E.g. Blacks, Asians, etc.</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-diabetes">has_diabetes<a class="anchor" aria-label="anchor" href="#arg-has-diabetes"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
-has diabetes.</p><ul><li><p>0 stands for not having diabetes.</p></li>
-<li><p>1 stands for having diabetes.</p></li>
+<dt id="arg-have-diabetes">have_diabetes<a class="anchor" aria-label="anchor" href="#arg-have-diabetes"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
+only has diabetes.</p><ul><li><p>no stands for not having diabetes.</p></li>
+<li><p>yes stands for having a diabetes.</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-hypertension">has_hypertension<a class="anchor" aria-label="anchor" href="#arg-has-hypertension"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
-has hypertension.</p><ul><li><p>0 stands for not having hypertension.</p></li>
-<li><p>1 stands for having hypertension.</p></li>
+<dt id="arg-have-hypertension">have_hypertension<a class="anchor" aria-label="anchor" href="#arg-have-hypertension"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
+only has hypertension.</p><ul><li><p>no stands for not having hypertension.</p></li>
+<li><p>yes stands for having a hypertension.</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-dyslipidemia">has_dyslipidemia<a class="anchor" aria-label="anchor" href="#arg-has-dyslipidemia"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
-has dyslipidemia.</p><ul><li><p>0 stands for not having dyslipidemia.</p></li>
-<li><p>1 stands for having dyslipidemia.</p></li>
+<dt id="arg-have-dyslipidemia">have_dyslipidemia<a class="anchor" aria-label="anchor" href="#arg-have-dyslipidemia"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
+only has dyslipidemia.</p><ul><li><p>no stands for not having dyslipidemia.</p></li>
+<li><p>yes stands for having a dyslipidemia.</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-smoking-history">has_smoking_history<a class="anchor" aria-label="anchor" href="#arg-has-smoking-history"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
-has a smoking history (current or past smoker).</p><ul><li><p>0 stands for not having a smoking history (non-smoker).</p></li>
-<li><p>1 stands for having a smoking history (current or past smoker).</p></li>
+<dt id="arg-have-smoking-history">have_smoking_history<a class="anchor" aria-label="anchor" href="#arg-have-smoking-history"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
+only has a smoking history (current or past smoker).</p><ul><li><p>no stands for not having a smoking history (non-smoker).</p></li>
+<li><p>yes stands for having a smoking history (current or past smoker).</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-family-history-of-cad">has_family_history_of_cad<a class="anchor" aria-label="anchor" href="#arg-has-family-history-of-cad"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
-has a family history of CAD.</p><ul><li><p>0 stands for not having a family history of CAD.</p></li>
-<li><p>1 stands for having a family history of CAD.</p></li>
+<dt id="arg-have-family-history">have_family_history<a class="anchor" aria-label="anchor" href="#arg-have-family-history"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
+only has a family history of CAD.</p><ul><li><p>no stands for not having a family history of CAD.</p></li>
+<li><p>yes stands for having a family history of CAD.</p></li>
 </ul></dd>
 
 
-<dt id="arg-has-stress-symptoms">has_stress_symptoms<a class="anchor" aria-label="anchor" href="#arg-has-stress-symptoms"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate if the patient
+<dt id="arg-have-stress-symptoms">have_stress_symptoms<a class="anchor" aria-label="anchor" href="#arg-have-stress-symptoms"></a></dt>
+<dd><p>Input characters (no, yes) to indicate if the patient
 has symptoms related to physical or mental stress. It can be set
 to <code>NA</code> if the patient results are inconclusive or have not taken any stress test
 such as exercise treadmill testing, stress echocardiography, or stress
-nuclear imaging.</p><ul><li><p>0 stands for no symptoms (negative results) related to physical or mental stress.</p></li>
-<li><p>1 stands for having symptoms (positive results) related to physical or mental stress.</p></li>
+nuclear imaging.</p><ul><li><p>no stands for no symptoms (negative results) related to physical or mental stress.</p></li>
+<li><p>yes stands for having symptoms (positive results) related to physical or mental stress.</p></li>
 <li><p><code>NA</code> stands for inconclusive results or patient has not taken any stress test</p></li>
 </ul><p>Default: <code>NA</code></p></dd>
 
@@ -156,32 +166,32 @@ of Chest Pain (PROMISE) trial.</p>
 <span class="r-in"><span><span class="co"># high-density lipoprotein cholesterol level of 70 mg/dL</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_prms_2017_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">50</span>,</span></span>
-<span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"female"</span>,</span></span>
 <span class="r-in"><span>    hdl_mg_dl <span class="op">=</span> <span class="fl">70</span>,</span></span>
-<span class="r-in"><span>    is_minority_ethnicity <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_diabetes <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_hypertension <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>    has_dyslipidemia <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_smoking_history <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_family_history_of_cad <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_stress_symptoms <span class="op">=</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span>    is_minority_ethnicity <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_diabetes <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_hypertension <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>    have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_stress_symptoms <span class="op">=</span> <span class="st">"no"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.710744</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 40 year old non-white male with chest pain</span></span></span>
 <span class="r-in"><span><span class="co"># a medical history of diabetes, unknown stress symptoms and a</span></span></span>
-<span class="r-in"><span><span class="co"># high-density lipoprotein cholesterol level of 65 mg/dL</span></span></span>
+<span class="r-in"><span><span class="co"># high-density lipoprotein cholesterol level of 70 mg/dL</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_prms_2017_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">40</span>,</span></span>
-<span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"male"</span>,</span></span>
 <span class="r-in"><span>    hdl_mg_dl <span class="op">=</span> <span class="fl">70</span>,</span></span>
-<span class="r-in"><span>    is_minority_ethnicity <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>    has_diabetes <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>    has_hypertension <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_dyslipidemia <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_smoking_history <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_family_history_of_cad <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    has_stress_symptoms <span class="op">=</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span>    is_minority_ethnicity <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>    have_diabetes <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>    have_hypertension <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_stress_symptoms <span class="op">=</span> <span class="cn">NA</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6974111</span>
 </code></pre></div>
@@ -204,5 +214,6 @@ of Chest Pain (PROMISE) trial.</p>
 
 
 
-  </body></html>
+  
+</body></html>
 
