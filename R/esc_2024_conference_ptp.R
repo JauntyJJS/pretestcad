@@ -82,7 +82,7 @@ calculate_esc_2024_symptom_score <- function(
 #' @param have_smoking_history Input characters (no, yes) to indicate if the patient
 #' only has a smoking history (current or past smoker).
 #' \itemize{
-#'   \item no stands for not having a smoking history (current or past smoker).
+#'   \item no stands for not having a smoking history (non-smoker).
 #'   \item yes stands for having a smoking history (current or past smoker).
 #' }
 #' @param have_dyslipidemia Input characters (no, yes) to indicate if the patient
