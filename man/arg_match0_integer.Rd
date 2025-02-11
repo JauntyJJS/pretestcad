@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{arg_match0_integer}
 \alias{arg_match0_integer}
-\title{Match an argument to a integer vector but skip NA}
+\title{Match an argument to a integer vector but skip \code{NA}}
 \usage{
 arg_match0_integer(
   arg,
@@ -17,7 +17,8 @@ arg_match0_integer(
 
 \item{values}{A character vector of possible values that \code{arg} can take.}
 
-\item{allow_na}{Input boolean to determine if NA or NaN is allowed. Default: TRUE}
+\item{allow_na}{Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+Default: \code{TRUE}}
 
 \item{arg_nm}{Same as \code{error_arg}.}
 
@@ -27,9 +28,9 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-The integer supplied to arg.
+The integer supplied to \code{arg}.
 }
 \description{
 This is equivalent to \code{\link[rlang]{arg_match}} but an
-integer vector is compared and skip NA.
+integer vector is compared and skip \code{NA}.
 }

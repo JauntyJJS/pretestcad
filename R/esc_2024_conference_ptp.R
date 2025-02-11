@@ -4,11 +4,11 @@
 #' probability of coronary artery disease (CAD) based on the
 #' ESC 2024 guidelines.
 #' @inheritParams calculate_esc_2019_ptp
-#' @param allow_na A logical evaluating to TRUE or FALSE indicating whether we can
-#' allow `chest_pain_type` or `have_dyspnea` to be NA when calculating the score.
-#' Default: TRUE
+#' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
+#' allow `chest_pain_type` or `have_dyspnea` to be \code{NA} when calculating the score.
+#' Default: \code{TRUE}
 #' @return An integer indicating the symptom score of the patient.
-#' It can also be `NA` if both `chest_pain_type` and `have_dyspnea` are `NA`.
+#' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
 #' @examples
 #' calculate_esc_2024_symptom_score(
 #'   chest_pain_type = "nonanginal",
@@ -104,10 +104,10 @@ calculate_esc_2024_symptom_score <- function(
 #'   \item yes stands for having a diabetes.
 #' }
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
-#' missing risk factors to tolerate before outputting an NA.
+#' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
 #' @return An integer indicating the number of risk factors the patient has.
-#' It can also be `NA` if the number of missing risk factors exceeds the `max_na`
+#' It can also be \code{NA} if the number of missing risk factors exceeds the \code{max_na}
 #' input value
 #' @examples
 #' calculate_esc_2024_num_of_rf(
@@ -232,16 +232,16 @@ calculate_esc_2024_num_of_rf <- function(
 #' \itemize{
 #'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
 #'   \itemize{
-#'      \item very low if PTP is less than or equal to 5%.
-#'      \item low if PTP is in between 6% to 15%.
-#'      \item moderate if PTP is more than 15%.
+#'      \item very low if PTP is less than or equal to 5\%.
+#'      \item low if PTP is in between 6\% to 15\%.
+#'      \item moderate if PTP is more than 15\%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
 #'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 #' }
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2024 guidelines.
-#' See parameter option `output` for more information.
+#' See parameter option \code{output} for more information.
 #' @examples
 #' # 30 female with symptom score of 0 and 0 risk factors
 #' calculate_esc_2024_fig_4_ptp_simplfied(
@@ -451,16 +451,14 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
 #' @inheritParams calculate_esc_2024_symptom_score
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
-#' @param allow_na_symptom_score A logical evaluating to TRUE or FALSE indicating whether we can
-#' allow `chest_pain_type` or `have_dyspnea` to be NA when calculating the score
-#' @return An integer indicating the symptom score of the patient.
-#' Default: TRUE
+#' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
+#' allow \code{chest_pain_type} or \code{have_dyspnea} to be \code{NA} when calculating the score
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
-#' missing risk factors to tolerate before outputting an NA.
+#' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2024 guidelines.
-#' See parameter option `output` for more information.
+#' See parameter option \code{output} for more information.
 #' @examples
 #' # 30 female with symptom score of 0 and 0 risk factors
 #' calculate_esc_2024_fig_4_ptp(

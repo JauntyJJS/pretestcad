@@ -27,13 +27,13 @@ only has dyspnea symptoms.
   \item yes stands for having dyspnea symptoms.
 }}
 
-\item{allow_na}{A logical evaluating to TRUE or FALSE indicating whether we can
-allow `chest_pain_type` or `have_dyspnea` to be NA when calculating the score.
-Default: TRUE}
+\item{allow_na}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
+allow `chest_pain_type` or `have_dyspnea` to be \code{NA} when calculating the score.
+Default: \code{TRUE}}
 }
 \value{
 An integer indicating the symptom score of the patient.
-It can also be `NA` if both `chest_pain_type` and `have_dyspnea` are `NA`.
+It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
 }
 \description{
 A function used to calculate the symptom score of the patient.

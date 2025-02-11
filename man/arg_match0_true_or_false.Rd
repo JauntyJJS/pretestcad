@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{arg_match0_true_or_false}
 \alias{arg_match0_true_or_false}
-\title{Match an argument to a TRUE or FALSE vector but skip NA}
+\title{Match an argument to a \code{TRUE} or \code{FALSE} vector but skip \code{NA}}
 \usage{
 arg_match0_true_or_false(
   arg,
@@ -14,7 +14,8 @@ arg_match0_true_or_false(
 \arguments{
 \item{arg}{A symbol referring to an argument accepting strings.}
 
-\item{allow_na}{Input boolean to determine if NA or NaN is allowed. Default: TRUE}
+\item{allow_na}{Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+Default: \code{TRUE}}
 
 \item{arg_nm}{Same as \code{error_arg}.}
 
@@ -24,9 +25,9 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-The TRUE or FALSE value supplied to arg.
+The \code{TRUE} or \code{FALSE} value supplied to \code{arg}.
 }
 \description{
 This is equivalent to \code{\link[rlang]{arg_match}} but an
-integer vector is compared and skip NA.
+integer vector is compared and skip \code{NA}.
 }

@@ -43,9 +43,9 @@ Default: c("grouping", "numeric", "percentage")
 \itemize{
   \item grouping means the PTP will be expressed as Low, Intermediate and High.
   \itemize{
-     \item low if PTP is less than 5%.
-     \item intermediate if PTP is in between 5% to 15%.
-     \item high if PTP is more than 15%.
+     \item low if PTP is less than 5\%.
+     \item intermediate if PTP is in between 5\% to 15\%.
+     \item high if PTP is more than 15\%.
   }
   \item numeric means the PTP will be expressed as an integer probability (0-100).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
@@ -54,7 +54,7 @@ Default: c("grouping", "numeric", "percentage")
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD
 based on the ESC 2019 guidelines.
-See parameter option `output` for more information.
+See parameter option \code{output} for more information.
 }
 \description{
 This function returns a patient's

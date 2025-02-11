@@ -9,77 +9,77 @@ calculate_prms_2017_ptp(
   sex,
   hdl_mg_dl,
   is_minority_ethnicity,
-  has_diabetes,
-  has_hypertension,
-  has_dyslipidemia,
-  has_smoking_history,
-  has_family_history_of_cad,
-  has_stress_symptoms = NA
+  have_diabetes,
+  have_hypertension,
+  have_dyslipidemia,
+  have_smoking_history,
+  have_family_history,
+  have_stress_symptoms = NA
 )
 }
 \arguments{
-\item{age}{Input integer to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient.}
 
-\item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
+\item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{
-  \item 0 stands for Female
-  \item 1 stands for Male
+  \item female
+  \item male
 }}
 
 \item{hdl_mg_dl}{Input positive numeric value to indicate the
 patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.}
 
-\item{is_minority_ethnicity}{Input integer 0 or 1
-to indicate if the patient is from a racial or minority ethnicity
+\item{is_minority_ethnicity}{Input characters (no, yes) to indicate if the patient
+is from a racial or minority ethnicity
 (or patient is not a non-Hispanic/Latino White).
 \itemize{
-  \item 0 stands for patient is a non-Hispanic/Latino White.
-  \item 1 stands for patient is not a non-Hispanic/Latino White. E.g. Blacks, Asians, etc.
+  \item no stands for patient is a non-Hispanic/Latino White.
+  \item yes stands for patient is not a non-Hispanic/Latino White. E.g. Blacks, Asians, etc.
 }}
 
-\item{has_diabetes}{Input integer 0 or 1 to indicate if the patient
-has diabetes.
+\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
+only has diabetes.
 \itemize{
-  \item 0 stands for not having diabetes.
-  \item 1 stands for having diabetes.
+  \item no stands for not having diabetes.
+  \item yes stands for having a diabetes.
 }}
 
-\item{has_hypertension}{Input integer 0 or 1 to indicate if the patient
-has hypertension.
+\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
+only has hypertension.
 \itemize{
-  \item 0 stands for not having hypertension.
-  \item 1 stands for having hypertension.
+  \item no stands for not having hypertension.
+  \item yes stands for having a hypertension.
 }}
 
-\item{has_dyslipidemia}{Input integer 0 or 1 to indicate if the patient
-has dyslipidemia.
+\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
+only has dyslipidemia.
 \itemize{
-  \item 0 stands for not having dyslipidemia.
-  \item 1 stands for having dyslipidemia.
+  \item no stands for not having dyslipidemia.
+  \item yes stands for having a dyslipidemia.
 }}
 
-\item{has_smoking_history}{Input integer 0 or 1 to indicate if the patient
-has a smoking history (current or past smoker).
+\item{have_smoking_history}{Input characters (no, yes) to indicate if the patient
+only has a smoking history (current or past smoker).
 \itemize{
-  \item 0 stands for not having a smoking history (non-smoker).
-  \item 1 stands for having a smoking history (current or past smoker).
+  \item no stands for not having a smoking history (non-smoker).
+  \item yes stands for having a smoking history (current or past smoker).
 }}
 
-\item{has_family_history_of_cad}{Input integer 0 or 1 to indicate if the patient
-has a family history of CAD.
+\item{have_family_history}{Input characters (no, yes) to indicate if the patient
+only has a family history of CAD.
 \itemize{
-  \item 0 stands for not having a family history of CAD.
-  \item 1 stands for having a family history of CAD.
+  \item no stands for not having a family history of CAD.
+  \item yes stands for having a family history of CAD.
 }}
 
-\item{has_stress_symptoms}{Input integer 0 or 1 to indicate if the patient
+\item{have_stress_symptoms}{Input characters (no, yes) to indicate if the patient
 has symptoms related to physical or mental stress. It can be set
 to \code{NA} if the patient results are inconclusive or have not taken any stress test
 such as exercise treadmill testing, stress echocardiography, or stress
 nuclear imaging.
 \itemize{
-  \item 0 stands for no symptoms (negative results) related to physical or mental stress.
-  \item 1 stands for having symptoms (positive results) related to physical or mental stress.
+  \item no stands for no symptoms (negative results) related to physical or mental stress.
+  \item yes stands for having symptoms (positive results) related to physical or mental stress.
   \item \code{NA} stands for inconclusive results or patient has not taken any stress test
 }
 Default: \code{NA}}
@@ -106,30 +106,30 @@ of Chest Pain (PROMISE) trial.
 # high-density lipoprotein cholesterol level of 70 mg/dL
 calculate_prms_2017_ptp(
     age = 50,
-    sex = 0,
+    sex = "female",
     hdl_mg_dl = 70,
-    is_minority_ethnicity = 0,
-    has_diabetes = 0,
-    has_hypertension = 1,
-    has_dyslipidemia = 0,
-    has_smoking_history = 0,
-    has_family_history_of_cad = 0,
-    has_stress_symptoms = 0
+    is_minority_ethnicity = "no",
+    have_diabetes = "no",
+    have_hypertension = "yes",
+    have_dyslipidemia = "no",
+    have_smoking_history = "no",
+    have_family_history = "no",
+    have_stress_symptoms = "no"
 )
 
 # 40 year old non-white male with chest pain
 # a medical history of diabetes, unknown stress symptoms and a
-# high-density lipoprotein cholesterol level of 65 mg/dL
+# high-density lipoprotein cholesterol level of 70 mg/dL
 calculate_prms_2017_ptp(
     age = 40,
-    sex = 1,
+    sex = "male",
     hdl_mg_dl = 70,
-    is_minority_ethnicity = 1,
-    has_diabetes = 1,
-    has_hypertension = 0,
-    has_dyslipidemia = 0,
-    has_smoking_history = 0,
-    has_family_history_of_cad = 0,
-    has_stress_symptoms = NA
+    is_minority_ethnicity = "yes",
+    have_diabetes = "yes",
+    have_hypertension = "no",
+    have_dyslipidemia = "no",
+    have_smoking_history = "no",
+    have_family_history = "no",
+    have_stress_symptoms = NA
 )
 }

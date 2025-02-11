@@ -5,7 +5,17 @@ coronary artery disease (CAD) based on the
 European Society of Cardiology (ESC) 2019 guidelines."><meta property="og:description" content="This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
-European Society of Cardiology (ESC) 2019 guidelines."></head><body>
+European Society of Cardiology (ESC) 2019 guidelines."></head><body><p>
+
+
+
+
+
+
+
+
+  # https://github.com/r-lib/pkgdown/issues/2704
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script></p>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -89,9 +99,9 @@ to indicate the chest pain characteristics of the patient.</p><ul><li><p>no ches
 <dt id="arg-output">output<a class="anchor" aria-label="anchor" href="#arg-output"></a></dt>
 <dd><p>Input text to indicate the how pre-test
 probability results be expressed
-Default: c("grouping", "numeric", "percentage")</p><ul><li><p>grouping means the PTP will be expressed as Low, Intermediate and High.</p><ul><li><p>low if PTP is less than 5<!-- %. --></p></li>
-<li><p>intermediate if PTP is in between 5<!-- % to 15%. --></p></li>
-<li><p>high if PTP is more than 15<!-- %. --></p></li>
+Default: c("grouping", "numeric", "percentage")</p><ul><li><p>grouping means the PTP will be expressed as Low, Intermediate and High.</p><ul><li><p>low if PTP is less than 5%.</p></li>
+<li><p>intermediate if PTP is in between 5% to 15%.</p></li>
+<li><p>high if PTP is more than 15%.</p></li>
 </ul></li>
 <li><p>numeric means the PTP will be expressed as an integer probability (0-100).</p></li>
 <li><p>percentage means the PTP will be expressed as percentage text (0-100%).</p></li>
@@ -102,7 +112,7 @@ Default: c("grouping", "numeric", "percentage")</p><ul><li><p>grouping means the
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An integer, percentage or category representing the patient's PTP for obstructive CAD
 based on the ESC 2019 guidelines.
-See parameter option `output` for more information.</p>
+See parameter option <code>output</code> for more information.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -159,5 +169,6 @@ The chest pain type will take precedence over dyspnea</p>
 
 
 
-  </body></html>
+  
+</body></html>
 

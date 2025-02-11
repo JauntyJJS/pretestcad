@@ -1,7 +1,7 @@
-#' @title Match an argument to a character vector but skip NA
-#' @description This is equivalent to \code{\link[rlang]{arg_match}} but skip NA
+#' @title Match an argument to a character vector but skip \code{NA}
+#' @description This is equivalent to \code{\link[rlang]{arg_match}} but skip \code{NA}
 #' @inheritParams rlang::arg_match
-#' @return The string supplied to arg.
+#' @return The string supplied to \code{arg}.
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}, \code{\link[rlang]{arg_match}}
 #' @rdname arg_match0_allow_na
@@ -23,12 +23,13 @@ arg_match0_allow_na <- function(
   return(arg)
 }
 
-#' @title Match an argument to a TRUE or FALSE vector but skip NA
+#' @title Match an argument to a \code{TRUE} or \code{FALSE} vector but skip \code{NA}
 #' @description This is equivalent to \code{\link[rlang]{arg_match}} but an
-#' integer vector is compared and skip NA.
-#' @param allow_na Input boolean to determine if NA or NaN is allowed. Default: TRUE
+#' integer vector is compared and skip \code{NA}.
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
 #' @inheritParams rlang::arg_match
-#' @return The TRUE or FALSE value supplied to arg.
+#' @return The \code{TRUE} or \code{FALSE} value supplied to \code{arg}.
 #' @rdname arg_match0_true_or_false
 #' @export
 arg_match0_true_or_false <-  function(
@@ -76,12 +77,13 @@ arg_match0_true_or_false <-  function(
 }
 
 
-#' @title Match an argument to a integer vector but skip NA
+#' @title Match an argument to a integer vector but skip \code{NA}
 #' @description This is equivalent to \code{\link[rlang]{arg_match}} but an
-#' integer vector is compared and skip NA.
-#' @param allow_na Input boolean to determine if NA or NaN is allowed. Default: TRUE
+#' integer vector is compared and skip \code{NA}.
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
 #' @inheritParams rlang::arg_match
-#' @return The integer supplied to arg.
+#' @return The integer supplied to \code{arg}.
 #' @rdname arg_match0_integer
 #' @export
 arg_match0_integer <-  function(
@@ -148,7 +150,8 @@ arg_match0_integer <-  function(
 #' @inheritParams rlang::args_error_context
 #' @inheritParams rlang::abort
 #' @param x Input variable to check if it is numeric
-#' @param allow_na Input boolean to determine if NA or NaN is allowed. Default: TRUE
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not numeric
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
@@ -199,7 +202,8 @@ check_if_numeric <- function(
 #' @inheritParams rlang::args_error_context
 #' @inheritParams rlang::abort
 #' @param x Input variable to check if it is positive number
-#' @param allow_na Input boolean to determine if NA or NaN is allowed. Default: TRUE
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not positive
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
@@ -231,7 +235,8 @@ check_if_positive <- function(
 #' @inheritParams rlang::args_error_context
 #' @inheritParams rlang::abort
 #' @param x Input variable to check if it is non-negative number
-#' @param allow_na Input boolean to determine if NA or NaN is allowed. Default: TRUE
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not non-negative
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}

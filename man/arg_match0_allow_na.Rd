@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{arg_match0_allow_na}
 \alias{arg_match0_allow_na}
-\title{Match an argument to a character vector but skip NA}
+\title{Match an argument to a character vector but skip \code{NA}}
 \usage{
 arg_match0_allow_na(
   arg,
@@ -24,10 +24,10 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-The string supplied to arg.
+The string supplied to \code{arg}.
 }
 \description{
-This is equivalent to \code{\link[rlang]{arg_match}} but skip NA
+This is equivalent to \code{\link[rlang]{arg_match}} but skip \code{NA}
 }
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}, \code{\link[rlang]{arg_match}}

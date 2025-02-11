@@ -79,11 +79,11 @@ only has diabetes.
   \item yes stands for having a diabetes.
 }}
 
-\item{allow_na_symptom_score}{A logical evaluating to TRUE or FALSE indicating whether we can
-allow `chest_pain_type` or `have_dyspnea` to be NA when calculating the score}
+\item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
+allow \code{chest_pain_type} or \code{have_dyspnea} to be \code{NA} when calculating the score}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
-missing risk factors to tolerate before outputting an NA.
+missing risk factors to tolerate before outputting an \code{NA}.
 Default: 0}
 
 \item{output}{Input text to indicate the how pre-test
@@ -92,21 +92,18 @@ Default: c("grouping", "numeric", "percentage")
 \itemize{
   \item grouping means the PTP will be expressed as Low, Intermediate and High.
   \itemize{
-     \item very low if PTP is less than or equal to 5%.
-     \item low if PTP is in between 6% to 15%.
-     \item moderate if PTP is more than 15%.
+     \item very low if PTP is less than or equal to 5\%.
+     \item low if PTP is in between 6\% to 15\%.
+     \item moderate if PTP is more than 15\%.
   }
   \item numeric means the PTP will be expressed as an integer probability (0-100).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 }
 \value{
-An integer indicating the symptom score of the patient.
-Default: TRUE
-
 An integer, percentage or category representing the patient's PTP for obstructive CAD
 based on the ESC 2024 guidelines.
-See parameter option `output` for more information.
+See parameter option \code{output} for more information.
 }
 \description{
 This function returns a patient's

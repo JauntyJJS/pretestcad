@@ -14,7 +14,8 @@ check_if_numeric(
 \arguments{
 \item{x}{Input variable to check if it is numeric}
 
-\item{allow_na}{Input boolean to determine if NA or NaN is allowed. Default: TRUE}
+\item{allow_na}{Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+Default: \code{TRUE}}
 
 \item{arg}{An argument name as a string. This argument
 will be mentioned in error messages as the input that is at the

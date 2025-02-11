@@ -50,12 +50,12 @@ only has diabetes.
 }}
 
 \item{max_na}{Input integer 0 to 5 to indicate the maximum number of
-missing risk factors to tolerate before outputting an NA.
+missing risk factors to tolerate before outputting an \code{NA}.
 Default: 0}
 }
 \value{
 An integer indicating the number of risk factors the patient has.
-It can also be `NA` if the number of missing risk factors exceeds the `max_na`
+It can also be \code{NA} if the number of missing risk factors exceeds the \code{max_na}
 input value
 }
 \description{
