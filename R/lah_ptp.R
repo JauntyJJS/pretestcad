@@ -135,7 +135,7 @@ calculate_lah_2022_clinical_ptp <- function(
 #'   \item atypical stands for the patient having atypical chest pain.
 #'   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 #' }
-#' @param coronary_calcium_score Input positive numeric to indicate the
+#' @param coronary_calcium_score Input non-negative numeric to indicate the
 #' total coronary calcium score of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2022 Local Assessment of the Heart (LAH) extended model.

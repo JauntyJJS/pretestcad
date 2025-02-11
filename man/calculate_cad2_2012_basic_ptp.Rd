@@ -4,23 +4,23 @@
 \alias{calculate_cad2_2012_basic_ptp}
 \title{Calculate 2012 CAD2 Basic PTP for obstructive CAD}
 \usage{
-calculate_cad2_2012_basic_ptp(age, sex, chest_pain)
+calculate_cad2_2012_basic_ptp(age, sex, chest_pain_type)
 }
 \arguments{
-\item{age}{Input integer to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient.}
 
-\item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
+\item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{
-  \item 0 stands for Female
-  \item 1 stands for Male
+  \item female
+  \item male
 }}
 
-\item{chest_pain}{Input integer 1 to 3 to indicate the chest pain
-characteristics of the patient.
+\item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
+to indicate the chest pain characteristics of the patient.
 \itemize{
-  \item 1 stands for the patient having typical chest pain.
-  \item 2 stands for the patient having atypical chest pain.
-  \item 3 stands for the patient having non-anginal or non-specific chest pain.
+  \item typical stands for the patient having typical chest pain.
+  \item atypical stands for the patient having atypical chest pain.
+  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 }
 \value{
@@ -49,7 +49,7 @@ The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
 # 40 year old female with typical chest pain
 calculate_cad2_2012_basic_ptp(
     age = 40,
-    sex = 0,
-    chest_pain = 1
+    sex = "female",
+    chest_pain_type = "typical"
 )
 }

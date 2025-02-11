@@ -60,7 +60,7 @@ only has a smoking history (current or past smoker).
   \item yes stands for having a smoking history (current or past smoker).
 }}
 
-\item{coronary_calcium_score}{Input positive numeric to indicate the
+\item{coronary_calcium_score}{Input non-negative numeric to indicate the
 total coronary calcium score of the patient.}
 }
 \value{
