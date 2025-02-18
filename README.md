@@ -7,7 +7,7 @@
 <!-- badges: start -->
 
 [![Codecov test
-coverage](https://codecov.io/gh/JauntyJJS/pretestcad/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JauntyJJS/pretestcad?branch=main)
+coverage](https://codecov.io/gh/JauntyJJS/pretestcad/graph/badge.svg?token=lpJSgliKK3)](https://codecov.io/gh/JauntyJJS/pretestcad?branch=main)
 <!-- badges: end -->
 
 R package used to calculate different **P**re**T**est **P**robability
