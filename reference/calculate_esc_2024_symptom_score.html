@@ -5,7 +5,8 @@ probability of coronary artery disease (CAD) based on the
 ESC 2024 guidelines."><meta property="og:description" content="A function used to calculate the symptom score of the patient.
 This is used to calculate the pretest
 probability of coronary artery disease (CAD) based on the
-ESC 2024 guidelines."></head><body><p>
+ESC 2024 guidelines."><meta property="og:image" content="https://jauntyjjs.github.io/pretestcad/logo.png"></head><body><p>
+
 
 
 
@@ -42,8 +43,7 @@ ESC 2024 guidelines."></head><body><p>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Calculate Symptom Score (ESC 2024)</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Calculate Symptom Score (ESC 2024)</h1>
       <small class="dont-index">Source: <a href="https://github.com/JauntyJJS/pretestcad/blob/main/R/esc_2024_conference_ptp.R" class="external-link"><code>R/esc_2024_conference_ptp.R</code></a></small>
       <div class="d-none name"><code>calculate_esc_2024_symptom_score.Rd</code></div>
     </div>
@@ -93,7 +93,8 @@ Default: <code>TRUE</code></p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An integer indicating the symptom score of the patient.
-It can also be <code>NA</code> if both <code>chest_pain_type</code> and <code>have_dyspnea</code> are <code>NA</code>.</p>
+It can also be <code>NA</code> if both <code>chest_pain_type</code> and <code>have_dyspnea</code> are <code>NA</code>.
+Patients with both nonanginal chest pain and dyspnea will be given a score of 2</p>
     </div>
 
     <div class="section level2">

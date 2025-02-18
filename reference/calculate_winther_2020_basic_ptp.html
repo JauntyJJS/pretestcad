@@ -5,7 +5,8 @@ coronary artery disease based on the
 2020 Winther et. al. basic model (Basic_PTP)."><meta property="og:description" content="This function returns a patient's
 pre-test probability (PTP) of obstructive
 coronary artery disease based on the
-2020 Winther et. al. basic model (Basic_PTP)."></head><body><p>
+2020 Winther et. al. basic model (Basic_PTP)."><meta property="og:image" content="https://jauntyjjs.github.io/pretestcad/logo.png"></head><body><p>
+
 
 
 
@@ -42,8 +43,7 @@ coronary artery disease based on the
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Calculate 2020 Winther Basic PTP for obstructive CAD</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Calculate 2020 Winther Basic PTP for obstructive CAD</h1>
       <small class="dont-index">Source: <a href="https://github.com/JauntyJJS/pretestcad/blob/main/R/winther_ptp.R" class="external-link"><code>R/winther_ptp.R</code></a></small>
       <div class="d-none name"><code>calculate_winther_2020_basic_ptp.Rd</code></div>
     </div>
@@ -57,7 +57,7 @@ coronary artery disease based on the
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_winther_2020_basic_ptp</span><span class="op">(</span><span class="va">age</span>, <span class="va">sex</span>, <span class="va">chest_pain</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_winther_2020_basic_ptp</span><span class="op">(</span><span class="va">age</span>, <span class="va">sex</span>, <span class="va">chest_pain_type</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -65,20 +65,21 @@ coronary artery disease based on the
 
 
 <dl><dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
-<dd><p>Input integer to indicate the age of the patient.</p></dd>
+<dd><p>Input numeric value to indicate the age of the patient.</p></dd>
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p>Input integer 0 or 1 to indicate the sex of the patient.</p><ul><li><p>0 stands for Female</p></li>
-<li><p>1 stands for Male</p></li>
+<dd><p>Input characters (female, male) to indicate the sex of the patient.</p><ul><li><p>female</p></li>
+<li><p>male</p></li>
 </ul></dd>
 
 
-<dt id="arg-chest-pain">chest_pain<a class="anchor" aria-label="anchor" href="#arg-chest-pain"></a></dt>
-<dd><p>Input integer 1 to 3 to indicate the chest pain
-characteristics of the patient.</p><ul><li><p>1 stands for the patient having typical chest pain.</p></li>
-<li><p>2 stands for the patient having atypical chest pain or dyspnea.</p></li>
-<li><p>3 stands for the patient having non-anginal or non-specific chest pain.</p></li>
+<dt id="arg-chest-pain-type">chest_pain_type<a class="anchor" aria-label="anchor" href="#arg-chest-pain-type"></a></dt>
+<dd><p>Input characters (no chest pain, typical, atypical, nonanginal)
+to indicate the chest pain characteristics of the patient.</p><ul><li><p>no chest pain stands for the patient having no chest pain.</p></li>
+<li><p>typical stands for the patient having typical chest pain.</p></li>
+<li><p>atypical stands for the patient having atypical chest pain.</p></li>
+<li><p>nonanginal stands for the patient having nonanginal or non-specific chest pain.</p></li>
 </ul></dd>
 
 </dl></div>
@@ -99,16 +100,16 @@ patients are registered under the Western Denmark Heart Registry.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 40 year old Male with typical chest pain</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_winther_2020_basic_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">40</span>,</span></span>
-<span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>    chest_pain <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"male"</span>,</span></span>
+<span class="r-in"><span>    chest_pain_type <span class="op">=</span> <span class="st">"typical"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1430237</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 40 year old Male with non-anginal chest pain</span></span></span>
+<span class="r-in"><span><span class="co"># 40 year old Male with nonanginal chest pain</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_winther_2020_basic_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">40</span>,</span></span>
-<span class="r-in"><span>    sex <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>    chest_pain <span class="op">=</span> <span class="fl">3</span></span></span>
+<span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"male"</span>,</span></span>
+<span class="r-in"><span>    chest_pain_type <span class="op">=</span> <span class="st">"nonanginal"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02218292</span>
 </code></pre></div>
