@@ -34,6 +34,7 @@ Default: \code{TRUE}}
 \value{
 An integer indicating the symptom score of the patient.
 It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
+Patients with both nonanginal chest pain and dyspnea will be given a score of 2
 }
 \description{
 A function used to calculate the symptom score of the patient.

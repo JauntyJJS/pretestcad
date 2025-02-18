@@ -9,6 +9,7 @@
 #' Default: \code{TRUE}
 #' @return An integer indicating the symptom score of the patient.
 #' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
+#' Patients with both nonanginal chest pain and dyspnea will be given a score of 2
 #' @examples
 #' calculate_esc_2024_symptom_score(
 #'   chest_pain_type = "nonanginal",

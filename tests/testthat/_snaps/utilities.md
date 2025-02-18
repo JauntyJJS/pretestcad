@@ -38,13 +38,21 @@
       Error:
       ! `0` must be positive, not 0
 
-# check_if_non_negative gives no error for 0
+# check_if_non_negative gives error for -5
 
     Code
       check_if_non_negative(-5)
     Condition
       Error:
       ! `-5` must be non-negative, not -5
+
+# check_if_integer gives no error for 5.5
+
+    Code
+      check_if_integer(5.5)
+    Condition
+      Error:
+      ! `5.5` must be an integer, not 5.5. Consider rounding the value to the nearest integer using janitor::round_half_up (<https://sfirke.github.io/janitor/reference/round_half_up.html>) and convert the value to type <integer> using base::as.integer (<https://stat.ethz.ch/R-manual/R-devel/library/base/html/integer.html>) before using the function.
 
 # arg_match0_allow_na gives error for invalid inputs
 

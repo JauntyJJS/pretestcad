@@ -1,3 +1,17 @@
+test_that("is_integer_value works", {
+
+  testthat::expect_true(is_integer_value(1))
+
+  testthat::expect_false(is_integer_value(1.1))
+
+  testthat::expect_false(is_integer_value("1"))
+
+  testthat::expect_false(is_integer_value(NA, allow_na = FALSE))
+
+  testthat::expect_true(is_integer_value(NA, allow_na = TRUE))
+
+})
+
 test_that("check_if_numeric gives error for character inputs", {
   testthat::expect_snapshot(
     error = TRUE,
@@ -33,7 +47,7 @@ test_that("check_if_positive gives error for invalid inputs", {
   )
 })
 
-test_that("check_if_non_negative gives no error for 0", {
+test_that("check_if_non_negative gives error for -5", {
   testthat::expect_snapshot(
     error = TRUE,
     check_if_non_negative(-5)
@@ -43,6 +57,19 @@ test_that("check_if_non_negative gives no error for 0", {
 test_that("check_if_non_negative gives no error for 0", {
   testthat::expect_silent(
     check_if_non_negative(0)
+  )
+})
+
+test_that("check_if_integer gives no error for 5.5", {
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_integer(5.5)
+  )
+})
+
+test_that("check_if_integer gives no error for 0", {
+  testthat::expect_silent(
+    check_if_integer(0)
   )
 })
 

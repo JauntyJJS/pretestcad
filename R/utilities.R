@@ -1,3 +1,59 @@
+#' @title Is Integer Value
+#' @description Function to check if the input
+#' value is an integer.
+#' @param input_value The input value
+#' @param allow_na If true, NA values
+#' are ignored and output is considered TRUE.
+#' Default: FALSE
+#' @return A boolean indicating TRUE
+#' when the input value is an integer and
+#' FALSE otherwise.
+#' @examples
+#'
+#' # An integer
+#' is_integer_value(1)
+#'
+#' # Not an integer
+#' is_integer_value(1.1)
+#'
+#' # Not numeric
+#' is_integer_value("1")
+#'
+#' # NA cases
+#' is_integer_value(NA, allow_na = FALSE)
+#' is_integer_value(NA, allow_na = TRUE)
+#'
+#' @rdname is_integer_value
+#' @export
+is_integer_value <- function(input_value,
+                             allow_na = FALSE) {
+
+  boolean_result <- FALSE
+
+  # When input value is NA
+  if (is.na(input_value)) {
+    if (isTRUE(allow_na)) {
+      boolean_result <- TRUE
+      return(boolean_result)
+    } else {
+      return(boolean_result)
+    }
+  }
+
+  # When input value is not numeric
+  if (isTRUE(!is.numeric(input_value))) {
+    return(boolean_result)
+  }
+
+  # When input value is numeric
+  boolean_result <- isTRUE(input_value %% 1 == 0)
+
+  return(boolean_result)
+}
+
+
+
+
 #' @title Match an argument to a character vector but skip \code{NA}
 #' @description This is equivalent to \code{\link[rlang]{arg_match}} but skip \code{NA}
 #' @inheritParams rlang::arg_match
@@ -256,6 +312,44 @@ check_if_non_negative <- function(
     cli::cli_abort(
       message = c(
         "{.arg {arg}} must be non-negative, not {.val {x}}"
+      ),
+      call = call
+    )
+  }
+
+}
+
+#' @title Check If Integer
+#' @description Check if the input variable is an integer
+#' @inheritParams rlang::args_error_context
+#' @inheritParams rlang::abort
+#' @param x Input variable to check if it is an integer
+#' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
+#' Default: \code{TRUE}
+#' @return The variable itself or an error message if variable is not non-negative
+#' @seealso
+#'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
+#'  \code{\link[cli]{cli_abort}}
+#' @rdname check_if_non_negative
+#' @export
+check_if_integer <- function(
+    x,
+    allow_na = TRUE,
+    arg = rlang::caller_arg(x),
+    call = rlang::caller_env()
+) {
+
+  check_if_numeric(x, allow_na = allow_na)
+
+  if (isFALSE(is_integer_value(input_value = x, allow_na = allow_na))) {
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg}} must be an integer, not {.val {x}}.
+        Consider rounding the value to the nearest integer using
+        {.href [janitor::round_half_up](https://sfirke.github.io/janitor/reference/round_half_up.html)}
+        and convert the value to type {.cls integer} using
+        {.href [base::as.integer](https://stat.ethz.ch/R-manual/R-devel/library/base/html/integer.html)}
+        before using the function."
       ),
       call = call
     )

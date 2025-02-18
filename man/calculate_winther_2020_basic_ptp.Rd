@@ -4,23 +4,24 @@
 \alias{calculate_winther_2020_basic_ptp}
 \title{Calculate 2020 Winther Basic PTP for obstructive CAD}
 \usage{
-calculate_winther_2020_basic_ptp(age, sex, chest_pain)
+calculate_winther_2020_basic_ptp(age, sex, chest_pain_type)
 }
 \arguments{
-\item{age}{Input integer to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient.}
 
-\item{sex}{Input integer 0 or 1 to indicate the sex of the patient.
+\item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{
-  \item 0 stands for Female
-  \item 1 stands for Male
+  \item female
+  \item male
 }}
 
-\item{chest_pain}{Input integer 1 to 3 to indicate the chest pain
-characteristics of the patient.
+\item{chest_pain_type}{Input characters (no chest pain, typical, atypical, nonanginal)
+to indicate the chest pain characteristics of the patient.
 \itemize{
-  \item 1 stands for the patient having typical chest pain.
-  \item 2 stands for the patient having atypical chest pain or dyspnea.
-  \item 3 stands for the patient having non-anginal or non-specific chest pain.
+  \item no chest pain stands for the patient having no chest pain.
+  \item typical stands for the patient having typical chest pain.
+  \item atypical stands for the patient having atypical chest pain.
+  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 }
 \value{
@@ -42,14 +43,14 @@ patients are registered under the Western Denmark Heart Registry.
 # 40 year old Male with typical chest pain
 calculate_winther_2020_basic_ptp(
     age = 40,
-    sex = 1,
-    chest_pain = 1
+    sex = "male",
+    chest_pain_type = "typical"
 )
 
-# 40 year old Male with non-anginal chest pain
+# 40 year old Male with nonanginal chest pain
 calculate_winther_2020_basic_ptp(
     age = 40,
-    sex = 1,
-    chest_pain = 3
+    sex = "male",
+    chest_pain_type = "nonanginal"
 )
 }
