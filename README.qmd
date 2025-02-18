@@ -16,6 +16,9 @@ library(pretestcad)
 
 # pretestcad <a href="jauntyjjs.github.io/pretestcad/"><img src="man/figures/logo.png" align="right" height="200" alt="Hex logo of R package pretestcad. Logo is a picture of a coronary artery with partial blockage." /></a>
 
+<!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/JauntyJJS/pretestcad/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JauntyJJS/pretestcad?branch=main)
+<!-- badges: end -->
 
 R package used to calculate different **P**re**T**est **P**robability (PTP) scores for obstructive **C**oronary **A**rtery **D**isease (CAD).
 
