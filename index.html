@@ -75,53 +75,27 @@
 
 <p>R package used to calculate different <strong>P</strong>re<strong>T</strong>est <strong>P</strong>robability (PTP) scores for obstructive <strong>C</strong>oronary <strong>A</strong>rtery <strong>D</strong>isease (CAD).</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="table-of-content">Table of Content<a class="anchor" aria-label="anchor" href="#table-of-content"></a>
+</h2>
+<ul>
+<li><a href="#arrow_down-installation"><span class="emoji" data-emoji="arrow_down">⬇️</span> Installation</a></li>
+<li><a href="#anatomical_heart-currently-available-pretest-probability-scores"><span class="emoji" data-emoji="anatomical_heart">🫀</span> Currently available pretest probability scores</a></li>
+<li><a href="#computer-getting-started"><span class="emoji" data-emoji="computer">💻</span> Getting Started</a></li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="arrow_down-installation">
+<span class="emoji" data-emoji="arrow_down">⬇️</span> Installation<a class="anchor" aria-label="anchor" href="#arrow_down-installation"></a>
 </h2>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"JauntyJJS/pretestcad"</span><span class="op">)</span></span></code></pre></div>
+<p><a href="#top">Back to top</a></p>
 </div>
 <div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
-</h2>
-<div class="section level3">
-<h3 id="id_2024-esc-guidelines-ptp-score">2024 ESC Guidelines PTP Score<a class="anchor" aria-label="anchor" href="#id_2024-esc-guidelines-ptp-score"></a>
-</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 30 female with symptom score of 0 and 0 risk factors</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span><span class="op">(</span></span>
-<span> age <span class="op">=</span> <span class="fl">30</span>,</span>
-<span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
-<span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
-<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_hypertension <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_diabetes <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> output <span class="op">=</span> <span class="st">"numeric"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span><span class="op">(</span></span>
-<span> age <span class="op">=</span> <span class="fl">30</span>,</span>
-<span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
-<span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
-<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_hypertension <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> have_diabetes <span class="op">=</span> <span class="st">"no"</span>,</span>
-<span> output <span class="op">=</span> <span class="st">"grouping"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"very low"</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="currently-available-pretest-probability-scores">Currently available pretest probability scores<a class="anchor" aria-label="anchor" href="#currently-available-pretest-probability-scores"></a>
+<h2 id="anatomical_heart-currently-available-pretest-probability-scores">
+<span class="emoji" data-emoji="anatomical_heart">🫀</span> Currently available pretest probability scores<a class="anchor" aria-label="anchor" href="#anatomical_heart-currently-available-pretest-probability-scores"></a>
 </h2>
 <ul>
 <li>2024 ESC Guidelines PTP Score
@@ -155,6 +129,124 @@
 </ul>
 </li>
 </ul>
+<p><a href="#top">Back to top</a></p>
+</div>
+<div class="section level2">
+<h2 id="computer-getting-started">
+<span class="emoji" data-emoji="computer">💻</span> Getting Started<a class="anchor" aria-label="anchor" href="#computer-getting-started"></a>
+</h2>
+<div class="section level3">
+<h3 id="id_2024-esc-guidelines-ptp-score">2024 ESC Guidelines PTP Score<a class="anchor" aria-label="anchor" href="#id_2024-esc-guidelines-ptp-score"></a>
+</h3>
+<p>Here is how you can calculate the score using a single patient.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 30 female with symptom score of 0 and 0 risk factors</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span><span class="op">(</span></span>
+<span> age <span class="op">=</span> <span class="fl">30</span>,</span>
+<span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
+<span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
+<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_hypertension <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_diabetes <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> output <span class="op">=</span> <span class="st">"numeric"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span><span class="op">(</span></span>
+<span> age <span class="op">=</span> <span class="fl">30</span>,</span>
+<span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
+<span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
+<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_hypertension <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_diabetes <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> output <span class="op">=</span> <span class="st">"grouping"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"very low"</span></span></code></pre></div>
+<p>Here is how you can calculate the score using for multiple patients.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">patient_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span>
+<span>    <span class="op">~</span><span class="va">unique_id</span>,</span>
+<span>    <span class="op">~</span><span class="va">age</span>,     <span class="op">~</span><span class="va">sex</span>, </span>
+<span>    <span class="op">~</span><span class="va">chest_pain_type</span>, <span class="op">~</span><span class="va">have_dyspnea</span>, </span>
+<span>    <span class="op">~</span><span class="va">have_family_history</span>, <span class="op">~</span><span class="va">have_smoking_history</span>, <span class="op">~</span><span class="va">have_dyslipidemia</span>, <span class="op">~</span><span class="va">have_hypertension</span>, <span class="op">~</span><span class="va">have_diabetes</span>,</span>
+<span>    <span class="st">"45 year old male with typical chest pain, no dyspnea, hypertension and diabetes"</span>,</span>
+<span>    <span class="fl">45</span>, <span class="st">"male"</span>, </span>
+<span>    <span class="st">"typical"</span>, <span class="st">"no"</span>,  </span>
+<span>    <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span>,</span>
+<span>    <span class="st">"70 year old female with no chest pain, dyspnea, have smoking history (past or current smoker) and dyslipidemia"</span>,</span>
+<span>    <span class="fl">70</span>, <span class="st">"female"</span>, </span>
+<span>    <span class="st">"no chest pain"</span>, <span class="st">"yes"</span>,  </span>
+<span>    <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"no"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">risk_data</span> <span class="op">&lt;-</span> <span class="va">patient_data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>      esc_2024_ptp_group <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html" class="external-link">pmap_chr</a></span><span class="op">(</span></span>
+<span>        .l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>, </span>
+<span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>, </span>
+<span>          have_hypertension <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_hypertension"</span><span class="op">]</span><span class="op">]</span>, </span>
+<span>          have_diabetes <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_diabetes"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          output <span class="op">=</span> <span class="st">"grouping"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        .f <span class="op">=</span> <span class="fu">pretestcad</span><span class="fu">::</span><span class="va"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span>,</span>
+<span>      <span class="op">)</span>,</span>
+<span>      esc_2024_ptp_numeric <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html" class="external-link">pmap_int</a></span><span class="op">(</span></span>
+<span>        .l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_hypertension <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_hypertension"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_diabetes <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_diabetes"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          output <span class="op">=</span> <span class="st">"numeric"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        .f <span class="op">=</span> <span class="fu">pretestcad</span><span class="fu">::</span><span class="va"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      esc_2024_ptp_percent <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html" class="external-link">pmap_chr</a></span><span class="op">(</span></span>
+<span>        .l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_hypertension <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_hypertension"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_diabetes <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_diabetes"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          output <span class="op">=</span> <span class="st">"percentage"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        .f <span class="op">=</span> <span class="fu">pretestcad</span><span class="fu">::</span><span class="va"><a href="reference/calculate_esc_2024_fig_4_ptp.html">calculate_esc_2024_fig_4_ptp</a></span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unique_id"</span>, <span class="st">"esc_2024_ptp_group"</span>, </span>
+<span>        <span class="st">"esc_2024_ptp_numeric"</span>, <span class="st">"esc_2024_ptp_percent"</span><span class="op">)</span></span>
+<span>   <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">risk_data</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># A tibble: 2 × 4</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  unique_id         esc_2024_ptp_group esc_2024_ptp_numeric esc_2024_ptp_percent</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>             <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                             <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>               </span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="dv">1</span> <span class="dv">45</span> year old male… moderate                             <span class="dv">20</span> <span class="dv">20</span>%                 </span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="dv">2</span> <span class="dv">70</span> year old fema… low                                  <span class="dv">10</span> <span class="dv">10</span>%                 </span></code></pre></div>
+<p><a href="#top">Back to top</a></p>
+</div>
 </div>
 </div>
 
