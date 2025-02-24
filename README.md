@@ -6,6 +6,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/JauntyJJS/pretestcad/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JauntyJJS/pretestcad/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/JauntyJJS/pretestcad/graph/badge.svg?token=lpJSgliKK3)](https://codecov.io/gh/JauntyJJS/pretestcad?branch=main)
 <!-- badges: end -->
