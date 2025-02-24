@@ -4,6 +4,7 @@
 #' coronary artery disease based on the
 #' 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
+#' @param age Input numeric value to indicate the age of the patient.
 #' @param chest_pain_type Input characters (typical, atypical, nonanginal)
 #' to indicate the chest pain characteristics of the patient.
 #' \itemize{
@@ -128,6 +129,7 @@ calculate_lah_2022_clinical_ptp <- function(
 #' coronary artery disease based on the
 #' 2022 Local Assessment of the Heart (LAH) extended model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
+#' @param age Input numeric value to indicate the age of the patient.
 #' @param chest_pain_type Input characters (typical, atypical, nonanginal)
 #' to indicate the chest pain characteristics of the patient.
 #' \itemize{

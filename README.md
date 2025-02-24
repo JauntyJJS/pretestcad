@@ -40,6 +40,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2022 Local Assessment of the Heart (LAH) clinical and extended model
   - <a href="https://doi.org/10.1161/JAHA.121.022697" target="_blank">📘
     Journal</a>
+- 2021 AHA/ACC Guidelines PTP Score
+  - <a href="https://doi.org/10.1161/CIR.0000000000001029"
+    target="_blank">📘 Journal</a>
 - 2020 Winther et. al. Basic, RF-CL and CACS-CL PTP
   - <a href="https://doi.org/10.1016/j.jacc.2020.09.585" target="_blank">📘
     Journal</a>

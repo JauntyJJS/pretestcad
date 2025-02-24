@@ -3,7 +3,7 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2019 guidelines.
-#' @param age Input numeric value to indicate the age of the patient.
+#' @param age Input integer value to indicate the age of the patient.
 #' @param sex Input characters (female, male) to indicate the sex of the patient.
 #' \itemize{
 #'   \item female
@@ -85,6 +85,7 @@ calculate_esc_2019_ptp <- function(
   )
 {
   check_if_positive(x = age, allow_na = TRUE)
+  check_if_integer(x = age, allow_na = TRUE)
 
   sex <- sex |>
     arg_match0_allow_na(values = c("female","male"))

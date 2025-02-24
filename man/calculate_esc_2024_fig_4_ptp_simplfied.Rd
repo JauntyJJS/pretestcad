@@ -13,7 +13,7 @@ calculate_esc_2024_fig_4_ptp_simplfied(
 )
 }
 \arguments{
-\item{age}{Input numeric value to indicate the age of the patient.}
+\item{age}{Input integer value to indicate the age of the patient.}
 
 \item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{

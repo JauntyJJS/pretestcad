@@ -6,6 +6,7 @@
 #' 2017 PROMISE Minimal-Risk Score.
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
+#' @param age Input numeric value to indicate the age of the patient.
 #' @param hdl_mg_dl Input positive numeric value to indicate the
 #' patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.
 #' @param is_minority_ethnicity Input characters (no, yes) to indicate if the patient

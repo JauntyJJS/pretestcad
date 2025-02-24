@@ -264,6 +264,7 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
     )
 {
   check_if_positive(x = age, allow_na = TRUE)
+  check_if_integer(x = age, allow_na = TRUE)
 
   sex <- sex |>
     arg_match0_allow_na(values = c("female","male"))

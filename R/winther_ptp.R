@@ -4,6 +4,7 @@
 #' coronary artery disease based on the
 #' 2020 Winther et. al. basic model (Basic_PTP).
 #' @inheritParams calculate_esc_2024_fig_4_ptp
+#' @param age Input numeric value to indicate the age of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al. basic model (Basic_PTP).
 #' @details The predictive model is based on > 40000 symptomatic
@@ -84,6 +85,7 @@ calculate_winther_2020_basic_ptp <- function(
 #' coronary artery disease based on the
 #' 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
+#' @param age Input numeric value to indicate the age of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
 #' @details The predictive model is based on > 40000 symptomatic
@@ -198,6 +200,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
+#' @param age Input numeric value to indicate the age of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
