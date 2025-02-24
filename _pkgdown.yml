@@ -8,3 +8,57 @@ template:
       <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
+
+reference:
+  - title: ESC Conference PTP Scores
+    desc: >
+      Functions giving PTP scores from the ESC Conference
+    contents:
+    - calculate_esc_2024_symptom_score
+    - calculate_esc_2024_num_of_rf
+    - calculate_esc_2024_fig_4_ptp_simplfied
+    - calculate_esc_2024_fig_4_ptp
+    - calculate_esc_2019_ptp
+  - title: AHA/ACC Conference PTP Scores
+    desc: >
+      Functions giving PTP scores from the AHA/ACC Conference
+    contents:
+    - calculate_aha_2021_ptp
+  - title: CAD Consortium PTP Scores
+    desc: >
+      Functions giving PTP scores from the CAD Consortium cohort
+    contents:
+    - calculate_cad2_2012_basic_ptp
+    - calculate_cad2_2012_clinical_ptp
+    - calculate_cad2_2012_clinical_ccs_ptp
+  - title: PROMISE Risk Scores
+    desc: >
+      Functions giving PTP scores from the PROMISE cohort
+    contents:
+    - calculate_prms_2017_ptp
+  - title: 2020 Winther et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2020 Winther et. al. paper
+    contents:
+    - calculate_winther_2020_basic_ptp
+    - calculate_winther_2020_rf_cl_ptp
+    - calculate_winther_2020_cacs_cl_ptp
+  - title: LAH PTP scores
+    desc: >
+      Functions giving PTP scores from the 2022 Baskaran et. al. paper
+    contents:
+    - calculate_lah_2022_clinical_ptp
+    - calculate_lah_2022_extended_ptp
+  - title: Utilities
+    desc: >
+      Utilities functions
+    contents:
+    - round_to_nearest_digit
+    - is_integer_value
+    - arg_match0_allow_na
+    - arg_match0_true_or_false
+    - arg_match0_integer
+    - check_if_numeric
+    - check_if_positive
+    - check_if_non_negative
+    - check_if_integer
