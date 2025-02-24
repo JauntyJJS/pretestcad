@@ -9,3 +9,4 @@
 ^\.github$
 ^\.lintr$
 ^codecov\.yml$
+^README\.qmd$
