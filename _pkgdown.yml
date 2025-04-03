@@ -31,6 +31,12 @@ reference:
     - calculate_cad2_2012_basic_ptp
     - calculate_cad2_2012_clinical_ptp
     - calculate_cad2_2012_clinical_ccs_ptp
+  - title: CONFIRM PTP Scores
+    desc: >
+      Functions giving PTP scores from the CONFIRM registry
+    contents:
+    - calculate_confirm_2015_num_of_rf
+    - calculate_confirm_2015_ptp
   - title: PROMISE Risk Scores
     desc: >
       Functions giving PTP scores from the PROMISE cohort
