@@ -36,7 +36,7 @@ to indicate the chest pain characteristics of the patient.
 only has diabetes.
 \itemize{
   \item no stands for not having diabetes.
-  \item yes stands for having a diabetes.
+  \item yes stands for having diabetes.
 }}
 
 \item{have_hypertension}{Input characters (no, yes) to indicate if the patient

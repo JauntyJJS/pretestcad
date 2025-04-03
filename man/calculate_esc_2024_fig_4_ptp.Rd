@@ -76,7 +76,7 @@ only has hypertension.
 only has diabetes.
 \itemize{
   \item no stands for not having diabetes.
-  \item yes stands for having a diabetes.
+  \item yes stands for having diabetes.
 }}
 
 \item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can

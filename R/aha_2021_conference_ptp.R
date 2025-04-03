@@ -152,9 +152,9 @@ calculate_aha_2021_ptp <- function(
 
   if (isTRUE(output == "percentage")) {
     if (isTRUE(have_chest_pain == "yes")) {
-      ptp_percentage_group <- paste0("<=", ptp_percentage_group, "%")
+      ptp_percentage_group <- stringr::str_c("<=", ptp_percentage_group, "%")
     } else if (isTRUE(have_only_dyspnea == "yes")) {
-      ptp_percentage_group <- paste0(ptp_percentage_group, "%")
+      ptp_percentage_group <- stringr::str_c(ptp_percentage_group, "%")
     }
 
     return(ptp_percentage_group)

@@ -2,7 +2,7 @@
 
 <a name="top"></a>
 
-# pretestcad <a href="jauntyjjs.github.io/pretestcad/"><img src="man/figures/logo.png" align="right" height="200" alt="Hex logo of R package pretestcad. Logo is a picture of a coronary artery with partial blockage." /></a>
+# pretestcad <a href="jauntyjjs.github.io/pretestcad/"><img src="man/figures/logo.png" align="right" width="25%" height="25%" alt="Hex logo of R package pretestcad. Logo is a picture of a coronary artery with partial blockage." /></a>
 
 <!-- badges: start -->
 

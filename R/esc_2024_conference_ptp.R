@@ -102,7 +102,7 @@ calculate_esc_2024_symptom_score <- function(
 #' only has diabetes.
 #' \itemize{
 #'   \item no stands for not having diabetes.
-#'   \item yes stands for having a diabetes.
+#'   \item yes stands for having diabetes.
 #' }
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
@@ -439,7 +439,7 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
   }
 
   if (isTRUE(output == "percentage")) {
-    ptp_percentage_group <- paste0(ptp_percentage_group, "%")
+    ptp_percentage_group <- stringr::str_c(ptp_percentage_group, "%")
     return(ptp_percentage_group)
   }
 

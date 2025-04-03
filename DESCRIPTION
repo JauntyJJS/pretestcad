@@ -17,7 +17,8 @@ Language: en-GB
 Imports: 
     cli,
     dplyr,
-    rlang
+    rlang,
+    stringr
 Suggests:
     purrr,
     tibble,

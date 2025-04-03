@@ -76,7 +76,7 @@ only has hypertension.
 only has diabetes.
 \itemize{
   \item no stands for not having diabetes.
-  \item yes stands for having a diabetes.
+  \item yes stands for having diabetes.
 }}
 
 \item{coronary_calcium_score}{Input non-negative numeric to indicate the

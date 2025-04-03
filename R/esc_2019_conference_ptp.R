@@ -179,7 +179,7 @@ calculate_esc_2019_ptp <- function(
   }
 
   if (isTRUE(output == "percentage")) {
-    ptp_percentage_group <- paste0(ptp_percentage_group, "%")
+    ptp_percentage_group <- stringr::str_c(ptp_percentage_group, "%")
     return(ptp_percentage_group)
   }
 }

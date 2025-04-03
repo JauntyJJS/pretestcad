@@ -46,7 +46,7 @@ only has hypertension.
 only has diabetes.
 \itemize{
   \item no stands for not having diabetes.
-  \item yes stands for having a diabetes.
+  \item yes stands for having diabetes.
 }}
 
 \item{max_na}{Input integer 0 to 5 to indicate the maximum number of
