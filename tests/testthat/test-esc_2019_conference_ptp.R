@@ -1,7 +1,7 @@
 test_that("calculate_esc_2019_ptp works on typical chest pain", {
 
   typical_medical_data <- tibble::tribble(
-    ~unique_id,                          ~age, ~sex    , ~chest_pain_type, ~have_dyspnea, ~num_of_rf,
+    ~unique_id,                          ~age, ~sex    , ~chest_pain_type, ~have_dyspnoea, ~num_of_rf,
     "30 male with typical chest pain",     30, "male"  ,        "typical",          "no",          0,
     "39 female with typical chest pain",   39, "female",        "typical",          "no",          0,
     "40 male with typical chest pain",     40, "male"  ,        "typical",          "no",          0,
@@ -20,7 +20,7 @@ test_that("calculate_esc_2019_ptp works on typical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -30,7 +30,7 @@ test_that("calculate_esc_2019_ptp works on typical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -40,7 +40,7 @@ test_that("calculate_esc_2019_ptp works on typical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -80,7 +80,7 @@ test_that("calculate_esc_2019_ptp works on typical chest pain", {
 test_that("calculate_esc_2019_ptp works on atypical chest pain", {
 
   atypical_medical_data <- tibble::tribble(
-    ~unique_id,                          ~age, ~sex    , ~have_dyspnea, ~chest_pain_type,
+    ~unique_id,                          ~age, ~sex    , ~have_dyspnoea, ~chest_pain_type,
     "30 male with atypical chest pain",    30, "male"  ,          "no",       "atypical",
     "39 female with atypical chest pain",  39, "female",          "no",       "atypical",
     "40 male with atypical chest pain",    40, "male"  ,          "no",       "atypical",
@@ -99,7 +99,7 @@ test_that("calculate_esc_2019_ptp works on atypical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -109,7 +109,7 @@ test_that("calculate_esc_2019_ptp works on atypical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -119,7 +119,7 @@ test_that("calculate_esc_2019_ptp works on atypical chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -159,7 +159,7 @@ test_that("calculate_esc_2019_ptp works on atypical chest pain", {
 test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
 
   non_anginal_medical_data <- tibble::tribble(
-    ~unique_id,                             ~age, ~sex    , ~have_dyspnea, ~chest_pain_type,
+    ~unique_id,                             ~age, ~sex    , ~have_dyspnoea, ~chest_pain_type,
     "30 male with non-anginal chest pain",    30, "male"  ,          "no",    "nonanginal",
     "39 female with non-anginal chest pain",  39, "female",          "no",    "nonanginal",
     "40 male with non-anginal chest pain",    40, "male"  ,          "no",    "nonanginal",
@@ -178,7 +178,7 @@ test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -188,7 +188,7 @@ test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -198,7 +198,7 @@ test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -235,20 +235,20 @@ test_that("calculate_esc_2019_ptp works on non-anginal chest pain", {
 
 })
 
-test_that("calculate_esc_2019_ptp works on dyspnea", {
+test_that("calculate_esc_2019_ptp works on dyspnoea", {
 
   dyspnea_medical_data <- tibble::tribble(
-    ~unique_id,              ~age, ~sex    , ~have_dyspnea, ~chest_pain_type,
-    "30 male with dyspnea",    30, "male"  ,         "yes",  "no chest pain",
-    "39 female with dyspnea",  39, "female",         "yes",  "no chest pain",
-    "40 male with dyspnea",    40, "male"  ,         "yes",  "no chest pain",
-    "49 female with dyspnea",  49, "female",         "yes",  "no chest pain",
-    "50 male with dyspnea",    50, "male"  ,         "yes",  "no chest pain",
-    "59 female with dyspnea",  59, "female",         "yes",  "no chest pain",
-    "60 male with dyspnea",    60, "male"  ,         "yes",  "no chest pain",
-    "69 female with dyspnea",  69, "female",         "yes",  "no chest pain",
-    "70 male with dyspnea",    70, "male"  ,         "yes",  "no chest pain",
-    "79 female with dyspnea",  79, "female",         "yes",  "no chest pain"
+    ~unique_id,              ~age, ~sex    , ~have_dyspnoea, ~chest_pain_type,
+    "30 male with dyspnoea",    30, "male"  ,         "yes",  "no chest pain",
+    "39 female with dyspnoea",  39, "female",         "yes",  "no chest pain",
+    "40 male with dyspnoea",    40, "male"  ,         "yes",  "no chest pain",
+    "49 female with dyspnoea",  49, "female",         "yes",  "no chest pain",
+    "50 male with dyspnoea",    50, "male"  ,         "yes",  "no chest pain",
+    "59 female with dyspnoea",  59, "female",         "yes",  "no chest pain",
+    "60 male with dyspnoea",    60, "male"  ,         "yes",  "no chest pain",
+    "69 female with dyspnoea",  69, "female",         "yes",  "no chest pain",
+    "70 male with dyspnoea",    70, "male"  ,         "yes",  "no chest pain",
+    "79 female with dyspnoea",  79, "female",         "yes",  "no chest pain"
     )
 
   dyspnea_medical_data <- dyspnea_medical_data |>
@@ -257,7 +257,7 @@ test_that("calculate_esc_2019_ptp works on dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -267,7 +267,7 @@ test_that("calculate_esc_2019_ptp works on dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -277,7 +277,7 @@ test_that("calculate_esc_2019_ptp works on dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           chest_pain_type = .data[["chest_pain_type"]]
         ),
         .f = pretestcad::calculate_esc_2019_ptp,
@@ -319,28 +319,28 @@ test_that("calculate_esc_2019_ptp gives NA if some inputs are missing", {
   na_age <- calculate_esc_2019_ptp(
     age = NA,
     sex = "male",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     chest_pain_type = "no chest pain"
   )
 
   na_sex <- calculate_esc_2019_ptp(
     age = 55,
     sex = NA,
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     chest_pain_type = "no chest pain"
   )
 
   na_dyspnea <- calculate_esc_2019_ptp(
     age = 55,
     sex = "male",
-    have_dyspnea = NA,
+    have_dyspnoea = NA,
     chest_pain_type = "no chest pain"
   )
 
   na_chest_pain <- calculate_esc_2019_ptp(
     age = 55,
     sex = "male",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     chest_pain_type = NA
   )
 

@@ -7,7 +7,7 @@
 calculate_aha_2021_ptp(
   age,
   sex,
-  have_dyspnea,
+  have_dyspnoea,
   have_chest_pain,
   output = c("grouping", "numeric", "percentage")
 )
@@ -21,18 +21,18 @@ calculate_aha_2021_ptp(
   \item male
 }}
 
-\item{have_dyspnea}{Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.
+\item{have_dyspnoea}{Input characters (no, yes) to indicate if the patient
+only has dyspnoea symptoms.
 \itemize{
-  \item no stands for not having dyspnea symptoms.
-  \item yes stands for having dyspnea symptoms.
+  \item no stands for not having dyspnoea symptoms.
+  \item yes stands for having dyspnoea symptoms.
 }}
 
 \item{have_chest_pain}{Input characters (no, yes) to indicate if the patient
 has chest pain.
 \itemize{
-  \item no stands for not having dyspnea symptoms.
-  \item yes stands for having dyspnea symptoms.
+  \item no stands for not having dyspnoea symptoms.
+  \item yes stands for having dyspnoea symptoms.
 }}
 
 \item{output}{Input text to indicate the how pre-test
@@ -65,25 +65,25 @@ American Heart Association/American College of Cardiology (AHA/ACC) 2021 guideli
 The predictive model used to create the guidelines are based on
 patients from European countries with low cardiovascular disease (CVD) risk.
 
-If the patient has both dyspnea and a particular
+If the patient has both dyspnoea and a particular
 chest pain type (typical, atypical, nonanginal),
-The chest pain type will take precedence over dyspnea
+The chest pain type will take precedence over dyspnoea
 }
 \examples{
 # 35 year old female with chest pain
 calculate_aha_2021_ptp(
     age = 35,
     sex = "female",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     have_chest_pain = "yes",
     output = "percentage"
 )
 
-# 75 year old male with only dyspnea
+# 75 year old male with only dyspnoea
 calculate_aha_2021_ptp(
     age = 75,
     sex = "male",
-    have_dyspnea = "yes",
+    have_dyspnoea = "yes",
     have_chest_pain = "no",
     output = "percentage"
 )

@@ -36,7 +36,7 @@ test_that("calculate_winther_2020_rf_cl_ptp works", {
 
   medical_data <- tibble::tribble(
     ~age,    ~sex,
-    ~chest_pain_type, ~have_dyspnea,
+    ~chest_pain_type, ~have_dyspnoea,
     ~have_family_history, ~have_smoking_history, ~have_dyslipidemia, ~have_hypertension, ~have_diabetes,
     ~expected_score,
     30, "female",    "nonanginal",  "no",  "no",  "no",  "no",  "no",  "no", 0.00172552,
@@ -118,7 +118,7 @@ test_that("calculate_winther_2020_rf_cl_ptp works", {
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_family_history = .data[["have_family_history"]],
           have_smoking_history = .data[["have_smoking_history"]],
           have_dyslipidemia = .data[["have_dyslipidemia"]],
@@ -147,7 +147,7 @@ test_that("calculate_winther_2020_cacs_cl_ptp works", {
 
   medical_data <- tibble::tribble(
     ~age,    ~sex,
-    ~chest_pain_type, ~have_dyspnea,
+    ~chest_pain_type, ~have_dyspnoea,
     ~have_family_history, ~have_smoking_history, ~have_dyslipidemia, ~have_hypertension, ~have_diabetes,
     ~coronary_calcium_score,
     ~expected_score,
@@ -168,7 +168,7 @@ test_that("calculate_winther_2020_cacs_cl_ptp works", {
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_family_history = .data[["have_family_history"]],
           have_smoking_history = .data[["have_smoking_history"]],
           have_dyslipidemia = .data[["have_dyslipidemia"]],

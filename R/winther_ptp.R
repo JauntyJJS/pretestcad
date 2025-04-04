@@ -98,7 +98,7 @@ calculate_winther_2020_basic_ptp <- function(
 #'     age = 40,
 #'     sex = "male",
 #'     chest_pain_type = "no chest pain",
-#'     have_dyspnea = "no",
+#'     have_dyspnoea = "no",
 #'     have_family_history = "no",
 #'     have_smoking_history = "no",
 #'     have_dyslipidemia = "no",
@@ -113,7 +113,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
     age,
     sex,
     chest_pain_type,
-    have_dyspnea,
+    have_dyspnoea,
     have_family_history,
     have_smoking_history,
     have_dyslipidemia,
@@ -136,7 +136,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
 
   symptom_score <- calculate_esc_2024_symptom_score(
     chest_pain_type = chest_pain_type,
-    have_dyspnea = have_dyspnea,
+    have_dyspnoea = have_dyspnoea,
     allow_na = allow_na_symptom_score
   )
 
@@ -213,7 +213,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #'     age = 40,
 #'     sex = "male",
 #'     chest_pain_type = "no chest pain",
-#'     have_dyspnea = "no",
+#'     have_dyspnoea = "no",
 #'     have_family_history = "no",
 #'     have_smoking_history = "no",
 #'     have_dyslipidemia = "no",
@@ -229,7 +229,7 @@ calculate_winther_2020_cacs_cl_ptp <- function(
     age,
     sex,
     chest_pain_type,
-    have_dyspnea,
+    have_dyspnoea,
     have_family_history,
     have_smoking_history,
     have_dyslipidemia,
@@ -248,7 +248,7 @@ calculate_winther_2020_cacs_cl_ptp <- function(
     age = age,
     sex = sex,
     chest_pain_type = chest_pain_type,
-    have_dyspnea = have_dyspnea,
+    have_dyspnoea = have_dyspnoea,
     have_family_history = have_family_history,
     have_smoking_history = have_smoking_history,
     have_dyslipidemia = have_dyslipidemia,

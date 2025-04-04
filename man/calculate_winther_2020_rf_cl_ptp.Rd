@@ -8,7 +8,7 @@ calculate_winther_2020_rf_cl_ptp(
   age,
   sex,
   chest_pain_type,
-  have_dyspnea,
+  have_dyspnoea,
   have_family_history,
   have_smoking_history,
   have_dyslipidemia,
@@ -36,11 +36,11 @@ to indicate the chest pain characteristics of the patient.
   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 
-\item{have_dyspnea}{Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.
+\item{have_dyspnoea}{Input characters (no, yes) to indicate if the patient
+only has dyspnoea symptoms.
 \itemize{
-  \item no stands for not having dyspnea symptoms.
-  \item yes stands for having dyspnea symptoms.
+  \item no stands for not having dyspnoea symptoms.
+  \item yes stands for having dyspnoea symptoms.
 }}
 
 \item{have_family_history}{Input characters (no, yes) to indicate if the patient
@@ -79,7 +79,7 @@ only has diabetes.
 }}
 
 \item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow \code{chest_pain_type} or \code{have_dyspnea} to be \code{NA} when calculating the score}
+allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
@@ -106,7 +106,7 @@ calculate_winther_2020_rf_cl_ptp(
     age = 40,
     sex = "male",
     chest_pain_type = "no chest pain",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     have_family_history = "no",
     have_smoking_history = "no",
     have_dyslipidemia = "no",

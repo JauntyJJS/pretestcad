@@ -208,18 +208,18 @@ calculate_confirm_2015_ptp <- function(
   )
 
   age_group <- dplyr::case_when(
-    dplyr::between(age, 18, 39) ~ 3,
-    dplyr::between(age, 40, 49) ~ 4,
-    dplyr::between(age, 50, 59) ~ 5,
-    dplyr::between(age, 60, 69) ~ 6,
-    age >= 70 ~ 7,
-    .default = NA
+    dplyr::between(age, 18, 39) ~ 3L,
+    dplyr::between(age, 40, 49) ~ 4L,
+    dplyr::between(age, 50, 59) ~ 5L,
+    dplyr::between(age, 60, 69) ~ 6L,
+    age >= 70 ~ 7L,
+    .default = NA_integer_
   )
 
   sex_group <- dplyr::case_when(
-    sex == "female" ~ 0,
-    sex == "male" ~ 1,
-    .default = NA
+    sex == "female" ~ 0L,
+    sex == "male" ~ 1L,
+    .default = NA_integer_
   )
 
   points = age_group + sex_group + num_of_rf

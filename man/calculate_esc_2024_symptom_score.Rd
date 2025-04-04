@@ -6,7 +6,7 @@
 \usage{
 calculate_esc_2024_symptom_score(
   chest_pain_type,
-  have_dyspnea,
+  have_dyspnoea,
   allow_na = TRUE
 )
 }
@@ -20,21 +20,21 @@ to indicate the chest pain characteristics of the patient.
   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 
-\item{have_dyspnea}{Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.
+\item{have_dyspnoea}{Input characters (no, yes) to indicate if the patient
+only has dyspnoea symptoms.
 \itemize{
-  \item no stands for not having dyspnea symptoms.
-  \item yes stands for having dyspnea symptoms.
+  \item no stands for not having dyspnoea symptoms.
+  \item yes stands for having dyspnoea symptoms.
 }}
 
 \item{allow_na}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow `chest_pain_type` or `have_dyspnea` to be \code{NA} when calculating the score.
+allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
 Default: \code{TRUE}}
 }
 \value{
 An integer indicating the symptom score of the patient.
-It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
-Patients with both nonanginal chest pain and dyspnea will be given a score of 2
+It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnoea} are \code{NA}.
+Patients with both nonanginal chest pain and dyspnoea will be given a score of 2
 }
 \description{
 A function used to calculate the symptom score of the patient.
@@ -45,19 +45,19 @@ ESC 2024 guidelines.
 \examples{
 calculate_esc_2024_symptom_score(
   chest_pain_type = "nonanginal",
-  have_dyspnea = "yes",
+  have_dyspnoea = "yes",
   allow_na = TRUE
 )
 
 calculate_esc_2024_symptom_score(
   chest_pain_type = "nonanginal",
-  have_dyspnea = NA,
+  have_dyspnoea = NA,
   allow_na = FALSE
 )
 
 calculate_esc_2024_symptom_score(
   chest_pain_type = "nonanginal",
-  have_dyspnea = NA,
+  have_dyspnoea = NA,
   allow_na = TRUE
 )
 

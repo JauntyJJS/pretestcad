@@ -1,6 +1,6 @@
 #' @title Calculate 2017 PROMISE Minimal-Risk Score for obstructive CAD
 #' @description This function returns
-#' a symptomatic (have chest pain or dyspnea) patient's
+#' a symptomatic (have chest pain or dyspnoea) patient's
 #' minimal risk score for obstructive
 #' coronary artery disease based on the
 #' 2017 PROMISE Minimal-Risk Score.

@@ -5,27 +5,27 @@
 #' ESC 2024 guidelines.
 #' @inheritParams calculate_esc_2019_ptp
 #' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow `chest_pain_type` or `have_dyspnea` to be \code{NA} when calculating the score.
+#' allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
 #' Default: \code{TRUE}
 #' @return An integer indicating the symptom score of the patient.
-#' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnea} are \code{NA}.
-#' Patients with both nonanginal chest pain and dyspnea will be given a score of 2
+#' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnoea} are \code{NA}.
+#' Patients with both nonanginal chest pain and dyspnoea will be given a score of 2
 #' @examples
 #' calculate_esc_2024_symptom_score(
 #'   chest_pain_type = "nonanginal",
-#'   have_dyspnea = "yes",
+#'   have_dyspnoea = "yes",
 #'   allow_na = TRUE
 #' )
 #'
 #' calculate_esc_2024_symptom_score(
 #'   chest_pain_type = "nonanginal",
-#'   have_dyspnea = NA,
+#'   have_dyspnoea = NA,
 #'   allow_na = FALSE
 #' )
 #'
 #' calculate_esc_2024_symptom_score(
 #'   chest_pain_type = "nonanginal",
-#'   have_dyspnea = NA,
+#'   have_dyspnoea = NA,
 #'   allow_na = TRUE
 #' )
 #'
@@ -33,34 +33,34 @@
 #' @export
 calculate_esc_2024_symptom_score <- function(
     chest_pain_type,
-    have_dyspnea,
+    have_dyspnoea,
     allow_na = TRUE
 )
 {
   chest_pain_type <- chest_pain_type |>
     arg_match0_allow_na(values = c("no chest pain","typical", "atypical", "nonanginal"))
 
-  have_dyspnea <- have_dyspnea |>
+  have_dyspnoea <- have_dyspnoea |>
     arg_match0_allow_na(values = c("no","yes"))
 
   allow_na <- allow_na |>
     arg_match0_true_or_false()
 
   symptom_score <- dplyr::case_when(
-    chest_pain_type == "no chest pain" & have_dyspnea == "no"  ~ 0,
-    chest_pain_type == "no chest pain" & have_dyspnea == "yes" ~ 2,
-    chest_pain_type == "nonanginal"    & have_dyspnea == "no"  ~ 1,
-    chest_pain_type == "nonanginal"    & have_dyspnea == "yes" ~ 2,
-    chest_pain_type == "atypical"      & have_dyspnea == "no"  ~ 2,
-    chest_pain_type == "atypical"      & have_dyspnea == "yes" ~ 2,
-    chest_pain_type == "typical"       & have_dyspnea == "no"  ~ 3,
-    chest_pain_type == "typical"       & have_dyspnea == "yes" ~ 3,
-    isTRUE(allow_na) & chest_pain_type == "no chest pain" & is.na(have_dyspnea) ~ 0,
-    isTRUE(allow_na) & chest_pain_type == "nonanginal"    & is.na(have_dyspnea) ~ 1,
-    isTRUE(allow_na) & chest_pain_type == "atypical"      & is.na(have_dyspnea) ~ 2,
-    isTRUE(allow_na) & chest_pain_type == "typical"       & is.na(have_dyspnea) ~ 3,
-    isTRUE(allow_na) & is.na(chest_pain_type) & have_dyspnea == "no"  ~ 0,
-    isTRUE(allow_na) & is.na(chest_pain_type) & have_dyspnea == "yes" ~ 2,
+    chest_pain_type == "no chest pain" & have_dyspnoea == "no"  ~ 0,
+    chest_pain_type == "no chest pain" & have_dyspnoea == "yes" ~ 2,
+    chest_pain_type == "nonanginal"    & have_dyspnoea == "no"  ~ 1,
+    chest_pain_type == "nonanginal"    & have_dyspnoea == "yes" ~ 2,
+    chest_pain_type == "atypical"      & have_dyspnoea == "no"  ~ 2,
+    chest_pain_type == "atypical"      & have_dyspnoea == "yes" ~ 2,
+    chest_pain_type == "typical"       & have_dyspnoea == "no"  ~ 3,
+    chest_pain_type == "typical"       & have_dyspnoea == "yes" ~ 3,
+    isTRUE(allow_na) & chest_pain_type == "no chest pain" & is.na(have_dyspnoea) ~ 0,
+    isTRUE(allow_na) & chest_pain_type == "nonanginal"    & is.na(have_dyspnoea) ~ 1,
+    isTRUE(allow_na) & chest_pain_type == "atypical"      & is.na(have_dyspnoea) ~ 2,
+    isTRUE(allow_na) & chest_pain_type == "typical"       & is.na(have_dyspnoea) ~ 3,
+    isTRUE(allow_na) & is.na(chest_pain_type) & have_dyspnoea == "no"  ~ 0,
+    isTRUE(allow_na) & is.na(chest_pain_type) & have_dyspnoea == "yes" ~ 2,
     .default = NA
   )
 
@@ -454,7 +454,7 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
 #' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow \code{chest_pain_type} or \code{have_dyspnea} to be \code{NA} when calculating the score
+#' allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -467,7 +467,7 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
 #'   age = 30,
 #'   sex = "female",
 #'   chest_pain_type = "no chest pain",
-#'   have_dyspnea = "no",
+#'   have_dyspnoea = "no",
 #'   have_family_history = "no",
 #'   have_smoking_history = "no",
 #'   have_dyslipidemia = "no",
@@ -484,7 +484,7 @@ calculate_esc_2024_fig_4_ptp <- function(
     age,
     sex,
     chest_pain_type,
-    have_dyspnea,
+    have_dyspnoea,
     have_family_history,
     have_smoking_history,
     have_dyslipidemia,
@@ -497,7 +497,7 @@ calculate_esc_2024_fig_4_ptp <- function(
 {
   symptom_score <- calculate_esc_2024_symptom_score(
     chest_pain_type = chest_pain_type,
-    have_dyspnea = have_dyspnea,
+    have_dyspnoea = have_dyspnoea,
     allow_na = allow_na_symptom_score
   )
 

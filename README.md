@@ -49,6 +49,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2019 ESC Guidelines PTP Score
   - <a href="https://doi.org/10.1007/s00059-020-04935-x" target="_blank">📘
     Journal</a>
+- 2019 Reeh et. al. basic and clinical model
+  - <a href="https://doi.org/10.1093/eurheartj/ehy806" target="_blank">📘
+    Journal</a>
 - 2017 PROMISE Minimal-Risk Score
   - <a href="https://doi.org/10.1001/jamacardio.2016.5501"
     target="_blank">📘 Journal</a>
@@ -75,7 +78,7 @@ calculate_esc_2024_fig_4_ptp(
  age = 30,
  sex = "female",
  chest_pain_type = "no chest pain",
- have_dyspnea = "no",
+ have_dyspnoea = "no",
  have_family_history = "no",
  have_smoking_history = "no",
  have_dyslipidemia = "no",
@@ -92,7 +95,7 @@ calculate_esc_2024_fig_4_ptp(
  age = 30,
  sex = "female",
  chest_pain_type = "no chest pain",
- have_dyspnea = "no",
+ have_dyspnoea = "no",
  have_family_history = "no",
  have_smoking_history = "no",
  have_dyslipidemia = "no",
@@ -110,13 +113,13 @@ Here is how you can calculate the score using for multiple patients.
 patient_data <- tibble::tribble(
     ~unique_id,
     ~age,     ~sex, 
-    ~chest_pain_type, ~have_dyspnea, 
+    ~chest_pain_type, ~have_dyspnoea, 
     ~have_family_history, ~have_smoking_history, ~have_dyslipidemia, ~have_hypertension, ~have_diabetes,
-    "45 year old male with typical chest pain, no dyspnea, hypertension and diabetes",
+    "45 year old male with typical chest pain, no dyspnoea, hypertension and diabetes",
     45, "male", 
     "typical", "no",  
     "no", "no", "no", "yes", "yes",
-    "70 year old female with no chest pain, dyspnea, have smoking history (past or current smoker) and dyslipidemia",
+    "70 year old female with no chest pain, dyspnoea, have smoking history (past or current smoker) and dyslipidemia",
     70, "female", 
     "no chest pain", "yes",  
     "no", "yes", "yes", "no", "no"
@@ -129,7 +132,7 @@ risk_data <- patient_data |>
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_family_history = .data[["have_family_history"]],
           have_smoking_history = .data[["have_smoking_history"]], 
           have_dyslipidemia = .data[["have_dyslipidemia"]], 
@@ -144,7 +147,7 @@ risk_data <- patient_data |>
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_family_history = .data[["have_family_history"]],
           have_smoking_history = .data[["have_smoking_history"]],
           have_dyslipidemia = .data[["have_dyslipidemia"]],
@@ -159,7 +162,7 @@ risk_data <- patient_data |>
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_family_history = .data[["have_family_history"]],
           have_smoking_history = .data[["have_smoking_history"]],
           have_dyslipidemia = .data[["have_dyslipidemia"]],

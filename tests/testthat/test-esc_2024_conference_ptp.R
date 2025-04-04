@@ -1,25 +1,25 @@
 test_that("calculate_esc_2024_symptom_score works", {
 
   medical_data <- tibble::tribble(
-    ~unique_id,                                            ~chest_pain_type, ~have_dyspnea, ~expected_score,
-    "Patient with no chest pain and no dyspnea",            "no chest pain",          "no",               0,
-    "Patient with no chest pain and have dyspnea",          "no chest pain",         "yes",               2,
-    "Patient with nonanginal chest pain and no dyspnea",       "nonanginal",          "no",               1,
-    "Patient with nonanginal chest pain and have dyspnea",     "nonanginal",         "yes",               2,
-    "Patient with atypical chest pain and no dyspnea",           "atypical",          "no",               2,
-    "Patient with atypical chest pain and have dyspnea",         "atypical",         "yes",               2,
-    "Patient with typical chest pain and no dyspnea",             "typical",          "no",               3,
-    "Patient with typical chest pain and have dyspnea",           "typical",         "yes",               3,
+    ~unique_id,                                            ~chest_pain_type, ~have_dyspnoea, ~expected_score,
+    "Patient with no chest pain and no dyspnoea",            "no chest pain",          "no",               0,
+    "Patient with no chest pain and have dyspnoea",          "no chest pain",         "yes",               2,
+    "Patient with nonanginal chest pain and no dyspnoea",       "nonanginal",          "no",               1,
+    "Patient with nonanginal chest pain and have dyspnoea",     "nonanginal",         "yes",               2,
+    "Patient with atypical chest pain and no dyspnoea",           "atypical",          "no",               2,
+    "Patient with atypical chest pain and have dyspnoea",         "atypical",         "yes",               2,
+    "Patient with typical chest pain and no dyspnoea",             "typical",          "no",               3,
+    "Patient with typical chest pain and have dyspnoea",           "typical",         "yes",               3,
   )
 
   medical_data_with_na <- tibble::tribble(
-    ~unique_id,                                            ~chest_pain_type, ~have_dyspnea, ~expected_score,
+    ~unique_id,                                            ~chest_pain_type, ~have_dyspnoea, ~expected_score,
     "Patient with no chest pain",                           "no chest pain",            NA,               0,
     "Patient with nonanginal chest pain",                      "nonanginal",            NA,               1,
     "Patient with atypical chest pain",                          "atypical",            NA,               2,
     "Patient with typical chest pain",                            "typical",            NA,               3,
-    "Patient with no dyspnea",                                           NA,          "no",               0,
-    "Patient with dyspnea",                                              NA,         "yes",               2,
+    "Patient with no dyspnoea",                                           NA,          "no",               0,
+    "Patient with dyspnoea",                                              NA,         "yes",               2,
   )
 
   medical_data <- medical_data |>
@@ -27,7 +27,7 @@ test_that("calculate_esc_2024_symptom_score works", {
       symptom_score = purrr::pmap_int(
         .l = list(
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]]
+          have_dyspnoea = .data[["have_dyspnoea"]]
         ),
         .f = pretestcad::calculate_esc_2024_symptom_score,
         allow_na = TRUE
@@ -39,7 +39,7 @@ test_that("calculate_esc_2024_symptom_score works", {
       symptom_score = purrr::pmap_int(
         .l = list(
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]]
+          have_dyspnoea = .data[["have_dyspnoea"]]
         ),
         .f = pretestcad::calculate_esc_2024_symptom_score,
         allow_na = TRUE
@@ -51,7 +51,7 @@ test_that("calculate_esc_2024_symptom_score works", {
       symptom_score = purrr::pmap_int(
         .l = list(
           chest_pain_type = .data[["chest_pain_type"]],
-          have_dyspnea = .data[["have_dyspnea"]]
+          have_dyspnoea = .data[["have_dyspnoea"]]
         ),
         .f = pretestcad::calculate_esc_2024_symptom_score,
         allow_na = FALSE
@@ -419,7 +419,7 @@ test_that("calculate_esc_2024_fig_4_ptp works", {
       age = 30,
       sex = "female",
       chest_pain_type = "no chest pain",
-      have_dyspnea = "no",
+      have_dyspnoea = "no",
       have_family_history = "no",
       have_smoking_history = "no",
       have_dyslipidemia = "no",
@@ -437,7 +437,7 @@ test_that("calculate_esc_2024_fig_4_ptp works", {
       age = 30,
       sex = "female",
       chest_pain_type = "no chest pain",
-      have_dyspnea = "no",
+      have_dyspnoea = "no",
       have_family_history = "no",
       have_smoking_history = "no",
       have_dyslipidemia = "no",
@@ -455,7 +455,7 @@ test_that("calculate_esc_2024_fig_4_ptp works", {
       age = 30,
       sex = "female",
       chest_pain_type = "no chest pain",
-      have_dyspnea = "no",
+      have_dyspnoea = "no",
       have_family_history = "no",
       have_smoking_history = "no",
       have_dyslipidemia = "no",

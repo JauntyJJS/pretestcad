@@ -1,7 +1,7 @@
 test_that("calculate_aha_2021_ptp works on patients with chest pain", {
 
   medical_data <- tibble::tribble(
-    ~unique_id,                  ~age, ~sex    , ~have_chest_pain, ~have_dyspnea,
+    ~unique_id,                  ~age, ~sex    , ~have_chest_pain, ~have_dyspnoea,
     "30 male with chest pain",     30, "male"  ,            "yes",          "no",
     "39 female with chest pain",   39, "female",            "yes",         "yes",
     "40 male with chest pain",     40, "male"  ,            "yes",         "yes",
@@ -21,7 +21,7 @@ test_that("calculate_aha_2021_ptp works on patients with chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -31,7 +31,7 @@ test_that("calculate_aha_2021_ptp works on patients with chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -41,7 +41,7 @@ test_that("calculate_aha_2021_ptp works on patients with chest pain", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -78,20 +78,20 @@ test_that("calculate_aha_2021_ptp works on patients with chest pain", {
 })
 
 
-test_that("calculate_aha_2021_ptp works on patients with only dyspnea", {
+test_that("calculate_aha_2021_ptp works on patients with only dyspnoea", {
 
   medical_data <- tibble::tribble(
-    ~unique_id,                    ~age, ~sex    , ~have_chest_pain, ~have_dyspnea,
-    "30 male with only dyspnea",     30, "male"  ,             "no",         "yes",
-    "39 female with only dyspnea",   39, "female",             "no",         "yes",
-    "40 male with only dyspnea",     40, "male"  ,             "no",         "yes",
-    "49 female with only dyspnea",   49, "female",             "no",         "yes",
-    "50 male with only dyspnea",     50, "male"  ,             "no",         "yes",
-    "59 female with only dyspnea",   59, "female",             "no",         "yes",
-    "60 male with only dyspnea",     60, "male"  ,             "no",         "yes",
-    "69 female with only dyspnea",   69, "female",             "no",         "yes",
-    "70 male with only dyspnea",     70, "male"  ,             "no",         "yes",
-    "79 female with only dyspnea",   79, "female",             "no",         "yes"
+    ~unique_id,                    ~age, ~sex    , ~have_chest_pain, ~have_dyspnoea,
+    "30 male with only dyspnoea",     30, "male"  ,             "no",         "yes",
+    "39 female with only dyspnoea",   39, "female",             "no",         "yes",
+    "40 male with only dyspnoea",     40, "male"  ,             "no",         "yes",
+    "49 female with only dyspnoea",   49, "female",             "no",         "yes",
+    "50 male with only dyspnoea",     50, "male"  ,             "no",         "yes",
+    "59 female with only dyspnoea",   59, "female",             "no",         "yes",
+    "60 male with only dyspnoea",     60, "male"  ,             "no",         "yes",
+    "69 female with only dyspnoea",   69, "female",             "no",         "yes",
+    "70 male with only dyspnoea",     70, "male"  ,             "no",         "yes",
+    "79 female with only dyspnoea",   79, "female",             "no",         "yes"
   )
 
 
@@ -101,7 +101,7 @@ test_that("calculate_aha_2021_ptp works on patients with only dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -111,7 +111,7 @@ test_that("calculate_aha_2021_ptp works on patients with only dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -121,7 +121,7 @@ test_that("calculate_aha_2021_ptp works on patients with only dyspnea", {
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          have_dyspnea = .data[["have_dyspnea"]],
+          have_dyspnoea = .data[["have_dyspnoea"]],
           have_chest_pain = .data[["have_chest_pain"]]
         ),
         .f = calculate_aha_2021_ptp,
@@ -162,35 +162,35 @@ test_that("calculate_aha_2021_ptp gives NA if some inputs are missing", {
   na_age <- calculate_aha_2021_ptp(
     age = NA,
     sex = "male",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     have_chest_pain = "yes"
   )
 
   under_age <- calculate_aha_2021_ptp(
     age = 25,
     sex = "male",
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     have_chest_pain = "yes"
   )
 
   na_sex <- calculate_aha_2021_ptp(
     age = 55,
     sex = NA,
-    have_dyspnea = "no",
+    have_dyspnoea = "no",
     have_chest_pain = "no"
   )
 
   na_dyspnea <- calculate_aha_2021_ptp(
     age = 55,
     sex = "male",
-    have_dyspnea = NA,
+    have_dyspnoea = NA,
     have_chest_pain = "no"
   )
 
   na_chest_pain <- calculate_aha_2021_ptp(
     age = 55,
     sex = "male",
-    have_dyspnea = "yes",
+    have_dyspnoea = "yes",
     have_chest_pain = NA
   )
 

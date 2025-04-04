@@ -9,11 +9,11 @@
 #'   \item female
 #'   \item male
 #' }
-#' @param have_dyspnea Input characters (no, yes) to indicate if the patient
-#' only has dyspnea symptoms.
+#' @param have_dyspnoea Input characters (no, yes) to indicate if the patient
+#' only has dyspnoea symptoms.
 #' \itemize{
-#'   \item no stands for not having dyspnea symptoms.
-#'   \item yes stands for having dyspnea symptoms.
+#'   \item no stands for not having dyspnoea symptoms.
+#'   \item yes stands for having dyspnoea symptoms.
 #' }
 #' @param chest_pain_type Input characters (no chest pain, typical, atypical, nonanginal)
 #' to indicate the chest pain characteristics of the patient.
@@ -52,25 +52,25 @@
 #' \href{https://link.springer.com/}{\emph{SpringerLink}} \emph{is licensed under}
 #' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
 #'
-#' If the patient has both dyspnea and a particular
+#' If the patient has both dyspnoea and a particular
 #' chest pain type (typical, atypical, nonanginal),
-#' The chest pain type will take precedence over dyspnea
+#' The chest pain type will take precedence over dyspnoea
 #'
 #' @examples
 #' # 35 year old female with typical chest pain
 #' calculate_esc_2019_ptp(
 #'     age = 35,
 #'     sex = "female",
-#'     have_dyspnea = "no",
+#'     have_dyspnoea = "no",
 #'     chest_pain_type = "typical",
 #'     output = "percentage"
 #' )
 #'
-#' # 75 year old male with only dyspnea
+#' # 75 year old male with only dyspnoea
 #' calculate_esc_2019_ptp(
 #'     age = 75,
 #'     sex = "male",
-#'     have_dyspnea = "yes",
+#'     have_dyspnoea = "yes",
 #'     chest_pain_type = "no chest pain",
 #'     output = "percentage"
 #' )
@@ -79,7 +79,7 @@
 calculate_esc_2019_ptp <- function(
   age,
   sex,
-  have_dyspnea,
+  have_dyspnoea,
   chest_pain_type,
   output = c("grouping", "numeric", "percentage")
   )
@@ -90,7 +90,7 @@ calculate_esc_2019_ptp <- function(
   sex <- sex |>
     arg_match0_allow_na(values = c("female","male"))
 
-  have_dyspnea <- have_dyspnea |>
+  have_dyspnoea <- have_dyspnoea |>
     arg_match0_allow_na(values = c("no","yes"))
 
   chest_pain_type <- chest_pain_type |>
@@ -110,8 +110,8 @@ calculate_esc_2019_ptp <- function(
   )
 
   have_only_dyspnea <- dplyr::case_when(
-    have_dyspnea == "no" | chest_pain_type != "no chest pain" ~ "no",
-    have_dyspnea == "yes" & chest_pain_type == "no chest pain" ~ "yes"
+    have_dyspnoea == "no" | chest_pain_type != "no chest pain" ~ "no",
+    have_dyspnoea == "yes" & chest_pain_type == "no chest pain" ~ "yes"
   )
 
   ptp_percentage_group <- dplyr::case_when(
