@@ -60,7 +60,7 @@ American Heart Association/American College of Cardiology (AHA/ACC) 2021 guideli
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_aha_2021_ptp</span><span class="op">(</span></span>
 <span>  <span class="va">age</span>,</span>
 <span>  <span class="va">sex</span>,</span>
-<span>  <span class="va">have_dyspnea</span>,</span>
+<span>  <span class="va">have_dyspnoea</span>,</span>
 <span>  <span class="va">have_chest_pain</span>,</span>
 <span>  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grouping"</span>, <span class="st">"numeric"</span>, <span class="st">"percentage"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -80,17 +80,17 @@ American Heart Association/American College of Cardiology (AHA/ACC) 2021 guideli
 </ul></dd>
 
 
-<dt id="arg-have-dyspnea">have_dyspnea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnea"></a></dt>
+<dt id="arg-have-dyspnoea">have_dyspnoea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnoea"></a></dt>
 <dd><p>Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.</p><ul><li><p>no stands for not having dyspnea symptoms.</p></li>
-<li><p>yes stands for having dyspnea symptoms.</p></li>
+only has dyspnoea symptoms.</p><ul><li><p>no stands for not having dyspnoea symptoms.</p></li>
+<li><p>yes stands for having dyspnoea symptoms.</p></li>
 </ul></dd>
 
 
 <dt id="arg-have-chest-pain">have_chest_pain<a class="anchor" aria-label="anchor" href="#arg-have-chest-pain"></a></dt>
 <dd><p>Input characters (no, yes) to indicate if the patient
-has chest pain.</p><ul><li><p>no stands for not having dyspnea symptoms.</p></li>
-<li><p>yes stands for having dyspnea symptoms.</p></li>
+has chest pain.</p><ul><li><p>no stands for not having dyspnoea symptoms.</p></li>
+<li><p>yes stands for having dyspnoea symptoms.</p></li>
 </ul></dd>
 
 
@@ -117,9 +117,9 @@ See parameter option <code>output</code> for more information.</p>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The predictive model used to create the guidelines are based on
 patients from European countries with low cardiovascular disease (CVD) risk.</p>
-<p>If the patient has both dyspnea and a particular
+<p>If the patient has both dyspnoea and a particular
 chest pain type (typical, atypical, nonanginal),
-The chest pain type will take precedence over dyspnea</p>
+The chest pain type will take precedence over dyspnoea</p>
     </div>
 
     <div class="section level2">
@@ -128,17 +128,17 @@ The chest pain type will take precedence over dyspnea</p>
 <span class="r-in"><span><span class="fu">calculate_aha_2021_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">35</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"female"</span>,</span></span>
-<span class="r-in"><span>    have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_dyspnoea <span class="op">=</span> <span class="st">"no"</span>,</span></span>
 <span class="r-in"><span>    have_chest_pain <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
 <span class="r-in"><span>    output <span class="op">=</span> <span class="st">"percentage"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;=5%"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 75 year old male with only dyspnea</span></span></span>
+<span class="r-in"><span><span class="co"># 75 year old male with only dyspnoea</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_aha_2021_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">75</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"male"</span>,</span></span>
-<span class="r-in"><span>    have_dyspnea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>    have_dyspnoea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
 <span class="r-in"><span>    have_chest_pain <span class="op">=</span> <span class="st">"no"</span>,</span></span>
 <span class="r-in"><span>    output <span class="op">=</span> <span class="st">"percentage"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>

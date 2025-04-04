@@ -59,7 +59,7 @@ ESC 2024 guidelines.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_esc_2024_symptom_score</span><span class="op">(</span></span>
 <span>  <span class="va">chest_pain_type</span>,</span>
-<span>  <span class="va">have_dyspnea</span>,</span>
+<span>  <span class="va">have_dyspnoea</span>,</span>
 <span>  allow_na <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -77,45 +77,45 @@ to indicate the chest pain characteristics of the patient.</p><ul><li><p>no ches
 </ul></dd>
 
 
-<dt id="arg-have-dyspnea">have_dyspnea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnea"></a></dt>
+<dt id="arg-have-dyspnoea">have_dyspnoea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnoea"></a></dt>
 <dd><p>Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.</p><ul><li><p>no stands for not having dyspnea symptoms.</p></li>
-<li><p>yes stands for having dyspnea symptoms.</p></li>
+only has dyspnoea symptoms.</p><ul><li><p>no stands for not having dyspnoea symptoms.</p></li>
+<li><p>yes stands for having dyspnoea symptoms.</p></li>
 </ul></dd>
 
 
 <dt id="arg-allow-na">allow_na<a class="anchor" aria-label="anchor" href="#arg-allow-na"></a></dt>
 <dd><p>A logical evaluating to <code>TRUE</code> or <code>FALSE</code> indicating whether we can
-allow `chest_pain_type` or `have_dyspnea` to be <code>NA</code> when calculating the score.
+allow `chest_pain_type` or `have_dyspnoea` to be <code>NA</code> when calculating the score.
 Default: <code>TRUE</code></p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An integer indicating the symptom score of the patient.
-It can also be <code>NA</code> if both <code>chest_pain_type</code> and <code>have_dyspnea</code> are <code>NA</code>.
-Patients with both nonanginal chest pain and dyspnea will be given a score of 2</p>
+It can also be <code>NA</code> if both <code>chest_pain_type</code> and <code>have_dyspnoea</code> are <code>NA</code>.
+Patients with both nonanginal chest pain and dyspnoea will be given a score of 2</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">calculate_esc_2024_symptom_score</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  chest_pain_type <span class="op">=</span> <span class="st">"nonanginal"</span>,</span></span>
-<span class="r-in"><span>  have_dyspnea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>  have_dyspnoea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
 <span class="r-in"><span>  allow_na <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">calculate_esc_2024_symptom_score</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  chest_pain_type <span class="op">=</span> <span class="st">"nonanginal"</span>,</span></span>
-<span class="r-in"><span>  have_dyspnea <span class="op">=</span> <span class="cn">NA</span>,</span></span>
+<span class="r-in"><span>  have_dyspnoea <span class="op">=</span> <span class="cn">NA</span>,</span></span>
 <span class="r-in"><span>  allow_na <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">calculate_esc_2024_symptom_score</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  chest_pain_type <span class="op">=</span> <span class="st">"nonanginal"</span>,</span></span>
-<span class="r-in"><span>  have_dyspnea <span class="op">=</span> <span class="cn">NA</span>,</span></span>
+<span class="r-in"><span>  have_dyspnoea <span class="op">=</span> <span class="cn">NA</span>,</span></span>
 <span class="r-in"><span>  allow_na <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>

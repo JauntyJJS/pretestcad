@@ -60,7 +60,7 @@ European Society of Cardiology (ESC) 2019 guidelines.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span>
 <span>  <span class="va">age</span>,</span>
 <span>  <span class="va">sex</span>,</span>
-<span>  <span class="va">have_dyspnea</span>,</span>
+<span>  <span class="va">have_dyspnoea</span>,</span>
 <span>  <span class="va">chest_pain_type</span>,</span>
 <span>  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grouping"</span>, <span class="st">"numeric"</span>, <span class="st">"percentage"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -80,10 +80,10 @@ European Society of Cardiology (ESC) 2019 guidelines.</p>
 </ul></dd>
 
 
-<dt id="arg-have-dyspnea">have_dyspnea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnea"></a></dt>
+<dt id="arg-have-dyspnoea">have_dyspnoea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnoea"></a></dt>
 <dd><p>Input characters (no, yes) to indicate if the patient
-only has dyspnea symptoms.</p><ul><li><p>no stands for not having dyspnea symptoms.</p></li>
-<li><p>yes stands for having dyspnea symptoms.</p></li>
+only has dyspnoea symptoms.</p><ul><li><p>no stands for not having dyspnoea symptoms.</p></li>
+<li><p>yes stands for having dyspnoea symptoms.</p></li>
 </ul></dd>
 
 
@@ -123,9 +123,9 @@ patients from European countries with low cardiovascular disease (CVD) risk.</p>
 <a href="https://doi.org/10.1007/s00059-020-04935-x" class="external-link"><em>Juhani Knuuti et. al.</em></a> from
 <a href="https://link.springer.com/" class="external-link"><em>SpringerLink</em></a> <em>is licensed under</em>
 <a href="http://creativecommons.org/licenses/by/4.0" class="external-link"><em>CC BY 4.0</em></a>.</p>
-<p>If the patient has both dyspnea and a particular
+<p>If the patient has both dyspnoea and a particular
 chest pain type (typical, atypical, nonanginal),
-The chest pain type will take precedence over dyspnea</p>
+The chest pain type will take precedence over dyspnoea</p>
     </div>
 
     <div class="section level2">
@@ -134,17 +134,17 @@ The chest pain type will take precedence over dyspnea</p>
 <span class="r-in"><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">35</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"female"</span>,</span></span>
-<span class="r-in"><span>    have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span></span>
+<span class="r-in"><span>    have_dyspnoea <span class="op">=</span> <span class="st">"no"</span>,</span></span>
 <span class="r-in"><span>    chest_pain_type <span class="op">=</span> <span class="st">"typical"</span>,</span></span>
 <span class="r-in"><span>    output <span class="op">=</span> <span class="st">"percentage"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5%"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 75 year old male with only dyspnea</span></span></span>
+<span class="r-in"><span><span class="co"># 75 year old male with only dyspnoea</span></span></span>
 <span class="r-in"><span><span class="fu">calculate_esc_2019_ptp</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    age <span class="op">=</span> <span class="fl">75</span>,</span></span>
 <span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"male"</span>,</span></span>
-<span class="r-in"><span>    have_dyspnea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
+<span class="r-in"><span>    have_dyspnoea <span class="op">=</span> <span class="st">"yes"</span>,</span></span>
 <span class="r-in"><span>    chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span></span>
 <span class="r-in"><span>    output <span class="op">=</span> <span class="st">"percentage"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>

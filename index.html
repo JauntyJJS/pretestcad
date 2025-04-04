@@ -123,6 +123,11 @@
 <li><a href="https://doi.org/10.1007/s00059-020-04935-x" target="_blank" class="external-link">📘 Journal</a></li>
 </ul>
 </li>
+<li>2019 Reeh et. al. basic and clinical model
+<ul>
+<li><a href="https://doi.org/10.1093/eurheartj/ehy806" target="_blank" class="external-link">📘 Journal</a></li>
+</ul>
+</li>
 <li>2017 PROMISE Minimal-Risk Score
 <ul>
 <li><a href="https://doi.org/10.1001/jamacardio.2016.5501" target="_blank" class="external-link">📘 Journal</a></li>
@@ -156,7 +161,7 @@
 <span> age <span class="op">=</span> <span class="fl">30</span>,</span>
 <span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
 <span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
-<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_dyspnoea <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
@@ -170,7 +175,7 @@
 <span> age <span class="op">=</span> <span class="fl">30</span>,</span>
 <span> sex <span class="op">=</span> <span class="st">"female"</span>,</span>
 <span> chest_pain_type <span class="op">=</span> <span class="st">"no chest pain"</span>,</span>
-<span> have_dyspnea <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span> have_dyspnoea <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_family_history <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_smoking_history <span class="op">=</span> <span class="st">"no"</span>,</span>
 <span> have_dyslipidemia <span class="op">=</span> <span class="st">"no"</span>,</span>
@@ -184,13 +189,13 @@
 <code class="sourceCode R"><span><span class="va">patient_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span>
 <span>    <span class="op">~</span><span class="va">unique_id</span>,</span>
 <span>    <span class="op">~</span><span class="va">age</span>,     <span class="op">~</span><span class="va">sex</span>, </span>
-<span>    <span class="op">~</span><span class="va">chest_pain_type</span>, <span class="op">~</span><span class="va">have_dyspnea</span>, </span>
+<span>    <span class="op">~</span><span class="va">chest_pain_type</span>, <span class="op">~</span><span class="va">have_dyspnoea</span>, </span>
 <span>    <span class="op">~</span><span class="va">have_family_history</span>, <span class="op">~</span><span class="va">have_smoking_history</span>, <span class="op">~</span><span class="va">have_dyslipidemia</span>, <span class="op">~</span><span class="va">have_hypertension</span>, <span class="op">~</span><span class="va">have_diabetes</span>,</span>
-<span>    <span class="st">"45 year old male with typical chest pain, no dyspnea, hypertension and diabetes"</span>,</span>
+<span>    <span class="st">"45 year old male with typical chest pain, no dyspnoea, hypertension and diabetes"</span>,</span>
 <span>    <span class="fl">45</span>, <span class="st">"male"</span>, </span>
 <span>    <span class="st">"typical"</span>, <span class="st">"no"</span>,  </span>
 <span>    <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span>,</span>
-<span>    <span class="st">"70 year old female with no chest pain, dyspnea, have smoking history (past or current smoker) and dyslipidemia"</span>,</span>
+<span>    <span class="st">"70 year old female with no chest pain, dyspnoea, have smoking history (past or current smoker) and dyslipidemia"</span>,</span>
 <span>    <span class="fl">70</span>, <span class="st">"female"</span>, </span>
 <span>    <span class="st">"no chest pain"</span>, <span class="st">"yes"</span>,  </span>
 <span>    <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"no"</span></span>
@@ -203,7 +208,7 @@
 <span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
-<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnoea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnoea"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>, </span>
 <span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>, </span>
@@ -218,7 +223,7 @@
 <span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
-<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnoea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnoea"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>,</span>
@@ -233,7 +238,7 @@
 <span>          age <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"age"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          sex <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"sex"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          chest_pain_type <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"chest_pain_type"</span><span class="op">]</span><span class="op">]</span>,</span>
-<span>          have_dyspnea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnea"</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>          have_dyspnoea <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyspnoea"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_family_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_family_history"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_smoking_history <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_smoking_history"</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>          have_dyslipidemia <span class="op">=</span> <span class="va">.data</span><span class="op">[[</span><span class="st">"have_dyslipidemia"</span><span class="op">]</span><span class="op">]</span>,</span>
