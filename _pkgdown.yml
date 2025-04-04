@@ -24,6 +24,7 @@ reference:
       Functions giving PTP scores from the AHA/ACC Conference
     contents:
     - calculate_aha_2021_ptp
+    - calculate_aha_2012_tbl_9_ptp
   - title: CAD Consortium PTP Scores
     desc: >
       Functions giving PTP scores from the CAD Consortium cohort

@@ -62,7 +62,9 @@ pak::pak("JauntyJJS/pretestcad")
 *  2015 CONFIRM Risk Score 
    *  [📘 Journal](https://doi.org/10.1016/j.amjmed.2014.10.031){target="_blank"}
 *  2012 CAD Consortium 2 (CAD2) Basic, Clinical and Clinical with Coronary Calcium Score (CCS) PTP 
-   *  [📘 Journal](https://doi.org/10.1136/bmj.e3485 ){target="_blank"}
+   *  [📘 Journal](https://doi.org/10.1136/bmj.e3485){target="_blank"}
+*  2012 ACCF/AHA/ACP/AATS/PCNA/SCAI/STS Guidelines PTP Score
+   *  [📘 Journal](https://doi.org/10.1161/CIR.0b013e318277d6a0){target="_blank"}
    
 <a href="#top">Back to top</a>
 

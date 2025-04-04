@@ -62,6 +62,9 @@ pak::pak("JauntyJJS/pretestcad")
   Coronary Calcium Score (CCS) PTP
   - <a href="https://doi.org/10.1136/bmj.e3485" target="_blank">📘
     Journal</a>
+- 2012 ACCF/AHA/ACP/AATS/PCNA/SCAI/STS Guidelines PTP Score
+  - <a href="https://doi.org/10.1161/CIR.0b013e318277d6a0"
+    target="_blank">📘 Journal</a>
 
 <a href="#top">Back to top</a>
 

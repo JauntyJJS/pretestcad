@@ -115,66 +115,60 @@ calculate_esc_2019_ptp <- function(
   )
 
   ptp_percentage_group <- dplyr::case_when(
-    age_group == "30-39" & chest_pain_type == "typical"    & sex == "male"   ~ 3 ,
-    age_group == "30-39" & chest_pain_type == "typical"    & sex == "female" ~ 5 ,
-    age_group == "40-49" & chest_pain_type == "typical"    & sex == "male"   ~ 22,
-    age_group == "40-49" & chest_pain_type == "typical"    & sex == "female" ~ 10,
-    age_group == "50-59" & chest_pain_type == "typical"    & sex == "male"   ~ 32,
-    age_group == "50-59" & chest_pain_type == "typical"    & sex == "female" ~ 13,
-    age_group == "60-69" & chest_pain_type == "typical"    & sex == "male"   ~ 44,
-    age_group == "60-69" & chest_pain_type == "typical"    & sex == "female" ~ 16,
-    age_group == "70+"   & chest_pain_type == "typical"    & sex == "male"   ~ 52,
-    age_group == "70+"   & chest_pain_type == "typical"    & sex == "female" ~ 27,
-    age_group == "30-39" & chest_pain_type == "atypical"   & sex == "male"   ~ 4 ,
-    age_group == "30-39" & chest_pain_type == "atypical"   & sex == "female" ~ 3 ,
-    age_group == "40-49" & chest_pain_type == "atypical"   & sex == "male"   ~ 10,
-    age_group == "40-49" & chest_pain_type == "atypical"   & sex == "female" ~ 6 ,
-    age_group == "50-59" & chest_pain_type == "atypical"   & sex == "male"   ~ 17,
-    age_group == "50-59" & chest_pain_type == "atypical"   & sex == "female" ~ 6 ,
-    age_group == "60-69" & chest_pain_type == "atypical"   & sex == "male"   ~ 26,
-    age_group == "60-69" & chest_pain_type == "atypical"   & sex == "female" ~ 11,
-    age_group == "70+"   & chest_pain_type == "atypical"   & sex == "male"   ~ 34,
-    age_group == "70+"   & chest_pain_type == "atypical"   & sex == "female" ~ 19,
-    age_group == "30-39" & chest_pain_type == "nonanginal" & sex == "male"   ~ 1 ,
-    age_group == "30-39" & chest_pain_type == "nonanginal" & sex == "female" ~ 1 ,
-    age_group == "40-49" & chest_pain_type == "nonanginal" & sex == "male"   ~ 3 ,
-    age_group == "40-49" & chest_pain_type == "nonanginal" & sex == "female" ~ 2 ,
-    age_group == "50-59" & chest_pain_type == "nonanginal" & sex == "male"   ~ 11,
-    age_group == "50-59" & chest_pain_type == "nonanginal" & sex == "female" ~ 3 ,
-    age_group == "60-69" & chest_pain_type == "nonanginal" & sex == "male"   ~ 22,
-    age_group == "60-69" & chest_pain_type == "nonanginal" & sex == "female" ~ 6 ,
-    age_group == "70+"   & chest_pain_type == "nonanginal" & sex == "male"   ~ 24,
-    age_group == "70+"   & chest_pain_type == "nonanginal" & sex == "female" ~ 10,
-    age_group == "30-39" & have_only_dyspnea == "yes"      & sex == "male"   ~ 0 ,
-    age_group == "30-39" & have_only_dyspnea == "yes"      & sex == "female" ~ 3 ,
-    age_group == "40-49" & have_only_dyspnea == "yes"      & sex == "male"   ~ 12,
-    age_group == "40-49" & have_only_dyspnea == "yes"      & sex == "female" ~ 3 ,
-    age_group == "50-59" & have_only_dyspnea == "yes"      & sex == "male"   ~ 20,
-    age_group == "50-59" & have_only_dyspnea == "yes"      & sex == "female" ~ 9 ,
-    age_group == "60-69" & have_only_dyspnea == "yes"      & sex == "male"   ~ 27,
-    age_group == "60-69" & have_only_dyspnea == "yes"      & sex == "female" ~ 14,
-    age_group == "70+"   & have_only_dyspnea == "yes"      & sex == "male"   ~ 32,
-    age_group == "70+"   & have_only_dyspnea == "yes"      & sex == "female" ~ 12,
-    .default = NA
+    age_group == "30-39" & chest_pain_type == "typical"    & sex == "male"   ~ 3L ,
+    age_group == "30-39" & chest_pain_type == "typical"    & sex == "female" ~ 5L ,
+    age_group == "40-49" & chest_pain_type == "typical"    & sex == "male"   ~ 22L,
+    age_group == "40-49" & chest_pain_type == "typical"    & sex == "female" ~ 10L,
+    age_group == "50-59" & chest_pain_type == "typical"    & sex == "male"   ~ 32L,
+    age_group == "50-59" & chest_pain_type == "typical"    & sex == "female" ~ 13L,
+    age_group == "60-69" & chest_pain_type == "typical"    & sex == "male"   ~ 44L,
+    age_group == "60-69" & chest_pain_type == "typical"    & sex == "female" ~ 16L,
+    age_group == "70+"   & chest_pain_type == "typical"    & sex == "male"   ~ 52L,
+    age_group == "70+"   & chest_pain_type == "typical"    & sex == "female" ~ 27L,
+    age_group == "30-39" & chest_pain_type == "atypical"   & sex == "male"   ~ 4L ,
+    age_group == "30-39" & chest_pain_type == "atypical"   & sex == "female" ~ 3L ,
+    age_group == "40-49" & chest_pain_type == "atypical"   & sex == "male"   ~ 10L,
+    age_group == "40-49" & chest_pain_type == "atypical"   & sex == "female" ~ 6L ,
+    age_group == "50-59" & chest_pain_type == "atypical"   & sex == "male"   ~ 17L,
+    age_group == "50-59" & chest_pain_type == "atypical"   & sex == "female" ~ 6L ,
+    age_group == "60-69" & chest_pain_type == "atypical"   & sex == "male"   ~ 26L,
+    age_group == "60-69" & chest_pain_type == "atypical"   & sex == "female" ~ 11L,
+    age_group == "70+"   & chest_pain_type == "atypical"   & sex == "male"   ~ 34L,
+    age_group == "70+"   & chest_pain_type == "atypical"   & sex == "female" ~ 19L,
+    age_group == "30-39" & chest_pain_type == "nonanginal" & sex == "male"   ~ 1L ,
+    age_group == "30-39" & chest_pain_type == "nonanginal" & sex == "female" ~ 1L ,
+    age_group == "40-49" & chest_pain_type == "nonanginal" & sex == "male"   ~ 3L ,
+    age_group == "40-49" & chest_pain_type == "nonanginal" & sex == "female" ~ 2L ,
+    age_group == "50-59" & chest_pain_type == "nonanginal" & sex == "male"   ~ 11L,
+    age_group == "50-59" & chest_pain_type == "nonanginal" & sex == "female" ~ 3L ,
+    age_group == "60-69" & chest_pain_type == "nonanginal" & sex == "male"   ~ 22L,
+    age_group == "60-69" & chest_pain_type == "nonanginal" & sex == "female" ~ 6L ,
+    age_group == "70+"   & chest_pain_type == "nonanginal" & sex == "male"   ~ 24L,
+    age_group == "70+"   & chest_pain_type == "nonanginal" & sex == "female" ~ 10L,
+    age_group == "30-39" & have_only_dyspnea == "yes"      & sex == "male"   ~ 0L ,
+    age_group == "30-39" & have_only_dyspnea == "yes"      & sex == "female" ~ 3L ,
+    age_group == "40-49" & have_only_dyspnea == "yes"      & sex == "male"   ~ 12L,
+    age_group == "40-49" & have_only_dyspnea == "yes"      & sex == "female" ~ 3L ,
+    age_group == "50-59" & have_only_dyspnea == "yes"      & sex == "male"   ~ 20L,
+    age_group == "50-59" & have_only_dyspnea == "yes"      & sex == "female" ~ 9L ,
+    age_group == "60-69" & have_only_dyspnea == "yes"      & sex == "male"   ~ 27L,
+    age_group == "60-69" & have_only_dyspnea == "yes"      & sex == "female" ~ 14L,
+    age_group == "70+"   & have_only_dyspnea == "yes"      & sex == "male"   ~ 32L,
+    age_group == "70+"   & have_only_dyspnea == "yes"      & sex == "female" ~ 12L,
+    .default = NA_integer_
   )
 
-  if (isTRUE(output %in% c("numeric", "grouping"))) {
-    ptp_percentage_group <- ptp_percentage_group |>
-      as.integer() |>
-      # Symmetric rounding to the nearest integer
-      round_to_nearest_digit()
+  if (isTRUE(output == "numeric")) {
+    return(ptp_percentage_group)
+  }
 
-    if (isTRUE(output == "numeric")) {
-      return(ptp_percentage_group)
-    }
-
+  if (isTRUE(output == "grouping")) {
     ptp_percentage_group <- dplyr::case_when(
       ptp_percentage_group <= 5 ~ "low",
       dplyr::between(ptp_percentage_group, 6, 15) ~ "intermediate",
       ptp_percentage_group > 15 ~ "high"
 
     )
-
     return(ptp_percentage_group)
   }
 
