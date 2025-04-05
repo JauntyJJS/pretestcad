@@ -19,6 +19,7 @@ reference:
     - calculate_esc_2024_fig_4_ptp_simplfied
     - calculate_esc_2024_fig_4_ptp
     - calculate_esc_2019_ptp
+    - calculate_esc_2013_ptp
   - title: AHA/ACC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the AHA/ACC Conference

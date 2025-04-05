@@ -15,7 +15,7 @@
 #'   \item female
 #'   \item male
 #' }
-#' @param chest_pain_type Input characters (no chest pain, typical, atypical, nonanginal)
+#' @param chest_pain_type Input characters (typical, atypical, nonanginal)
 #' to indicate the chest pain characteristics of the patient.
 #' \itemize{
 #'   \item typical stands for the patient having typical chest pain.
@@ -69,7 +69,7 @@ calculate_aha_2012_tbl_9_ptp <- function(
     arg_match0_allow_na(values = c("female","male"))
 
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("no chest pain","typical", "atypical", "nonanginal"))
+    arg_match0_allow_na(values = c("typical", "atypical", "nonanginal"))
 
   output <- output |>
     rlang::arg_match()
