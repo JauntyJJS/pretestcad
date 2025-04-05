@@ -10,16 +10,6 @@ template:
 
 
 reference:
-  - title: ESC Conference PTP Scores
-    desc: >
-      Functions giving PTP scores from the ESC Conference
-    contents:
-    - calculate_esc_2024_symptom_score
-    - calculate_esc_2024_num_of_rf
-    - calculate_esc_2024_fig_4_ptp_simplfied
-    - calculate_esc_2024_fig_4_ptp
-    - calculate_esc_2019_ptp
-    - calculate_esc_2013_ptp
   - title: AHA/ACC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the AHA/ACC Conference
@@ -39,6 +29,21 @@ reference:
     contents:
     - calculate_confirm_2015_num_of_rf
     - calculate_confirm_2015_ptp
+  - title: 1979 Diamond-Forrester PTP Scores
+    desc: >
+      Functions giving PTP scores from the 1979 Diamond-Forrester paper
+    contents:
+    - calculate_diamond_forrester_1979_ptp
+  - title: ESC Conference PTP Scores
+    desc: >
+      Functions giving PTP scores from the ESC Conference
+    contents:
+    - calculate_esc_2024_symptom_score
+    - calculate_esc_2024_num_of_rf
+    - calculate_esc_2024_fig_4_ptp_simplfied
+    - calculate_esc_2024_fig_4_ptp
+    - calculate_esc_2019_ptp
+    - calculate_esc_2013_ptp
   - title: PROMISE Risk Scores
     desc: >
       Functions giving PTP scores from the PROMISE cohort
