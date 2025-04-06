@@ -23,6 +23,7 @@ reference:
     - calculate_cad2_2012_basic_ptp
     - calculate_cad2_2012_clinical_ptp
     - calculate_cad2_2012_clinical_ccs_ptp
+    - calculate_cad1_2011_ptp
   - title: CONFIRM PTP Scores
     desc: >
       Functions giving PTP scores from the CONFIRM registry

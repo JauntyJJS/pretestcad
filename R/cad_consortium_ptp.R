@@ -1,3 +1,72 @@
+#' @title Calculate 2011 CAD1 Basic PTP for obstructive CAD
+#' @description This function returns a patient's
+#' pre-test probability (PTP) of obstructive
+#' coronary artery disease based on the
+#' 2011 CAD Consortium 1 (CAD1) basic model.
+#' @inheritParams calculate_lah_2022_extended_ptp
+#' @return A numeric value representing the patient's PTP for obstructive CAD
+#' based on the 2011 CAD Consortium 1 (CAD1) basic model.
+#' @details The predictive model is based on
+#' patients from 14 hospitals in Europe and the United States.
+#'
+#' This model is also called the updated Diamond-Forrester model.
+#'
+#' @examples
+#' # 40 year old female with typical chest pain
+#' calculate_cad1_2011_ptp(
+#'     age = 40,
+#'     sex = "female",
+#'     chest_pain_type = "typical"
+#' )
+#' @rdname calculate_cad1_2011_ptp
+#' @export
+calculate_cad1_2011_ptp <- function(
+    age,
+    sex,
+    chest_pain_type
+)
+{
+
+  check_if_positive(x = age, allow_na = TRUE)
+
+  sex <- sex |>
+    arg_match0_allow_na(values = c("female","male"))
+
+  sex <- dplyr::case_when(
+    sex == "female" ~ 0L,
+    sex == "male" ~ 1L,
+    .default = NA_integer_
+  )
+
+  chest_pain_type <- chest_pain_type |>
+    arg_match0_allow_na(values = c("typical", "atypical", "nonanginal"))
+
+  have_atypical_chest_pain <- dplyr::case_when(
+    chest_pain_type %in% c("typical", "nonanginal") ~ 0L,
+    chest_pain_type == "atypical" ~ 1L,
+    .default = NA_integer_
+  )
+
+  have_typical_chest_pain <- dplyr::case_when(
+    chest_pain_type %in% c("atypical", "nonanginal") ~ 0L,
+    chest_pain_type == "typical" ~ 1L,
+    .default = NA
+  )
+
+  cad1_2011_ptp <- 1 /
+    (1 + exp(-(-4.37 +
+              (0.04 * age) +
+              (1.34 * sex) +
+              (0.64 * have_atypical_chest_pain) +
+              (1.91 * have_typical_chest_pain)
+    )
+    )
+    )
+
+  return(cad1_2011_ptp)
+
+}
+
 #' @title Calculate 2012 CAD2 Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive

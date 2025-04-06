@@ -1,9 +1,102 @@
+test_that("calculate_cad1_2011_ptp works on typical chest pain", {
+
+  typical_medical_data <- tibble::tribble(
+    ~unique_id,                          ~age, ~sex    , ~chest_pain_type,
+    "30 male with typical chest pain",     30, "male"  ,        "typical",
+    "39 female with typical chest pain",   39, "female",        "typical",
+    "70 male with typical chest pain",     70, "male"  ,        "typical",
+    "79 female with typical chest pain",   79, "female",        "typical"
+  )
+
+  typical_medical_data <- typical_medical_data |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]]
+        ),
+        .f = pretestcad::calculate_cad1_2011_ptp
+      )
+    )
+
+  testthat::expect_equal(
+    typical_medical_data[["ptp_numeric"]],
+    c(0.5199893, 0.2890505,
+      0.8429045, 0.6681878),
+    tolerance = 1e-5
+  )
+
+})
+
+test_that("calculate_cad1_2011_ptp works on atypical chest pain", {
+
+  atypical_medical_data <- tibble::tribble(
+    ~unique_id,                          ~age, ~sex    , ~chest_pain_type,
+    "40 male with atypical chest pain",     40,"male"  ,       "atypical",
+    "49 female with atypical chest pain",   49,"female",       "atypical",
+    "80 male with atypical chest pain",     80,"male"  ,       "atypical",
+    "89 female with atypical chest pain",   89,"female",       "atypical"
+  )
+
+  atypical_medical_data <- atypical_medical_data |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]]
+        ),
+        .f = pretestcad::calculate_cad1_2011_ptp
+      )
+    )
+
+  testthat::expect_equal(
+    atypical_medical_data[["ptp_numeric"]],
+    c(0.3121687, 0.1455423,
+      0.6921095, 0.4576021),
+    tolerance = 1e-5
+  )
+
+})
+
+test_that("calculate_cad1_2011_ptp works on non-anginal chest pain", {
+
+  non_anginal_medical_data <- tibble::tribble(
+    ~unique_id,                              ~age, ~sex    , ~chest_pain_type,
+    "50 male with non-anginal chest pain",     50, "male"  ,     "nonanginal",
+    "59 female with non-anginal chest pain",   59, "female",     "nonanginal",
+    "90 male with non-anginal chest pain",     90, "male"  ,     "nonanginal",
+    "99 female with non-anginal chest pain",   99, "female",     "nonanginal"
+  )
+
+  non_anginal_medical_data <- non_anginal_medical_data |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]]
+        ),
+        .f = pretestcad::calculate_cad1_2011_ptp
+      )
+    )
+
+  testthat::expect_equal(
+    non_anginal_medical_data[["ptp_numeric"]],
+    c(0.2630841, 0.1181570,
+      0.6387632, 0.3989121),
+    tolerance = 1e-5
+  )
+
+})
+
 test_that("calculate_cad2_2012_basic_ptp works on typical chest pain", {
 
   typical_medical_data <- tibble::tribble(
     ~unique_id,                          ~age, ~sex    , ~chest_pain_type,
     "30 male with typical chest pain",     30, "male"  ,        "typical",
-    "39 female with typical chest pain",   35, "female",        "typical",
+    "39 female with typical chest pain",   39, "female",        "typical",
     "70 male with typical chest pain",     70, "male"  ,        "typical",
     "79 female with typical chest pain",   79, "female",        "typical"
   )
@@ -22,7 +115,7 @@ test_that("calculate_cad2_2012_basic_ptp works on typical chest pain", {
 
   testthat::expect_equal(
     typical_medical_data[["ptp_numeric"]],
-    c(0.15525053, 0.06082505,
+    c(0.15525053, 0.07691645,
       0.69550849, 0.50874911),
     tolerance = 1e-5
   )
@@ -64,8 +157,8 @@ test_that("calculate_cad2_2012_basic_ptp works on non-anginal chest pain", {
 
   non_anginal_medical_data <- tibble::tribble(
     ~unique_id,                              ~age, ~sex    , ~chest_pain_type,
-    "30 male with non-anginal chest pain",     30, "male"  ,     "nonanginal",
-    "39 female with non-anginal chest pain",   39, "female",     "nonanginal",
+    "50 male with non-anginal chest pain",     50, "male"  ,     "nonanginal",
+    "59 female with non-anginal chest pain",   59, "female",     "nonanginal",
     "90 male with non-anginal chest pain",     90, "male"  ,     "nonanginal",
     "99 female with non-anginal chest pain",   99, "female",     "nonanginal"
   )
@@ -84,7 +177,7 @@ test_that("calculate_cad2_2012_basic_ptp works on non-anginal chest pain", {
 
   testthat::expect_equal(
     non_anginal_medical_data[["ptp_numeric"]],
-    c(0.02486778, 0.01143020,
+    c(0.08248897, 0.03916572,
       0.52772154, 0.33626130),
     tolerance = 1e-5
   )

@@ -68,7 +68,10 @@ pak::pak("JauntyJJS/pretestcad")
 - 2012 ACCF/AHA/ACP/AATS/PCNA/SCAI/STS Guidelines PTP Score
   - <a href="https://doi.org/10.1161/CIR.0b013e318277d6a0"
     target="_blank">📘 Journal</a>
-- 1979 Diamond-Forrester PTP Score
+- 2011 CAD Consortium 1 (CAD1) PTP (Updated Diamond-Forrester PTP Score)
+  - <a href="https://doi.org/10.1093/eurheartj/ehr014" target="_blank">📘
+    Journal</a>
+- 1979 Diamond-Forrester PTP
   - <a href="https://doi.org/10.1056/NEJM197906143002402" target="_blank">📘
     Journal</a>
 
