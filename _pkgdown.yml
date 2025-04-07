@@ -63,6 +63,12 @@ reference:
     - calculate_winther_2020_basic_ptp
     - calculate_winther_2020_rf_cl_ptp
     - calculate_winther_2020_cacs_cl_ptp
+  - title: PRECISE PTP scores
+    desc: >
+      Functions giving PTP scores from the 2021 Wang et. al. paper
+    contents:
+    - calculate_precise_2021_simple_ptp
+    - calculate_precise_2021_clinical_ptp
   - title: LAH PTP scores
     desc: >
       Functions giving PTP scores from the 2022 Baskaran et. al. paper

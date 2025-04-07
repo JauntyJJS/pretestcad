@@ -49,6 +49,8 @@ pak::pak("JauntyJJS/pretestcad")
    *  [📘 Journal](https://doi.org/10.1093/eurheartj/ehae177){target="_blank"}
 *  2022 Local Assessment of the Heart (LAH) clinical and extended model 
    *  [📘 Journal](https://doi.org/10.1161/JAHA.121.022697){target="_blank"}
+*  2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain (PRECISE) simple and clinical model 
+   *  [📘 Journal](https://doi.org/10.1007/s11606-021-06701-z){target="_blank"}
 *  2021 AHA/ACC Guidelines PTP Score
    *  [📘 Journal](https://doi.org/10.1161/CIR.0000000000001029){target="_blank"}
 *  2020 Winther et. al. Basic, RF-CL and CACS-CL PTP 

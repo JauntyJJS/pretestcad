@@ -40,6 +40,10 @@ pak::pak("JauntyJJS/pretestcad")
 - 2022 Local Assessment of the Heart (LAH) clinical and extended model
   - <a href="https://doi.org/10.1161/JAHA.121.022697" target="_blank">📘
     Journal</a>
+- 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
+  (PRECISE) simple and clinical model
+  - <a href="https://doi.org/10.1007/s11606-021-06701-z" target="_blank">📘
+    Journal</a>
 - 2021 AHA/ACC Guidelines PTP Score
   - <a href="https://doi.org/10.1161/CIR.0000000000001029"
     target="_blank">📘 Journal</a>
