@@ -75,6 +75,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2011 CAD Consortium 1 (CAD1) PTP (Updated Diamond-Forrester PTP Score)
   - <a href="https://doi.org/10.1093/eurheartj/ehr014" target="_blank">📘
     Journal</a>
+- 1993 Duke Clinical Score for Significant CAD
+  - <a href="https://doi.org/10.7326/0003-4819-118-2-199301150-00001"
+    target="_blank">📘 Journal</a>
 - 1979 Diamond-Forrester PTP
   - <a href="https://doi.org/10.1056/NEJM197906143002402" target="_blank">📘
     Journal</a>

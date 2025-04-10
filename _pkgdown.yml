@@ -35,6 +35,11 @@ reference:
       Functions giving PTP scores from the 1979 Diamond-Forrester paper
     contents:
     - calculate_diamond_forrester_1979_ptp
+  - title: 1993 Duke Clinical Scores
+    desc: >
+      Functions giving PTP scores from the 1993 Pryor et. al. paper
+    contents:
+    - calculate_dcs_1993_sig_cad_ptp
   - title: ESC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the ESC Conference
