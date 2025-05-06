@@ -44,6 +44,7 @@ reference:
     - calculate_dcs_1993_pain_index
     - calculate_dcs_1993_vascular_disease_index
     - calculate_dcs_1993_severe_cad_ptp
+    - calculate_dcs_1993_lm_cad_ptp
   - title: ESC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the ESC Conference

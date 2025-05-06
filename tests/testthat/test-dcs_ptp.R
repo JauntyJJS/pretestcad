@@ -28,7 +28,7 @@ test_that("calculate_dcs_1993_risk_factor_index works", {
       )
     )
 
-  medical_data_with_na <- medical_data_with_na |>
+  medical_data_with_na_pass <- medical_data_with_na |>
     dplyr::mutate(
       risk_factor_index = purrr::pmap_dbl(
         .l = list(
@@ -60,8 +60,8 @@ test_that("calculate_dcs_1993_risk_factor_index works", {
   )
 
   testthat::expect_equal(
-    medical_data_with_na[["risk_factor_index"]],
-    medical_data_with_na[["expected_score"]]
+    medical_data_with_na_pass[["risk_factor_index"]],
+    medical_data_with_na_pass[["expected_score"]]
   )
 
   testthat::expect_equal(
@@ -110,7 +110,7 @@ test_that("calculate_dcs_1993_pain_index works", {
       )
     )
 
-  medical_data_with_na <- medical_data_with_na |>
+  medical_data_with_na_pass <- medical_data_with_na |>
     dplyr::mutate(
       pain_index = purrr::pmap_dbl(
         .l = list(
@@ -150,8 +150,8 @@ test_that("calculate_dcs_1993_pain_index works", {
   )
 
   testthat::expect_equal(
-    medical_data_with_na[["pain_index"]],
-    medical_data_with_na[["expected_score"]]
+    medical_data_with_na_pass[["pain_index"]],
+    medical_data_with_na_pass[["expected_score"]]
   )
 
   testthat::expect_equal(
@@ -191,7 +191,7 @@ test_that("calculate_dcs_1993_vascular_disease_index works", {
       )
     )
 
-  medical_data_with_na <- medical_data_with_na |>
+  medical_data_with_na_pass <- medical_data_with_na |>
     dplyr::mutate(
       vascular_disease_index = purrr::pmap_dbl(
         .l = list(
@@ -223,8 +223,8 @@ test_that("calculate_dcs_1993_vascular_disease_index works", {
   )
 
   testthat::expect_equal(
-    medical_data_with_na[["vascular_disease_index"]],
-    medical_data_with_na[["expected_score"]]
+    medical_data_with_na_pass[["vascular_disease_index"]],
+    medical_data_with_na_pass[["expected_score"]]
   )
 
   testthat::expect_equal(
@@ -319,11 +319,11 @@ test_that("calculate_dcs_1993_severe_cad_ptp works", {
     # She has no Q waves and ST-T changes on ECG.
     40, "female", "atypical"  , "no", "no", "no", "no", "no", "yes", "yes", "yes", "no", "no", 0, 0.25,
     # 50 year old male with typical chest pain for four months,
-    # She has progressive angina and nocturnal angina.
+    # He has progressive angina and nocturnal angina.
     # Angina pain lasted at most three times a week.
-    # She has peripheral vascular and cerebrovascular disease.
-    # She has no hypertension, dyslipidemia and not diabetic.
-    # She has no Q waves and have ST-T changes on ECG.
+    # He has peripheral vascular and cerebrovascular disease.
+    # He has no hypertension, dyslipidemia and not diabetic.
+    # He has no Q waves and have ST-T changes on ECG.
     50, "male"  , "typical"  , "yes", "yes", "yes", "yes", "yes", "no", "no", "no", "no", "yes", 3, 1/3,
     # 60 year old female with typical chest pain for two years,
     # She has progressive angina and nocturnal angina.
@@ -362,6 +362,103 @@ test_that("calculate_dcs_1993_severe_cad_ptp works", {
     medical_data[["ptp_numeric"]],
     c(0.102098, 0.1431206, 0.3870653, 0.4146034),
     tolerance = 1e-5
+  )
+
+})
+
+test_that("calculate_dcs_1993_lm_cad_ptp works", {
+
+  # Verified with https://www.medcentral.com/calculators/cardiology/coronary-artery-disease-risk-clinical-assessment-duke-study
+
+  medical_data <- tibble::tribble(
+    ~age, ~sex, ~have_typical_chest_pain,
+    ~have_peripheral_vascular_disease, ~have_cerebrovascular_disease, ~have_carotid_bruits,
+    ~duration_of_cad_symptoms_year,
+    # 40 year old male with non anginal chest pain for one year,
+    # He has no peripheral vascular and cerebrovascular disease or carotid bruits.
+    40, "male"  , "no", "no", "no", "no", 1,
+    # 40 year old female with atypical chest pain for three months,
+    # She has peripheral vascular and cerebrovascular disease and carotid bruits.
+    40, "female", "no", "yes", "yes", "yes", 0.25,
+    # 50 year old male with typical chest pain for four months,
+    # He has peripheral vascular and cerebrovascular disease and carotid bruits.
+    50, "male"  , "yes", "yes", "yes", "yes", 1/3
+  )
+
+  medical_data_with_na <- tibble::tribble(
+    ~age, ~sex, ~have_typical_chest_pain,
+    ~have_peripheral_vascular_disease, ~have_cerebrovascular_disease, ~have_carotid_bruits,
+    ~duration_of_cad_symptoms_year,
+    # 50 year old male with typical chest pain for one year,
+    # He has peripheral vascular and cerebrovascular disease and carotid bruits.
+    70, "male"  , "yes", "yes", "yes", "yes", 1
+  )
+
+  medical_data <- medical_data |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          have_typical_chest_pain = .data[["have_typical_chest_pain"]],
+          have_peripheral_vascular_disease = .data[["have_peripheral_vascular_disease"]],
+          have_cerebrovascular_disease = .data[["have_cerebrovascular_disease"]],
+          have_carotid_bruits = .data[["have_carotid_bruits"]],
+          duration_of_cad_symptoms_year = .data[["duration_of_cad_symptoms_year"]]
+        ),
+        .f = pretestcad::calculate_dcs_1993_lm_cad_ptp
+      )
+    )
+
+  medical_data_with_na_pass <- medical_data_with_na |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          have_typical_chest_pain = .data[["have_typical_chest_pain"]],
+          have_peripheral_vascular_disease = .data[["have_peripheral_vascular_disease"]],
+          have_cerebrovascular_disease = .data[["have_cerebrovascular_disease"]],
+          have_carotid_bruits = .data[["have_carotid_bruits"]],
+          duration_of_cad_symptoms_year = .data[["duration_of_cad_symptoms_year"]]
+        ),
+        .f = pretestcad::calculate_dcs_1993_lm_cad_ptp,
+        max_age = 80
+      )
+    )
+
+  medical_data_with_na_fail <- medical_data_with_na |>
+    dplyr::mutate(
+      ptp_numeric = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          have_typical_chest_pain = .data[["have_typical_chest_pain"]],
+          have_peripheral_vascular_disease = .data[["have_peripheral_vascular_disease"]],
+          have_cerebrovascular_disease = .data[["have_cerebrovascular_disease"]],
+          have_carotid_bruits = .data[["have_carotid_bruits"]],
+          duration_of_cad_symptoms_year = .data[["duration_of_cad_symptoms_year"]]
+        ),
+        .f = pretestcad::calculate_dcs_1993_lm_cad_ptp,
+        max_age = 65
+      )
+    )
+
+  testthat::expect_equal(
+    medical_data[["ptp_numeric"]],
+    c(0.009249665, 0.027755472, 0.204291150),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    medical_data_with_na_pass[["ptp_numeric"]],
+    c(0.4199996),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    all(is.na(medical_data_with_na_fail[["ptp_numeric"]])),
+    TRUE
   )
 
 })

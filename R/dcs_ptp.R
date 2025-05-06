@@ -762,3 +762,119 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 
   return(dcs_1993_severe_cad_ptp)
 }
+
+#' @title Calculate 1993 Duke Clinical Score for Left Main Disease
+#' @description This function returns a patient's
+#' pre-test probability (PTP) of severe (>75\% luminal diameter narrowing
+#' of the left main coronary artery)
+#' coronary artery disease based on the
+#' 1993 Duke Clinical Score.
+#' @inheritParams calculate_dcs_1993_vascular_disease_index
+#' @param age Input integer value to indicate the age of the patient.
+#' @param sex Input characters (female, male) to indicate the sex of the patient.
+#' \itemize{
+#'   \item female
+#'   \item male
+#' }
+#' @param have_typical_chest_pain Input characters (no, yes) to indicate if the patient
+#' has typical chest pain.
+#' \itemize{
+#'   \item no stands for the patient not having typical chest pain.
+#'   \item yes stands for the patient having typical chest pain.
+#' }
+#' @param duration_of_cad_symptoms_year Input integer to indicate the duration of
+#' coronary artery disease symptoms in years.
+#' @param max_na_vascular_disease_index Input integer 0 to 3 to indicate the maximum number of
+#' missing disease history to tolerate before outputting an \code{NA}.
+#' Default: 0
+#' @param max_age Input positive integer to
+#' indicate the maximum age to tolerate before outputting an \code{NA}.
+#' In the Duke Clinical Score 1993 paper, the maximum value is set as 65.
+#' Default: 65
+#' @return A numeric value representing the patient's PTP for left main disease
+#' (>75\% luminal diameter narrowing of the left main coronary artery)
+#' based on the 1993 Duke Clinical Score.
+#' @details The predictive model is based on
+#' patients referred for cardiac catheterisation between 1969 and 1983.
+#'
+#' @examples
+#' # 40 year old female with typical chest pain for one year,
+#' # She has peripheral vascular and cerebrovascular disease.
+#'
+#' calculate_dcs_1993_lm_cad_ptp(
+#'     age = 40,
+#'     sex = "female",
+#'     have_typical_chest_pain = "yes",
+#'     have_peripheral_vascular_disease = "yes",
+#'     have_cerebrovascular_disease = "yes",
+#'     have_carotid_bruits = "no",
+#'     duration_of_cad_symptoms_year = 1,
+#' )
+#'
+#' @rdname calculate_dcs_1993_lm_cad_ptp
+#' @export
+calculate_dcs_1993_lm_cad_ptp <- function(
+    age,
+    sex,
+    have_typical_chest_pain,
+    have_peripheral_vascular_disease,
+    have_cerebrovascular_disease,
+    have_carotid_bruits,
+    duration_of_cad_symptoms_year,
+    max_na_vascular_disease_index = 0,
+    max_age = 65
+) {
+
+  check_if_positive(x = age, allow_na = TRUE)
+  check_if_non_negative(x = duration_of_cad_symptoms_year, allow_na = TRUE)
+
+  log_transformed_duration_of_cad_symptoms_year <- log10(
+    duration_of_cad_symptoms_year + 1
+  )
+
+  sex <- sex |>
+    arg_match0_allow_na(values = c("female","male"))
+
+  sex <- dplyr::case_when(
+    sex == "female" ~ 1L,
+    sex == "male" ~ 0L,
+    .default = NA_integer_
+  )
+
+  have_typical_chest_pain <- have_typical_chest_pain |>
+    arg_match0_allow_na(values = c("no","yes"))
+
+  have_typical_chest_pain <- dplyr::case_when(
+    have_typical_chest_pain == "no" ~ 0L,
+    have_typical_chest_pain == "yes" ~ 1L,
+    .default = NA_integer_
+  )
+
+  vascular_disease_index <- calculate_dcs_1993_vascular_disease_index(
+    have_peripheral_vascular_disease = have_peripheral_vascular_disease,
+    have_cerebrovascular_disease = have_cerebrovascular_disease,
+    have_carotid_bruits = have_carotid_bruits,
+    max_na = max_na_vascular_disease_index
+  )
+
+  if (!is.na(max_age)) {
+    if (isTRUE(age > max_age)) {
+      return(NA)
+    }
+  }
+
+  dcs_1993_lm_cad_ptp <- 1 /
+    (1 + exp(-(-6.7271 +
+              ( 1.1252 * have_typical_chest_pain) +
+              ( 0.0483 * age) +
+              (-0.5770 * sex) +
+              ( 0.5923 * vascular_disease_index) +
+              ( 0.4027 * log_transformed_duration_of_cad_symptoms_year)
+
+    )
+    )
+    )
+
+  return(dcs_1993_lm_cad_ptp)
+
+}
