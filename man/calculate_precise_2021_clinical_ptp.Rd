@@ -41,17 +41,17 @@ has chest pain radiating to the neck.
 }}
 
 \item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-only has diabetes.
+has diabetes.
 \itemize{
   \item no stands for not having diabetes.
   \item yes stands for having diabetes.
 }}
 
 \item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-only has hypertension.
+has hypertension.
 \itemize{
   \item no stands for not having hypertension.
-  \item yes stands for having a hypertension.
+  \item yes stands for having hypertension.
 }}
 
 \item{smoking_history_type}{Input characters (current, past, none) to indicate

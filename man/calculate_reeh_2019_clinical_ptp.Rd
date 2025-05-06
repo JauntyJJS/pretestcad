@@ -32,21 +32,21 @@ to indicate the symptom characteristics of the patient.
 }}
 
 \item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-only has dyslipidemia.
+has dyslipidemia.
 \itemize{
   \item no stands for not having dyslipidemia.
-  \item yes stands for having a dyslipidemia.
+  \item yes stands for having dyslipidemia.
 }}
 
 \item{have_family_history}{Input characters (no, yes) to indicate if the patient
-only has a family history of CAD.
+has a family history of CAD.
 \itemize{
   \item no stands for not having a family history of CAD.
   \item yes stands for having a family history of CAD.
 }}
 
 \item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-only has diabetes.
+has diabetes.
 \itemize{
   \item no stands for not having diabetes.
   \item yes stands for having diabetes.

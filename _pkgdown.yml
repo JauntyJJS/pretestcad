@@ -40,6 +40,10 @@ reference:
       Functions giving PTP scores from the 1993 Pryor et. al. paper
     contents:
     - calculate_dcs_1993_sig_cad_ptp
+    - calculate_dcs_1993_risk_factor_index
+    - calculate_dcs_1993_pain_index
+    - calculate_dcs_1993_vascular_disease_index
+    - calculate_dcs_1993_severe_cad_ptp
   - title: ESC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the ESC Conference

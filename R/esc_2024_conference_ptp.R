@@ -75,31 +75,31 @@ calculate_esc_2024_symptom_score <- function(
 #' probability of coronary artery disease (CAD) based on the
 #' ESC 2024 guidelines.
 #' @param have_family_history Input characters (no, yes) to indicate if the patient
-#' only has a family history of CAD.
+#' has a family history of CAD.
 #' \itemize{
 #'   \item no stands for not having a family history of CAD.
 #'   \item yes stands for having a family history of CAD.
 #' }
 #' @param have_smoking_history Input characters (no, yes) to indicate if the patient
-#' only has a smoking history (current or past smoker).
+#' has a smoking history (current or past smoker).
 #' \itemize{
 #'   \item no stands for not having a smoking history (non-smoker).
 #'   \item yes stands for having a smoking history (current or past smoker).
 #' }
 #' @param have_dyslipidemia Input characters (no, yes) to indicate if the patient
-#' only has dyslipidemia.
+#' has dyslipidemia.
 #' \itemize{
 #'   \item no stands for not having dyslipidemia.
-#'   \item yes stands for having a dyslipidemia.
+#'   \item yes stands for having dyslipidemia.
 #' }
 #' @param have_hypertension Input characters (no, yes) to indicate if the patient
-#' only has hypertension.
+#' has hypertension.
 #' \itemize{
 #'   \item no stands for not having hypertension.
-#'   \item yes stands for having a hypertension.
+#'   \item yes stands for having hypertension.
 #' }
 #' @param have_diabetes Input characters (no, yes) to indicate if the patient
-#' only has diabetes.
+#' has diabetes.
 #' \itemize{
 #'   \item no stands for not having diabetes.
 #'   \item yes stands for having diabetes.
@@ -109,7 +109,7 @@ calculate_esc_2024_symptom_score <- function(
 #' Default: 0
 #' @return An integer indicating the number of risk factors the patient has.
 #' It can also be \code{NA} if the number of missing risk factors exceeds the \code{max_na}
-#' input value
+#' input value.
 #' @examples
 #' calculate_esc_2024_num_of_rf(
 #'   have_family_history = "yes",
