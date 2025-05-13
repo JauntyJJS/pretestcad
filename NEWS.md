@@ -1,6 +1,6 @@
 # pretestcad 1.0.1
 
-* Resolve invalid url in README.md.
+* Resolve invalid URL in `README.md` file.
 
 # pretestcad 1.0.0
 
