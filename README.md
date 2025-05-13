@@ -14,6 +14,12 @@ coverage](https://codecov.io/gh/JauntyJJS/pretestcad/graph/badge.svg?token=lpJSg
 R package used to calculate different **P**re**T**est **P**robability
 (PTP) scores for obstructive **C**oronary **A**rtery **D**isease (CAD).
 
+As diagnosis of CAD involves a costly and invasive coronary angiography
+procedure for patients, having a reliable PTP for CAD helps doctors to
+make better decisions during patient management. This ensures high risk
+patients can be diagnosed and treated early for CAD while avoiding
+unnecessary testing for low-risk patients.
+
 ## Table of Content
 
 - [:arrow_down: Installation](#arrow_down-installation)
@@ -75,7 +81,7 @@ pak::pak("JauntyJJS/pretestcad")
 - 2011 CAD Consortium 1 (CAD1) PTP (Updated Diamond-Forrester PTP Score)
   - <a href="https://doi.org/10.1093/eurheartj/ehr014" target="_blank">📘
     Journal</a>
-- 1993 Duke Clinical Score for Significant CAD
+- 1993 Duke Clinical Score for Significant and Severe CAD
   - <a href="https://doi.org/10.7326/0003-4819-118-2-199301150-00001"
     target="_blank">📘 Journal</a>
 - 1979 Diamond-Forrester PTP

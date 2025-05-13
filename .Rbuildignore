@@ -10,3 +10,4 @@
 ^\.lintr$
 ^codecov\.yml$
 ^README\.qmd$
+^cran-comments\.md$

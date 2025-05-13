@@ -1,8 +1,8 @@
-pandoc: '3.2'
-pkgdown: 2.1.1
+pandoc: '3.4'
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-05-06T07:44Z
+last_built: 2025-05-13T04:42Z
 urls:
   reference: https://jauntyjjs.github.io/pretestcad/reference
   article: https://jauntyjjs.github.io/pretestcad/articles

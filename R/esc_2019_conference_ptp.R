@@ -44,17 +44,9 @@
 #' @details The predictive model used to create the guidelines are based on
 #' patients from European countries with low cardiovascular disease (CVD) risk.
 #'
-#' The ESC 2019 PTP for CAD table is as follows:
-#'
-#' \if{html}{\figure{esc_2019.jpg}{alt="ESC 2019 pre-test probabilities of obstructive coronary artery disease table."}}
-#' \emph{ESC 2019 pre-test probabilities of obstructive coronary artery disease (CAD) table taken from}
-#' \href{https://doi.org/10.1007/s00059-020-04935-x}{\emph{Juhani Knuuti et. al.}} from
-#' \href{https://link.springer.com/}{\emph{SpringerLink}} \emph{is licensed under}
-#' \href{http://creativecommons.org/licenses/by/4.0}{\emph{CC BY 4.0}}.
-#'
 #' If the patient has both dyspnoea and a particular
 #' chest pain type (typical, atypical, nonanginal),
-#' The chest pain type will take precedence over dyspnoea
+#' The chest pain type will take precedence over dyspnoea.
 #'
 #' @examples
 #' # 35 year old female with typical chest pain

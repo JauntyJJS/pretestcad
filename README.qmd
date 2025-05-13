@@ -21,7 +21,9 @@ library(pretestcad)
 [![Codecov test coverage](https://codecov.io/gh/JauntyJJS/pretestcad/graph/badge.svg?token=lpJSgliKK3)](https://codecov.io/gh/JauntyJJS/pretestcad?branch=main)
 <!-- badges: end -->
 
-R package used to calculate different **P**re**T**est **P**robability (PTP) scores for obstructive **C**oronary **A**rtery **D**isease (CAD).
+R package used to calculate different **P**re**T**est **P**robability (PTP) scores for obstructive **C**oronary **A**rtery **D**isease (CAD). 
+
+As diagnosis of CAD involves a costly and invasive coronary angiography procedure for patients, having a reliable PTP for CAD helps doctors to make better decisions during patient management. This ensures high risk patients can be diagnosed and treated early for CAD while avoiding unnecessary testing for low-risk patients.
 
 ## Table of Content
 

@@ -78,14 +78,6 @@ calculate_cad1_2011_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
-#'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
-#'
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_cad2_2012_basic_ptp(
@@ -152,14 +144,6 @@ calculate_cad2_2012_basic_ptp <- function(
 #' based on the 2012 CAD Consortium 2 (CAD2) clinical model.
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
-#'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
-#'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
 #'
 #' @examples
 #' # 40 year old female with typical chest pain,
@@ -279,14 +263,6 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' based on the 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
-#'
-#' The 2012 CAD Consortium 2 (CAD2) PTP models are as follows:
-#'
-#' \if{html}{\figure{cad2_2012.jpg}{alt="2012 CAD Consortium 2 pre-test probabilities of obstructive coronary artery disease model."}}
-#' \emph{CAD Consortium 2 (CAD2) pre-test probabilities (PTP) of obstructive coronary artery disease model taken from}
-#' \href{https://doi.org/10.1136/bmj.e3485}{\emph{Tessa Genders et. al.}} from
-#' \href{https://www.bmj.com/}{\emph{British Medical Journal}} \emph{is licensed under}
-#' \href{https://creativecommons.org/licenses/by-nc/4.0/}{\emph{CC BY-NC 4.0}}.
 #'
 #' @examples
 #' # 40 year old female with typical chest pain,

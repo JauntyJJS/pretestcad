@@ -20,5 +20,6 @@ round_to_nearest_digit <- function(number, digits = 0) {
   number <- number + 0.5 + sqrt(.Machine$double.eps)
   number <- trunc(number)
   number <- number / 10 ^ digits
-  number * posneg
+  number <- number * posneg
+  return(number)
 }

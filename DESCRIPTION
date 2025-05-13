@@ -1,7 +1,7 @@
 Package: pretestcad
 Type: Package
-Title: R Package for Pretest Probability for Coronary Artery Disease
-Version: 1.0.0.0
+Title: Pretest Probability For Coronary Artery Disease
+Version: 1.0.0
 Authors@R:
     person(given = "Jeremy",
            family = "Selva",
@@ -9,11 +9,23 @@ Authors@R:
            email = "jeremy1189.jjs@gmail.com",
            comment = c(ORCID = "0000-0002-4498-2662"))
 Maintainer: Jeremy Selva <jeremy1189.jjs@gmail.com>
-Description: An R Package for computing different
-    pretest probability models for coronary artery disease.
+Description: An application to calculate a patient's pretest
+    probability (PTP) for obstructive Coronary Artery Disease (CAD) from 
+    a collection of guidelines or studies. Guidelines usually comes from the 
+    American Heart Association (AHA), American College of Cardiology (ACC) or 
+    European Society of Cardiology (ESC). Examples of PTP scores that comes from studies are the 
+    2020 Winther et. al. basic, RF-CL and CACS-CL model <doi.org/10.1016/j.jacc.2020.09.585>,
+    2019 Reeh et. al. basic and clinical model <doi.org/10.1093/eurheartj/ehy806> and
+    2017 PROMISE Minimal-Risk Score <doi.org/10.1001/jamacardio.2016.5501>.
+    As diagnosis of CAD involves a costly and invasive coronary angiography procedure for patients,
+    having a reliable PTP for CAD helps doctors to make better decisions during patient management. 
+    This ensures high risk patients can be diagnosed and treated early for CAD
+    while avoiding unnecessary testing for low-risk patients.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-GB
+Depends:
+    R (>= 4.1.0)
 Imports: 
     cli,
     dplyr,
