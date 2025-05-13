@@ -11,3 +11,4 @@
 ^codecov\.yml$
 ^README\.qmd$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
