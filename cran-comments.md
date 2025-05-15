@@ -2,4 +2,5 @@
 
 This is a resubmission. In this version I have:
 
-* Updated invalid URL jauntyjjs.github.io/pretestcad/ to https://jauntyjjs.github.io/pretestcad/ in README.md.
+* Indicate the return value in file `round_to_nearest_digit.Rd`.
+* Correct spelling error in file DESCRIPTION from et. al. to et al.
