@@ -17,7 +17,7 @@ Description: An application to calculate a patient's pretest
     2020 Winther et al. basic, Risk Factor-weighted Clinical Likelihood (RF-CL) and 
     Coronary Artery Calcium Score-weighted Clinical Likelihood (CACS-CL) models <doi:10.1016/j.jacc.2020.09.585>,
     2019 Reeh et al. basic and clinical models <doi:10.1093/eurheartj/ehy806> and
-    2017 PROMISE Minimal-Risk Score <doi:10.1001/jamacardio.2016.5501>.
+    2017 Fordyce et al. PROMISE Minimal-Risk Tool <doi:10.1001/jamacardio.2016.5501>.
     As diagnosis of CAD involves a costly and invasive coronary angiography procedure for patients,
     having a reliable PTP for CAD helps doctors to make better decisions during patient management. 
     This ensures high risk patients can be diagnosed and treated early for CAD
