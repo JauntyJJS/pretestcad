@@ -1,7 +1,7 @@
 Package: pretestcad
 Type: Package
 Title: Pretest Probability for Coronary Artery Disease
-Version: 1.0.1
+Version: 1.0.2
 Authors@R:
     person(given = "Jeremy",
            family = "Selva",
@@ -14,8 +14,8 @@ Description: An application to calculate a patient's pretest
     a collection of guidelines or studies. Guidelines usually comes from the 
     American Heart Association (AHA), American College of Cardiology (ACC) or 
     European Society of Cardiology (ESC). Examples of PTP scores that comes from studies are the 
-    2020 Winther et. al. basic, RF-CL and CACS-CL model <doi:10.1016/j.jacc.2020.09.585>,
-    2019 Reeh et. al. basic and clinical model <doi:10.1093/eurheartj/ehy806> and
+    2020 Winther et al. basic, RF-CL and CACS-CL model <doi:10.1016/j.jacc.2020.09.585>,
+    2019 Reeh et al. basic and clinical model <doi:10.1093/eurheartj/ehy806> and
     2017 PROMISE Minimal-Risk Score <doi:10.1001/jamacardio.2016.5501>.
     As diagnosis of CAD involves a costly and invasive coronary angiography procedure for patients,
     having a reliable PTP for CAD helps doctors to make better decisions during patient management. 
