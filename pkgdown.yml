@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-05-26T02:53Z
+last_built: 2025-07-03T09:34Z
 urls:
   reference: https://jauntyjjs.github.io/pretestcad/reference
   article: https://jauntyjjs.github.io/pretestcad/articles

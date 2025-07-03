@@ -18,7 +18,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pretestcad</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +93,35 @@ mentioned in error messages as the source of the error. See the
  <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli_abort</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># No error</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">check_if_numeric</span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Error as "5" is not numeric</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="st">"5"</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">check_if_numeric</span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Provided input `input`, must be <span style="color: #0000BB;">&lt;numeric&gt;</span>, `NA` or `NaN`. It is</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> currently <span style="color: #0000BB;">"5"</span> of type <span style="color: #0000BB;">&lt;character&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Error as NULL is not numeric</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">check_if_numeric</span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Provided input `input`, must be <span style="color: #0000BB;">&lt;numeric&gt;</span>, `NA` or `NaN`. It is</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> currently of type <span style="color: #0000BB;">&lt;NULL&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Error as NA is not numeric and allow_na is FALSE</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">check_if_numeric</span><span class="op">(</span><span class="va">input</span>, allow_na <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Provided input `input`, must be <span style="color: #0000BB;">&lt;numeric&gt;</span>. It is currently <span style="color: #0000BB;">NA</span> of type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">&lt;logical&gt;</span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
