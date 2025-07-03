@@ -1,58 +1,58 @@
 # check_if_numeric gives error for character inputs
 
     Code
-      check_if_numeric("5")
+      check_if_numeric(input)
     Condition
       Error:
-      ! Provided input `"5"`, must be <numeric>, `NA` or `NaN`. It is currently "5" of type <character>
+      ! Provided input `input`, must be <numeric>, `NA` or `NaN`. It is currently "5" of type <character>
 
 # check_if_numeric gives error for NULL inputs
 
     Code
-      check_if_numeric(NULL)
+      check_if_numeric(input)
     Condition
       Error:
-      ! Provided input `NULL`, must be <numeric>, `NA` or `NaN`. It is currently of type <NULL>
+      ! Provided input `input`, must be <numeric>, `NA` or `NaN`. It is currently of type <NULL>
 
 # check_if_numeric gives error for NA inputs
 
     Code
-      check_if_numeric(NA, allow_na = FALSE)
+      check_if_numeric(input, allow_na = FALSE)
     Condition
       Error:
-      ! Provided input `NA`, must be <numeric>. It is currently NA of type <logical>
+      ! Provided input `input`, must be <numeric>. It is currently NA of type <logical>
 
 # check_if_positive gives error for invalid inputs
 
     Code
-      check_if_positive(-5)
+      check_if_positive(input)
     Condition
       Error:
-      ! `-5` must be positive, not -5
+      ! `input` must be positive, not -5
 
 ---
 
     Code
-      check_if_positive(0)
+      check_if_positive(input)
     Condition
       Error:
-      ! `0` must be positive, not 0
+      ! `input` must be positive, not 0
 
 # check_if_non_negative gives error for -5
 
     Code
-      check_if_non_negative(-5)
+      check_if_non_negative(input)
     Condition
       Error:
-      ! `-5` must be non-negative, not -5
+      ! `input` must be non-negative, not -5
 
 # check_if_integer gives no error for 5.5
 
     Code
-      check_if_integer(5.5)
+      check_if_integer(input)
     Condition
       Error:
-      ! `5.5` must be an integer, not 5.5. Consider rounding the value to the nearest integer using janitor::round_half_up (<https://sfirke.github.io/janitor/reference/round_half_up.html>) and convert the value to type <integer> using base::as.integer (<https://stat.ethz.ch/R-manual/R-devel/library/base/html/integer.html>) before using the function.
+      ! `input` must be an integer, not 5.5. Consider rounding the value to the nearest integer using janitor::round_half_up (<https://sfirke.github.io/janitor/reference/round_half_up.html>) and convert the value to type <integer> using base::as.integer (<https://stat.ethz.ch/R-manual/R-devel/library/base/html/integer.html>) before using the function.
 
 # arg_match0_allow_na gives error for invalid inputs
 

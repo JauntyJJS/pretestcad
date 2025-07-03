@@ -1,3 +1,10 @@
+# pretestcad 1.0.2.9000
+
+* Update documentation of `check_if_integer` to include examples.
+* Update documentation of `check_if_non_negative` to include examples.
+* Update documentation of `check_if_positive` to include examples.
+* Update documentation of `check_if_numeric` to include examples.
+
 # pretestcad 1.0.2
 
 * Indicate the return value in file `round_to_nearest_digit.Rd`.

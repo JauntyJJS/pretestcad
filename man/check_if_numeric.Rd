@@ -32,6 +32,24 @@ The variable itself or an error message if variable is not numeric
 \description{
 Check if the input variable is numeric
 }
+\examples{
+# No error
+input = 1
+try(check_if_numeric(input))
+
+# Error as "5" is not numeric
+input = "5"
+try(check_if_numeric(input))
+
+# Error as NULL is not numeric
+input = NULL
+try(check_if_numeric(input))
+
+# Error as NA is not numeric and allow_na is FALSE
+input = NA
+try(check_if_numeric(input, allow_na = FALSE))
+
+}
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
  \code{\link[cli]{cli_abort}}

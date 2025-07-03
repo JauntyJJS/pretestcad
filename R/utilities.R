@@ -209,6 +209,23 @@ arg_match0_integer <-  function(
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not numeric
+#' @examples
+#' # No error
+#' input = 1
+#' try(check_if_numeric(input))
+#'
+#' # Error as "5" is not numeric
+#' input = "5"
+#' try(check_if_numeric(input))
+#'
+#' # Error as NULL is not numeric
+#' input = NULL
+#' try(check_if_numeric(input))
+#'
+#' # Error as NA is not numeric and allow_na is FALSE
+#' input = NA
+#' try(check_if_numeric(input, allow_na = FALSE))
+#'
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
 #'  \code{\link[cli]{cli_abort}}
@@ -261,6 +278,18 @@ check_if_numeric <- function(
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not positive
+#' @examples
+#' # No error
+#' input = 1
+#' try(check_if_positive(input))
+#'
+#' # Error as 0 is not a positive number
+#' input = 0
+#' try(check_if_positive(input))
+#'
+#' # Error as -5 is not a positive number
+#' input = -5
+#' try(check_if_positive(input))
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
 #'  \code{\link[cli]{cli_abort}}
@@ -286,7 +315,7 @@ check_if_positive <- function(
 
 }
 
-#' @title Check If Non-negative
+#' @title Check If Non-Negative
 #' @description Check if the input variable is a non-negative number
 #' @inheritParams rlang::args_error_context
 #' @inheritParams rlang::abort
@@ -294,6 +323,14 @@ check_if_positive <- function(
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not non-negative
+#' @examples
+#' # No error
+#' input = 0
+#' try(check_if_non_negative(input))
+#'
+#' # Error as -5 is not a non-neagtive number
+#' input = -5
+#' try(check_if_non_negative(input))
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
 #'  \code{\link[cli]{cli_abort}}
@@ -327,10 +364,18 @@ check_if_non_negative <- function(
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @return The variable itself or an error message if variable is not non-negative
+#' @examples
+#' # No error
+#' input = 0
+#' try(check_if_integer(input))
+#'
+#' # Error as 5.5 is not an integer
+#' input = 5.5
+#' try(check_if_integer(input))
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
 #'  \code{\link[cli]{cli_abort}}
-#' @rdname check_if_non_negative
+#' @rdname check_if_integer
 #' @export
 check_if_integer <- function(
     x,
@@ -356,3 +401,38 @@ check_if_integer <- function(
   }
 
 }
+
+
+sex_are_mutually_exclusive <- function(
+    label_sex_male,
+    label_sex_female,
+    arg_sex_male = rlang::caller_arg(label_sex_male),
+    arg_sex_female = rlang::caller_arg(label_sex_female),
+    label_sex_missing = NULL,
+    call = rlang::caller_env()
+) {
+
+  # Check intersection of label_sex_male and label_sex_female
+  intersect_male_female <- intersect(label_sex_male, label_sex_female)
+
+  if (isTRUE(length(intersect_male_female) != 0) && is.null(label_sex_missing)) {
+
+    intersect_male_female_string <- intersect_male_female |>
+      stringr::str_flatten(
+        collapse = " , ",
+        last = " and "
+      )
+
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_sex_male}} and {.arg {label_sex_female}} must be mutally exclusive.
+        Common values found: {intersect_male_female_string}.
+        Please ensure {.arg {arg_sex_male}} and {.arg {label_sex_female}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+}
+
+

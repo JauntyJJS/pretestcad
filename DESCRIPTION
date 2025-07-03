@@ -1,7 +1,7 @@
 Package: pretestcad
 Type: Package
 Title: Pretest Probability for Coronary Artery Disease
-Version: 1.0.2
+Version: 1.0.2.9000
 Authors@R:
     person(given = "Jeremy",
            family = "Selva",

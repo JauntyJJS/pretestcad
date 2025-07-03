@@ -2,8 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{check_if_non_negative}
 \alias{check_if_non_negative}
-\alias{check_if_integer}
-\title{Check If Non-negative}
+\title{Check If Non-Negative}
 \usage{
 check_if_non_negative(
   x,
@@ -11,16 +10,9 @@ check_if_non_negative(
   arg = rlang::caller_arg(x),
   call = rlang::caller_env()
 )
-
-check_if_integer(
-  x,
-  allow_na = TRUE,
-  arg = rlang::caller_arg(x),
-  call = rlang::caller_env()
-)
 }
 \arguments{
-\item{x}{Input variable to check if it is an integer}
+\item{x}{Input variable to check if it is non-negative number}
 
 \item{allow_na}{Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 Default: \code{TRUE}}
@@ -36,18 +28,20 @@ mentioned in error messages as the source of the error. See the
 }
 \value{
 The variable itself or an error message if variable is not non-negative
-
-The variable itself or an error message if variable is not non-negative
 }
 \description{
 Check if the input variable is a non-negative number
+}
+\examples{
+# No error
+input = 0
+try(check_if_non_negative(input))
 
-Check if the input variable is an integer
+# Error as -5 is not a non-neagtive number
+input = -5
+try(check_if_non_negative(input))
 }
 \seealso{
-\code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
- \code{\link[cli]{cli_abort}}
-
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
  \code{\link[cli]{cli_abort}}
 }
