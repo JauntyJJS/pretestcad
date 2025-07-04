@@ -89,6 +89,26 @@ mentioned in error messages as the source of the error. See the
     <div class="dont-index"><p><code><a href="https://rlang.r-lib.org/reference/caller_arg.html" class="external-link">caller_arg</a></code>, <code><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">stack</a></code>, <code><a href="https://rlang.r-lib.org/reference/arg_match.html" class="external-link">arg_match</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># No error</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="st">"male"</span></span></span>
+<span class="r-in"><span><span class="fu">arg_match0_allow_na</span><span class="op">(</span><span class="va">input</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span>,<span class="st">"male"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "male"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Allow NA</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span><span class="fu">arg_match0_allow_na</span><span class="op">(</span><span class="va">input</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span>,<span class="st">"male"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Error as M is not female or male</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">=</span> <span class="st">"emale"</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">arg_match0_allow_na</span><span class="op">(</span><span class="va">input</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span>,<span class="st">"male"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `input` must be one of "female" or "male", not "emale".</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Did you mean "female"?</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
