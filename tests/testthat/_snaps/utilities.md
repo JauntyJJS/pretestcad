@@ -135,3 +135,88 @@
       Error:
       ! Provided input `input`, must be must be TRUE or FALSE. It is currently NA.
 
+# check_if_two_categories_are_mutually_exclusive gives error when there are intersection
+
+    Code
+      check_if_two_categories_are_mutually_exclusive(cat_1, cat_2)
+    Condition
+      Error:
+      ! `cat_1` and `cat_2` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "male" and "female".
+      Please ensure `cat_1` and `cat_2` do not hold common values.
+
+# check_if_two_categories_are_mutually_exclusive gives error when there are intersection with missing labels
+
+    Code
+      check_if_two_categories_are_mutually_exclusive(cat_1, cat_2, cat_missing)
+    Condition
+      Error:
+      ! `cat_1`, `cat_2` and `cat_missing` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "male", "female" and "not saying".
+      Common values found in `cat_1` and `cat_missing`: "male", "female" and "not saying".
+      Common values found in `cat_2` and `cat_missing`: "male", "female" and "not saying".
+      Please ensure `cat_1`, `cat_2` and `cat_missing` do not hold common values.
+
+# check_if_three_categories_are_mutually_exclusive gives error when there are intersection
+
+    Code
+      check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3)
+    Condition
+      Error:
+      ! `cat_1`, `cat_2` and `cat_3` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_1` and `cat_3`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_2` and `cat_3`: "typical", "atypical", "nonanginal" and "NA".
+      Please ensure `cat_1`, `cat_2` and `cat_3` do not hold common values.
+
+# check_if_three_categories_are_mutually_exclusive gives error when there are intersection with missing labels
+
+    Code
+      check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3,
+        cat_missing)
+    Condition
+      Error:
+      ! `cat_1`, `cat_2`, `cat_3` and `cat_missing` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_1` and `cat_3`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_2` and `cat_3`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_1` and `cat_missing`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_2` and `cat_missing`: "typical", "atypical", "nonanginal" and "NA".
+      Common values found in `cat_3` and `cat_missing`: "typical", "atypical", "nonanginal" and "NA".
+      Please ensure `cat_1`, `cat_2`, `cat_3` and `cat_missing` do not hold common values.
+
+# check_if_four_categories_are_mutually_exclusive gives error when there are intersection
+
+    Code
+      check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4)
+    Condition
+      Error:
+      ! `cat_1`, `cat_2`, `cat_3` and `cat_4` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_1` and `cat_3`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_1` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_2` and `cat_3`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_2` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_3` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Please ensure `cat_1`, `cat_2`, `cat_3` and `cat_4` do not hold common values.
+
+# check_if_four_categories_are_mutually_exclusive gives error when there are intersection with missing labels
+
+    Code
+      check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4,
+        cat_missing)
+    Condition
+      Error:
+      ! `cat_1`, `cat_2`, `cat_3`, `cat_4` and `cat_missing` must be mutually exclusive.
+      Common values found in `cat_1` and `cat_2`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_1` and `cat_3`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_1` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_2` and `cat_3`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_2` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_3` and `cat_4`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_1` and `cat_missing`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_2` and `cat_missing`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_3` and `cat_missing`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Common values found in `cat_4` and `cat_missing`: "no chest pain", "typical", "atypical" and "nonanginal".
+      Please ensure `cat_1`, `cat_2`, `cat_3`, `cat_4` and `cat_missing` do not hold common values.
+

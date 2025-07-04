@@ -174,3 +174,136 @@ test_that("arg_match0_true_or_false gives error for NA inputs", {
     arg_match0_true_or_false(input, allow_na = FALSE)
   )
 })
+
+test_that("check_if_two_categories_are_mutually_exclusive is silent when there are no issues", {
+
+  cat_1 <- c("male")
+  cat_2 <- c("female")
+  cat_missing <- c("not saying")
+
+  testthat::expect_silent(
+    check_if_two_categories_are_mutually_exclusive(cat_1, cat_2)
+  )
+
+  testthat::expect_silent(
+    check_if_two_categories_are_mutually_exclusive(cat_1, cat_2, cat_missing)
+  )
+
+})
+
+test_that("check_if_two_categories_are_mutually_exclusive gives error when there are intersection", {
+
+  cat_1 <- c("male", "female")
+  cat_2 <- c("male", "female")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_two_categories_are_mutually_exclusive(cat_1, cat_2)
+  )
+
+})
+
+test_that("check_if_two_categories_are_mutually_exclusive gives error when there are intersection with missing labels", {
+
+  cat_1 <- c("male", "female", "not saying")
+  cat_2 <- c("male", "female", "not saying")
+  cat_missing <- c("male", "female", "not saying")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_two_categories_are_mutually_exclusive(cat_1, cat_2, cat_missing)
+  )
+
+})
+
+test_that("check_if_three_categories_are_mutually_exclusive is silent when there are no issues", {
+
+  cat_1 <- c("typical")
+  cat_2 <- c("atypical")
+  cat_3 <- c("nonanginal")
+  cat_missing <- c("NA")
+
+  testthat::expect_silent(
+    check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3)
+  )
+
+  testthat::expect_silent(
+    check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_missing)
+  )
+
+})
+
+test_that("check_if_three_categories_are_mutually_exclusive gives error when there are intersection", {
+
+  cat_1 <- c("typical", "atypical", "nonanginal", "NA")
+  cat_2 <- c("typical", "atypical", "nonanginal", "NA")
+  cat_3 <- c("typical", "atypical", "nonanginal", "NA")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3)
+  )
+
+})
+
+test_that("check_if_three_categories_are_mutually_exclusive gives error when there are intersection with missing labels", {
+
+  cat_1 <- c("typical", "atypical", "nonanginal", "NA")
+  cat_2 <- c("typical", "atypical", "nonanginal", "NA")
+  cat_3 <- c("typical", "atypical", "nonanginal", "NA")
+  cat_missing <- c("typical", "atypical", "nonanginal", "NA")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_missing)
+  )
+
+})
+
+test_that("check_if_four_categories_are_mutually_exclusive is silent when there are no issues", {
+
+  cat_1 <- c("no chest pain")
+  cat_2 <- c("typical")
+  cat_3 <- c("atypical")
+  cat_4 <- c("nonanginal")
+  cat_missing <- c("NA")
+
+  testthat::expect_silent(
+    check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4)
+  )
+
+  testthat::expect_silent(
+    check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing)
+  )
+
+})
+
+test_that("check_if_four_categories_are_mutually_exclusive gives error when there are intersection", {
+
+  cat_1 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_2 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_3 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_4 <- c("no chest pain","typical", "atypical", "nonanginal")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4)
+  )
+
+})
+
+test_that("check_if_four_categories_are_mutually_exclusive gives error when there are intersection with missing labels", {
+
+  cat_1 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_2 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_3 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_4 <- c("no chest pain","typical", "atypical", "nonanginal")
+  cat_missing <- c("no chest pain","typical", "atypical", "nonanginal")
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing)
+  )
+
+})
+

@@ -285,7 +285,6 @@ arg_match0_integer <-  function(
 #' @title Check If Numeric
 #' @description Check if the input variable is numeric
 #' @inheritParams rlang::args_error_context
-#' @inheritParams rlang::abort
 #' @param x Input variable to check if it is numeric
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
@@ -483,46 +482,569 @@ check_if_integer <- function(
 
 }
 
+#' @title Check If Four Categories Are Mutually Exclusive
+#' @description Check if the four input categories are mutually exclusive from each other
+#' @inheritParams rlang::args_error_context
+#' @param label_cat_1 First vector to check for mutually exclusiveness with another vector.
+#' @param label_cat_2 Second vector to check for mutually exclusiveness with another vector.
+#' @param label_cat_3 Third vector to check for mutually exclusiveness with another vector
+#' @param label_cat_4 Fourth vector to check for mutually exclusiveness with another vector
+#' @param label_cat_missing Missing values vector to check for mutually exclusiveness with another vector
+#' if needed.
+#' Default: NULL
+#' @param arg_cat_1 An argument name as a string for the first vector.
+#' This argument will be mentioned in error messages as the input that is at the origin of a problem.
+#' @param arg_cat_2 An argument name as a string for the second vector.
+#' This argument will be mentioned in error messages as the input that is at the origin of a problem.
+#' @param arg_cat_3 An argument name as a string for the third vector.
+#' This argument will be mentioned in error messages as the input that is at the origin of a problem.
+#' @param arg_cat_4 An argument name as a string for the fourth vector.
+#' This argument will be mentioned in error messages as the input that is at the origin of a problem.
+#' @param arg_cat_missing An argument name as a string for the missing values vector.
+#' This argument will be mentioned in error messages as the input that is at the origin of a problem.
+#' @return An error message if the four input categories are not mutually exclusive
+#' @examples
+#' # No error
+#' cat_1 <- c("no chest pain")
+#' cat_2 <- c("typical")
+#' cat_3 <- c("atypical")
+#' cat_4 <- c("nonanginal")
+#' cat_missing <- c("NA")
+#' check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4)
+#' check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing)
+#'
+#' # Common labels found
+#' cat_1 <- c("no chest pain","typical", "atypical", "nonanginal")
+#' cat_2 <- c("no chest pain","typical", "atypical", "nonanginal")
+#' cat_3 <- c("no chest pain","typical", "atypical", "nonanginal")
+#' cat_4 <- c("no chest pain","typical", "atypical", "nonanginal")
+#' cat_missing <- c("no chest pain","typical", "atypical", "nonanginal")
+#'
+#' try(check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4))
+#'
+#' try(check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing))
+#' @seealso
+#'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
+#'  \code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}
+#' @rdname check_if_four_categories_are_mutually_exclusive
+#' @export
+check_if_four_categories_are_mutually_exclusive <- function(
+    label_cat_1,
+    label_cat_2,
+    label_cat_3,
+    label_cat_4,
+    label_cat_missing = NULL,
+    arg_cat_1 = rlang::caller_arg(label_cat_1),
+    arg_cat_2 = rlang::caller_arg(label_cat_2),
+    arg_cat_3 = rlang::caller_arg(label_cat_3),
+    arg_cat_4 = rlang::caller_arg(label_cat_4),
+    arg_cat_missing = rlang::caller_arg(label_cat_missing),
+    call = rlang::caller_env()
+) {
 
-# sex_are_mutually_exclusive <- function(
-#     label_sex_male,
-#     label_sex_female,
-#     label_sex_missing = NULL,
-#     arg_sex_male = rlang::caller_arg(label_sex_male),
-#     arg_sex_female = rlang::caller_arg(label_sex_female),
-#     arg_sex_missing = rlang::caller_arg(label_sex_missing),
-#     call = rlang::caller_env()
-# ) {
-#
-#   # Check intersection of label_sex_male and label_sex_female
-#   intersect_male_female <- intersect(label_sex_male, label_sex_female)
-#
-#   intersect_male_female_text <- cli::cli_vec(
-#     c(intersect_male_female),
-#     style = list("vec-last" = " and ")
-#   )
-#
-#   if (isTRUE(length(intersect_male_female) != 0) && is.null(label_sex_missing)) {
-#
-#     cli::cli_abort(
-#       message = c(
-#         "{.arg {arg_sex_male}} and {.arg {arg_sex_female}} must be mutally exclusive.
-#
-#         Common values found: {.val {intersect_male_female_text}}.
-#
-#         Please ensure {.arg {arg_sex_male}} and {.arg {arg_sex_female}} do not hold common values."
-#       ),
-#       call = call
-#     )
-#   }
-#
-# }
-#
-# sex_male <- c("male", "female", "F")
-# sex_female <- c("female", "male", "F")
-#
-# sex_are_mutually_exclusive(
-#   label_sex_male = sex_male,
-#   label_sex_female = sex_female
-# )
+  # Check intersection of label_cat_1 and label_cat_2
+  intersect_cat1_cat2 <- intersect(label_cat_1, label_cat_2)
 
+  intersect_cat1_cat2_text <- cli::cli_vec(
+    c(intersect_cat1_cat2),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_1 and label_cat_3
+  intersect_cat1_cat3 <- intersect(label_cat_1, label_cat_3)
+
+  intersect_cat1_cat3_text <- cli::cli_vec(
+    c(intersect_cat1_cat3),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_1 and label_cat_4
+  intersect_cat1_cat4 <- intersect(label_cat_1, label_cat_4)
+
+  intersect_cat1_cat4_text <- cli::cli_vec(
+    c(intersect_cat1_cat4),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_3
+  intersect_cat2_cat3 <- intersect(label_cat_2, label_cat_3)
+
+  intersect_cat2_cat3_text <- cli::cli_vec(
+    c(intersect_cat2_cat3),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_4
+  intersect_cat2_cat4 <- intersect(label_cat_2, label_cat_4)
+
+  intersect_cat2_cat4_text <- cli::cli_vec(
+    c(intersect_cat2_cat4),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_3 and label_cat_4
+  intersect_cat3_cat4 <- intersect(label_cat_3, label_cat_4)
+
+  intersect_cat3_cat4_text <- cli::cli_vec(
+    c(intersect_cat3_cat4),
+    style = list("vec-last" = " and ")
+  )
+
+  error_message <- c()
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_2}}:
+      {.val {intersect_cat1_cat2_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat3) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_3}}:
+      {.val {intersect_cat1_cat3_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat4) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_4}}:
+      {.val {intersect_cat1_cat4_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_cat3) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_3}}:
+      {.val {intersect_cat2_cat3_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_cat4) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_4}}:
+      {.val {intersect_cat2_cat4_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat3_cat4) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_3}} and {.arg {arg_cat_4}}:
+      {.val {intersect_cat3_cat4_text}}."
+    )
+  }
+
+  if ((isTRUE(length(intersect_cat1_cat2) != 0) ||
+       isTRUE(length(intersect_cat1_cat3) != 0) ||
+       isTRUE(length(intersect_cat1_cat4) != 0) ||
+       isTRUE(length(intersect_cat2_cat3) != 0) ||
+       isTRUE(length(intersect_cat2_cat4) != 0) ||
+       isTRUE(length(intersect_cat3_cat4) != 0)
+  ) &&
+  is.null(label_cat_missing)) {
+
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_4}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_4}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  if (is.null(label_cat_missing)) {
+    return(invisible(NULL))
+  }
+
+  # Check intersection of label_cat_1 and label_cat_missing
+  intersect_cat1_missing <- intersect(label_cat_1, label_cat_missing)
+
+  intersect_cat1_missing_text <- cli::cli_vec(
+    c(intersect_cat1_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_missing
+  intersect_cat2_missing <- intersect(label_cat_2, label_cat_missing)
+
+  intersect_cat2_missing_text <- cli::cli_vec(
+    c(intersect_cat2_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_3 and label_cat_missing
+  intersect_cat3_missing <- intersect(label_cat_3, label_cat_missing)
+
+  intersect_cat3_missing_text <- cli::cli_vec(
+    c(intersect_cat3_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_4 and label_cat_missing
+  intersect_cat4_missing <- intersect(label_cat_4, label_cat_missing)
+
+  intersect_cat4_missing_text <- cli::cli_vec(
+    c(intersect_cat4_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  if (isTRUE(length(intersect_cat1_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat1_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat2_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat3_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_3}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat3_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat4_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_4}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat4_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0) ||
+      isTRUE(length(intersect_cat1_cat3) != 0) ||
+      isTRUE(length(intersect_cat1_cat4) != 0) ||
+      isTRUE(length(intersect_cat2_cat3) != 0) ||
+      isTRUE(length(intersect_cat2_cat4) != 0) ||
+      isTRUE(length(intersect_cat3_cat4) != 0) ||
+      isTRUE(length(intersect_cat1_missing) != 0) ||
+      isTRUE(length(intersect_cat2_missing) != 0) ||
+      isTRUE(length(intersect_cat3_missing) != 0) ||
+      isTRUE(length(intersect_cat4_missing) != 0)) {
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}}, {.arg {arg_cat_4}} and {.arg {arg_cat_missing}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}}, {.arg {arg_cat_4}} and {.arg {arg_cat_missing}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  return(invisible(NULL))
+
+}
+
+#' @title Check If Three Categories Are Mutually Exclusive
+#' @description Check if the three input categories are mutually exclusive from each other
+#' @inheritParams rlang::args_error_context
+#' @inheritParams check_if_four_categories_are_mutually_exclusive
+#' @return An error message if the three input categories are not mutually exclusive
+#' @examples
+#' # No error
+#' cat_1 <- c("typical")
+#' cat_2 <- c("atypical")
+#' cat_3 <- c("nonanginal")
+#' cat_missing <- c("NA")
+#' check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3)
+#' check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_missing)
+#'
+#' # Common labels found
+#' cat_1 <- c("typical", "atypical", "nonanginal", "NA")
+#' cat_2 <- c("typical", "atypical", "nonanginal", "NA")
+#' cat_3 <- c("typical", "atypical", "nonanginal", "NA")
+#' cat_missing <- c("typical", "atypical", "nonanginal", "NA")
+#'
+#' try(check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3))
+#'
+#' try(check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_missing))
+#' @seealso
+#'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
+#'  \code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}
+#' @rdname check_if_three_categories_are_mutually_exclusive
+#' @export
+check_if_three_categories_are_mutually_exclusive <- function(
+    label_cat_1,
+    label_cat_2,
+    label_cat_3,
+    label_cat_missing = NULL,
+    arg_cat_1 = rlang::caller_arg(label_cat_1),
+    arg_cat_2 = rlang::caller_arg(label_cat_2),
+    arg_cat_3 = rlang::caller_arg(label_cat_3),
+    arg_cat_missing = rlang::caller_arg(label_cat_missing),
+    call = rlang::caller_env()
+) {
+
+  # Check intersection of label_cat_1 and label_cat_2
+  intersect_cat1_cat2 <- intersect(label_cat_1, label_cat_2)
+
+  intersect_cat1_cat2_text <- cli::cli_vec(
+    c(intersect_cat1_cat2),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_1 and label_cat_3
+  intersect_cat1_cat3 <- intersect(label_cat_1, label_cat_3)
+
+  intersect_cat1_cat3_text <- cli::cli_vec(
+    c(intersect_cat1_cat3),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_3
+  intersect_cat2_cat3 <- intersect(label_cat_2, label_cat_3)
+
+  intersect_cat2_cat3_text <- cli::cli_vec(
+    c(intersect_cat2_cat3),
+    style = list("vec-last" = " and ")
+  )
+
+  error_message <- c()
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_2}}:
+      {.val {intersect_cat1_cat2_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat3) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_3}}:
+      {.val {intersect_cat1_cat3_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_cat3) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_3}}:
+      {.val {intersect_cat2_cat3_text}}."
+    )
+  }
+
+  if ((isTRUE(length(intersect_cat1_cat2) != 0) ||
+       isTRUE(length(intersect_cat1_cat3) != 0) ||
+       isTRUE(length(intersect_cat2_cat3) != 0)
+  ) &&
+  is.null(label_cat_missing)) {
+
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_3}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_3}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  if (is.null(label_cat_missing)) {
+    return(invisible(NULL))
+  }
+
+  # Check intersection of label_cat_1 and label_cat_missing
+  intersect_cat1_missing <- intersect(label_cat_1, label_cat_missing)
+
+  intersect_cat1_missing_text <- cli::cli_vec(
+    c(intersect_cat1_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_missing
+  intersect_cat2_missing <- intersect(label_cat_2, label_cat_missing)
+
+  intersect_cat2_missing_text <- cli::cli_vec(
+    c(intersect_cat2_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_3 and label_cat_missing
+  intersect_cat3_missing <- intersect(label_cat_3, label_cat_missing)
+
+  intersect_cat3_missing_text <- cli::cli_vec(
+    c(intersect_cat3_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  if (isTRUE(length(intersect_cat1_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat1_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat2_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat3_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_3}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat2_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0) ||
+      isTRUE(length(intersect_cat1_cat3) != 0) ||
+      isTRUE(length(intersect_cat2_cat3) != 0) ||
+      isTRUE(length(intersect_cat1_missing) != 0) ||
+      isTRUE(length(intersect_cat2_missing) != 0) ||
+      isTRUE(length(intersect_cat3_missing) != 0)) {
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_missing}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_missing}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  return(invisible(NULL))
+
+}
+
+#' @title Check If Two Categories Are Mutually Exclusive
+#' @description Check if the two input categories are mutually exclusive from each other
+#' @inheritParams rlang::args_error_context
+#' @inheritParams check_if_four_categories_are_mutually_exclusive
+#' @return An error message if the two input categories are not mutually exclusive
+#' @seealso
+#'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
+#'  \code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}
+#' @rdname check_if_two_categories_are_mutually_exclusive
+#' @examples
+#' # No error
+#' cat_1 <- c("male")
+#' cat_2 <- c("female")
+#' cat_missing <- c("not saying")
+#' check_if_two_categories_are_mutually_exclusive(cat_1, cat_2)
+#' check_if_two_categories_are_mutually_exclusive(cat_1, cat_2, cat_missing)
+#'
+#' # Common labels found
+#' cat_1 <- c("male", "female", "not saying")
+#' cat_2 <- c("male", "female", "not saying")
+#' cat_missing <- c("male", "female", "not saying")
+#'
+#' try(check_if_two_categories_are_mutually_exclusive(cat_1, cat_2))
+#'
+#' try(check_if_two_categories_are_mutually_exclusive(cat_1, cat_2, cat_missing))
+#' @export
+check_if_two_categories_are_mutually_exclusive <- function(
+    label_cat_1,
+    label_cat_2,
+    label_cat_missing = NULL,
+    arg_cat_1 = rlang::caller_arg(label_cat_1),
+    arg_cat_2 = rlang::caller_arg(label_cat_2),
+    arg_cat_missing = rlang::caller_arg(label_cat_missing),
+    call = rlang::caller_env()
+) {
+
+  # Check intersection of label_cat_1 and label_cat_2
+  intersect_cat1_cat2 <- intersect(label_cat_1, label_cat_2)
+
+  intersect_cat1_cat2_text <- cli::cli_vec(
+    c(intersect_cat1_cat2),
+    style = list("vec-last" = " and ")
+  )
+
+  error_message <- c()
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0)) {
+
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_2}}:
+      {.val {intersect_cat1_cat2_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0) && is.null(label_cat_missing)) {
+
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}} and {.arg {arg_cat_2}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}} and {.arg {arg_cat_2}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  if (is.null(label_cat_missing)) {
+    return(invisible(NULL))
+  }
+
+  # Check intersection of label_cat_1 and label_cat_missing
+  intersect_cat1_missing <- intersect(label_cat_1, label_cat_missing)
+
+  intersect_cat1_missing_text <- cli::cli_vec(
+    c(intersect_cat1_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  # Check intersection of label_cat_2 and label_cat_missing
+  intersect_cat2_missing <- intersect(label_cat_2, label_cat_missing)
+
+  intersect_cat2_missing_text <- cli::cli_vec(
+    c(intersect_cat2_missing),
+    style = list("vec-last" = " and ")
+  )
+
+  if (isTRUE(length(intersect_cat1_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_1}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat1_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat2_missing) != 0)) {
+    error_message <- c(
+      error_message,
+      "Common values found in {.arg {arg_cat_2}} and {.arg {arg_cat_missing}}:
+      {.val {intersect_cat2_missing_text}}."
+    )
+  }
+
+  if (isTRUE(length(intersect_cat1_cat2) != 0) ||
+      isTRUE(length(intersect_cat1_missing) != 0) ||
+      isTRUE(length(intersect_cat2_missing) != 0)) {
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_missing}} must be mutually exclusive.",
+        error_message,
+        "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_missing}} do not hold common values."
+      ),
+      call = call
+    )
+  }
+
+  return(invisible(NULL))
+
+}

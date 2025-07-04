@@ -7,6 +7,9 @@
 * Update documentation of `arg_match0_allow_na` to include examples.
 * Update documentation of `arg_match0_true_or_false` to include examples.
 * Update documentation of `arg_match0_integer` to include examples.
+* Add new functions `check_if_two_categories_are_mutually_exclusive`, 
+`check_if_three_categories_are_mutually_exclusive` and `check_if_four_categories_are_mutually_exclusive`
+to check for mutually exclusive sets.
 
 # pretestcad 1.0.2
 

@@ -98,3 +98,6 @@ reference:
     - check_if_positive
     - check_if_non_negative
     - check_if_integer
+    - check_if_two_categories_are_mutually_exclusive
+    - check_if_three_categories_are_mutually_exclusive
+    - check_if_four_categories_are_mutually_exclusive
