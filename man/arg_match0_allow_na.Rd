@@ -29,6 +29,19 @@ The string supplied to \code{arg}.
 \description{
 This is equivalent to \code{\link[rlang]{arg_match}} but skip \code{NA}
 }
+\examples{
+# No error
+input = "male"
+arg_match0_allow_na(input, values = c("female","male"))
+
+# Allow NA
+input = NA
+arg_match0_allow_na(input, values = c("female","male"))
+
+# Error as M is not female or male
+input = "emale"
+try(arg_match0_allow_na(input, values = c("female","male")))
+}
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}, \code{\link[rlang]{arg_match}}
 }

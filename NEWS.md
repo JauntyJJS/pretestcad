@@ -4,6 +4,9 @@
 * Update documentation of `check_if_non_negative` to include examples.
 * Update documentation of `check_if_positive` to include examples.
 * Update documentation of `check_if_numeric` to include examples.
+* Update documentation of `arg_match0_allow_na` to include examples.
+* Update documentation of `arg_match0_true_or_false` to include examples.
+* Update documentation of `arg_match0_integer` to include examples.
 
 # pretestcad 1.0.2
 

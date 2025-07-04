@@ -32,5 +32,26 @@ The integer supplied to \code{arg}.
 }
 \description{
 This is equivalent to \code{\link[rlang]{arg_match}} but an
-integer vector is compared and skip \code{NA}.
+integer variable is needed and skip \code{NA}.
+}
+\examples{
+# No error
+input = 5
+arg_match0_integer(input, values = c(0:5))
+
+# Allow NA
+input = NA
+arg_match0_integer(input, values = c(0:5))
+
+# Error as 0 is not within 0 and 5
+input = 6
+try(arg_match0_integer(input, values = c(0:5)))
+
+# Error as NULL is not within 0 and 5
+input = NULL
+try(arg_match0_integer(input, values = c(0:5)))
+
+# Error as NA is not within 0 and 5 and allow_na is FALSE
+input = NA
+try(arg_match0_integer(input, values = c(0:5), allow_na = FALSE))
 }

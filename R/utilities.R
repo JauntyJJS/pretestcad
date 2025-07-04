@@ -58,6 +58,18 @@ is_integer_value <- function(input_value,
 #' @description This is equivalent to \code{\link[rlang]{arg_match}} but skip \code{NA}
 #' @inheritParams rlang::arg_match
 #' @return The string supplied to \code{arg}.
+#' @examples
+#' # No error
+#' input = "male"
+#' arg_match0_allow_na(input, values = c("female","male"))
+#'
+#' # Allow NA
+#' input = NA
+#' arg_match0_allow_na(input, values = c("female","male"))
+#'
+#' # Error as M is not female or male
+#' input = "emale"
+#' try(arg_match0_allow_na(input, values = c("female","male")))
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}, \code{\link[rlang]{arg_match}}
 #' @rdname arg_match0_allow_na
@@ -80,11 +92,35 @@ arg_match0_allow_na <- function(
 }
 
 #' @title Match an argument to a \code{TRUE} or \code{FALSE} vector but skip \code{NA}
-#' @description This is equivalent to \code{\link[rlang]{arg_match}} but an
-#' integer vector is compared and skip \code{NA}.
+#' @description This is equivalent to \code{\link[rlang]{arg_match}} but a
+#' boolean variable is needed and skip \code{NA}.
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @inheritParams rlang::arg_match
+#' @examples
+#' # No error
+#' input = TRUE
+#' arg_match0_true_or_false(input)
+#'
+#' # Allow NA
+#' input = NA
+#' arg_match0_true_or_false(input)
+#'
+#' # Error as 0 is not TRUE or FALSE
+#' input = 0
+#' try(arg_match0_true_or_false(input))
+#'
+#' # Error as 1 is not TRUE or FALSE
+#' input = 1
+#' try(arg_match0_true_or_false(input))
+#'
+#' # Error as NULL is not TRUE or FALSE
+#' input = NULL
+#' try(arg_match0_true_or_false(input))
+#'
+#' # Error as NA is not TRUE or FALSE and allow_na is FALSE
+#' input = NA
+#' try(arg_match0_true_or_false(input, allow_na = FALSE))
 #' @return The \code{TRUE} or \code{FALSE} value supplied to \code{arg}.
 #' @rdname arg_match0_true_or_false
 #' @export
@@ -96,10 +132,20 @@ arg_match0_true_or_false <-  function(
 )
 {
 
-  if (is.null(arg)) {
+  if (is.null(arg) & isTRUE(allow_na)) {
     cli::cli_abort(
       message = c(
         "Provided input {.arg {arg_nm}}, must be TRUE, FALSE, NA or NaN.
+        It is currently of type {.cls {class(arg)}}"
+      ),
+      call = error_call
+    )
+  }
+
+  if (is.null(arg) & isFALSE(allow_na)) {
+    cli::cli_abort(
+      message = c(
+        "Provided input {.arg {arg_nm}}, must be TRUE or FALSE.
         It is currently of type {.cls {class(arg)}}"
       ),
       call = error_call
@@ -135,10 +181,30 @@ arg_match0_true_or_false <-  function(
 
 #' @title Match an argument to a integer vector but skip \code{NA}
 #' @description This is equivalent to \code{\link[rlang]{arg_match}} but an
-#' integer vector is compared and skip \code{NA}.
+#' integer variable is needed and skip \code{NA}.
 #' @param allow_na Input boolean to determine if \code{NA} or \code{NaN} is allowed.
 #' Default: \code{TRUE}
 #' @inheritParams rlang::arg_match
+#' @examples
+#' # No error
+#' input = 5
+#' arg_match0_integer(input, values = c(0:5))
+#'
+#' # Allow NA
+#' input = NA
+#' arg_match0_integer(input, values = c(0:5))
+#'
+#' # Error as 0 is not within 0 and 5
+#' input = 6
+#' try(arg_match0_integer(input, values = c(0:5)))
+#'
+#' # Error as NULL is not within 0 and 5
+#' input = NULL
+#' try(arg_match0_integer(input, values = c(0:5)))
+#'
+#' # Error as NA is not within 0 and 5 and allow_na is FALSE
+#' input = NA
+#' try(arg_match0_integer(input, values = c(0:5), allow_na = FALSE))
 #' @return The integer supplied to \code{arg}.
 #' @rdname arg_match0_integer
 #' @export
@@ -151,7 +217,22 @@ arg_match0_integer <-  function(
 )
 {
 
-  if (is.null(arg)) {
+  if (is.null(arg) & isFALSE(allow_na) ) {
+    values_text <- cli::cli_vec(
+      c(values),
+      style = list("vec-last" = " or ")
+    )
+
+    cli::cli_abort(
+      message = c(
+        "Provided input {.arg {arg_nm}}, must be {.val {values_text}}.
+        It is currently of type {.cls {class(arg)}}"
+      ),
+      call = error_call
+    )
+  }
+
+  if (is.null(arg) & isTRUE(allow_na) ) {
     values_text <- cli::cli_vec(
       c(values, NA, NaN),
       style = list("vec-last" = " or ")
@@ -403,36 +484,45 @@ check_if_integer <- function(
 }
 
 
-sex_are_mutually_exclusive <- function(
-    label_sex_male,
-    label_sex_female,
-    arg_sex_male = rlang::caller_arg(label_sex_male),
-    arg_sex_female = rlang::caller_arg(label_sex_female),
-    label_sex_missing = NULL,
-    call = rlang::caller_env()
-) {
-
-  # Check intersection of label_sex_male and label_sex_female
-  intersect_male_female <- intersect(label_sex_male, label_sex_female)
-
-  if (isTRUE(length(intersect_male_female) != 0) && is.null(label_sex_missing)) {
-
-    intersect_male_female_string <- intersect_male_female |>
-      stringr::str_flatten(
-        collapse = " , ",
-        last = " and "
-      )
-
-    cli::cli_abort(
-      message = c(
-        "{.arg {arg_sex_male}} and {.arg {label_sex_female}} must be mutally exclusive.
-        Common values found: {intersect_male_female_string}.
-        Please ensure {.arg {arg_sex_male}} and {.arg {label_sex_female}} do not hold common values."
-      ),
-      call = call
-    )
-  }
-
-}
-
+# sex_are_mutually_exclusive <- function(
+#     label_sex_male,
+#     label_sex_female,
+#     label_sex_missing = NULL,
+#     arg_sex_male = rlang::caller_arg(label_sex_male),
+#     arg_sex_female = rlang::caller_arg(label_sex_female),
+#     arg_sex_missing = rlang::caller_arg(label_sex_missing),
+#     call = rlang::caller_env()
+# ) {
+#
+#   # Check intersection of label_sex_male and label_sex_female
+#   intersect_male_female <- intersect(label_sex_male, label_sex_female)
+#
+#   intersect_male_female_text <- cli::cli_vec(
+#     c(intersect_male_female),
+#     style = list("vec-last" = " and ")
+#   )
+#
+#   if (isTRUE(length(intersect_male_female) != 0) && is.null(label_sex_missing)) {
+#
+#     cli::cli_abort(
+#       message = c(
+#         "{.arg {arg_sex_male}} and {.arg {arg_sex_female}} must be mutally exclusive.
+#
+#         Common values found: {.val {intersect_male_female_text}}.
+#
+#         Please ensure {.arg {arg_sex_male}} and {.arg {arg_sex_female}} do not hold common values."
+#       ),
+#       call = call
+#     )
+#   }
+#
+# }
+#
+# sex_male <- c("male", "female", "F")
+# sex_female <- c("female", "male", "F")
+#
+# sex_are_mutually_exclusive(
+#   label_sex_male = sex_male,
+#   label_sex_female = sex_female
+# )
 

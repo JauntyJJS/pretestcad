@@ -57,64 +57,81 @@
 # arg_match0_allow_na gives error for invalid inputs
 
     Code
-      arg_match0_allow_na("M", values = c("female", "male"))
+      arg_match0_allow_na(input, values = c("female", "male"))
     Condition
       Error:
-      ! `"M"` must be one of "female" or "male", not "M".
+      ! `input` must be one of "female" or "male", not "emale".
+      i Did you mean "female"?
 
 # arg_match0_integer gives error for invalid inputs
 
     Code
-      arg_match0_integer(6, values = c(0:5))
+      arg_match0_integer(input, values = c(0:5))
     Condition
       Error:
-      ! Provided input `6`, must be 0, 1, 2, 3, 4, 5, NA or NaN. It is currently 6.
+      ! Provided input `input`, must be 0, 1, 2, 3, 4, 5, NA or NaN. It is currently 6.
 
-# arg_match0_integer gives error for NULL inputs
+# arg_match0_integer gives error for NULL inputs with allow_na set to TRUE
 
     Code
-      arg_match0_integer(NULL, values = c(0:5))
+      arg_match0_integer(input, values = c(0:5))
     Condition
       Error:
-      ! Provided input `NULL`, must be 0, 1, 2, 3, 4, 5, NA or NaN. It is currently of type <NULL>
-
-# arg_match0_integer gives error for NA inputs
-
-    Code
-      arg_match0_integer(NA, values = c(0:5), allow_na = FALSE)
-    Condition
-      Error:
-      ! Provided input `NA`, must be must be 0, 1, 2, 3, 4 or 5. It is currently NA.
-
-# arg_match0_true_or_false gives error for invalid inputs
-
-    Code
-      arg_match0_true_or_false(0)
-    Condition
-      Error:
-      ! Provided input `0`, must be TRUE, FALSE, NA or NaN. It is currently 0.
+      ! Provided input `input`, must be 0, 1, 2, 3, 4, 5, NA or NaN. It is currently of type <NULL>
 
 ---
 
     Code
-      arg_match0_true_or_false(1)
+      arg_match0_integer(input, values = c(0:5), allow_na = FALSE)
     Condition
       Error:
-      ! Provided input `1`, must be TRUE, FALSE, NA or NaN. It is currently 1.
+      ! Provided input `input`, must be 0, 1, 2, 3, 4 or 5. It is currently of type <NULL>
 
-# arg_match0_true_or_false gives error for NULL inputs
+# arg_match0_integer gives error for NA inputs
 
     Code
-      arg_match0_true_or_false(NULL)
+      arg_match0_integer(input, values = c(0:5), allow_na = FALSE)
     Condition
       Error:
-      ! Provided input `NULL`, must be TRUE, FALSE, NA or NaN. It is currently of type <NULL>
+      ! Provided input `input`, must be must be 0, 1, 2, 3, 4 or 5. It is currently NA.
+
+# arg_match0_true_or_false gives error for invalid inputs
+
+    Code
+      arg_match0_true_or_false(input)
+    Condition
+      Error:
+      ! Provided input `input`, must be TRUE, FALSE, NA or NaN. It is currently 0.
+
+---
+
+    Code
+      arg_match0_true_or_false(input)
+    Condition
+      Error:
+      ! Provided input `input`, must be TRUE, FALSE, NA or NaN. It is currently 1.
+
+# arg_match0_true_or_false gives error for NULL inputs with allow_na set to TRUE
+
+    Code
+      arg_match0_true_or_false(input)
+    Condition
+      Error:
+      ! Provided input `input`, must be TRUE, FALSE, NA or NaN. It is currently of type <NULL>
+
+# arg_match0_true_or_false gives error for NULL inputs with allow_na set to FALSE
+
+    Code
+      arg_match0_true_or_false(input, allow_na = FALSE)
+    Condition
+      Error:
+      ! Provided input `input`, must be TRUE or FALSE. It is currently of type <NULL>
 
 # arg_match0_true_or_false gives error for NA inputs
 
     Code
-      arg_match0_true_or_false(NA, allow_na = FALSE)
+      arg_match0_true_or_false(input, allow_na = FALSE)
     Condition
       Error:
-      ! Provided input `NA`, must be must be TRUE or FALSE. It is currently NA.
+      ! Provided input `input`, must be must be TRUE or FALSE. It is currently NA.
 

@@ -83,68 +83,94 @@ test_that("check_if_integer gives no error for 0", {
 })
 
 test_that("arg_match0_allow_na gives error for invalid inputs", {
+  input = "emale"
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_allow_na("M", values = c("female","male"))
+    arg_match0_allow_na(input, values = c("female","male"))
   )
 })
 
 test_that("arg_match0_allow_na gives no error for valid inputs", {
+  input = "male"
   testthat::expect_equal(
-    arg_match0_allow_na("male", values = c("female","male")),
+    arg_match0_allow_na(input, values = c("female","male")),
     "male"
   )
 
+  input = NA
   testthat::expect_equal(
-    is.na(arg_match0_allow_na(NA, values = c("female","male"))),
+    is.na(arg_match0_allow_na(input, values = c("female","male"))),
     TRUE
   )
 
 })
 
 test_that("arg_match0_integer gives error for invalid inputs", {
+  input = 6
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_integer(6, values = c(0:5))
+    arg_match0_integer(input, values = c(0:5))
   )
 })
 
-test_that("arg_match0_integer gives error for NULL inputs", {
+test_that("arg_match0_integer gives error for NULL inputs with allow_na set to TRUE", {
+  input = NULL
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_integer(NULL, values = c(0:5))
+    arg_match0_integer(input, values = c(0:5))
+  )
+})
+
+test_that("arg_match0_integer gives error for NULL inputs with allow_na set to TRUE", {
+  input = NULL
+  testthat::expect_snapshot(
+    error = TRUE,
+    arg_match0_integer(input, values = c(0:5), allow_na = FALSE)
   )
 })
 
 test_that("arg_match0_integer gives error for NA inputs", {
+  input = NA
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_integer(NA, values = c(0:5), allow_na = FALSE)
+    arg_match0_integer(input, values = c(0:5), allow_na = FALSE)
   )
 })
 
 test_that("arg_match0_true_or_false gives error for invalid inputs", {
+  input = 0
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_true_or_false(0)
+    arg_match0_true_or_false(input)
   )
 
+  input = 1
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_true_or_false(1)
+    arg_match0_true_or_false(input)
   )
 })
 
-test_that("arg_match0_true_or_false gives error for NULL inputs", {
+test_that("arg_match0_true_or_false gives error for NULL inputs with allow_na set to TRUE", {
+  input = NULL
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_true_or_false(NULL)
+    arg_match0_true_or_false(input)
+  )
+})
+
+test_that("arg_match0_true_or_false gives error for NULL inputs with allow_na set to FALSE", {
+  input = NULL
+  testthat::expect_snapshot(
+    error = TRUE,
+    arg_match0_true_or_false(input, allow_na = FALSE)
   )
 })
 
 test_that("arg_match0_true_or_false gives error for NA inputs", {
+  input = NA
   testthat::expect_snapshot(
     error = TRUE,
-    arg_match0_true_or_false(NA, allow_na = FALSE)
+    arg_match0_true_or_false(input, allow_na = FALSE)
   )
 })

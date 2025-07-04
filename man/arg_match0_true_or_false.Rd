@@ -28,6 +28,31 @@ mentioned in error messages as the source of the error. See the
 The \code{TRUE} or \code{FALSE} value supplied to \code{arg}.
 }
 \description{
-This is equivalent to \code{\link[rlang]{arg_match}} but an
-integer vector is compared and skip \code{NA}.
+This is equivalent to \code{\link[rlang]{arg_match}} but a
+boolean variable is needed and skip \code{NA}.
+}
+\examples{
+# No error
+input = TRUE
+arg_match0_true_or_false(input)
+
+# Allow NA
+input = NA
+arg_match0_true_or_false(input)
+
+# Error as 0 is not TRUE or FALSE
+input = 0
+try(arg_match0_true_or_false(input))
+
+# Error as 1 is not TRUE or FALSE
+input = 1
+try(arg_match0_true_or_false(input))
+
+# Error as NULL is not TRUE or FALSE
+input = NULL
+try(arg_match0_true_or_false(input))
+
+# Error as NA is not TRUE or FALSE and allow_na is FALSE
+input = NA
+try(arg_match0_true_or_false(input, allow_na = FALSE))
 }
