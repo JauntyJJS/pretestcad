@@ -106,7 +106,7 @@ test_that("harmonise_two_labels gives error of invalid missing input of have_dys
 
 test_that("harmonise_two_labels gives error of invalid non-missing input with partial match", {
 
-  have_dyspnoea_test <- "No"
+  have_dyspnoea_test <- "Not"
 
   label_have_dyspnoea_no <- c("no")
   label_have_dyspnoea_yes <- c("yes")

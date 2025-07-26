@@ -44,7 +44,7 @@ Character representing one of the three standardise labels.
 }
 \description{
 Function to map an input from
-four different list into one of the three standardise labels
+three different list into one of the three standardise labels
 }
 \examples{
 label_cpt_nonanginal <- c("nonanginal", "unspecified")

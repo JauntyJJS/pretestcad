@@ -62,7 +62,7 @@
 #' )
 #'
 #' # Gives error of invalid have_dyspnoea input with partial match
-#' have_dyspnoea <- "No"
+#' have_dyspnoea <- "Not"
 #' label_have_dyspnoea_unknown <- c(NA, NaN)
 #'
 #' try(harmonise_two_labels(

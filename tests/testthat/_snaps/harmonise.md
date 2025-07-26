@@ -18,7 +18,7 @@
         harmonise_label_unknown = NA)
     Condition
       Error:
-      ! `have_dyspnoea_test` must be one of "no", "yes", "NA", or "NaN", not "No".
+      ! `have_dyspnoea_test` must be one of "no", "yes", "NA", or "NaN", not "Not".
       i Did you mean "no"?
 
 # harmonise_two_labels gives error of invalid non-missing input with no partial match
