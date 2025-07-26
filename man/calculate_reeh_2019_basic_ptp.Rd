@@ -4,16 +4,25 @@
 \alias{calculate_reeh_2019_basic_ptp}
 \title{Calculate 2019 Reeh Basic PTP for obstructive CAD}
 \usage{
-calculate_reeh_2019_basic_ptp(age, sex, symptom_type)
+calculate_reeh_2019_basic_ptp(
+  age,
+  sex,
+  symptom_type,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_symptom_type_typical = c("typical"),
+  label_symptom_type_atypical = c("atypical"),
+  label_symptom_type_nonanginal = c("nonanginal"),
+  label_symptom_type_dyspnoea = c("dyspnoea"),
+  label_symptom_type_unknown = c(NA, NaN)
+)
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
 \item{symptom_type}{Input characters (typical, atypical, nonanginal, dyspnoea)
 to indicate the symptom characteristics of the patient.
@@ -23,6 +32,31 @@ to indicate the symptom characteristics of the patient.
   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
   \item dyspnoea stands for the patient having dyspnoea.
 }}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_symptom_type_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_symptom_type_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_symptom_type_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_symptom_type_dyspnoea}{Label(s) for patient having dyspnoea.
+Default: \code{c("dyspnoea")}}
+
+\item{label_symptom_type_unknown}{Label(s) for patient having unknown symptoms.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for obstructive CAD

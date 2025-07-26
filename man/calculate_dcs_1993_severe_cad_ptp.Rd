@@ -23,95 +23,95 @@ calculate_dcs_1993_severe_cad_ptp(
   max_na_risk_factor_index = 0,
   max_na_pain_index = 0,
   max_na_vascular_disease_index = 0,
-  max_frequency_of_angina_pain_per_week = 35
+  max_frequency_of_angina_pain_per_week = 35,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_cpt_nonanginal = c("nonanginal"),
+  label_cpt_atypical = c("atypical"),
+  label_cpt_typical = c("typical"),
+  label_cpt_unknown = c(NA, NaN),
+  label_have_progressive_angina_no = c("no"),
+  label_have_progressive_angina_yes = c("yes"),
+  label_have_progressive_angina_unknown = c(NA, NaN),
+  label_have_nocturnal_angina_no = c("no"),
+  label_have_nocturnal_angina_yes = c("yes"),
+  label_have_nocturnal_angina_unknown = c(NA, NaN),
+  label_have_pvd_no = c("no"),
+  label_have_pvd_yes = c("yes"),
+  label_have_pvd_unknown = c(NA, NaN),
+  label_have_cvd_no = c("no"),
+  label_have_cvd_yes = c("yes"),
+  label_have_cvd_unknown = c(NA, NaN),
+  label_have_carotid_bruits_no = c("no"),
+  label_have_carotid_bruits_yes = c("yes"),
+  label_have_carotid_bruits_unknown = c(NA, NaN),
+  label_have_hypertension_no = c("no"),
+  label_have_hypertension_yes = c("yes"),
+  label_have_hypertension_unknown = c(NA, NaN),
+  label_have_dyslipidemia_no = c("no"),
+  label_have_dyslipidemia_yes = c("yes"),
+  label_have_dyslipidemia_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN),
+  label_have_q_waves_no = c("no"),
+  label_have_q_waves_yes = c("yes"),
+  label_have_q_waves_unknown = c(NA, NaN),
+  label_have_st_t_changes_no = c("no"),
+  label_have_st_t_changes_yes = c("yes"),
+  label_have_st_t_changes_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.
-\itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-}}
+\item{chest_pain_type}{The value of variable in the parameters,
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+\code{label_cpt_unknown}.}
 
-\item{have_progressive_angina}{Input characters (no, yes) to indicate if the patient
-has progressive angina.
-\itemize{
-  \item no stands for not having progressive angina.
-  \item yes stands for having progressive angina.
-}}
+\item{have_progressive_angina}{The value of variable in the parameters
+\code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
+and \code{label_have_progressive_angina_unknown}.}
 
-\item{have_nocturnal_angina}{Input characters (no, yes) to indicate if the patient
-has nocturnal angina.
-\itemize{
-  \item no stands for not having nocturnal angina.
-  \item yes stands for having nocturnal angina.
-}}
+\item{have_nocturnal_angina}{The value of variable in the parameters
+\code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
+and \code{label_have_nocturnal_angina_unknown}.}
 
-\item{have_peripheral_vascular_disease}{Input characters (no, yes) to indicate if the patient
-has peripheral vascular disease.
-\itemize{
-  \item no stands for not having peripheral vascular disease.
-  \item yes stands for having peripheral vascular disease.
-}}
+\item{have_peripheral_vascular_disease}{The value of variable in the parameters
+\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+and \code{label_have_pvd_unknown}.}
 
-\item{have_cerebrovascular_disease}{Input characters (no, yes) to indicate if the patient
-has cerebrovascular disease.
-\itemize{
-  \item no stands for not having cerebrovascular disease.
-  \item yes stands for having cerebrovascular disease.
-}}
+\item{have_cerebrovascular_disease}{The value of variable in the parameters
+\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+and \code{label_have_cvd_unknown}.}
 
-\item{have_carotid_bruits}{Input characters (no, yes) to indicate if the patient
-has carotid bruits.
-\itemize{
-  \item no stands for not having carotid bruits.
-  \item yes stands for having carotid bruits.
-}}
+\item{have_carotid_bruits}{The value of variable in the parameters
+\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+and \code{label_have_carotid_bruits_unknown}.}
 
-\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-has hypertension.
-\itemize{
-  \item no stands for not having hypertension.
-  \item yes stands for having hypertension.
-}}
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
 
-\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-has dyslipidemia.
-\itemize{
-  \item no stands for not having dyslipidemia.
-  \item yes stands for having dyslipidemia.
-}}
+\item{have_dyslipidemia}{The value of variable in the parameters
+\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+and \code{label_have_dyslipidemia_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
-\item{have_q_waves}{Input characters (no, yes) to indicate if the patient
-has Q waves on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having Q waves on ECG.
-  \item yes stands for the patient having Q waves on ECG.
-}}
+\item{have_q_waves}{The value of variable in the parameters
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{Input characters (no, yes) to indicate if the patient
-has ST-T changes on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having ST-T changes on ECG.
-  \item yes stands for the patient having ST-T changes on ECG.
-}}
+\item{have_st_t_changes}{The value of variable in the parameters
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+and \code{label_have_st_t_changes_unknown}.}
 
 \item{frequency_of_angina_pain_per_week}{Input integer to indicate the patient's
 frequency of angina per week.}
@@ -135,6 +135,125 @@ Default: 0}
 indicate the maximum frequency angina per week to tolerate before outputting an \code{NA}.
 In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 Default: 35}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_cpt_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_progressive_angina_no}{Label(s) for patient not having progressive angina.
+Default: \code{c("no")}}
+
+\item{label_have_progressive_angina_yes}{Label(s) for patient having progressive angina.
+Default: \code{c("yes")}}
+
+\item{label_have_progressive_angina_unknown}{Label(s) for patient
+having unknown progressive angina.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_nocturnal_angina_no}{Label(s) for patient not having nocturnal angina.
+Default: \code{c("no")}}
+
+\item{label_have_nocturnal_angina_yes}{Label(s) for patient having nocturnal angina.
+Default: \code{c("yes")}}
+
+\item{label_have_nocturnal_angina_unknown}{Label(s) for patient
+having unknown nocturnal angina.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_pvd_no}{Label(s) for patient not having peripheral vascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_pvd_yes}{Label(s) for patient having peripheral vascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_pvd_unknown}{Label(s) for patient
+having unknown peripheral vascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_cvd_no}{Label(s) for patient not having cerebrovascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_cvd_yes}{Label(s) for patient having cerebrovascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_cvd_unknown}{Label(s) for patient
+having unknown cerebrovascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_carotid_bruits_no}{Label(s) for patient not having carotid bruits.
+Default: \code{c("no")}}
+
+\item{label_have_carotid_bruits_yes}{Label(s) for patient having carotid bruits.
+Default: \code{c("yes")}}
+
+\item{label_have_carotid_bruits_unknown}{Label(s) for patient
+having unknown carotid bruits.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyslipidemia_no}{Label(s) for patient with no dyslipidemia.
+Default: \code{c("no")}}
+
+\item{label_have_dyslipidemia_yes}{Label(s) for patient having dyslipidemia.
+Default: \code{c("yes")}}
+
+\item{label_have_dyslipidemia_unknown}{Label(s) for patient
+having unknown dyslipidemia.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_q_waves_no}{Label(s) for patient not having Q waves on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_q_waves_yes}{Label(s) for patient having Q waves on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_q_waves_unknown}{Label(s) for patient with unknown Q waves on ECG.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_st_t_changes_no}{Label(s) for patient not having ST-T changes on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_st_t_changes_yes}{Label(s) for patient having ST-T changes on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_st_t_changes_unknown}{Label(s) for patient with unknown ST-T changes on ECG.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for severe

@@ -11,54 +11,119 @@ calculate_precise_2021_simple_ptp(
   have_neck_radiation,
   have_diabetes,
   have_hypertension,
-  smoking_history_type
+  smoking_history_type,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_cpt_nonanginal = c("nonanginal"),
+  label_cpt_atypical = c("atypical"),
+  label_cpt_typical = c("typical"),
+  label_cpt_unknown = c(NA, NaN),
+  label_have_neck_radiation_no = c("no"),
+  label_have_neck_radiation_yes = c("yes"),
+  label_have_neck_radiation_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN),
+  label_have_hypertension_no = c("no"),
+  label_have_hypertension_yes = c("yes"),
+  label_have_hypertension_unknown = c(NA, NaN),
+  label_smoking_history_type_current = c("current"),
+  label_smoking_history_type_past = c("past"),
+  label_smoking_history_type_none = c("none"),
+  label_smoking_history_type_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.
-\itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-}}
+\item{chest_pain_type}{The value of variable in the parameters,
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+\code{label_cpt_unknown}.}
 
-\item{have_neck_radiation}{Input characters (no, yes) to indicate if the patient
-has chest pain radiating to the neck.
-\itemize{
-  \item no stands for not chest pain radiating to the neck.
-  \item yes stands for having chest pain radiating to the neck.
-}}
+\item{have_neck_radiation}{The value of variable in the parameters
+\code{label_have_neck_radiation_no}, \code{label_have_neck_radiation_yes}
+and \code{label_have_neck_radiation_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
-\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-has hypertension.
-\itemize{
-  \item no stands for not having hypertension.
-  \item yes stands for having hypertension.
-}}
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
 
-\item{smoking_history_type}{Input characters (current, past, none) to indicate
-the smoking history of the patient.
-\itemize{
-  \item current stands for being a current smoker.
-  \item past stands for being a past smoker.
-  \item none stands for not having a smoking history (non-smoker).
-}}
+\item{smoking_history_type}{The value of variable in the parameters
+\code{label_smoking_history_type_current}, \code{label_smoking_history_type_past},
+\code{label_smoking_history_type_none} and \code{label_smoking_history_type_unknown}}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_cpt_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_neck_radiation_no}{Label(s) for patient without
+chest pain radiating to the neck.
+Default: \code{c("no")}}
+
+\item{label_have_neck_radiation_yes}{Label(s) for patient with
+chest pain radiating to the neck.
+Default: \code{c("yes")}}
+
+\item{label_have_neck_radiation_unknown}{Label(s) for patient with unknown
+chest pain radiating to the neck
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
+
+\item{label_smoking_history_type_current}{Label(s) for patient who is a current smoker.
+Default: \code{c("current")}}
+
+\item{label_smoking_history_type_past}{Label(s) for patient who is a past smoker.
+Default: \code{c("past")}}
+
+\item{label_smoking_history_type_none}{Label(s) for patient who is a non-smoker.
+Default: \code{c("none")}}
+
+\item{label_smoking_history_type_unknown}{Label(s) for patient with unknown smoking history.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for obstructive CAD

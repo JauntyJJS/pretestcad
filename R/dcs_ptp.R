@@ -3,33 +3,17 @@
 #' pre-test probability (PTP) of significant (>75\% luminal diameter narrowing
 #' of at least one major coronary artery) coronary artery disease based on the
 #' 1993 Duke Clinical Score.
+#' @inheritParams calculate_precise_2021_clinical_ptp
 #' @inheritParams calculate_esc_2024_fig_4_ptp
-#' @param chest_pain_type Input characters (typical, atypical, nonanginal)
-#' to indicate the chest pain characteristics of the patient.
-#' \itemize{
-#'   \item typical stands for the patient having typical chest pain.
-#'   \item atypical stands for the patient having atypical chest pain.
-#'   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-#' }
-#' @param have_mi Input characters (no, yes) to indicate if the patient
-#' has a previous history of Myocardial Infarction (MI).
-#' \itemize{
-#'   \item no stands for the patient not having a previous history of MI.
-#'   \item yes stands for the patient a previous history of MI.
-#' }
-#' @param have_q_waves Input characters (no, yes) to indicate if the patient
-#' has Q waves on electrocardiogram (ECG).
-#' \itemize{
-#'   \item no stands for the patient not having Q waves on ECG.
-#'   \item yes stands for the patient having Q waves on ECG.
-#' }
-#' @param have_st_t_changes Input characters (no, yes) to indicate if the patient
-#' has ST-T changes on electrocardiogram (ECG).
-#' \itemize{
-#'   \item no stands for the patient not having ST-T changes on ECG.
-#'   \item yes stands for the patient having ST-T changes on ECG.
-#' }
-#'
+#' @param have_mi The value of variable in the parameters
+#' \code{label_have_mi_no}, \code{label_have_mi_yes}
+#' and \code{label_have_mi_unknown}.
+#' @param label_have_mi_no Label(s) for patient not having a previous history of MI.
+#' Default: \code{c("no")}
+#' @param label_have_mi_yes Label(s) for patient having a previous history of MI.
+#' Default: \code{c("yes")}
+#' @param label_have_mi_unknown Label(s) for patient with unknown previous history of MI.
+#' Default: \code{c(NA, NaN)}
 #' @return A numeric value representing the patient's PTP for significant
 #' (>75\% luminal diameter narrowing of at least one major coronary artery) CAD
 #' based on the 1993 Duke Clinical Score.
@@ -64,13 +48,52 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     have_dyslipidemia,
     have_diabetes,
     have_q_waves,
-    have_st_t_changes
+    have_st_t_changes,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN),
+    label_have_mi_no = c("no"),
+    label_have_mi_yes = c("yes"),
+    label_have_mi_unknown = c(NA, NaN),
+    label_have_smoking_history_no = c("no"),
+    label_have_smoking_history_yes = c("yes"),
+    label_have_smoking_history_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN),
+    label_have_q_waves_no = c("no"),
+    label_have_q_waves_yes = c("yes"),
+    label_have_q_waves_unknown = c(NA, NaN),
+    label_have_st_t_changes_no = c("no"),
+    label_have_st_t_changes_yes = c("yes"),
+    label_have_st_t_changes_unknown = c(NA, NaN)
 )
 {
   check_if_positive(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   sex <- dplyr::case_when(
     sex == "female" ~ 1L,
@@ -78,8 +101,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_mi_no,
+    label_have_mi_yes,
+    label_cat_missing = label_have_mi_unknown
+  )
+
+  # Ensure have previous history of mi is valid and mapped to a unified group (yes, no, NA)
   have_mi <- have_mi |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_mi_no,
+      label_two = label_have_mi_yes,
+      label_unknown = label_have_mi_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_mi <- dplyr::case_when(
     have_mi == "no" ~ 0L,
@@ -87,8 +124,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes,
+    label_cat_missing = label_have_dyslipidemia_unknown
+  )
+
+  # Ensure have dyslipidemia is valid and mapped to a unified group (yes, no, NA)
   have_dyslipidemia <- have_dyslipidemia |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyslipidemia_no,
+      label_two = label_have_dyslipidemia_yes,
+      label_unknown = label_have_dyslipidemia_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_dyslipidemia <- dplyr::case_when(
     have_dyslipidemia == "no" ~ 0L,
@@ -96,8 +147,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_diabetes_no,
+    label_have_diabetes_yes,
+    label_cat_missing = label_have_diabetes_unknown
+  )
+
+  # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
   have_diabetes <- have_diabetes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_diabetes_no,
+      label_two = label_have_diabetes_yes,
+      label_unknown = label_have_diabetes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_diabetes <- dplyr::case_when(
     have_diabetes == "no" ~ 0L,
@@ -105,8 +170,26 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_three_categories_are_mutually_exclusive(
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("typical", "atypical", "nonanginal"))
+    harmonise_three_labels(
+      label_one = label_cpt_nonanginal,
+      label_two = label_cpt_atypical,
+      label_three = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "nonanginal",
+      harmonise_label_two = "atypical",
+      harmonise_label_three = "typical",
+      harmonise_label_unknown = NA
+    )
 
   have_atypical_chest_pain <- dplyr::case_when(
     chest_pain_type %in% c("typical", "nonanginal") ~ 0L,
@@ -120,8 +203,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_smoking_history_no,
+    label_have_smoking_history_yes,
+    label_cat_missing = label_have_smoking_history_unknown
+  )
+
+  # Ensure have smoking history is valid and mapped to a unified group (yes, no, NA)
   have_smoking_history <- have_smoking_history |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_smoking_history_no,
+      label_two = label_have_smoking_history_yes,
+      label_unknown = label_have_smoking_history_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_smoking_history <- dplyr::case_when(
     have_smoking_history == "no" ~ 0L,
@@ -129,8 +226,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_q_waves_no,
+    label_have_q_waves_yes,
+    label_cat_missing = label_have_q_waves_unknown
+  )
+
+  # Ensure have q waves is valid and mapped to a unified group (yes, no, NA)
   have_q_waves <- have_q_waves |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_q_waves_no,
+      label_two = label_have_q_waves_yes,
+      label_unknown = label_have_q_waves_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_q_waves <- dplyr::case_when(
     have_q_waves == "no" ~ 0L,
@@ -138,8 +249,22 @@ calculate_dcs_1993_sig_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_st_t_changes_no,
+    label_have_st_t_changes_yes,
+    label_cat_missing = label_have_st_t_changes_unknown
+  )
+
+  # Ensure have st t changes is valid and mapped to a unified group (yes, no, NA)
   have_st_t_changes <- have_st_t_changes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_st_t_changes_no,
+      label_two = label_have_st_t_changes_yes,
+      label_unknown = label_have_st_t_changes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_st_t_changes <- dplyr::case_when(
     have_st_t_changes == "no" ~ 0L,
@@ -177,24 +302,7 @@ calculate_dcs_1993_sig_cad_ptp <- function(
 #' risk factor index. This is used to calculate the likelihood
 #' of severe coronary artery disease in the
 #' Duke Clinical Score 1993 paper.
-#' @param have_hypertension Input characters (no, yes) to indicate if the patient
-#' has hypertension.
-#' \itemize{
-#'   \item no stands for not having hypertension.
-#'   \item yes stands for having hypertension.
-#' }
-#' @param have_dyslipidemia Input characters (no, yes) to indicate if the patient
-#' has dyslipidemia.
-#' \itemize{
-#'   \item no stands for not having dyslipidemia.
-#'   \item yes stands for having dyslipidemia.
-#' }
-#' @param have_diabetes Input characters (no, yes) to indicate if the patient
-#' has diabetes.
-#' \itemize{
-#'   \item no stands for not having diabetes.
-#'   \item yes stands for having diabetes.
-#' }
+#' @inheritParams calculate_esc_2024_num_of_rf
 #' @param max_na Input integer 0 to 3 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -227,17 +335,68 @@ calculate_dcs_1993_risk_factor_index <- function(
     have_hypertension,
     have_dyslipidemia,
     have_diabetes,
-    max_na = 0
+    max_na = 0,
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN)
 ) {
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_hypertension_no,
+    label_have_hypertension_yes,
+    label_cat_missing = label_have_hypertension_unknown
+  )
+
+  # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
   have_hypertension <- have_hypertension |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_hypertension_no,
+      label_two = label_have_hypertension_yes,
+      label_unknown = label_have_hypertension_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes,
+    label_cat_missing = label_have_dyslipidemia_unknown
+  )
+
+  # Ensure have dyslipidemia is valid and mapped to a unified group (yes, no, NA)
   have_dyslipidemia <- have_dyslipidemia |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyslipidemia_no,
+      label_two = label_have_dyslipidemia_yes,
+      label_unknown = label_have_dyslipidemia_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_diabetes_no,
+    label_have_diabetes_yes,
+    label_cat_missing = label_have_diabetes_unknown
+  )
+
+  # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
   have_diabetes <- have_diabetes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_diabetes_no,
+      label_two = label_have_diabetes_yes,
+      label_unknown = label_have_diabetes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   max_na <- max_na |>
     arg_match0_integer(values = c(0:3))
@@ -278,38 +437,16 @@ calculate_dcs_1993_risk_factor_index <- function(
 #' pain index. This is used to calculate the likelihood
 #' of severe coronary artery disease in the
 #' Duke Clinical Score 1993 paper.
-#' @param have_typical_chest_pain Input characters (no, yes) to indicate if the patient
-#' has typical chest pain.
-#' \itemize{
-#'   \item no stands for not having typical chest pain.
-#'   \item yes stands for having typical chest pain.
-#' }
+#' @inheritParams calculate_confirm_2015_num_of_rf
+#' @inheritParams calculate_precise_2021_clinical_ptp
 #' @param frequency_of_angina_pain_per_week Input integer to indicate the patient's
 #' frequency of angina per week.
-#' @param have_progressive_angina Input characters (no, yes) to indicate if the patient
-#' has progressive angina.
-#' \itemize{
-#'   \item no stands for not having progressive angina.
-#'   \item yes stands for having progressive angina.
-#' }
-#' @param have_nocturnal_angina Input characters (no, yes) to indicate if the patient
-#' has nocturnal angina.
-#' \itemize{
-#'   \item no stands for not having nocturnal angina.
-#'   \item yes stands for having nocturnal angina.
-#' }
-#' @param have_q_waves Input characters (no, yes) to indicate if the patient
-#' has Q waves on electrocardiogram (ECG).
-#' \itemize{
-#'   \item no stands for the patient not having Q waves on ECG.
-#'   \item yes stands for the patient having Q waves on ECG.
-#' }
-#' @param have_st_t_changes Input characters (no, yes) to indicate if the patient
-#' has ST-T changes on electrocardiogram (ECG).
-#' \itemize{
-#'   \item no stands for the patient not having ST-T changes on ECG.
-#'   \item yes stands for the patient having ST-T changes on ECG.
-#' }
+#' @param have_progressive_angina The value of variable in the parameters
+#' \code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
+#' and \code{label_have_progressive_angina_unknown}.
+#' @param have_nocturnal_angina The value of variable in the parameters
+#' \code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
+#' and \code{label_have_nocturnal_angina_unknown}.
 #' @param max_na Input integer 0 to 6 to indicate the maximum number of
 #' missing symptoms to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -317,6 +454,21 @@ calculate_dcs_1993_risk_factor_index <- function(
 #' indicate the maximum frequency angina per week to tolerate before outputting an \code{NA}.
 #' In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 #' Default: 35
+#' @param label_have_progressive_angina_no Label(s) for patient not having progressive angina.
+#' Default: \code{c("no")}
+#' @param label_have_progressive_angina_yes Label(s) for patient having progressive angina.
+#' Default: \code{c("yes")}
+#' @param label_have_progressive_angina_unknown Label(s) for patient
+#' having unknown progressive angina.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_nocturnal_angina_no Label(s) for patient not having nocturnal angina.
+#' Default: \code{c("no")}
+#' @param label_have_nocturnal_angina_yes Label(s) for patient having nocturnal angina.
+#' Default: \code{c("yes")}
+#' @param label_have_nocturnal_angina_unknown Label(s) for patient
+#' having unknown nocturnal angina.
+#' Default: \code{c(NA, NaN)}
+#'
 #' @return An integer indicating the patient's pain index.
 #' It can also be \code{NA} if the number of missing symptoms exceeds the \code{max_na}
 #' input value or the frequency of angina per week exceed the
@@ -387,7 +539,22 @@ calculate_dcs_1993_pain_index <- function(
     have_q_waves,
     have_st_t_changes,
     max_na = 0,
-    max_frequency_of_angina_pain_per_week = 35
+    max_frequency_of_angina_pain_per_week = 35,
+    label_have_typical_chest_pain_no = c("no"),
+    label_have_typical_chest_pain_yes = c("yes"),
+    label_have_typical_chest_pain_unknown = c(NA, NaN),
+    label_have_progressive_angina_no = c("no"),
+    label_have_progressive_angina_yes = c("yes"),
+    label_have_progressive_angina_unknown = c(NA, NaN),
+    label_have_nocturnal_angina_no = c("no"),
+    label_have_nocturnal_angina_yes = c("yes"),
+    label_have_nocturnal_angina_unknown = c(NA, NaN),
+    label_have_q_waves_no = c("no"),
+    label_have_q_waves_yes = c("yes"),
+    label_have_q_waves_unknown = c(NA, NaN),
+    label_have_st_t_changes_no = c("no"),
+    label_have_st_t_changes_yes = c("yes"),
+    label_have_st_t_changes_unknown = c(NA, NaN)
 ) {
 
   check_if_non_negative(x = frequency_of_angina_pain_per_week, allow_na = TRUE)
@@ -396,20 +563,90 @@ calculate_dcs_1993_pain_index <- function(
   check_if_non_negative(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE)
   check_if_integer(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_typical_chest_pain_no,
+    label_have_typical_chest_pain_yes,
+    label_cat_missing = label_have_typical_chest_pain_unknown
+  )
+
+  # Ensure have typical chest pain is valid and mapped to a unified group (yes, no, NA)
   have_typical_chest_pain <- have_typical_chest_pain |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_typical_chest_pain_no,
+      label_two = label_have_typical_chest_pain_yes,
+      label_unknown = label_have_typical_chest_pain_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_progressive_angina_no,
+    label_have_progressive_angina_yes,
+    label_cat_missing = label_have_progressive_angina_unknown
+  )
+
+  # Ensure have progressive angina is valid and mapped to a unified group (yes, no, NA)
   have_progressive_angina <- have_progressive_angina |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_progressive_angina_no,
+      label_two = label_have_progressive_angina_yes,
+      label_unknown = label_have_progressive_angina_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_nocturnal_angina_no,
+    label_have_nocturnal_angina_yes,
+    label_cat_missing = label_have_nocturnal_angina_unknown
+  )
+
+  # Ensure have nocturnal angina is valid and mapped to a unified group (yes, no, NA)
   have_nocturnal_angina <- have_nocturnal_angina |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_nocturnal_angina_no,
+      label_two = label_have_nocturnal_angina_yes,
+      label_unknown = label_have_nocturnal_angina_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_q_waves_no,
+    label_have_q_waves_yes,
+    label_cat_missing = label_have_q_waves_unknown
+  )
+
+  # Ensure have q waves is valid and mapped to a unified group (yes, no, NA)
   have_q_waves <- have_q_waves |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_q_waves_no,
+      label_two = label_have_q_waves_yes,
+      label_unknown = label_have_q_waves_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_st_t_changes_no,
+    label_have_st_t_changes_yes,
+    label_cat_missing = label_have_st_t_changes_unknown
+  )
+
+  # Ensure have st t changes is valid and mapped to a unified group (yes, no, NA)
   have_st_t_changes <- have_st_t_changes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_st_t_changes_no,
+      label_two = label_have_st_t_changes_yes,
+      label_unknown = label_have_st_t_changes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   max_na <- max_na |>
     arg_match0_integer(values = c(0:6))
@@ -482,27 +719,40 @@ calculate_dcs_1993_pain_index <- function(
 #' vascular disease index. This is used to calculate the likelihood
 #' of severe coronary artery disease in the
 #' Duke Clinical Score 1993 paper.
-#' @param have_peripheral_vascular_disease Input characters (no, yes) to indicate if the patient
-#' has peripheral vascular disease.
-#' \itemize{
-#'   \item no stands for not having peripheral vascular disease.
-#'   \item yes stands for having peripheral vascular disease.
-#' }
-#' @param have_cerebrovascular_disease Input characters (no, yes) to indicate if the patient
-#' has cerebrovascular disease.
-#' \itemize{
-#'   \item no stands for not having cerebrovascular disease.
-#'   \item yes stands for having cerebrovascular disease.
-#' }
-#' @param have_carotid_bruits Input characters (no, yes) to indicate if the patient
-#' has carotid bruits.
-#' \itemize{
-#'   \item no stands for not having carotid bruits.
-#'   \item yes stands for having carotid bruits.
-#' }
+#' @param have_peripheral_vascular_disease The value of variable in the parameters
+#' \code{label_have_pvd_no}, \code{label_have_pvd_yes}
+#' and \code{label_have_pvd_unknown}.
+#' @param have_cerebrovascular_disease The value of variable in the parameters
+#' \code{label_have_cvd_no}, \code{label_have_cvd_yes}
+#' and \code{label_have_cvd_unknown}.
+#' @param have_carotid_bruits The value of variable in the parameters
+#' \code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+#' and \code{label_have_carotid_bruits_unknown}.
 #' @param max_na Input integer 0 to 3 to indicate the maximum number of
 #' missing disease history to tolerate before outputting an \code{NA}.
 #' Default: 0
+#' @param label_have_pvd_no Label(s) for patient not having peripheral vascular disease.
+#' Default: \code{c("no")}
+#' @param label_have_pvd_yes Label(s) for patient having peripheral vascular disease.
+#' Default: \code{c("yes")}
+#' @param label_have_pvd_unknown Label(s) for patient
+#' having unknown peripheral vascular disease.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_cvd_no Label(s) for patient not having cerebrovascular disease.
+#' Default: \code{c("no")}
+#' @param label_have_cvd_yes Label(s) for patient having cerebrovascular disease.
+#' Default: \code{c("yes")}
+#' @param label_have_cvd_unknown Label(s) for patient
+#' having unknown cerebrovascular disease.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_carotid_bruits_no Label(s) for patient not having carotid bruits.
+#' Default: \code{c("no")}
+#' @param label_have_carotid_bruits_yes Label(s) for patient having carotid bruits.
+#' Default: \code{c("yes")}
+#' @param label_have_carotid_bruits_unknown Label(s) for patient
+#' having unknown carotid bruits.
+#' Default: \code{c(NA, NaN)}
+
 #' @return An integer indicating the patient's vascular disease index.
 #' It can also be \code{NA} if the number of missing disease history exceeds the \code{max_na}
 #' input value.
@@ -532,17 +782,68 @@ calculate_dcs_1993_vascular_disease_index <- function(
     have_peripheral_vascular_disease,
     have_cerebrovascular_disease,
     have_carotid_bruits,
-    max_na = 0
+    max_na = 0,
+    label_have_pvd_no = c("no"),
+    label_have_pvd_yes = c("yes"),
+    label_have_pvd_unknown = c(NA, NaN),
+    label_have_cvd_no = c("no"),
+    label_have_cvd_yes = c("yes"),
+    label_have_cvd_unknown = c(NA, NaN),
+    label_have_carotid_bruits_no = c("no"),
+    label_have_carotid_bruits_yes = c("yes"),
+    label_have_carotid_bruits_unknown = c(NA, NaN)
 ) {
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_pvd_no,
+    label_have_pvd_yes,
+    label_cat_missing = label_have_pvd_unknown
+  )
+
+  # Ensure have peripheral vascular disease is valid and mapped to a unified group (yes, no, NA)
   have_peripheral_vascular_disease <- have_peripheral_vascular_disease |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_pvd_no,
+      label_two = label_have_pvd_yes,
+      label_unknown = label_have_pvd_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
-  have_cerebrovascular_disease <- have_cerebrovascular_disease |>
-    arg_match0_allow_na(values = c("no","yes"))
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_cvd_no,
+    label_have_cvd_yes,
+    label_cat_missing = label_have_cvd_unknown
+  )
 
+  # Ensure have cerebrovascular disease is valid and mapped to a unified group (yes, no, NA)
+  have_cerebrovascularr_disease <- have_cerebrovascular_disease |>
+    harmonise_two_labels(
+      label_one = label_have_cvd_no,
+      label_two = label_have_cvd_yes,
+      label_unknown = label_have_cvd_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_carotid_bruits_no,
+    label_have_carotid_bruits_yes,
+    label_cat_missing = label_have_carotid_bruits_unknown
+  )
+
+  # Ensure have carotid bruits is valid and mapped to a unified group (yes, no, NA)
   have_carotid_bruits <- have_carotid_bruits |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_carotid_bruits_no,
+      label_two = label_have_carotid_bruits_yes,
+      label_unknown = label_have_carotid_bruits_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   max_na <- max_na |>
     arg_match0_integer(values = c(0:3))
@@ -585,28 +886,10 @@ calculate_dcs_1993_vascular_disease_index <- function(
 #' of all three major coronary arteries or of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
+#' @inheritParams calculate_precise_2021_clinical_ptp
 #' @inheritParams calculate_dcs_1993_risk_factor_index
 #' @inheritParams calculate_dcs_1993_pain_index
 #' @inheritParams calculate_dcs_1993_vascular_disease_index
-#' @param age Input integer value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
-#' @param chest_pain_type Input characters (typical, atypical, nonanginal)
-#' to indicate the chest pain characteristics of the patient.
-#' \itemize{
-#'   \item typical stands for the patient having typical chest pain.
-#'   \item atypical stands for the patient having atypical chest pain.
-#'   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-#' }
-#' @param have_q_waves Input characters (no, yes) to indicate if the patient
-#' has Q waves on electrocardiogram (ECG).
-#' \itemize{
-#'   \item no stands for the patient not having Q waves on ECG.
-#'   \item yes stands for the patient having Q waves on ECG.
-#' }
 #' @param duration_of_cad_symptoms_year Input integer to indicate the duration of
 #' coronary artery disease symptoms in years.
 #' @param max_na_risk_factor_index Input integer 0 to 3 to indicate the maximum number of
@@ -675,7 +958,45 @@ calculate_dcs_1993_severe_cad_ptp <- function(
     max_na_risk_factor_index = 0,
     max_na_pain_index = 0,
     max_na_vascular_disease_index = 0,
-    max_frequency_of_angina_pain_per_week = 35
+    max_frequency_of_angina_pain_per_week = 35,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN),
+    label_have_progressive_angina_no = c("no"),
+    label_have_progressive_angina_yes = c("yes"),
+    label_have_progressive_angina_unknown = c(NA, NaN),
+    label_have_nocturnal_angina_no = c("no"),
+    label_have_nocturnal_angina_yes = c("yes"),
+    label_have_nocturnal_angina_unknown = c(NA, NaN),
+    label_have_pvd_no = c("no"),
+    label_have_pvd_yes = c("yes"),
+    label_have_pvd_unknown = c(NA, NaN),
+    label_have_cvd_no = c("no"),
+    label_have_cvd_yes = c("yes"),
+    label_have_cvd_unknown = c(NA, NaN),
+    label_have_carotid_bruits_no = c("no"),
+    label_have_carotid_bruits_yes = c("yes"),
+    label_have_carotid_bruits_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN),
+    label_have_q_waves_no = c("no"),
+    label_have_q_waves_yes = c("yes"),
+    label_have_q_waves_unknown = c(NA, NaN),
+    label_have_st_t_changes_no = c("no"),
+    label_have_st_t_changes_yes = c("yes"),
+    label_have_st_t_changes_unknown = c(NA, NaN)
+
 ) {
 
   check_if_positive(x = age, allow_na = TRUE)
@@ -685,8 +1006,22 @@ calculate_dcs_1993_severe_cad_ptp <- function(
     duration_of_cad_symptoms_year + 1
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   sex <- dplyr::case_when(
     sex == "female" ~ 1L,
@@ -694,11 +1029,43 @@ calculate_dcs_1993_severe_cad_ptp <- function(
     .default = NA_integer_
   )
 
-  have_q_waves <- have_q_waves |>
-    arg_match0_allow_na(values = c("no","yes"))
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_q_waves_no,
+    label_have_q_waves_yes,
+    label_cat_missing = label_have_q_waves_unknown
+  )
 
+  # Ensure have q waves is valid and mapped to a unified group (yes, no, NA)
+  have_q_waves <- have_q_waves |>
+    harmonise_two_labels(
+      label_one = label_have_q_waves_no,
+      label_two = label_have_q_waves_yes,
+      label_unknown = label_have_q_waves_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
+
+  check_if_three_categories_are_mutually_exclusive(
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("typical", "atypical", "nonanginal"))
+    harmonise_three_labels(
+      label_one = label_cpt_nonanginal,
+      label_two = label_cpt_atypical,
+      label_three = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "nonanginal",
+      harmonise_label_two = "atypical",
+      harmonise_label_three = "typical",
+      harmonise_label_unknown = NA
+    )
 
   type_of_pain <- dplyr::case_when(
     chest_pain_type == "nonanginal" ~ 0,
@@ -717,14 +1084,33 @@ calculate_dcs_1993_severe_cad_ptp <- function(
     have_hypertension = have_hypertension,
     have_dyslipidemia = have_dyslipidemia,
     have_diabetes = have_diabetes,
-    max_na = max_na_risk_factor_index
+    max_na = max_na_risk_factor_index,
+    label_have_hypertension_no = label_have_hypertension_no,
+    label_have_hypertension_yes = label_have_hypertension_yes,
+    label_have_hypertension_unknown = label_have_hypertension_unknown,
+    label_have_dyslipidemia_no = label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes = label_have_dyslipidemia_yes,
+    label_have_dyslipidemia_unknown = label_have_dyslipidemia_unknown,
+    label_have_diabetes_no = label_have_diabetes_no,
+    label_have_diabetes_yes = label_have_diabetes_yes,
+    label_have_diabetes_unknown = label_have_diabetes_unknown
   )
 
   vascular_disease_index <- calculate_dcs_1993_vascular_disease_index(
     have_peripheral_vascular_disease = have_peripheral_vascular_disease,
     have_cerebrovascular_disease = have_cerebrovascular_disease,
     have_carotid_bruits = have_carotid_bruits,
-    max_na = max_na_vascular_disease_index
+    max_na = max_na_vascular_disease_index,
+    label_have_pvd_no = label_have_pvd_no,
+    label_have_pvd_yes = label_have_pvd_yes,
+    label_have_pvd_unknown = label_have_pvd_unknown,
+    label_have_cvd_no = label_have_cvd_no,
+    label_have_cvd_yes = label_have_cvd_yes,
+    label_have_cvd_unknown = label_have_cvd_unknown,
+    label_have_carotid_bruits_no = label_have_carotid_bruits_no,
+    label_have_carotid_bruits_yes = label_have_carotid_bruits_yes,
+    label_have_carotid_bruits_unknown = label_have_carotid_bruits_unknown
+
   )
 
   pain_index <- calculate_dcs_1993_pain_index(
@@ -735,7 +1121,19 @@ calculate_dcs_1993_severe_cad_ptp <- function(
     have_st_t_changes = have_st_t_changes,
     have_q_waves = have_q_waves,
     max_na = max_na_pain_index,
-    max_frequency_of_angina_pain_per_week = max_frequency_of_angina_pain_per_week
+    max_frequency_of_angina_pain_per_week = max_frequency_of_angina_pain_per_week,
+    label_have_progressive_angina_no = label_have_progressive_angina_no,
+    label_have_progressive_angina_yes = label_have_progressive_angina_yes,
+    label_have_progressive_angina_unknown = label_have_progressive_angina_unknown,
+    label_have_nocturnal_angina_no = label_have_nocturnal_angina_no,
+    label_have_nocturnal_angina_yes = label_have_nocturnal_angina_yes,
+    label_have_nocturnal_angina_unknown = label_have_nocturnal_angina_unknown,
+    label_have_q_waves_no = label_have_q_waves_no,
+    label_have_q_waves_yes = label_have_q_waves_yes,
+    label_have_q_waves_unknown = label_have_q_waves_unknown,
+    label_have_st_t_changes_no = label_have_st_t_changes_no,
+    label_have_st_t_changes_yes = label_have_st_t_changes_yes,
+    label_have_st_t_changes_unknown = label_have_st_t_changes_unknown
   )
 
   have_q_waves <- dplyr::case_when(
@@ -769,19 +1167,9 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 #' of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
+#' @inheritParams calculate_precise_2021_clinical_ptp
+#' @inheritParams calculate_dcs_1993_pain_index
 #' @inheritParams calculate_dcs_1993_vascular_disease_index
-#' @param age Input integer value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
-#' @param have_typical_chest_pain Input characters (no, yes) to indicate if the patient
-#' has typical chest pain.
-#' \itemize{
-#'   \item no stands for the patient not having typical chest pain.
-#'   \item yes stands for the patient having typical chest pain.
-#' }
 #' @param duration_of_cad_symptoms_year Input integer to indicate the duration of
 #' coronary artery disease symptoms in years.
 #' @param max_na_vascular_disease_index Input integer 0 to 3 to indicate the maximum number of
@@ -822,7 +1210,22 @@ calculate_dcs_1993_lm_cad_ptp <- function(
     have_carotid_bruits,
     duration_of_cad_symptoms_year,
     max_na_vascular_disease_index = 0,
-    max_age = 65
+    max_age = 65,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_typical_chest_pain_no = c("no"),
+    label_have_typical_chest_pain_yes = c("yes"),
+    label_have_typical_chest_pain_unknown = c(NA, NaN),
+    label_have_pvd_no = c("no"),
+    label_have_pvd_yes = c("yes"),
+    label_have_pvd_unknown = c(NA, NaN),
+    label_have_cvd_no = c("no"),
+    label_have_cvd_yes = c("yes"),
+    label_have_cvd_unknown = c(NA, NaN),
+    label_have_carotid_bruits_no = c("no"),
+    label_have_carotid_bruits_yes = c("yes"),
+    label_have_carotid_bruits_unknown = c(NA, NaN)
 ) {
 
   check_if_positive(x = age, allow_na = TRUE)
@@ -832,8 +1235,22 @@ calculate_dcs_1993_lm_cad_ptp <- function(
     duration_of_cad_symptoms_year + 1
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   sex <- dplyr::case_when(
     sex == "female" ~ 1L,
@@ -841,8 +1258,22 @@ calculate_dcs_1993_lm_cad_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_typical_chest_pain_no,
+    label_have_typical_chest_pain_yes,
+    label_cat_missing = label_have_typical_chest_pain_unknown
+  )
+
+  # Ensure have typical chest pain is valid and mapped to a unified group (yes, no, NA)
   have_typical_chest_pain <- have_typical_chest_pain |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_typical_chest_pain_no,
+      label_two = label_have_typical_chest_pain_yes,
+      label_unknown = label_have_typical_chest_pain_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   have_typical_chest_pain <- dplyr::case_when(
     have_typical_chest_pain == "no" ~ 0L,
@@ -854,7 +1285,16 @@ calculate_dcs_1993_lm_cad_ptp <- function(
     have_peripheral_vascular_disease = have_peripheral_vascular_disease,
     have_cerebrovascular_disease = have_cerebrovascular_disease,
     have_carotid_bruits = have_carotid_bruits,
-    max_na = max_na_vascular_disease_index
+    max_na = max_na_vascular_disease_index,
+    label_have_pvd_no = label_have_pvd_no,
+    label_have_pvd_yes = label_have_pvd_yes,
+    label_have_pvd_unknown = label_have_pvd_unknown,
+    label_have_cvd_no = label_have_cvd_no,
+    label_have_cvd_yes = label_have_cvd_yes,
+    label_have_cvd_unknown = label_have_cvd_unknown,
+    label_have_carotid_bruits_no = label_have_carotid_bruits_no,
+    label_have_carotid_bruits_yes = label_have_carotid_bruits_yes,
+    label_have_carotid_bruits_unknown = label_have_carotid_bruits_unknown
   )
 
   if (!is.na(max_age)) {

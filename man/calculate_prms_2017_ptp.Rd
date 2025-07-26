@@ -14,75 +14,155 @@ calculate_prms_2017_ptp(
   have_dyslipidemia,
   have_smoking_history,
   have_family_history,
-  have_stress_symptoms = NA
+  have_stress_symptoms = NA,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_is_minority_ethnicity_no = c("no"),
+  label_is_minority_ethnicity_yes = c("yes"),
+  label_is_minority_ethnicity_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN),
+  label_have_hypertension_no = c("no"),
+  label_have_hypertension_yes = c("yes"),
+  label_have_hypertension_unknown = c(NA, NaN),
+  label_have_dyslipidemia_no = c("no"),
+  label_have_dyslipidemia_yes = c("yes"),
+  label_have_dyslipidemia_unknown = c(NA, NaN),
+  label_have_smoking_history_no = c("no"),
+  label_have_smoking_history_yes = c("yes"),
+  label_have_smoking_history_unknown = c(NA, NaN),
+  label_have_family_history_no = c("no"),
+  label_have_family_history_yes = c("yes"),
+  label_have_family_history_unknown = c(NA, NaN),
+  label_have_stress_symptoms_no = c("no"),
+  label_have_stress_symptoms_yes = c("yes"),
+  label_have_stress_symptoms_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input numeric value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
 \item{hdl_mg_dl}{Input positive numeric value to indicate the
 patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.}
 
-\item{is_minority_ethnicity}{Input characters (no, yes) to indicate if the patient
-is from a racial or minority ethnicity
-(or patient is not a non-Hispanic/Latino White).
-\itemize{
-  \item no stands for patient is a non-Hispanic/Latino White.
-  \item yes stands for patient is not a non-Hispanic/Latino White. E.g. Blacks, Asians, etc.
-}}
+\item{is_minority_ethnicity}{The value of variable in the parameters
+\code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}
+and \code{label_is_minority_ethnicity_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
-\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-has hypertension.
-\itemize{
-  \item no stands for not having hypertension.
-  \item yes stands for having hypertension.
-}}
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
 
-\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-has dyslipidemia.
-\itemize{
-  \item no stands for not having dyslipidemia.
-  \item yes stands for having dyslipidemia.
-}}
+\item{have_dyslipidemia}{The value of variable in the parameters
+\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+and \code{label_have_dyslipidemia_unknown}.}
 
-\item{have_smoking_history}{Input characters (no, yes) to indicate if the patient
-has a smoking history (current or past smoker).
-\itemize{
-  \item no stands for not having a smoking history (non-smoker).
-  \item yes stands for having a smoking history (current or past smoker).
-}}
+\item{have_smoking_history}{The value of variable in the parameters
+\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+and \code{label_have_smoking_history_unknown}.}
 
-\item{have_family_history}{Input characters (no, yes) to indicate if the patient
-has a family history of CAD.
-\itemize{
-  \item no stands for not having a family history of CAD.
-  \item yes stands for having a family history of CAD.
-}}
+\item{have_family_history}{The value of variable in the parameters
+\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+and \code{label_have_family_history_unknown}.}
 
-\item{have_stress_symptoms}{Input characters (no, yes) to indicate if the patient
-has symptoms related to physical or mental stress. It can be set
-to \code{NA} if the patient results are inconclusive or have not taken any stress test
-such as exercise treadmill testing, stress echocardiography, or stress
-nuclear imaging.
-\itemize{
-  \item no stands for no symptoms (negative results) related to physical or mental stress.
-  \item yes stands for having symptoms (positive results) related to physical or mental stress.
-  \item \code{NA} stands for inconclusive results or patient has not taken any stress test
-}
+\item{have_stress_symptoms}{The value of variable in the parameters
+\code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}
+and \code{label_have_stress_symptoms_unknown}.
 Default: \code{NA}}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_is_minority_ethnicity_no}{Label(s) for patient not from a
+racial or minority ethnicity (or patient is a non-Hispanic/Latino White).
+Default: \code{c("no")}}
+
+\item{label_is_minority_ethnicity_yes}{Label(s) for patient from a
+racial or minority ethnicity (or patient is not a non-Hispanic/Latino White).
+E.g. Blacks, Asians, etc.
+Default: \code{c("yes")}}
+
+\item{label_is_minority_ethnicity_unknown}{Label(s) for patient from an unknown ethnicity
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyslipidemia_no}{Label(s) for patient with no dyslipidemia.
+Default: \code{c("no")}}
+
+\item{label_have_dyslipidemia_yes}{Label(s) for patient having dyslipidemia.
+Default: \code{c("yes")}}
+
+\item{label_have_dyslipidemia_unknown}{Label(s) for patient
+having unknown dyslipidemia.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_smoking_history_no}{Label(s) for patient with
+no smoking history (current or past).
+Default: \code{c("no")}}
+
+\item{label_have_smoking_history_yes}{Label(s) for patient having
+smoking history (current or past).
+Default: \code{c("yes")}}
+
+\item{label_have_smoking_history_unknown}{Label(s) for patient
+having unknown smoking history (current or past).
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_family_history_no}{Label(s) for patient with no family history of CAD.
+Default: \code{c("no")}}
+
+\item{label_have_family_history_yes}{Label(s) for patient having family history of CAD.
+Default: \code{c("yes")}}
+
+\item{label_have_family_history_unknown}{Label(s) for patient
+having unknown family history of CAD.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_stress_symptoms_no}{Label(s) for patient with
+no symptoms (negative results) related to physical or mental stress.
+Default: \code{c("no")}}
+
+\item{label_have_stress_symptoms_yes}{Label(s) for patient with
+symptoms (positive results) related to physical or mental stress.
+Default: \code{c("yes")}}
+
+\item{label_have_stress_symptoms_unknown}{Label(s) for patient with
+inconclusive results or patient has not taken any stress test
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's minimal risk

@@ -71,6 +71,14 @@
       Error:
       ! Provided input `input`, must be 0, 1, 2, 3, 4, 5, NA or NaN. It is currently 6.
 
+# arg_match0_no_na_error_message gives error for NA input but values have no NA
+
+    Code
+      arg_match0_no_na_error_message(input, values = c("yes", "no"))
+    Condition
+      Error:
+      ! `input` must be one of "yes" or "no" not NA.
+
 # arg_match0_integer gives error for NULL inputs with allow_na set to TRUE
 
     Code

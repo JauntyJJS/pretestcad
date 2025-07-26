@@ -9,17 +9,17 @@ calculate_esc_2024_fig_4_ptp_simplfied(
   sex,
   symptom_score,
   num_of_rf,
-  output = c("grouping", "numeric", "percentage")
+  output = c("grouping", "numeric", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
 \item{symptom_score}{An integer indicating the symptom score of the patient.
 This value can be calculated via the \code{\link{calculate_esc_2024_symptom_score}}}
@@ -48,6 +48,15 @@ Default: c("grouping", "numeric", "percentage")
   \item numeric means the PTP will be expressed as an integer probability (0-100).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD

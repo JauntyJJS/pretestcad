@@ -13,52 +13,52 @@ calculate_confirm_2015_ptp(
   have_family_history,
   is_current_smoker,
   max_na_num_of_rf = 0,
-  output = c("text", "percentage")
+  output = c("text", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_typical_chest_pain_no = c("no"),
+  label_have_typical_chest_pain_yes = c("yes"),
+  label_have_typical_chest_pain_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN),
+  label_have_hypertension_no = c("no"),
+  label_have_hypertension_yes = c("yes"),
+  label_have_hypertension_unknown = c(NA, NaN),
+  label_have_family_history_no = c("no"),
+  label_have_family_history_yes = c("yes"),
+  label_have_family_history_unknown = c(NA, NaN),
+  label_is_current_smoker_no = c("no"),
+  label_is_current_smoker_yes = c("yes"),
+  label_is_current_smoker_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input numeric value to indicate the age of the patient.}
+\item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{Input characters (no, yes) to indicate if the patient
-has typical chest pain.
-\itemize{
-  \item no stands for not having typical chest pain.
-  \item yes stands for having typical chest pain.
-}}
+\item{have_typical_chest_pain}{The value of variable in the parameters
+\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
+and \code{label_have_typical_chest_pain_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-only has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
-\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-only has hypertension.
-\itemize{
-  \item no stands for not having hypertension.
-  \item yes stands for having a hypertension.
-}}
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
 
-\item{have_family_history}{Input characters (no, yes) to indicate if the patient
-only has a family history of CAD.
-\itemize{
-  \item no stands for not having a family history of CAD.
-  \item yes stands for having a family history of CAD.
-}}
+\item{have_family_history}{The value of variable in the parameters
+\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+and \code{label_have_family_history_unknown}.}
 
-\item{is_current_smoker}{Input characters (no, yes) to indicate if the patient
-is a current smoker.
-\itemize{
-  \item no stands for patient is a current smoker.
-  \item yes stands for patient is a not current smoker (past or non-smoker).
-}}
+\item{is_current_smoker}{The value of variable in the parameters
+\code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
+and \code{label_is_current_smoker_unknown}.}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
@@ -71,6 +71,64 @@ Default: c("text", "percentage")
   \item text means the PTP will be expressed as a probability in text (0 to > 82.4).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_typical_chest_pain_no}{Label(s) for patient not having
+typical chest pain symptom.
+Default: \code{c("no")}}
+
+\item{label_have_typical_chest_pain_yes}{Label(s) for patient having
+typical chest pain symptom.
+Default: \code{c("yes")}}
+
+\item{label_have_typical_chest_pain_unknown}{Label(s) for patient having unknown
+typical chest pain symptom.}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_family_history_no}{Label(s) for patient with no family history of CAD.
+Default: \code{c("no")}}
+
+\item{label_have_family_history_yes}{Label(s) for patient having family history of CAD.
+Default: \code{c("yes")}}
+
+\item{label_have_family_history_unknown}{Label(s) for patient
+having unknown family history of CAD.
+Default: \code{c(NA, NaN)}}
+
+\item{label_is_current_smoker_no}{Label(s) for patients who are not current smokers.
+Default: \code{c("no")}}
+
+\item{label_is_current_smoker_yes}{Label(s) for patients who are current smokers.
+Default: \code{c("yes")}}
+
+\item{label_is_current_smoker_unknown}{Label(s) for patient with unknown smoking status.}
 }
 \value{
 A numeric value representing the patient's risk

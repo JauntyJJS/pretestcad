@@ -3,27 +3,14 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2019 guidelines.
-#' @param age Input integer value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
-#' @param have_dyspnoea Input characters (no, yes) to indicate if the patient
-#' only has dyspnoea symptoms.
-#' \itemize{
-#'   \item no stands for not having dyspnoea symptoms.
-#'   \item yes stands for having dyspnoea symptoms.
-#' }
-#' @param chest_pain_type Input characters (no chest pain, typical, atypical, nonanginal)
-#' to indicate the chest pain characteristics of the patient.
-#' \itemize{
-#'   \item no chest pain stands for the patient having no chest pain.
-#'   \item typical stands for the patient having typical chest pain.
-#'   \item atypical stands for the patient having atypical chest pain.
-#'   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-#' }
-#'
+#' @param age Input integer value to indicate the age of the patient in years.
+#' @param sex The value of variable in the parameters \code{label_sex_male},
+#' \code{label_sex_female} and \code{label_sex_unknown}.
+#' @param have_dyspnoea The value of variable in the parameters \code{label_have_dyspnoea_no},
+#' \code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.
+#' @param chest_pain_type The value of variable in the parameters \code{label_cpt_no_chest_pain},
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+#' \code{label_cpt_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
@@ -37,7 +24,28 @@
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
 #'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 #' }
-#'
+#' @param label_sex_male Label(s) for definition(s) of male sex.
+#' Default: \code{c("male")}
+#' @param label_sex_female Label(s) for definition(s) of female sex.
+#' Default: \code{c("female")}
+#' @param label_sex_unknown Label(s) for definition(s) of missing sex.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_dyspnoea_no Label(s) for patient having no dyspnoea symptoms.
+#' Default: \code{c("no")}
+#' @param label_have_dyspnoea_yes Label(s) for patient having dyspnoea symptoms.
+#' Default: \code{c("yes")}
+#' @param label_have_dyspnoea_unknown Label(s) for patient having unknown dyspnoea symptoms.
+#' Default: \code{c(NA, NaN)}
+#' @param label_cpt_no_chest_pain Label(s) for patient having no chest pain.
+#' Default: \code{c("no chest pain")}
+#' @param label_cpt_nonanginal Label(s) for patient having nonanginal or non-specific chest pain.
+#' Default: \code{c("nonanginal")}
+#' @param label_cpt_atypical Label(s) for patient having atypical chest pain.
+#' Default: \code{c("atypical")}
+#' @param label_cpt_typical Label(s) for patient having typical chest pain.
+#' Default: \code{c("typical")}
+#' @param label_cpt_unknown Label(s) for patient having unknown chest pain type symptoms.
+#' Default: \code{c(NA, NaN)}
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2019 guidelines.
 #' See parameter option \code{output} for more information.
@@ -73,20 +81,81 @@ calculate_esc_2019_ptp <- function(
   sex,
   have_dyspnoea,
   chest_pain_type,
-  output = c("grouping", "numeric", "percentage")
+  output = c("grouping", "numeric", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_dyspnoea_no = c("no"),
+  label_have_dyspnoea_yes = c("yes"),
+  label_have_dyspnoea_unknown = c(NA, NaN),
+  label_cpt_no_chest_pain = c("no chest pain"),
+  label_cpt_nonanginal = c("nonanginal"),
+  label_cpt_atypical = c("atypical"),
+  label_cpt_typical = c("typical"),
+  label_cpt_unknown = c(NA, NaN)
   )
 {
+
   check_if_positive(x = age, allow_na = TRUE)
   check_if_integer(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyspnoea_no,
+    label_have_dyspnoea_yes,
+    label_cat_missing = label_have_dyspnoea_unknown
+  )
+
+  check_if_four_categories_are_mutually_exclusive(
+    label_cpt_no_chest_pain,
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure dyspnoea is valid and mapped to a unified group (yes, no, NA)
   have_dyspnoea <- have_dyspnoea |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyspnoea_no,
+      label_two = label_have_dyspnoea_yes,
+      label_unknown = label_have_dyspnoea_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (no chest pain, nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("no chest pain","typical", "atypical", "nonanginal"))
+    harmonise_four_labels(
+      label_one = label_cpt_no_chest_pain,
+      label_two = label_cpt_nonanginal,
+      label_three = label_cpt_atypical,
+      label_four = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "no chest pain",
+      harmonise_label_two = "nonanginal",
+      harmonise_label_three = "atypical",
+      harmonise_label_four = "typical",
+      harmonise_label_unknown = NA
+    )
 
   output <- output |>
     rlang::arg_match()

@@ -8,34 +8,64 @@ calculate_dcs_1993_vascular_disease_index(
   have_peripheral_vascular_disease,
   have_cerebrovascular_disease,
   have_carotid_bruits,
-  max_na = 0
+  max_na = 0,
+  label_have_pvd_no = c("no"),
+  label_have_pvd_yes = c("yes"),
+  label_have_pvd_unknown = c(NA, NaN),
+  label_have_cvd_no = c("no"),
+  label_have_cvd_yes = c("yes"),
+  label_have_cvd_unknown = c(NA, NaN),
+  label_have_carotid_bruits_no = c("no"),
+  label_have_carotid_bruits_yes = c("yes"),
+  label_have_carotid_bruits_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{have_peripheral_vascular_disease}{Input characters (no, yes) to indicate if the patient
-has peripheral vascular disease.
-\itemize{
-  \item no stands for not having peripheral vascular disease.
-  \item yes stands for having peripheral vascular disease.
-}}
+\item{have_peripheral_vascular_disease}{The value of variable in the parameters
+\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+and \code{label_have_pvd_unknown}.}
 
-\item{have_cerebrovascular_disease}{Input characters (no, yes) to indicate if the patient
-has cerebrovascular disease.
-\itemize{
-  \item no stands for not having cerebrovascular disease.
-  \item yes stands for having cerebrovascular disease.
-}}
+\item{have_cerebrovascular_disease}{The value of variable in the parameters
+\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+and \code{label_have_cvd_unknown}.}
 
-\item{have_carotid_bruits}{Input characters (no, yes) to indicate if the patient
-has carotid bruits.
-\itemize{
-  \item no stands for not having carotid bruits.
-  \item yes stands for having carotid bruits.
-}}
+\item{have_carotid_bruits}{The value of variable in the parameters
+\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+and \code{label_have_carotid_bruits_unknown}.}
 
 \item{max_na}{Input integer 0 to 3 to indicate the maximum number of
 missing disease history to tolerate before outputting an \code{NA}.
 Default: 0}
+
+\item{label_have_pvd_no}{Label(s) for patient not having peripheral vascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_pvd_yes}{Label(s) for patient having peripheral vascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_pvd_unknown}{Label(s) for patient
+having unknown peripheral vascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_cvd_no}{Label(s) for patient not having cerebrovascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_cvd_yes}{Label(s) for patient having cerebrovascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_cvd_unknown}{Label(s) for patient
+having unknown cerebrovascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_carotid_bruits_no}{Label(s) for patient not having carotid bruits.
+Default: \code{c("no")}}
+
+\item{label_have_carotid_bruits_yes}{Label(s) for patient having carotid bruits.
+Default: \code{c("yes")}}
+
+\item{label_have_carotid_bruits_unknown}{Label(s) for patient
+having unknown carotid bruits.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer indicating the patient's vascular disease index.

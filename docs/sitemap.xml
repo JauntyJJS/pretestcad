@@ -7,6 +7,7 @@
 <url><loc>https://jauntyjjs.github.io/pretestcad/news/index.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_allow_na.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_integer.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_no_na_error_message.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/arg_match0_true_or_false.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_aha_2012_tbl_9_ptp.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/calculate_aha_2021_ptp.html</loc></url>
@@ -46,8 +47,13 @@
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_positive.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_three_categories_are_mutually_exclusive.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/check_if_two_categories_are_mutually_exclusive.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/chr_quoted.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/harmonise_four_labels.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/harmonise_three_labels.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/harmonise_two_labels.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/index.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/is_integer_value.html</loc></url>
+<url><loc>https://jauntyjjs.github.io/pretestcad/reference/oxford_comma.html</loc></url>
 <url><loc>https://jauntyjjs.github.io/pretestcad/reference/round_to_nearest_digit.html</loc></url>
 </urlset>
 

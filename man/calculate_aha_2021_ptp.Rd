@@ -9,31 +9,29 @@ calculate_aha_2021_ptp(
   sex,
   have_dyspnoea,
   have_chest_pain,
-  output = c("grouping", "numeric", "percentage")
+  output = c("grouping", "numeric", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_dyspnoea_no = c("no"),
+  label_have_dyspnoea_yes = c("yes"),
+  label_have_dyspnoea_unknown = c(NA, NaN),
+  label_have_chest_pain_no = c("no"),
+  label_have_chest_pain_yes = c("yes"),
+  label_have_chest_pain_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{have_dyspnoea}{Input characters (no, yes) to indicate if the patient
-only has dyspnoea symptoms.
-\itemize{
-  \item no stands for not having dyspnoea symptoms.
-  \item yes stands for having dyspnoea symptoms.
-}}
+\item{have_dyspnoea}{The value of variable in the parameters \code{label_have_dyspnoea_no},
+\code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
 
-\item{have_chest_pain}{Input characters (no, yes) to indicate if the patient
-has chest pain.
-\itemize{
-  \item no stands for not having dyspnoea symptoms.
-  \item yes stands for having dyspnoea symptoms.
-}}
+\item{have_chest_pain}{The value of variable in the parameters \code{label_have_chest_pain_no},
+\code{label_have_chest_pain_yes} and \code{label_have_chest_pain_unknown}.}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed
@@ -49,6 +47,33 @@ Default: c("grouping", "numeric", "percentage")
   \item numeric means the PTP will be expressed as an integer probability (0-100).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyspnoea_no}{Label(s) for patient having no dyspnoea symptoms.
+Default: \code{c("no")}}
+
+\item{label_have_dyspnoea_yes}{Label(s) for patient having dyspnoea symptoms.
+Default: \code{c("yes")}}
+
+\item{label_have_dyspnoea_unknown}{Label(s) for patient having unknown dyspnoea symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_chest_pain_no}{Label(s) for patient not having chest pain symptoms.
+Default: \code{c("no")}}
+
+\item{label_have_chest_pain_yes}{Label(s) for patient having chest pain symptoms.
+Default: \code{c("yes")}}
+
+\item{label_have_chest_pain_unknown}{Label(s) for patient with unknown chest pain symptoms.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD

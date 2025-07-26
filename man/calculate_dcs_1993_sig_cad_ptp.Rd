@@ -13,67 +13,147 @@ calculate_dcs_1993_sig_cad_ptp(
   have_dyslipidemia,
   have_diabetes,
   have_q_waves,
-  have_st_t_changes
+  have_st_t_changes,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_cpt_nonanginal = c("nonanginal"),
+  label_cpt_atypical = c("atypical"),
+  label_cpt_typical = c("typical"),
+  label_cpt_unknown = c(NA, NaN),
+  label_have_mi_no = c("no"),
+  label_have_mi_yes = c("yes"),
+  label_have_mi_unknown = c(NA, NaN),
+  label_have_smoking_history_no = c("no"),
+  label_have_smoking_history_yes = c("yes"),
+  label_have_smoking_history_unknown = c(NA, NaN),
+  label_have_dyslipidemia_no = c("no"),
+  label_have_dyslipidemia_yes = c("yes"),
+  label_have_dyslipidemia_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN),
+  label_have_q_waves_no = c("no"),
+  label_have_q_waves_yes = c("yes"),
+  label_have_q_waves_unknown = c(NA, NaN),
+  label_have_st_t_changes_no = c("no"),
+  label_have_st_t_changes_yes = c("yes"),
+  label_have_st_t_changes_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.
-\itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-}}
+\item{chest_pain_type}{The value of variable in the parameters,
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+\code{label_cpt_unknown}.}
 
-\item{have_mi}{Input characters (no, yes) to indicate if the patient
-has a previous history of Myocardial Infarction (MI).
-\itemize{
-  \item no stands for the patient not having a previous history of MI.
-  \item yes stands for the patient a previous history of MI.
-}}
+\item{have_mi}{The value of variable in the parameters
+\code{label_have_mi_no}, \code{label_have_mi_yes}
+and \code{label_have_mi_unknown}.}
 
-\item{have_smoking_history}{Input characters (no, yes) to indicate if the patient
-has a smoking history (current or past smoker).
-\itemize{
-  \item no stands for not having a smoking history (non-smoker).
-  \item yes stands for having a smoking history (current or past smoker).
-}}
+\item{have_smoking_history}{The value of variable in the parameters
+\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+and \code{label_have_smoking_history_unknown}.}
 
-\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-has dyslipidemia.
-\itemize{
-  \item no stands for not having dyslipidemia.
-  \item yes stands for having dyslipidemia.
-}}
+\item{have_dyslipidemia}{The value of variable in the parameters
+\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+and \code{label_have_dyslipidemia_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
-\item{have_q_waves}{Input characters (no, yes) to indicate if the patient
-has Q waves on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having Q waves on ECG.
-  \item yes stands for the patient having Q waves on ECG.
-}}
+\item{have_q_waves}{The value of variable in the parameters
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{Input characters (no, yes) to indicate if the patient
-has ST-T changes on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having ST-T changes on ECG.
-  \item yes stands for the patient having ST-T changes on ECG.
-}}
+\item{have_st_t_changes}{The value of variable in the parameters
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+and \code{label_have_st_t_changes_unknown}.}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_cpt_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_mi_no}{Label(s) for patient not having a previous history of MI.
+Default: \code{c("no")}}
+
+\item{label_have_mi_yes}{Label(s) for patient having a previous history of MI.
+Default: \code{c("yes")}}
+
+\item{label_have_mi_unknown}{Label(s) for patient with unknown previous history of MI.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_smoking_history_no}{Label(s) for patient with
+no smoking history (current or past).
+Default: \code{c("no")}}
+
+\item{label_have_smoking_history_yes}{Label(s) for patient having
+smoking history (current or past).
+Default: \code{c("yes")}}
+
+\item{label_have_smoking_history_unknown}{Label(s) for patient
+having unknown smoking history (current or past).
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyslipidemia_no}{Label(s) for patient with no dyslipidemia.
+Default: \code{c("no")}}
+
+\item{label_have_dyslipidemia_yes}{Label(s) for patient having dyslipidemia.
+Default: \code{c("yes")}}
+
+\item{label_have_dyslipidemia_unknown}{Label(s) for patient
+having unknown dyslipidemia.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_q_waves_no}{Label(s) for patient not having Q waves on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_q_waves_yes}{Label(s) for patient having Q waves on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_q_waves_unknown}{Label(s) for patient with unknown Q waves on ECG.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_st_t_changes_no}{Label(s) for patient not having ST-T changes on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_st_t_changes_yes}{Label(s) for patient having ST-T changes on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_st_t_changes_unknown}{Label(s) for patient with unknown ST-T changes on ECG.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for significant

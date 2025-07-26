@@ -9,33 +9,32 @@ calculate_esc_2019_ptp(
   sex,
   have_dyspnoea,
   chest_pain_type,
-  output = c("grouping", "numeric", "percentage")
+  output = c("grouping", "numeric", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_dyspnoea_no = c("no"),
+  label_have_dyspnoea_yes = c("yes"),
+  label_have_dyspnoea_unknown = c(NA, NaN),
+  label_cpt_no_chest_pain = c("no chest pain"),
+  label_cpt_nonanginal = c("nonanginal"),
+  label_cpt_atypical = c("atypical"),
+  label_cpt_typical = c("typical"),
+  label_cpt_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{have_dyspnoea}{Input characters (no, yes) to indicate if the patient
-only has dyspnoea symptoms.
-\itemize{
-  \item no stands for not having dyspnoea symptoms.
-  \item yes stands for having dyspnoea symptoms.
-}}
+\item{have_dyspnoea}{The value of variable in the parameters \code{label_have_dyspnoea_no},
+\code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
 
-\item{chest_pain_type}{Input characters (no chest pain, typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.
-\itemize{
-  \item no chest pain stands for the patient having no chest pain.
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-}}
+\item{chest_pain_type}{The value of variable in the parameters \code{label_cpt_no_chest_pain},
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+\code{label_cpt_unknown}.}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed
@@ -50,6 +49,39 @@ Default: c("grouping", "numeric", "percentage")
   \item numeric means the PTP will be expressed as an integer probability (0-100).
   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyspnoea_no}{Label(s) for patient having no dyspnoea symptoms.
+Default: \code{c("no")}}
+
+\item{label_have_dyspnoea_yes}{Label(s) for patient having dyspnoea symptoms.
+Default: \code{c("yes")}}
+
+\item{label_have_dyspnoea_unknown}{Label(s) for patient having unknown dyspnoea symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_cpt_no_chest_pain}{Label(s) for patient having no chest pain.
+Default: \code{c("no chest pain")}}
+
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_cpt_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD

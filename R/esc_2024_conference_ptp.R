@@ -34,14 +34,58 @@
 calculate_esc_2024_symptom_score <- function(
     chest_pain_type,
     have_dyspnoea,
-    allow_na = TRUE
+    allow_na = TRUE,
+    label_have_dyspnoea_no = c("no"),
+    label_have_dyspnoea_yes = c("yes"),
+    label_have_dyspnoea_unknown = c(NA, NaN),
+    label_cpt_no_chest_pain = c("no chest pain"),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN)
 )
 {
-  chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("no chest pain","typical", "atypical", "nonanginal"))
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyspnoea_no,
+    label_have_dyspnoea_yes,
+    label_cat_missing = label_have_dyspnoea_unknown
+  )
+
+  check_if_four_categories_are_mutually_exclusive(
+    label_cpt_no_chest_pain,
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure dyspnoea is valid and mapped to a unified group (yes, no, NA)
   have_dyspnoea <- have_dyspnoea |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyspnoea_no,
+      label_two = label_have_dyspnoea_yes,
+      label_unknown = label_have_dyspnoea_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
+
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (no chest pain, nonanginal, atypical, typical)
+  chest_pain_type <- chest_pain_type |>
+    harmonise_four_labels(
+      label_one = label_cpt_no_chest_pain,
+      label_two = label_cpt_nonanginal,
+      label_three = label_cpt_atypical,
+      label_four = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "no chest pain",
+      harmonise_label_two = "nonanginal",
+      harmonise_label_three = "atypical",
+      harmonise_label_four = "typical",
+      harmonise_label_unknown = NA
+    )
 
   allow_na <- allow_na |>
     arg_match0_true_or_false()
@@ -74,39 +118,61 @@ calculate_esc_2024_symptom_score <- function(
 #' risk factors the patient has. This is used to calculate the pretest
 #' probability of coronary artery disease (CAD) based on the
 #' ESC 2024 guidelines.
-#' @param have_family_history Input characters (no, yes) to indicate if the patient
-#' has a family history of CAD.
-#' \itemize{
-#'   \item no stands for not having a family history of CAD.
-#'   \item yes stands for having a family history of CAD.
-#' }
-#' @param have_smoking_history Input characters (no, yes) to indicate if the patient
-#' has a smoking history (current or past smoker).
-#' \itemize{
-#'   \item no stands for not having a smoking history (non-smoker).
-#'   \item yes stands for having a smoking history (current or past smoker).
-#' }
-#' @param have_dyslipidemia Input characters (no, yes) to indicate if the patient
-#' has dyslipidemia.
-#' \itemize{
-#'   \item no stands for not having dyslipidemia.
-#'   \item yes stands for having dyslipidemia.
-#' }
-#' @param have_hypertension Input characters (no, yes) to indicate if the patient
-#' has hypertension.
-#' \itemize{
-#'   \item no stands for not having hypertension.
-#'   \item yes stands for having hypertension.
-#' }
-#' @param have_diabetes Input characters (no, yes) to indicate if the patient
-#' has diabetes.
-#' \itemize{
-#'   \item no stands for not having diabetes.
-#'   \item yes stands for having diabetes.
-#' }
+#' @param have_family_history The value of variable in the parameters
+#' \code{label_have_family_history_no}, \code{label_have_family_history_yes}
+#' and \code{label_have_family_history_unknown}.
+#' @param have_smoking_history The value of variable in the parameters
+#' \code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+#' and \code{label_have_smoking_history_unknown}.
+#' @param have_dyslipidemia The value of variable in the parameters
+#' \code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+#' and \code{label_have_dyslipidemia_unknown}.
+#' @param have_hypertension The value of variable in the parameters
+#' \code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+#' and \code{label_have_hypertension_unknown}.
+#' @param have_diabetes The value of variable in the parameters
+#' \code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+#' and \code{label_have_diabetes_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
+#' @param label_have_family_history_no Label(s) for patient with no family history of CAD.
+#' Default: \code{c("no")}
+#' @param label_have_family_history_yes Label(s) for patient having family history of CAD.
+#' Default: \code{c("yes")}
+#' @param label_have_family_history_unknown Label(s) for patient
+#' having unknown family history of CAD.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_smoking_history_no Label(s) for patient with
+#' no smoking history (current or past).
+#' Default: \code{c("no")}
+#' @param label_have_smoking_history_yes Label(s) for patient having
+#' smoking history (current or past).
+#' Default: \code{c("yes")}
+#' @param label_have_smoking_history_unknown Label(s) for patient
+#' having unknown smoking history (current or past).
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_dyslipidemia_no Label(s) for patient with no dyslipidemia.
+#' Default: \code{c("no")}
+#' @param label_have_dyslipidemia_yes Label(s) for patient having dyslipidemia.
+#' Default: \code{c("yes")}
+#' @param label_have_dyslipidemia_unknown Label(s) for patient
+#' having unknown dyslipidemia.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_hypertension_no Label(s) for patient with no hypertension.
+#' Default: \code{c("no")}
+#' @param label_have_hypertension_yes Label(s) for patient having hypertension.
+#' Default: \code{c("yes")}
+#' @param label_have_hypertension_unknown Label(s) for patient
+#' having unknown hypertension.
+#' Default: \code{c(NA, NaN)}
+#' @param label_have_diabetes_no Label(s) for patient with no diabetes.
+#' Default: \code{c("no")}
+#' @param label_have_diabetes_yes Label(s) for patient having diabetes.
+#' Default: \code{c("yes")}
+#' @param label_have_diabetes_unknown Label(s) for patient
+#' having unknown diabetes.
+#' Default: \code{c(NA, NaN)}
 #' @return An integer indicating the number of risk factors the patient has.
 #' It can also be \code{NA} if the number of missing risk factors exceeds the \code{max_na}
 #' input value.
@@ -144,23 +210,109 @@ calculate_esc_2024_num_of_rf <- function(
     have_dyslipidemia,
     have_hypertension,
     have_diabetes,
-    max_na = 0
+    max_na = 0,
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_have_smoking_history_no = c("no"),
+    label_have_smoking_history_yes = c("yes"),
+    label_have_smoking_history_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN)
   )
 {
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_family_history_no,
+    label_have_family_history_yes,
+    label_cat_missing = label_have_family_history_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_smoking_history_no,
+    label_have_smoking_history_yes,
+    label_cat_missing = label_have_smoking_history_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes,
+    label_cat_missing = label_have_dyslipidemia_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_hypertension_no,
+    label_have_hypertension_yes,
+    label_cat_missing = label_have_hypertension_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_diabetes_no,
+    label_have_diabetes_yes,
+    label_cat_missing = label_have_diabetes_unknown
+  )
+
+  # Ensure have family history is valid and mapped to a unified group (yes, no, NA)
   have_family_history <- have_family_history |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_family_history_no,
+      label_two = label_have_family_history_yes,
+      label_unknown = label_have_family_history_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure have smoking history is valid and mapped to a unified group (yes, no, NA)
   have_smoking_history <- have_smoking_history |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_smoking_history_no,
+      label_two = label_have_smoking_history_yes,
+      label_unknown = label_have_smoking_history_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure have dyslipidemia is valid and mapped to a unified group (yes, no, NA)
   have_dyslipidemia <- have_dyslipidemia |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyslipidemia_no,
+      label_two = label_have_dyslipidemia_yes,
+      label_unknown = label_have_dyslipidemia_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
   have_hypertension <- have_hypertension |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_hypertension_no,
+      label_two = label_have_hypertension_yes,
+      label_unknown = label_have_hypertension_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
   have_diabetes <- have_diabetes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_diabetes_no,
+      label_two = label_have_diabetes_yes,
+      label_unknown = label_have_diabetes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   max_na <- max_na |>
     arg_match0_integer(values = c(0:5))
@@ -260,14 +412,31 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
     sex,
     symptom_score,
     num_of_rf,
-    output = c("grouping", "numeric", "percentage")
+    output = c("grouping", "numeric", "percentage"),
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN)
     )
 {
   check_if_positive(x = age, allow_na = TRUE)
   check_if_integer(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   symptom_score <- symptom_score |>
     arg_match0_integer(values = c(0:3),
@@ -492,13 +661,47 @@ calculate_esc_2024_fig_4_ptp <- function(
     have_diabetes,
     allow_na_symptom_score = TRUE,
     max_na_num_of_rf = 0,
-    output = c("grouping", "numeric", "percentage")
+    output = c("grouping", "numeric", "percentage"),
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_dyspnoea_no = c("no"),
+    label_have_dyspnoea_yes = c("yes"),
+    label_have_dyspnoea_unknown = c(NA, NaN),
+    label_cpt_no_chest_pain = c("no chest pain"),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN),
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_have_smoking_history_no = c("no"),
+    label_have_smoking_history_yes = c("yes"),
+    label_have_smoking_history_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN)
 )
 {
   symptom_score <- calculate_esc_2024_symptom_score(
     chest_pain_type = chest_pain_type,
     have_dyspnoea = have_dyspnoea,
-    allow_na = allow_na_symptom_score
+    allow_na = allow_na_symptom_score,
+    label_have_dyspnoea_no = label_have_dyspnoea_no,
+    label_have_dyspnoea_yes = label_have_dyspnoea_yes,
+    label_have_dyspnoea_unknown = label_have_dyspnoea_unknown,
+    label_cpt_no_chest_pain = label_cpt_no_chest_pain,
+    label_cpt_nonanginal = label_cpt_nonanginal,
+    label_cpt_atypical = label_cpt_atypical,
+    label_cpt_typical = label_cpt_typical,
+    label_cpt_unknown = label_cpt_unknown
   )
 
   num_of_rf <- calculate_esc_2024_num_of_rf(
@@ -507,7 +710,23 @@ calculate_esc_2024_fig_4_ptp <- function(
     have_dyslipidemia = have_dyslipidemia,
     have_hypertension = have_hypertension,
     have_diabetes = have_diabetes,
-    max_na = max_na_num_of_rf
+    max_na = max_na_num_of_rf,
+    label_have_family_history_no = label_have_family_history_no,
+    label_have_family_history_yes = label_have_family_history_yes,
+    label_have_family_history_unknown = label_have_family_history_unknown,
+    label_have_smoking_history_no = label_have_smoking_history_no,
+    label_have_smoking_history_yes = label_have_smoking_history_yes,
+    label_have_smoking_history_unknown = label_have_smoking_history_unknown,
+    label_have_dyslipidemia_no = label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes = label_have_dyslipidemia_yes,
+    label_have_dyslipidemia_unknown = label_have_dyslipidemia_unknown,
+    label_have_hypertension_no = label_have_hypertension_no,
+    label_have_hypertension_yes = label_have_hypertension_yes,
+    label_have_hypertension_unknown = label_have_hypertension_unknown,
+    label_have_diabetes_no = label_have_diabetes_no,
+    label_have_diabetes_yes = label_have_diabetes_yes,
+    label_have_diabetes_unknown = label_have_diabetes_unknown
+
   )
 
   ptp_results <- calculate_esc_2024_fig_4_ptp_simplfied(
@@ -515,7 +734,10 @@ calculate_esc_2024_fig_4_ptp <- function(
     sex = sex,
     symptom_score = symptom_score,
     num_of_rf = num_of_rf,
-    output = output
+    output = output,
+    label_sex_male = label_sex_male ,
+    label_sex_female = label_sex_female,
+    label_sex_unknown = label_sex_unknown
   )
 
   return(ptp_results)

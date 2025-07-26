@@ -3,24 +3,9 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' American Heart Association/American College of Cardiology (AHA/ACC) 2021 guidelines.
-#' @param age Input integer value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
-#' @param have_dyspnoea Input characters (no, yes) to indicate if the patient
-#' only has dyspnoea symptoms.
-#' \itemize{
-#'   \item no stands for not having dyspnoea symptoms.
-#'   \item yes stands for having dyspnoea symptoms.
-#' }
-#' @param have_chest_pain Input characters (no, yes) to indicate if the patient
-#' has chest pain.
-#' \itemize{
-#'   \item no stands for not having dyspnoea symptoms.
-#'   \item yes stands for having dyspnoea symptoms.
-#' }
+#' @inheritParams calculate_esc_2019_ptp
+#' @param have_chest_pain The value of variable in the parameters \code{label_have_chest_pain_no},
+#' \code{label_have_chest_pain_yes} and \code{label_have_chest_pain_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
@@ -35,7 +20,12 @@
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
 #'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
 #' }
-#'
+#' @param label_have_chest_pain_no Label(s) for patient not having chest pain symptoms.
+#' Default: \code{c("no")}
+#' @param label_have_chest_pain_yes Label(s) for patient having chest pain symptoms.
+#' Default: \code{c("yes")}
+#' @param label_have_chest_pain_unknown Label(s) for patient with unknown chest pain symptoms.
+#' Default: \code{c(NA, NaN)}
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the AHA/ACC 2021 guidelines.
 #' See parameter option \code{output} for more information.
@@ -71,21 +61,72 @@ calculate_aha_2021_ptp <- function(
     sex,
     have_dyspnoea,
     have_chest_pain,
-    output = c("grouping", "numeric", "percentage")
+    output = c("grouping", "numeric", "percentage"),
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_dyspnoea_no = c("no"),
+    label_have_dyspnoea_yes = c("yes"),
+    label_have_dyspnoea_unknown = c(NA, NaN),
+    label_have_chest_pain_no = c("no"),
+    label_have_chest_pain_yes = c("yes"),
+    label_have_chest_pain_unknown = c(NA, NaN)
 )
 {
 
   check_if_positive(x = age, allow_na = TRUE)
   check_if_integer(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_dyspnoea_no,
+    label_have_dyspnoea_yes,
+    label_cat_missing = label_have_dyspnoea_unknown
+  )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_chest_pain_no,
+    label_have_chest_pain_yes,
+    label_cat_missing = label_have_chest_pain_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure dyspnoea is valid and mapped to a unified group (yes, no, NA)
   have_dyspnoea <- have_dyspnoea |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_dyspnoea_no,
+      label_two = label_have_dyspnoea_yes,
+      label_unknown = label_have_dyspnoea_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  # Ensure chest pain is valid and mapped to a unified group (yes, no, NA)
   have_chest_pain <- have_chest_pain |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_chest_pain_no,
+      label_two = label_have_chest_pain_yes,
+      label_unknown = label_have_chest_pain_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   output <- output |>
     rlang::arg_match()

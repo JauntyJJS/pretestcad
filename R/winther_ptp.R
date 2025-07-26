@@ -4,7 +4,7 @@
 #' coronary artery disease based on the
 #' 2020 Winther et. al. basic model (Basic_PTP).
 #' @inheritParams calculate_esc_2024_fig_4_ptp
-#' @param age Input numeric value to indicate the age of the patient.
+#' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al. basic model (Basic_PTP).
 #' @details The predictive model is based on > 40000 symptomatic
@@ -30,14 +30,36 @@
 calculate_winther_2020_basic_ptp <- function(
     age,
     sex,
-    chest_pain_type
+    chest_pain_type,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_cpt_no_chest_pain = c("no chest pain"),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN)
   )
 {
 
   check_if_positive(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   sex <- dplyr::case_when(
     sex == "female" ~ 0L,
@@ -45,8 +67,29 @@ calculate_winther_2020_basic_ptp <- function(
     .default = NA_integer_
   )
 
+  check_if_four_categories_are_mutually_exclusive(
+    label_cpt_no_chest_pain,
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (no chest pain, nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("no chest pain", "typical", "atypical", "nonanginal"))
+    harmonise_four_labels(
+      label_one = label_cpt_no_chest_pain,
+      label_two = label_cpt_nonanginal,
+      label_three = label_cpt_atypical,
+      label_four = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "no chest pain",
+      harmonise_label_two = "nonanginal",
+      harmonise_label_three = "atypical",
+      harmonise_label_four = "typical",
+      harmonise_label_unknown = NA
+    )
 
   # In the supplementary document, patients with no chest pain or have one chest pain symptom
   # will be grouped as nonanginal chest pain
@@ -85,7 +128,7 @@ calculate_winther_2020_basic_ptp <- function(
 #' coronary artery disease based on the
 #' 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
-#' @param age Input numeric value to indicate the age of the patient.
+#' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
 #' @details The predictive model is based on > 40000 symptomatic
@@ -120,13 +163,53 @@ calculate_winther_2020_rf_cl_ptp <- function(
     have_hypertension,
     have_diabetes,
     allow_na_symptom_score = TRUE,
-    max_na_num_of_rf = 0
+    max_na_num_of_rf = 0,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_dyspnoea_no = c("no"),
+    label_have_dyspnoea_yes = c("yes"),
+    label_have_dyspnoea_unknown = c(NA, NaN),
+    label_cpt_no_chest_pain = c("no chest pain"),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN),
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_have_smoking_history_no = c("no"),
+    label_have_smoking_history_yes = c("yes"),
+    label_have_smoking_history_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN)
 )
 {
   check_if_positive(x = age, allow_na = TRUE)
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
   sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
 
   sex <- dplyr::case_when(
     sex == "female" ~ 0L,
@@ -137,7 +220,15 @@ calculate_winther_2020_rf_cl_ptp <- function(
   symptom_score <- calculate_esc_2024_symptom_score(
     chest_pain_type = chest_pain_type,
     have_dyspnoea = have_dyspnoea,
-    allow_na = allow_na_symptom_score
+    allow_na = allow_na_symptom_score,
+    label_have_dyspnoea_no = label_have_dyspnoea_no,
+    label_have_dyspnoea_yes = label_have_dyspnoea_yes,
+    label_have_dyspnoea_unknown = label_have_dyspnoea_unknown,
+    label_cpt_no_chest_pain = label_cpt_no_chest_pain,
+    label_cpt_nonanginal = label_cpt_nonanginal,
+    label_cpt_atypical = label_cpt_atypical,
+    label_cpt_typical = label_cpt_typical,
+    label_cpt_unknown = label_cpt_unknown
   )
 
   have_typical_chest_pain <- dplyr::case_when(
@@ -164,7 +255,22 @@ calculate_winther_2020_rf_cl_ptp <- function(
     have_dyslipidemia = have_dyslipidemia,
     have_hypertension = have_hypertension,
     have_diabetes = have_diabetes,
-    max_na = max_na_num_of_rf
+    max_na = max_na_num_of_rf,
+    label_have_family_history_no = label_have_family_history_no,
+    label_have_family_history_yes = label_have_family_history_yes,
+    label_have_family_history_unknown = label_have_family_history_unknown,
+    label_have_smoking_history_no = label_have_smoking_history_no,
+    label_have_smoking_history_yes = label_have_smoking_history_yes,
+    label_have_smoking_history_unknown = label_have_smoking_history_unknown,
+    label_have_dyslipidemia_no = label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes = label_have_dyslipidemia_yes,
+    label_have_dyslipidemia_unknown = label_have_dyslipidemia_unknown,
+    label_have_hypertension_no = label_have_hypertension_no,
+    label_have_hypertension_yes = label_have_hypertension_yes,
+    label_have_hypertension_unknown = label_have_hypertension_unknown,
+    label_have_diabetes_no = label_have_diabetes_no,
+    label_have_diabetes_yes = label_have_diabetes_yes,
+    label_have_diabetes_unknown = label_have_diabetes_unknown
   )
 
   rf_group <- dplyr::case_when(
@@ -200,7 +306,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
-#' @param age Input numeric value to indicate the age of the patient.
+#' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2020 Winther et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
@@ -237,7 +343,33 @@ calculate_winther_2020_cacs_cl_ptp <- function(
     have_diabetes,
     coronary_calcium_score,
     allow_na_symptom_score = TRUE,
-    max_na_num_of_rf = 0
+    max_na_num_of_rf = 0,
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_dyspnoea_no = c("no"),
+    label_have_dyspnoea_yes = c("yes"),
+    label_have_dyspnoea_unknown = c(NA, NaN),
+    label_cpt_no_chest_pain = c("no chest pain"),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN),
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_have_smoking_history_no = c("no"),
+    label_have_smoking_history_yes = c("yes"),
+    label_have_smoking_history_unknown = c(NA, NaN),
+    label_have_dyslipidemia_no = c("no"),
+    label_have_dyslipidemia_yes = c("yes"),
+    label_have_dyslipidemia_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN)
 )
 {
 
@@ -255,7 +387,33 @@ calculate_winther_2020_cacs_cl_ptp <- function(
     have_hypertension = have_hypertension,
     have_diabetes = have_diabetes,
     allow_na_symptom_score = allow_na_symptom_score,
-    max_na_num_of_rf = max_na_num_of_rf
+    max_na_num_of_rf = max_na_num_of_rf,
+    label_sex_male = label_sex_male,
+    label_sex_female = label_sex_female,
+    label_sex_unknown = label_sex_unknown,
+    label_have_dyspnoea_no = label_have_dyspnoea_no,
+    label_have_dyspnoea_yes = label_have_dyspnoea_yes,
+    label_have_dyspnoea_unknown = label_have_dyspnoea_unknown,
+    label_cpt_no_chest_pain = label_cpt_no_chest_pain,
+    label_cpt_nonanginal = label_cpt_nonanginal,
+    label_cpt_atypical = label_cpt_atypical,
+    label_cpt_typical = label_cpt_typical,
+    label_cpt_unknown = label_cpt_unknown,
+    label_have_family_history_no = label_have_family_history_no,
+    label_have_family_history_yes = label_have_family_history_yes,
+    label_have_family_history_unknown = label_have_family_history_unknown,
+    label_have_smoking_history_no = label_have_smoking_history_no,
+    label_have_smoking_history_yes = label_have_smoking_history_yes,
+    label_have_smoking_history_unknown = label_have_smoking_history_unknown,
+    label_have_dyslipidemia_no = label_have_dyslipidemia_no,
+    label_have_dyslipidemia_yes = label_have_dyslipidemia_yes,
+    label_have_dyslipidemia_unknown = label_have_dyslipidemia_unknown,
+    label_have_hypertension_no = label_have_hypertension_no,
+    label_have_hypertension_yes = label_have_hypertension_yes,
+    label_have_hypertension_unknown = label_have_hypertension_unknown,
+    label_have_diabetes_no = label_have_diabetes_no,
+    label_have_diabetes_yes = label_have_diabetes_yes,
+    label_have_diabetes_unknown = label_have_diabetes_unknown
   )
 
   cacs_1_to_9 <- dplyr::case_when(

@@ -3,39 +3,29 @@
 #' risk factors the patient has. This is used to calculate the pretest
 #' probability of coronary artery disease (CAD) based on the
 #' 2015 CONFIRM Risk Score.
-#' @param have_typical_chest_pain Input characters (no, yes) to indicate if the patient
-#' has typical chest pain.
-#' \itemize{
-#'   \item no stands for not having typical chest pain.
-#'   \item yes stands for having typical chest pain.
-#' }
-#' @param have_diabetes Input characters (no, yes) to indicate if the patient
-#' only has diabetes.
-#' \itemize{
-#'   \item no stands for not having diabetes.
-#'   \item yes stands for having diabetes.
-#' }
-#' @param have_hypertension Input characters (no, yes) to indicate if the patient
-#' only has hypertension.
-#' \itemize{
-#'   \item no stands for not having hypertension.
-#'   \item yes stands for having a hypertension.
-#' }
-#' @param have_family_history Input characters (no, yes) to indicate if the patient
-#' only has a family history of CAD.
-#' \itemize{
-#'   \item no stands for not having a family history of CAD.
-#'   \item yes stands for having a family history of CAD.
-#' }
-#' @param is_current_smoker Input characters (no, yes) to indicate if the patient
-#' is a current smoker.
-#' \itemize{
-#'   \item no stands for patient is a current smoker.
-#'   \item yes stands for patient is a not current smoker (past or non-smoker).
-#' }
+#' @inheritParams calculate_esc_2024_num_of_rf
+#' @param have_typical_chest_pain The value of variable in the parameters
+#' \code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
+#' and \code{label_have_typical_chest_pain_unknown}.
+#' @param is_current_smoker The value of variable in the parameters
+#' \code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
+#' and \code{label_is_current_smoker_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
+#' @param label_have_typical_chest_pain_no Label(s) for patient not having
+#' typical chest pain symptom.
+#' Default: \code{c("no")}
+#' @param label_have_typical_chest_pain_yes Label(s) for patient having
+#' typical chest pain symptom.
+#' Default: \code{c("yes")}
+#' @param label_have_typical_chest_pain_unknown Label(s) for patient having unknown
+#' typical chest pain symptom.
+#' @param label_is_current_smoker_no Label(s) for patients who are not current smokers.
+#' Default: \code{c("no")}
+#' @param label_is_current_smoker_yes Label(s) for patients who are current smokers.
+#' Default: \code{c("yes")}
+#' @param label_is_current_smoker_unknown Label(s) for patient with unknown smoking status.
 #' @return An integer indicating the number of risk factors the patient has.
 #' It can also be \code{NA} if the number of missing risk factors exceeds the \code{max_na}
 #' input value
@@ -73,20 +63,109 @@ calculate_confirm_2015_num_of_rf  <- function(
     have_hypertension,
     have_family_history,
     is_current_smoker,
-    max_na = 0
+    max_na = 0,
+    label_have_typical_chest_pain_no = c("no"),
+    label_have_typical_chest_pain_yes = c("yes"),
+    label_have_typical_chest_pain_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_is_current_smoker_no = c("no"),
+    label_is_current_smoker_yes = c("yes"),
+    label_is_current_smoker_unknown = c(NA, NaN)
 )
 {
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_typical_chest_pain_no,
+    label_have_typical_chest_pain_yes,
+    label_cat_missing = label_have_typical_chest_pain_unknown
+  )
+
+  # Ensure have typical chest pain is valid and mapped to a unified group (yes, no, NA)
   have_typical_chest_pain <- have_typical_chest_pain |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_typical_chest_pain_no,
+      label_two = label_have_typical_chest_pain_yes,
+      label_unknown = label_have_typical_chest_pain_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_diabetes_no,
+    label_have_diabetes_yes,
+    label_cat_missing = label_have_diabetes_unknown
+  )
+
+  # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
   have_diabetes <- have_diabetes |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_diabetes_no,
+      label_two = label_have_diabetes_yes,
+      label_unknown = label_have_diabetes_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_hypertension_no,
+    label_have_hypertension_yes,
+    label_cat_missing = label_have_hypertension_unknown
+  )
+
+  # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
   have_hypertension <- have_hypertension |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_hypertension_no,
+      label_two = label_have_hypertension_yes,
+      label_unknown = label_have_hypertension_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
+  check_if_two_categories_are_mutually_exclusive(
+    label_have_family_history_no,
+    label_have_family_history_yes,
+    label_cat_missing = label_have_family_history_unknown
+  )
+
+  # Ensure have family history is valid and mapped to a unified group (yes, no, NA)
   have_family_history <- have_family_history |>
-    arg_match0_allow_na(values = c("no","yes"))
+    harmonise_two_labels(
+      label_one = label_have_family_history_no,
+      label_two = label_have_family_history_yes,
+      label_unknown = label_have_family_history_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
+
+  check_if_two_categories_are_mutually_exclusive(
+    label_is_current_smoker_no,
+    label_is_current_smoker_yes,
+    label_cat_missing = label_is_current_smoker_unknown
+  )
+
+  # Ensure is current smoker is valid and mapped to a unified group (yes, no, NA)
+  is_current_smoker <- is_current_smoker |>
+    harmonise_two_labels(
+      label_one = label_is_current_smoker_no,
+      label_two = label_is_current_smoker_yes,
+      label_unknown = label_is_current_smoker_unknown,
+      harmonise_label_one = "no",
+      harmonise_label_two = "yes",
+      harmonise_label_unknown = NA
+    )
 
   is_current_smoker <- is_current_smoker |>
     arg_match0_allow_na(values = c("no","yes"))
@@ -143,13 +222,8 @@ calculate_confirm_2015_num_of_rf  <- function(
 #' a patient's risk score for obstructive
 #' coronary artery disease based on the
 #' 2015 CONFIRM Risk Score.
+#' @inheritParams calculate_esc_2019_ptp
 #' @inheritParams calculate_confirm_2015_num_of_rf
-#' @param age Input numeric value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -189,7 +263,25 @@ calculate_confirm_2015_ptp <- function(
     have_family_history,
     is_current_smoker,
     max_na_num_of_rf = 0,
-    output = c("text", "percentage")
+    output = c("text", "percentage"),
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_have_typical_chest_pain_no = c("no"),
+    label_have_typical_chest_pain_yes = c("yes"),
+    label_have_typical_chest_pain_unknown = c(NA, NaN),
+    label_have_diabetes_no = c("no"),
+    label_have_diabetes_yes = c("yes"),
+    label_have_diabetes_unknown = c(NA, NaN),
+    label_have_hypertension_no = c("no"),
+    label_have_hypertension_yes = c("yes"),
+    label_have_hypertension_unknown = c(NA, NaN),
+    label_have_family_history_no = c("no"),
+    label_have_family_history_yes = c("yes"),
+    label_have_family_history_unknown = c(NA, NaN),
+    label_is_current_smoker_no = c("no"),
+    label_is_current_smoker_yes = c("yes"),
+    label_is_current_smoker_unknown = c(NA, NaN)
 ) {
 
   check_if_positive(x = age, allow_na = TRUE)
@@ -204,7 +296,22 @@ calculate_confirm_2015_ptp <- function(
     have_hypertension = have_hypertension,
     have_family_history = have_family_history,
     is_current_smoker = is_current_smoker,
-    max_na = max_na_num_of_rf
+    max_na = max_na_num_of_rf,
+    label_have_typical_chest_pain_no = label_have_typical_chest_pain_no,
+    label_have_typical_chest_pain_yes = label_have_typical_chest_pain_yes,
+    label_have_typical_chest_pain_unknown = label_have_typical_chest_pain_unknown,
+    label_have_diabetes_no = label_have_diabetes_no,
+    label_have_diabetes_yes = label_have_diabetes_yes,
+    label_have_diabetes_unknown = label_have_diabetes_unknown,
+    label_have_hypertension_no = label_have_hypertension_no,
+    label_have_hypertension_yes = label_have_hypertension_yes,
+    label_have_hypertension_unknown = label_have_hypertension_unknown,
+    label_have_family_history_no = label_have_family_history_no,
+    label_have_family_history_yes = label_have_family_history_yes,
+    label_have_family_history_unknown = label_have_family_history_unknown,
+    label_is_current_smoker_no = label_is_current_smoker_no,
+    label_is_current_smoker_yes = label_is_current_smoker_yes,
+    label_is_current_smoker_unknown = label_is_current_smoker_unknown
   )
 
   age_group <- dplyr::case_when(

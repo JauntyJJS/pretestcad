@@ -10,17 +10,31 @@ calculate_reeh_2019_clinical_ptp(
   symptom_type,
   have_dyslipidemia,
   have_family_history,
-  have_diabetes
+  have_diabetes,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_symptom_type_typical = c("typical"),
+  label_symptom_type_atypical = c("atypical"),
+  label_symptom_type_nonanginal = c("nonanginal"),
+  label_symptom_type_dyspnoea = c("dyspnoea"),
+  label_symptom_type_unknown = c(NA, NaN),
+  label_have_dyslipidemia_no = c("no"),
+  label_have_dyslipidemia_yes = c("yes"),
+  label_have_dyslipidemia_unknown = c(NA, NaN),
+  label_have_family_history_no = c("no"),
+  label_have_family_history_yes = c("yes"),
+  label_have_family_history_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
 \item{symptom_type}{Input characters (typical, atypical, nonanginal, dyspnoea)
 to indicate the symptom characteristics of the patient.
@@ -31,26 +45,72 @@ to indicate the symptom characteristics of the patient.
   \item dyspnoea stands for the patient having dyspnoea.
 }}
 
-\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-has dyslipidemia.
-\itemize{
-  \item no stands for not having dyslipidemia.
-  \item yes stands for having dyslipidemia.
-}}
+\item{have_dyslipidemia}{The value of variable in the parameters
+\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+and \code{label_have_dyslipidemia_unknown}.}
 
-\item{have_family_history}{Input characters (no, yes) to indicate if the patient
-has a family history of CAD.
-\itemize{
-  \item no stands for not having a family history of CAD.
-  \item yes stands for having a family history of CAD.
-}}
+\item{have_family_history}{The value of variable in the parameters
+\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+and \code{label_have_family_history_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_symptom_type_typical}{Label(s) for patient having typical chest pain.
+Default: \code{c("typical")}}
+
+\item{label_symptom_type_atypical}{Label(s) for patient having atypical chest pain.
+Default: \code{c("atypical")}}
+
+\item{label_symptom_type_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain.
+Default: \code{c("nonanginal")}}
+
+\item{label_symptom_type_dyspnoea}{Label(s) for patient having dyspnoea.
+Default: \code{c("dyspnoea")}}
+
+\item{label_symptom_type_unknown}{Label(s) for patient having unknown symptoms.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyslipidemia_no}{Label(s) for patient with no dyslipidemia.
+Default: \code{c("no")}}
+
+\item{label_have_dyslipidemia_yes}{Label(s) for patient having dyslipidemia.
+Default: \code{c("yes")}}
+
+\item{label_have_dyslipidemia_unknown}{Label(s) for patient
+having unknown dyslipidemia.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_family_history_no}{Label(s) for patient with no family history of CAD.
+Default: \code{c("no")}}
+
+\item{label_have_family_history_yes}{Label(s) for patient having family history of CAD.
+Default: \code{c("yes")}}
+
+\item{label_have_family_history_unknown}{Label(s) for patient
+having unknown family history of CAD.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for obstructive CAD

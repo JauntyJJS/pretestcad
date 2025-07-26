@@ -94,6 +94,7 @@ reference:
     - arg_match0_allow_na
     - arg_match0_true_or_false
     - arg_match0_integer
+    - arg_match0_no_na_error_message
     - check_if_numeric
     - check_if_positive
     - check_if_non_negative
@@ -101,3 +102,8 @@ reference:
     - check_if_two_categories_are_mutually_exclusive
     - check_if_three_categories_are_mutually_exclusive
     - check_if_four_categories_are_mutually_exclusive
+    - harmonise_two_labels
+    - harmonise_three_labels
+    - harmonise_four_labels
+    - oxford_comma
+    - chr_quoted

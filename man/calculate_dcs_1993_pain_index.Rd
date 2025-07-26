@@ -12,47 +12,47 @@ calculate_dcs_1993_pain_index(
   have_q_waves,
   have_st_t_changes,
   max_na = 0,
-  max_frequency_of_angina_pain_per_week = 35
+  max_frequency_of_angina_pain_per_week = 35,
+  label_have_typical_chest_pain_no = c("no"),
+  label_have_typical_chest_pain_yes = c("yes"),
+  label_have_typical_chest_pain_unknown = c(NA, NaN),
+  label_have_progressive_angina_no = c("no"),
+  label_have_progressive_angina_yes = c("yes"),
+  label_have_progressive_angina_unknown = c(NA, NaN),
+  label_have_nocturnal_angina_no = c("no"),
+  label_have_nocturnal_angina_yes = c("yes"),
+  label_have_nocturnal_angina_unknown = c(NA, NaN),
+  label_have_q_waves_no = c("no"),
+  label_have_q_waves_yes = c("yes"),
+  label_have_q_waves_unknown = c(NA, NaN),
+  label_have_st_t_changes_no = c("no"),
+  label_have_st_t_changes_yes = c("yes"),
+  label_have_st_t_changes_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{have_typical_chest_pain}{Input characters (no, yes) to indicate if the patient
-has typical chest pain.
-\itemize{
-  \item no stands for not having typical chest pain.
-  \item yes stands for having typical chest pain.
-}}
+\item{have_typical_chest_pain}{The value of variable in the parameters
+\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
+and \code{label_have_typical_chest_pain_unknown}.}
 
 \item{frequency_of_angina_pain_per_week}{Input integer to indicate the patient's
 frequency of angina per week.}
 
-\item{have_progressive_angina}{Input characters (no, yes) to indicate if the patient
-has progressive angina.
-\itemize{
-  \item no stands for not having progressive angina.
-  \item yes stands for having progressive angina.
-}}
+\item{have_progressive_angina}{The value of variable in the parameters
+\code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
+and \code{label_have_progressive_angina_unknown}.}
 
-\item{have_nocturnal_angina}{Input characters (no, yes) to indicate if the patient
-has nocturnal angina.
-\itemize{
-  \item no stands for not having nocturnal angina.
-  \item yes stands for having nocturnal angina.
-}}
+\item{have_nocturnal_angina}{The value of variable in the parameters
+\code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
+and \code{label_have_nocturnal_angina_unknown}.}
 
-\item{have_q_waves}{Input characters (no, yes) to indicate if the patient
-has Q waves on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having Q waves on ECG.
-  \item yes stands for the patient having Q waves on ECG.
-}}
+\item{have_q_waves}{The value of variable in the parameters
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{Input characters (no, yes) to indicate if the patient
-has ST-T changes on electrocardiogram (ECG).
-\itemize{
-  \item no stands for the patient not having ST-T changes on ECG.
-  \item yes stands for the patient having ST-T changes on ECG.
-}}
+\item{have_st_t_changes}{The value of variable in the parameters
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+and \code{label_have_st_t_changes_unknown}.}
 
 \item{max_na}{Input integer 0 to 6 to indicate the maximum number of
 missing symptoms to tolerate before outputting an \code{NA}.
@@ -62,6 +62,55 @@ Default: 0}
 indicate the maximum frequency angina per week to tolerate before outputting an \code{NA}.
 In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 Default: 35}
+
+\item{label_have_typical_chest_pain_no}{Label(s) for patient not having
+typical chest pain symptom.
+Default: \code{c("no")}}
+
+\item{label_have_typical_chest_pain_yes}{Label(s) for patient having
+typical chest pain symptom.
+Default: \code{c("yes")}}
+
+\item{label_have_typical_chest_pain_unknown}{Label(s) for patient having unknown
+typical chest pain symptom.}
+
+\item{label_have_progressive_angina_no}{Label(s) for patient not having progressive angina.
+Default: \code{c("no")}}
+
+\item{label_have_progressive_angina_yes}{Label(s) for patient having progressive angina.
+Default: \code{c("yes")}}
+
+\item{label_have_progressive_angina_unknown}{Label(s) for patient
+having unknown progressive angina.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_nocturnal_angina_no}{Label(s) for patient not having nocturnal angina.
+Default: \code{c("no")}}
+
+\item{label_have_nocturnal_angina_yes}{Label(s) for patient having nocturnal angina.
+Default: \code{c("yes")}}
+
+\item{label_have_nocturnal_angina_unknown}{Label(s) for patient
+having unknown nocturnal angina.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_q_waves_no}{Label(s) for patient not having Q waves on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_q_waves_yes}{Label(s) for patient having Q waves on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_q_waves_unknown}{Label(s) for patient with unknown Q waves on ECG.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_st_t_changes_no}{Label(s) for patient not having ST-T changes on ECG.
+Default: \code{c("no")}}
+
+\item{label_have_st_t_changes_yes}{Label(s) for patient having ST-T changes on ECG.
+Default: \code{c("yes")}}
+
+\item{label_have_st_t_changes_unknown}{Label(s) for patient with unknown ST-T changes on ECG.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer indicating the patient's pain index.

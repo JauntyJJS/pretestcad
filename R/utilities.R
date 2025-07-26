@@ -1,3 +1,60 @@
+#' @title Character Vector To List Phrase With Oxford Comma
+#' @description A function that converts a character vector into a list phrase that
+#' uses the Oxford comma.
+#' @param chr A character vector to turn into a list phrase (e.g. c("a", "b", "c")).
+#' @param sep Separator symbols used to separate the elements in the
+#' character vector, Default: ', '
+#' @param final String to use in place of the final separator when we have
+#' at least two elements in the character vector, Default: 'or'.
+#' @return A string in the form of a list that has a comma if
+#' there are at least three elements in the list (e.g. "a, b, or c")
+#' @examples
+#' oxford_comma(c("James", "John", "Jeremy"))
+#'
+#' oxford_comma(c("James", "John", "Jeremy"), final = "and")
+#'
+#' oxford_comma(c("James", "John"))
+#'
+#' oxford_comma(c("James"))
+#' @rdname oxford_comma
+#' @export
+oxford_comma <- function(chr, sep = ", ", final = "or") {
+  n <- length(chr)
+
+  if (n < 2) {
+    return(chr)
+  }
+
+  head <- chr[seq_len(n - 1)]
+  last <- chr[n]
+
+  head <- paste(head, collapse = sep)
+
+  # Write a or b. But a, b, or c.
+  if (n > 2) {
+    paste0(head, sep, final, " ", last)
+  } else {
+    paste0(head, " ", final, " ", last)
+  }
+}
+
+#' @title Quoted Characters
+#' @description Add a quote around characters.
+#' @param chr A character vector to add quotes in each element.
+#' (e.g. c("a", "b", "c")).
+#' @param type Character to be used as a quote.
+#' Default: '`'
+#' @return A character vector with quotes added in each element.
+#' (e.g. c("`a`", "`b`", "`c`")).
+#' @details DETAILS
+#' @examples
+#' chr_quoted(c("a","b", "c"))
+#' @rdname chr_quoted
+#' @export
+chr_quoted <- function(chr, type = "`") {
+  paste0(type, chr, type)
+}
+
 #' @title Is Integer Value
 #' @description Function to check if the input
 #' value is an integer.
@@ -81,14 +138,58 @@ arg_match0_allow_na <- function(
     error_call = rlang::caller_env()
   )
 {
-
-  arg <- ifelse(
-    test = is.na(arg),
-    yes = arg,
-    no = rlang::arg_match0(arg = arg, values = values, arg_nm = arg_nm, error_call = error_call)
-  )
+  if (!is.na(arg)) {
+    arg <- arg |>
+      rlang::arg_match0(values = values, arg_nm = arg_nm, error_call = error_call)
+  }
 
   return(arg)
+}
+
+#' @title Error Message For \code{NA} Argument For Non-missing List
+#' @description Provides an error message if the argument provided is \code{NA}
+#' if a non-missing list is provided
+#' @inheritParams rlang::arg_match
+#' @return An error message if the argument provided is \code{NA}
+#' if a non-missing list is provided. Else if will return \code{NULL} invisibly,
+#' regardless if \code{arg} has a match with the elements in \code{values} or not.
+#' @examples
+#' # Error as input is NA but value list provided has no NA
+#' input = NA
+#' try(arg_match0_no_na_error_message(input, values = c("female","male")))
+#'
+#' # No error as value list provided has NA
+#' input = NA
+#' arg_match0_allow_na(input, values = c("female","male", NA))
+#'
+#' # No error as input is not NA
+#' input = "male"
+#' arg_match0_allow_na(input, values = c("female","male", NA))
+#' @seealso
+#'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
+#'  \code{\link[cli]{cli_abort}}
+#' @rdname arg_match0_no_na_error_message
+#' @export
+arg_match0_no_na_error_message <- function(
+    arg,
+    values,
+    arg_nm = rlang::caller_arg(arg),
+    error_call = rlang::caller_env()
+  )
+{
+
+  if (!any(is.na(values)) && is.na(arg)) {
+    quoted_list <- oxford_comma(chr_quoted(values, "\""))
+    cli::cli_abort(
+      message = c(
+        "{.arg {arg_nm}} must be one of {quoted_list} not {.val {arg}}."
+      ),
+      call = error_call
+    )
+  }
+
+  return(invisible(NULL))
+
 }
 
 #' @title Match an argument to a \code{TRUE} or \code{FALSE} vector but skip \code{NA}

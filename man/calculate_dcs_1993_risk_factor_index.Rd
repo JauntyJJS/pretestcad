@@ -8,34 +8,64 @@ calculate_dcs_1993_risk_factor_index(
   have_hypertension,
   have_dyslipidemia,
   have_diabetes,
-  max_na = 0
+  max_na = 0,
+  label_have_hypertension_no = c("no"),
+  label_have_hypertension_yes = c("yes"),
+  label_have_hypertension_unknown = c(NA, NaN),
+  label_have_dyslipidemia_no = c("no"),
+  label_have_dyslipidemia_yes = c("yes"),
+  label_have_dyslipidemia_unknown = c(NA, NaN),
+  label_have_diabetes_no = c("no"),
+  label_have_diabetes_yes = c("yes"),
+  label_have_diabetes_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{have_hypertension}{Input characters (no, yes) to indicate if the patient
-has hypertension.
-\itemize{
-  \item no stands for not having hypertension.
-  \item yes stands for having hypertension.
-}}
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
 
-\item{have_dyslipidemia}{Input characters (no, yes) to indicate if the patient
-has dyslipidemia.
-\itemize{
-  \item no stands for not having dyslipidemia.
-  \item yes stands for having dyslipidemia.
-}}
+\item{have_dyslipidemia}{The value of variable in the parameters
+\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+and \code{label_have_dyslipidemia_unknown}.}
 
-\item{have_diabetes}{Input characters (no, yes) to indicate if the patient
-has diabetes.
-\itemize{
-  \item no stands for not having diabetes.
-  \item yes stands for having diabetes.
-}}
+\item{have_diabetes}{The value of variable in the parameters
+\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+and \code{label_have_diabetes_unknown}.}
 
 \item{max_na}{Input integer 0 to 3 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
 Default: 0}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_dyslipidemia_no}{Label(s) for patient with no dyslipidemia.
+Default: \code{c("no")}}
+
+\item{label_have_dyslipidemia_yes}{Label(s) for patient having dyslipidemia.
+Default: \code{c("yes")}}
+
+\item{label_have_dyslipidemia_unknown}{Label(s) for patient
+having unknown dyslipidemia.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_diabetes_no}{Label(s) for patient with no diabetes.
+Default: \code{c("no")}}
+
+\item{label_have_diabetes_yes}{Label(s) for patient having diabetes.
+Default: \code{c("yes")}}
+
+\item{label_have_diabetes_unknown}{Label(s) for patient
+having unknown diabetes.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 An integer indicating the patient's risk factor index.

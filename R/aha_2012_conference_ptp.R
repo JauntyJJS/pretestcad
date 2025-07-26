@@ -9,20 +9,10 @@
 #' Preventive Cardiovascular Nurses Association,
 #' Society for Cardiovascular Angiography and Interventions,
 #' and Society of Thoracic Surgeons 2012 guidelines.
-#' @param age Input integer value to indicate the age of the patient.
-#' @param sex Input characters (female, male) to indicate the sex of the patient.
-#' \itemize{
-#'   \item female
-#'   \item male
-#' }
-#' @param chest_pain_type Input characters (typical, atypical, nonanginal)
-#' to indicate the chest pain characteristics of the patient.
-#' \itemize{
-#'   \item typical stands for the patient having typical chest pain.
-#'   \item atypical stands for the patient having atypical chest pain.
-#'   \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-#' }
-#'
+#' @inheritParams calculate_esc_2019_ptp
+#' @param chest_pain_type The value of variable in the parameters,
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
+#' \code{label_cpt_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("numeric", "percentage")
@@ -59,17 +49,57 @@ calculate_aha_2012_tbl_9_ptp <- function(
     age,
     sex,
     chest_pain_type,
-    output = c("numeric", "percentage")
+    output = c("numeric", "percentage"),
+    label_sex_male = c("male"),
+    label_sex_female = c("female"),
+    label_sex_unknown = c(NA, NaN),
+    label_cpt_nonanginal = c("nonanginal"),
+    label_cpt_atypical = c("atypical"),
+    label_cpt_typical = c("typical"),
+    label_cpt_unknown = c(NA, NaN)
+
 )
 {
   check_if_positive(x = age, allow_na = TRUE)
   check_if_integer(x = age, allow_na = TRUE)
 
-  sex <- sex |>
-    arg_match0_allow_na(values = c("female","male"))
+  check_if_two_categories_are_mutually_exclusive(
+    label_sex_male,
+    label_sex_female,
+    label_cat_missing = label_sex_unknown
+  )
 
+  check_if_three_categories_are_mutually_exclusive(
+    label_cpt_nonanginal,
+    label_cpt_atypical,
+    label_cpt_typical,
+    label_cat_missing = label_cpt_unknown
+  )
+
+  # Ensure sex is valid and mapped to a unified group (male, female, NA)
+  sex <- sex |>
+    harmonise_two_labels(
+      label_one = label_sex_male,
+      label_two = label_sex_female,
+      label_unknown = label_sex_unknown,
+      harmonise_label_one = "male",
+      harmonise_label_two = "female",
+      harmonise_label_unknown = NA
+    )
+
+  # Ensure chest pain type is valid and mapped to a unified group
+  # (no chest pain, nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
-    arg_match0_allow_na(values = c("typical", "atypical", "nonanginal"))
+    harmonise_three_labels(
+      label_one = label_cpt_nonanginal,
+      label_two = label_cpt_atypical,
+      label_three = label_cpt_typical,
+      label_unknown = label_cpt_unknown,
+      harmonise_label_one = "nonanginal",
+      harmonise_label_two = "atypical",
+      harmonise_label_three = "typical",
+      harmonise_label_unknown = NA
+    )
 
   output <- output |>
     rlang::arg_match()

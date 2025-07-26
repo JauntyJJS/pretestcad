@@ -314,7 +314,257 @@ test_that("calculate_esc_2019_ptp works on dyspnoea", {
 
 })
 
-test_that("calculate_esc_2019_ptp gives NA if some inputs are missing", {
+test_that("calculate_esc_2019_ptp gives error of invalid missing input of sex", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = NA,
+      have_dyspnoea = "no",
+      chest_pain_type = "typical",
+      label_sex_male = c("male"),
+      label_sex_female = c("female"),
+      label_sex_unknown = c("NIL")
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid male input", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "Male",
+      have_dyspnoea = "no",
+      chest_pain_type = "typical",
+      label_sex_male = c("male"),
+      label_sex_female = c("female"),
+      label_sex_unknown = c(NA, NaN)
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp works on different valid inputs for sex", {
+  testthat::expect_identical(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "Male",
+      have_dyspnoea = "no",
+      chest_pain_type = "typical",
+      label_sex_male = c("male", "Male"),
+      label_sex_female = c("female"),
+      label_sex_unknown = c(NA, NaN)
+    ),
+    "high"
+  )
+})
+
+test_that("calculate_esc_2019_ptp gives NA if there are valid missing input of sex", {
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = NA,
+      have_dyspnoea = "no",
+      chest_pain_type = "typical",
+      label_sex_male = c("male"),
+      label_sex_female = c("female"),
+      label_sex_unknown = c(NA, NaN)
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "NIL",
+      have_dyspnoea = "no",
+      chest_pain_type = "typical",
+      label_sex_male = c("male"),
+      label_sex_female = c("female"),
+      label_sex_unknown = c("NIL")
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid missing input of dyspnoea", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = NA,
+      chest_pain_type = "no chest pain",
+      label_have_dyspnoea_no = c("no"),
+      label_have_dyspnoea_yes = c("yes"),
+      label_have_dyspnoea_unknown = c("NIL")
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid no dyspnoea input", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "No",
+      chest_pain_type = "no chest pain",
+      label_have_dyspnoea_no = c("no"),
+      label_have_dyspnoea_yes = c("yes"),
+      label_have_dyspnoea_unknown = c(NA, NaN)
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp works on different valid inputs for dyspnoea", {
+  testthat::expect_identical(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "Yes",
+      chest_pain_type = "no chest pain",
+      label_have_dyspnoea_no = c("no"),
+      label_have_dyspnoea_yes = c("yes", "Yes"),
+      label_have_dyspnoea_unknown = c(NA, NaN)
+    ),
+    "high"
+  )
+})
+
+test_that("calculate_esc_2019_ptp gives NA if there are valid missing input of dyspnoea", {
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = NA,
+      chest_pain_type = "no chest pain",
+      label_have_dyspnoea_no = c("no"),
+      label_have_dyspnoea_yes = c("yes"),
+      label_have_dyspnoea_unknown = c(NA, NaN)
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "NIL",
+      chest_pain_type = "no chest pain",
+      label_have_dyspnoea_no = c("no"),
+      label_have_dyspnoea_yes = c("yes"),
+      label_have_dyspnoea_unknown = c("NIL")
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid missing input of chest pain type", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "no",
+      chest_pain_type = NA,
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical"),
+      label_cpt_unknown = c("NIL")
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid typical chest pain input", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "no",
+      chest_pain_type = "Typical",
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical"),
+      label_cpt_unknown = c(NA, NaN)
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp works on different valid inputs for chest pain type", {
+  testthat::expect_identical(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "no",
+      chest_pain_type = "Typical",
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical", "Typical"),
+      label_cpt_unknown = c(NA, NaN)
+    ),
+    "high"
+  )
+})
+
+test_that("calculate_esc_2019_ptp gives NA if there are valid missing input of chest pain type", {
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "no",
+      chest_pain_type = NA,
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical", "Typical"),
+      label_cpt_unknown = c(NA, NaN)
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+  testthat::expect_equal(
+    calculate_esc_2019_ptp(
+      age = 55,
+      sex = "male",
+      have_dyspnoea = "no",
+      chest_pain_type = "NIL",
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical", "Typical"),
+      label_cpt_unknown = c("NIL")
+    ) |>
+      is.na(),
+    TRUE
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives NA if age is missing", {
 
   na_age <- calculate_esc_2019_ptp(
     age = NA,
@@ -323,44 +573,8 @@ test_that("calculate_esc_2019_ptp gives NA if some inputs are missing", {
     chest_pain_type = "no chest pain"
   )
 
-  na_sex <- calculate_esc_2019_ptp(
-    age = 55,
-    sex = NA,
-    have_dyspnoea = "no",
-    chest_pain_type = "no chest pain"
-  )
-
-  na_dyspnea <- calculate_esc_2019_ptp(
-    age = 55,
-    sex = "male",
-    have_dyspnoea = NA,
-    chest_pain_type = "no chest pain"
-  )
-
-  na_chest_pain <- calculate_esc_2019_ptp(
-    age = 55,
-    sex = "male",
-    have_dyspnoea = "no",
-    chest_pain_type = NA
-  )
-
   testthat::expect_equal(
     is.na(na_age),
-    TRUE
-  )
-
-  testthat::expect_equal(
-    is.na(na_sex),
-    TRUE
-  )
-
-  testthat::expect_equal(
-    is.na(na_dyspnea),
-    TRUE
-  )
-
-  testthat::expect_equal(
-    is.na(na_chest_pain),
     TRUE
   )
 

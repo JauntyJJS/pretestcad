@@ -13,45 +13,45 @@ calculate_dcs_1993_lm_cad_ptp(
   have_carotid_bruits,
   duration_of_cad_symptoms_year,
   max_na_vascular_disease_index = 0,
-  max_age = 65
+  max_age = 65,
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_typical_chest_pain_no = c("no"),
+  label_have_typical_chest_pain_yes = c("yes"),
+  label_have_typical_chest_pain_unknown = c(NA, NaN),
+  label_have_pvd_no = c("no"),
+  label_have_pvd_yes = c("yes"),
+  label_have_pvd_unknown = c(NA, NaN),
+  label_have_cvd_no = c("no"),
+  label_have_cvd_yes = c("yes"),
+  label_have_cvd_unknown = c(NA, NaN),
+  label_have_carotid_bruits_no = c("no"),
+  label_have_carotid_bruits_yes = c("yes"),
+  label_have_carotid_bruits_unknown = c(NA, NaN)
 )
 }
 \arguments{
-\item{age}{Input integer value to indicate the age of the patient.}
+\item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{Input characters (female, male) to indicate the sex of the patient.
-\itemize{
-  \item female
-  \item male
-}}
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{Input characters (no, yes) to indicate if the patient
-has typical chest pain.
-\itemize{
-  \item no stands for the patient not having typical chest pain.
-  \item yes stands for the patient having typical chest pain.
-}}
+\item{have_typical_chest_pain}{The value of variable in the parameters
+\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
+and \code{label_have_typical_chest_pain_unknown}.}
 
-\item{have_peripheral_vascular_disease}{Input characters (no, yes) to indicate if the patient
-has peripheral vascular disease.
-\itemize{
-  \item no stands for not having peripheral vascular disease.
-  \item yes stands for having peripheral vascular disease.
-}}
+\item{have_peripheral_vascular_disease}{The value of variable in the parameters
+\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+and \code{label_have_pvd_unknown}.}
 
-\item{have_cerebrovascular_disease}{Input characters (no, yes) to indicate if the patient
-has cerebrovascular disease.
-\itemize{
-  \item no stands for not having cerebrovascular disease.
-  \item yes stands for having cerebrovascular disease.
-}}
+\item{have_cerebrovascular_disease}{The value of variable in the parameters
+\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+and \code{label_have_cvd_unknown}.}
 
-\item{have_carotid_bruits}{Input characters (no, yes) to indicate if the patient
-has carotid bruits.
-\itemize{
-  \item no stands for not having carotid bruits.
-  \item yes stands for having carotid bruits.
-}}
+\item{have_carotid_bruits}{The value of variable in the parameters
+\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+and \code{label_have_carotid_bruits_unknown}.}
 
 \item{duration_of_cad_symptoms_year}{Input integer to indicate the duration of
 coronary artery disease symptoms in years.}
@@ -64,6 +64,56 @@ Default: 0}
 indicate the maximum age to tolerate before outputting an \code{NA}.
 In the Duke Clinical Score 1993 paper, the maximum value is set as 65.
 Default: 65}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_typical_chest_pain_no}{Label(s) for patient not having
+typical chest pain symptom.
+Default: \code{c("no")}}
+
+\item{label_have_typical_chest_pain_yes}{Label(s) for patient having
+typical chest pain symptom.
+Default: \code{c("yes")}}
+
+\item{label_have_typical_chest_pain_unknown}{Label(s) for patient having unknown
+typical chest pain symptom.}
+
+\item{label_have_pvd_no}{Label(s) for patient not having peripheral vascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_pvd_yes}{Label(s) for patient having peripheral vascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_pvd_unknown}{Label(s) for patient
+having unknown peripheral vascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_cvd_no}{Label(s) for patient not having cerebrovascular disease.
+Default: \code{c("no")}}
+
+\item{label_have_cvd_yes}{Label(s) for patient having cerebrovascular disease.
+Default: \code{c("yes")}}
+
+\item{label_have_cvd_unknown}{Label(s) for patient
+having unknown cerebrovascular disease.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_carotid_bruits_no}{Label(s) for patient not having carotid bruits.
+Default: \code{c("no")}}
+
+\item{label_have_carotid_bruits_yes}{Label(s) for patient having carotid bruits.
+Default: \code{c("yes")}}
+
+\item{label_have_carotid_bruits_unknown}{Label(s) for patient
+having unknown carotid bruits.
+Default: \code{c(NA, NaN)}}
 }
 \value{
 A numeric value representing the patient's PTP for left main disease

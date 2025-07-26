@@ -1,3 +1,31 @@
+test_that("oxford_comma works", {
+
+  testthat::expect_equal(
+    oxford_comma(c("James")),
+    "James"
+  )
+
+  testthat::expect_equal(
+    oxford_comma(c("James", "John")),
+    "James or John"
+  )
+
+  testthat::expect_equal(
+    oxford_comma(c("James", "John", "Jeremy")),
+    "James, John, or Jeremy"
+  )
+
+})
+
+test_that("chr_quoted works", {
+
+  testthat::expect_equal(
+    chr_quoted("Hi"),
+    "`Hi`"
+  )
+
+})
+
 test_that("is_integer_value works", {
 
   testthat::expect_true(is_integer_value(1))
@@ -110,6 +138,21 @@ test_that("arg_match0_integer gives error for invalid inputs", {
   testthat::expect_snapshot(
     error = TRUE,
     arg_match0_integer(input, values = c(0:5))
+  )
+})
+
+test_that("arg_match0_no_na_error_message gives error for NA input but values have no NA", {
+  input = NA
+  testthat::expect_snapshot(
+    error = TRUE,
+    arg_match0_no_na_error_message(input, values = c("yes", "no"))
+  )
+})
+
+test_that("arg_match0_no_na_error_message should pass for NA input and values has NA", {
+  input = NA
+  testthat::expect_silent(
+    arg_match0_no_na_error_message(input, values = c("yes", "no", NA))
   )
 })
 
