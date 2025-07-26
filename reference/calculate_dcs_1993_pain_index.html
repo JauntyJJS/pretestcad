@@ -66,7 +66,22 @@ Duke Clinical Score 1993 paper.</p>
 <span>  <span class="va">have_q_waves</span>,</span>
 <span>  <span class="va">have_st_t_changes</span>,</span>
 <span>  max_na <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  max_frequency_of_angina_pain_per_week <span class="op">=</span> <span class="fl">35</span></span>
+<span>  max_frequency_of_angina_pain_per_week <span class="op">=</span> <span class="fl">35</span>,</span>
+<span>  label_have_typical_chest_pain_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_typical_chest_pain_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_typical_chest_pain_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_progressive_angina_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_progressive_angina_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_progressive_angina_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_nocturnal_angina_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_nocturnal_angina_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_nocturnal_angina_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_q_waves_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_q_waves_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_q_waves_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_st_t_changes_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_st_t_changes_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_st_t_changes_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -75,10 +90,9 @@ Duke Clinical Score 1993 paper.</p>
 
 
 <dl><dt id="arg-have-typical-chest-pain">have_typical_chest_pain<a class="anchor" aria-label="anchor" href="#arg-have-typical-chest-pain"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has typical chest pain.</p><ul><li><p>no stands for not having typical chest pain.</p></li>
-<li><p>yes stands for having typical chest pain.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_typical_chest_pain_no</code>, <code>label_have_typical_chest_pain_yes</code>
+and <code>label_have_typical_chest_pain_unknown</code>.</p></dd>
 
 
 <dt id="arg-frequency-of-angina-pain-per-week">frequency_of_angina_pain_per_week<a class="anchor" aria-label="anchor" href="#arg-frequency-of-angina-pain-per-week"></a></dt>
@@ -87,31 +101,27 @@ frequency of angina per week.</p></dd>
 
 
 <dt id="arg-have-progressive-angina">have_progressive_angina<a class="anchor" aria-label="anchor" href="#arg-have-progressive-angina"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has progressive angina.</p><ul><li><p>no stands for not having progressive angina.</p></li>
-<li><p>yes stands for having progressive angina.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_progressive_angina_no</code>, <code>label_have_progressive_angina_yes</code>
+and <code>label_have_progressive_angina_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-nocturnal-angina">have_nocturnal_angina<a class="anchor" aria-label="anchor" href="#arg-have-nocturnal-angina"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has nocturnal angina.</p><ul><li><p>no stands for not having nocturnal angina.</p></li>
-<li><p>yes stands for having nocturnal angina.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_nocturnal_angina_no</code>, <code>label_have_nocturnal_angina_yes</code>
+and <code>label_have_nocturnal_angina_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-q-waves">have_q_waves<a class="anchor" aria-label="anchor" href="#arg-have-q-waves"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has Q waves on electrocardiogram (ECG).</p><ul><li><p>no stands for the patient not having Q waves on ECG.</p></li>
-<li><p>yes stands for the patient having Q waves on ECG.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_q_waves_no</code>, <code>label_have_q_waves_yes</code>
+and <code>label_have_q_waves_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-st-t-changes">have_st_t_changes<a class="anchor" aria-label="anchor" href="#arg-have-st-t-changes"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has ST-T changes on electrocardiogram (ECG).</p><ul><li><p>no stands for the patient not having ST-T changes on ECG.</p></li>
-<li><p>yes stands for the patient having ST-T changes on ECG.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_st_t_changes_no</code>, <code>label_have_st_t_changes_yes</code>
+and <code>label_have_st_t_changes_unknown</code>.</p></dd>
 
 
 <dt id="arg-max-na">max_na<a class="anchor" aria-label="anchor" href="#arg-max-na"></a></dt>
@@ -125,6 +135,85 @@ Default: 0</p></dd>
 indicate the maximum frequency angina per week to tolerate before outputting an <code>NA</code>.
 In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 Default: 35</p></dd>
+
+
+<dt id="arg-label-have-typical-chest-pain-no">label_have_typical_chest_pain_no<a class="anchor" aria-label="anchor" href="#arg-label-have-typical-chest-pain-no"></a></dt>
+<dd><p>Label(s) for patient not having
+typical chest pain symptom.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-typical-chest-pain-yes">label_have_typical_chest_pain_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-typical-chest-pain-yes"></a></dt>
+<dd><p>Label(s) for patient having
+typical chest pain symptom.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-typical-chest-pain-unknown">label_have_typical_chest_pain_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-typical-chest-pain-unknown"></a></dt>
+<dd><p>Label(s) for patient having unknown
+typical chest pain symptom.</p></dd>
+
+
+<dt id="arg-label-have-progressive-angina-no">label_have_progressive_angina_no<a class="anchor" aria-label="anchor" href="#arg-label-have-progressive-angina-no"></a></dt>
+<dd><p>Label(s) for patient not having progressive angina.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-progressive-angina-yes">label_have_progressive_angina_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-progressive-angina-yes"></a></dt>
+<dd><p>Label(s) for patient having progressive angina.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-progressive-angina-unknown">label_have_progressive_angina_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-progressive-angina-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown progressive angina.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-nocturnal-angina-no">label_have_nocturnal_angina_no<a class="anchor" aria-label="anchor" href="#arg-label-have-nocturnal-angina-no"></a></dt>
+<dd><p>Label(s) for patient not having nocturnal angina.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-nocturnal-angina-yes">label_have_nocturnal_angina_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-nocturnal-angina-yes"></a></dt>
+<dd><p>Label(s) for patient having nocturnal angina.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-nocturnal-angina-unknown">label_have_nocturnal_angina_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-nocturnal-angina-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown nocturnal angina.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-q-waves-no">label_have_q_waves_no<a class="anchor" aria-label="anchor" href="#arg-label-have-q-waves-no"></a></dt>
+<dd><p>Label(s) for patient not having Q waves on ECG.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-q-waves-yes">label_have_q_waves_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-q-waves-yes"></a></dt>
+<dd><p>Label(s) for patient having Q waves on ECG.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-q-waves-unknown">label_have_q_waves_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-q-waves-unknown"></a></dt>
+<dd><p>Label(s) for patient with unknown Q waves on ECG.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-st-t-changes-no">label_have_st_t_changes_no<a class="anchor" aria-label="anchor" href="#arg-label-have-st-t-changes-no"></a></dt>
+<dd><p>Label(s) for patient not having ST-T changes on ECG.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-st-t-changes-yes">label_have_st_t_changes_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-st-t-changes-yes"></a></dt>
+<dd><p>Label(s) for patient having ST-T changes on ECG.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-st-t-changes-unknown">label_have_st_t_changes_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-st-t-changes-unknown"></a></dt>
+<dd><p>Label(s) for patient with unknown ST-T changes on ECG.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">

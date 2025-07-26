@@ -64,7 +64,24 @@ coronary artery disease based on the
 <span>  <span class="va">symptom_type</span>,</span>
 <span>  <span class="va">have_dyslipidemia</span>,</span>
 <span>  <span class="va">have_family_history</span>,</span>
-<span>  <span class="va">have_diabetes</span></span>
+<span>  <span class="va">have_diabetes</span>,</span>
+<span>  label_sex_male <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"male"</span><span class="op">)</span>,</span>
+<span>  label_sex_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span><span class="op">)</span>,</span>
+<span>  label_sex_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_symptom_type_typical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"typical"</span><span class="op">)</span>,</span>
+<span>  label_symptom_type_atypical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"atypical"</span><span class="op">)</span>,</span>
+<span>  label_symptom_type_nonanginal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nonanginal"</span><span class="op">)</span>,</span>
+<span>  label_symptom_type_dyspnoea <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dyspnoea"</span><span class="op">)</span>,</span>
+<span>  label_symptom_type_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_family_history_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_family_history_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_family_history_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -73,13 +90,12 @@ coronary artery disease based on the
 
 
 <dl><dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
-<dd><p>Input integer value to indicate the age of the patient.</p></dd>
+<dd><p>Input numeric value to indicate the age of the patient in years.</p></dd>
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p>Input characters (female, male) to indicate the sex of the patient.</p><ul><li><p>female</p></li>
-<li><p>male</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters <code>label_sex_male</code>,
+<code>label_sex_female</code> and <code>label_sex_unknown</code>.</p></dd>
 
 
 <dt id="arg-symptom-type">symptom_type<a class="anchor" aria-label="anchor" href="#arg-symptom-type"></a></dt>
@@ -92,24 +108,110 @@ to indicate the symptom characteristics of the patient.</p><ul><li><p>typical st
 
 
 <dt id="arg-have-dyslipidemia">have_dyslipidemia<a class="anchor" aria-label="anchor" href="#arg-have-dyslipidemia"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has dyslipidemia.</p><ul><li><p>no stands for not having dyslipidemia.</p></li>
-<li><p>yes stands for having dyslipidemia.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_dyslipidemia_no</code>, <code>label_have_dyslipidemia_yes</code>
+and <code>label_have_dyslipidemia_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-family-history">have_family_history<a class="anchor" aria-label="anchor" href="#arg-have-family-history"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has a family history of CAD.</p><ul><li><p>no stands for not having a family history of CAD.</p></li>
-<li><p>yes stands for having a family history of CAD.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_family_history_no</code>, <code>label_have_family_history_yes</code>
+and <code>label_have_family_history_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-diabetes">have_diabetes<a class="anchor" aria-label="anchor" href="#arg-have-diabetes"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has diabetes.</p><ul><li><p>no stands for not having diabetes.</p></li>
-<li><p>yes stands for having diabetes.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_diabetes_no</code>, <code>label_have_diabetes_yes</code>
+and <code>label_have_diabetes_unknown</code>.</p></dd>
+
+
+<dt id="arg-label-sex-male">label_sex_male<a class="anchor" aria-label="anchor" href="#arg-label-sex-male"></a></dt>
+<dd><p>Label(s) for definition(s) of male sex.
+Default: <code>c("male")</code></p></dd>
+
+
+<dt id="arg-label-sex-female">label_sex_female<a class="anchor" aria-label="anchor" href="#arg-label-sex-female"></a></dt>
+<dd><p>Label(s) for definition(s) of female sex.
+Default: <code>c("female")</code></p></dd>
+
+
+<dt id="arg-label-sex-unknown">label_sex_unknown<a class="anchor" aria-label="anchor" href="#arg-label-sex-unknown"></a></dt>
+<dd><p>Label(s) for definition(s) of missing sex.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-symptom-type-typical">label_symptom_type_typical<a class="anchor" aria-label="anchor" href="#arg-label-symptom-type-typical"></a></dt>
+<dd><p>Label(s) for patient having typical chest pain.
+Default: <code>c("typical")</code></p></dd>
+
+
+<dt id="arg-label-symptom-type-atypical">label_symptom_type_atypical<a class="anchor" aria-label="anchor" href="#arg-label-symptom-type-atypical"></a></dt>
+<dd><p>Label(s) for patient having atypical chest pain.
+Default: <code>c("atypical")</code></p></dd>
+
+
+<dt id="arg-label-symptom-type-nonanginal">label_symptom_type_nonanginal<a class="anchor" aria-label="anchor" href="#arg-label-symptom-type-nonanginal"></a></dt>
+<dd><p>Label(s) for patient having nonanginal
+or non-specific chest pain.
+Default: <code>c("nonanginal")</code></p></dd>
+
+
+<dt id="arg-label-symptom-type-dyspnoea">label_symptom_type_dyspnoea<a class="anchor" aria-label="anchor" href="#arg-label-symptom-type-dyspnoea"></a></dt>
+<dd><p>Label(s) for patient having dyspnoea.
+Default: <code>c("dyspnoea")</code></p></dd>
+
+
+<dt id="arg-label-symptom-type-unknown">label_symptom_type_unknown<a class="anchor" aria-label="anchor" href="#arg-label-symptom-type-unknown"></a></dt>
+<dd><p>Label(s) for patient having unknown symptoms.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-no">label_have_dyslipidemia_no<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-no"></a></dt>
+<dd><p>Label(s) for patient with no dyslipidemia.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-yes">label_have_dyslipidemia_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-yes"></a></dt>
+<dd><p>Label(s) for patient having dyslipidemia.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-unknown">label_have_dyslipidemia_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown dyslipidemia.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-family-history-no">label_have_family_history_no<a class="anchor" aria-label="anchor" href="#arg-label-have-family-history-no"></a></dt>
+<dd><p>Label(s) for patient with no family history of CAD.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-family-history-yes">label_have_family_history_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-family-history-yes"></a></dt>
+<dd><p>Label(s) for patient having family history of CAD.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-family-history-unknown">label_have_family_history_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-family-history-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown family history of CAD.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-no">label_have_diabetes_no<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-no"></a></dt>
+<dd><p>Label(s) for patient with no diabetes.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-yes">label_have_diabetes_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-yes"></a></dt>
+<dd><p>Label(s) for patient having diabetes.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-unknown">label_have_diabetes_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown diabetes.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">

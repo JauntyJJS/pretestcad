@@ -58,7 +58,18 @@ coronary artery disease based on the
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_cad1_2011_ptp</span><span class="op">(</span><span class="va">age</span>, <span class="va">sex</span>, <span class="va">chest_pain_type</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_cad1_2011_ptp</span><span class="op">(</span></span>
+<span>  <span class="va">age</span>,</span>
+<span>  <span class="va">sex</span>,</span>
+<span>  <span class="va">chest_pain_type</span>,</span>
+<span>  label_sex_male <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"male"</span><span class="op">)</span>,</span>
+<span>  label_sex_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span><span class="op">)</span>,</span>
+<span>  label_sex_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_cpt_nonanginal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nonanginal"</span><span class="op">)</span>,</span>
+<span>  label_cpt_atypical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"atypical"</span><span class="op">)</span>,</span>
+<span>  label_cpt_typical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"typical"</span><span class="op">)</span>,</span>
+<span>  label_cpt_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -66,21 +77,53 @@ coronary artery disease based on the
 
 
 <dl><dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
-<dd><p>Input numeric value to indicate the age of the patient.</p></dd>
+<dd><p>Input numeric value to indicate the age of the patient in years.</p></dd>
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p>Input characters (female, male) to indicate the sex of the patient.</p><ul><li><p>female</p></li>
-<li><p>male</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters <code>label_sex_male</code>,
+<code>label_sex_female</code> and <code>label_sex_unknown</code>.</p></dd>
 
 
 <dt id="arg-chest-pain-type">chest_pain_type<a class="anchor" aria-label="anchor" href="#arg-chest-pain-type"></a></dt>
-<dd><p>Input characters (typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.</p><ul><li><p>typical stands for the patient having typical chest pain.</p></li>
-<li><p>atypical stands for the patient having atypical chest pain.</p></li>
-<li><p>nonanginal stands for the patient having nonanginal or non-specific chest pain.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters,
+<code>label_cpt_nonanginal</code>, <code>label_cpt_atypical</code>, <code>label_cpt_typical</code> and
+<code>label_cpt_unknown</code>.</p></dd>
+
+
+<dt id="arg-label-sex-male">label_sex_male<a class="anchor" aria-label="anchor" href="#arg-label-sex-male"></a></dt>
+<dd><p>Label(s) for definition(s) of male sex.
+Default: <code>c("male")</code></p></dd>
+
+
+<dt id="arg-label-sex-female">label_sex_female<a class="anchor" aria-label="anchor" href="#arg-label-sex-female"></a></dt>
+<dd><p>Label(s) for definition(s) of female sex.
+Default: <code>c("female")</code></p></dd>
+
+
+<dt id="arg-label-sex-unknown">label_sex_unknown<a class="anchor" aria-label="anchor" href="#arg-label-sex-unknown"></a></dt>
+<dd><p>Label(s) for definition(s) of missing sex.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-cpt-nonanginal">label_cpt_nonanginal<a class="anchor" aria-label="anchor" href="#arg-label-cpt-nonanginal"></a></dt>
+<dd><p>Label(s) for patient having nonanginal or non-specific chest pain.
+Default: <code>c("nonanginal")</code></p></dd>
+
+
+<dt id="arg-label-cpt-atypical">label_cpt_atypical<a class="anchor" aria-label="anchor" href="#arg-label-cpt-atypical"></a></dt>
+<dd><p>Label(s) for patient having atypical chest pain.
+Default: <code>c("atypical")</code></p></dd>
+
+
+<dt id="arg-label-cpt-typical">label_cpt_typical<a class="anchor" aria-label="anchor" href="#arg-label-cpt-typical"></a></dt>
+<dd><p>Label(s) for patient having typical chest pain.
+Default: <code>c("typical")</code></p></dd>
+
+
+<dt id="arg-label-cpt-unknown">label_cpt_unknown<a class="anchor" aria-label="anchor" href="#arg-label-cpt-unknown"></a></dt>
+<dd><p>Label(s) for patient having unknown chest pain type symptoms.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">

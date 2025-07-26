@@ -62,7 +62,16 @@ Duke Clinical Score 1993 paper.</p>
 <span>  <span class="va">have_hypertension</span>,</span>
 <span>  <span class="va">have_dyslipidemia</span>,</span>
 <span>  <span class="va">have_diabetes</span>,</span>
-<span>  max_na <span class="op">=</span> <span class="fl">0</span></span>
+<span>  max_na <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  label_have_hypertension_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_hypertension_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_hypertension_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_dyslipidemia_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_diabetes_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -71,30 +80,75 @@ Duke Clinical Score 1993 paper.</p>
 
 
 <dl><dt id="arg-have-hypertension">have_hypertension<a class="anchor" aria-label="anchor" href="#arg-have-hypertension"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has hypertension.</p><ul><li><p>no stands for not having hypertension.</p></li>
-<li><p>yes stands for having hypertension.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_hypertension_no</code>, <code>label_have_hypertension_yes</code>
+and <code>label_have_hypertension_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-dyslipidemia">have_dyslipidemia<a class="anchor" aria-label="anchor" href="#arg-have-dyslipidemia"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has dyslipidemia.</p><ul><li><p>no stands for not having dyslipidemia.</p></li>
-<li><p>yes stands for having dyslipidemia.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_dyslipidemia_no</code>, <code>label_have_dyslipidemia_yes</code>
+and <code>label_have_dyslipidemia_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-diabetes">have_diabetes<a class="anchor" aria-label="anchor" href="#arg-have-diabetes"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has diabetes.</p><ul><li><p>no stands for not having diabetes.</p></li>
-<li><p>yes stands for having diabetes.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_diabetes_no</code>, <code>label_have_diabetes_yes</code>
+and <code>label_have_diabetes_unknown</code>.</p></dd>
 
 
 <dt id="arg-max-na">max_na<a class="anchor" aria-label="anchor" href="#arg-max-na"></a></dt>
 <dd><p>Input integer 0 to 3 to indicate the maximum number of
 missing risk factors to tolerate before outputting an <code>NA</code>.
 Default: 0</p></dd>
+
+
+<dt id="arg-label-have-hypertension-no">label_have_hypertension_no<a class="anchor" aria-label="anchor" href="#arg-label-have-hypertension-no"></a></dt>
+<dd><p>Label(s) for patient with no hypertension.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-hypertension-yes">label_have_hypertension_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-hypertension-yes"></a></dt>
+<dd><p>Label(s) for patient having hypertension.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-hypertension-unknown">label_have_hypertension_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-hypertension-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown hypertension.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-no">label_have_dyslipidemia_no<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-no"></a></dt>
+<dd><p>Label(s) for patient with no dyslipidemia.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-yes">label_have_dyslipidemia_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-yes"></a></dt>
+<dd><p>Label(s) for patient having dyslipidemia.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-dyslipidemia-unknown">label_have_dyslipidemia_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-dyslipidemia-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown dyslipidemia.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-no">label_have_diabetes_no<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-no"></a></dt>
+<dd><p>Label(s) for patient with no diabetes.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-yes">label_have_diabetes_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-yes"></a></dt>
+<dd><p>Label(s) for patient having diabetes.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-diabetes-unknown">label_have_diabetes_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-diabetes-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown diabetes.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -62,7 +62,16 @@ Duke Clinical Score 1993 paper.</p>
 <span>  <span class="va">have_peripheral_vascular_disease</span>,</span>
 <span>  <span class="va">have_cerebrovascular_disease</span>,</span>
 <span>  <span class="va">have_carotid_bruits</span>,</span>
-<span>  max_na <span class="op">=</span> <span class="fl">0</span></span>
+<span>  max_na <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  label_have_pvd_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_pvd_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_pvd_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_cvd_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_cvd_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_cvd_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_have_carotid_bruits_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_carotid_bruits_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_carotid_bruits_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -71,30 +80,75 @@ Duke Clinical Score 1993 paper.</p>
 
 
 <dl><dt id="arg-have-peripheral-vascular-disease">have_peripheral_vascular_disease<a class="anchor" aria-label="anchor" href="#arg-have-peripheral-vascular-disease"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has peripheral vascular disease.</p><ul><li><p>no stands for not having peripheral vascular disease.</p></li>
-<li><p>yes stands for having peripheral vascular disease.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_pvd_no</code>, <code>label_have_pvd_yes</code>
+and <code>label_have_pvd_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-cerebrovascular-disease">have_cerebrovascular_disease<a class="anchor" aria-label="anchor" href="#arg-have-cerebrovascular-disease"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has cerebrovascular disease.</p><ul><li><p>no stands for not having cerebrovascular disease.</p></li>
-<li><p>yes stands for having cerebrovascular disease.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_cvd_no</code>, <code>label_have_cvd_yes</code>
+and <code>label_have_cvd_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-carotid-bruits">have_carotid_bruits<a class="anchor" aria-label="anchor" href="#arg-have-carotid-bruits"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-has carotid bruits.</p><ul><li><p>no stands for not having carotid bruits.</p></li>
-<li><p>yes stands for having carotid bruits.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters
+<code>label_have_carotid_bruits_no</code>, <code>label_have_carotid_bruits_yes</code>
+and <code>label_have_carotid_bruits_unknown</code>.</p></dd>
 
 
 <dt id="arg-max-na">max_na<a class="anchor" aria-label="anchor" href="#arg-max-na"></a></dt>
 <dd><p>Input integer 0 to 3 to indicate the maximum number of
 missing disease history to tolerate before outputting an <code>NA</code>.
 Default: 0</p></dd>
+
+
+<dt id="arg-label-have-pvd-no">label_have_pvd_no<a class="anchor" aria-label="anchor" href="#arg-label-have-pvd-no"></a></dt>
+<dd><p>Label(s) for patient not having peripheral vascular disease.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-pvd-yes">label_have_pvd_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-pvd-yes"></a></dt>
+<dd><p>Label(s) for patient having peripheral vascular disease.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-pvd-unknown">label_have_pvd_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-pvd-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown peripheral vascular disease.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-cvd-no">label_have_cvd_no<a class="anchor" aria-label="anchor" href="#arg-label-have-cvd-no"></a></dt>
+<dd><p>Label(s) for patient not having cerebrovascular disease.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-cvd-yes">label_have_cvd_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-cvd-yes"></a></dt>
+<dd><p>Label(s) for patient having cerebrovascular disease.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-cvd-unknown">label_have_cvd_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-cvd-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown cerebrovascular disease.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-have-carotid-bruits-no">label_have_carotid_bruits_no<a class="anchor" aria-label="anchor" href="#arg-label-have-carotid-bruits-no"></a></dt>
+<dd><p>Label(s) for patient not having carotid bruits.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-carotid-bruits-yes">label_have_carotid_bruits_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-carotid-bruits-yes"></a></dt>
+<dd><p>Label(s) for patient having carotid bruits.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-carotid-bruits-unknown">label_have_carotid_bruits_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-carotid-bruits-unknown"></a></dt>
+<dd><p>Label(s) for patient
+having unknown carotid bruits.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">

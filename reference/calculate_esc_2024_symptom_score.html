@@ -61,7 +61,15 @@ ESC 2024 guidelines.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_esc_2024_symptom_score</span><span class="op">(</span></span>
 <span>  <span class="va">chest_pain_type</span>,</span>
 <span>  <span class="va">have_dyspnoea</span>,</span>
-<span>  allow_na <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  allow_na <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  label_have_dyspnoea_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span><span class="op">)</span>,</span>
+<span>  label_have_dyspnoea_yes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span><span class="op">)</span>,</span>
+<span>  label_have_dyspnoea_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  label_cpt_no_chest_pain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no chest pain"</span><span class="op">)</span>,</span>
+<span>  label_cpt_nonanginal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nonanginal"</span><span class="op">)</span>,</span>
+<span>  label_cpt_atypical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"atypical"</span><span class="op">)</span>,</span>
+<span>  label_cpt_typical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"typical"</span><span class="op">)</span>,</span>
+<span>  label_cpt_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -70,25 +78,60 @@ ESC 2024 guidelines.</p>
 
 
 <dl><dt id="arg-chest-pain-type">chest_pain_type<a class="anchor" aria-label="anchor" href="#arg-chest-pain-type"></a></dt>
-<dd><p>Input characters (no chest pain, typical, atypical, nonanginal)
-to indicate the chest pain characteristics of the patient.</p><ul><li><p>no chest pain stands for the patient having no chest pain.</p></li>
-<li><p>typical stands for the patient having typical chest pain.</p></li>
-<li><p>atypical stands for the patient having atypical chest pain.</p></li>
-<li><p>nonanginal stands for the patient having nonanginal or non-specific chest pain.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters <code>label_cpt_no_chest_pain</code>,
+<code>label_cpt_nonanginal</code>, <code>label_cpt_atypical</code>, <code>label_cpt_typical</code> and
+<code>label_cpt_unknown</code>.</p></dd>
 
 
 <dt id="arg-have-dyspnoea">have_dyspnoea<a class="anchor" aria-label="anchor" href="#arg-have-dyspnoea"></a></dt>
-<dd><p>Input characters (no, yes) to indicate if the patient
-only has dyspnoea symptoms.</p><ul><li><p>no stands for not having dyspnoea symptoms.</p></li>
-<li><p>yes stands for having dyspnoea symptoms.</p></li>
-</ul></dd>
+<dd><p>The value of variable in the parameters <code>label_have_dyspnoea_no</code>,
+<code>label_have_dyspnoea_yes</code> and <code>label_have_dyspnoea_unknown</code>.</p></dd>
 
 
 <dt id="arg-allow-na">allow_na<a class="anchor" aria-label="anchor" href="#arg-allow-na"></a></dt>
 <dd><p>A logical evaluating to <code>TRUE</code> or <code>FALSE</code> indicating whether we can
 allow `chest_pain_type` or `have_dyspnoea` to be <code>NA</code> when calculating the score.
 Default: <code>TRUE</code></p></dd>
+
+
+<dt id="arg-label-have-dyspnoea-no">label_have_dyspnoea_no<a class="anchor" aria-label="anchor" href="#arg-label-have-dyspnoea-no"></a></dt>
+<dd><p>Label(s) for patient having no dyspnoea symptoms.
+Default: <code>c("no")</code></p></dd>
+
+
+<dt id="arg-label-have-dyspnoea-yes">label_have_dyspnoea_yes<a class="anchor" aria-label="anchor" href="#arg-label-have-dyspnoea-yes"></a></dt>
+<dd><p>Label(s) for patient having dyspnoea symptoms.
+Default: <code>c("yes")</code></p></dd>
+
+
+<dt id="arg-label-have-dyspnoea-unknown">label_have_dyspnoea_unknown<a class="anchor" aria-label="anchor" href="#arg-label-have-dyspnoea-unknown"></a></dt>
+<dd><p>Label(s) for patient having unknown dyspnoea symptoms.
+Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-label-cpt-no-chest-pain">label_cpt_no_chest_pain<a class="anchor" aria-label="anchor" href="#arg-label-cpt-no-chest-pain"></a></dt>
+<dd><p>Label(s) for patient having no chest pain.
+Default: <code>c("no chest pain")</code></p></dd>
+
+
+<dt id="arg-label-cpt-nonanginal">label_cpt_nonanginal<a class="anchor" aria-label="anchor" href="#arg-label-cpt-nonanginal"></a></dt>
+<dd><p>Label(s) for patient having nonanginal or non-specific chest pain.
+Default: <code>c("nonanginal")</code></p></dd>
+
+
+<dt id="arg-label-cpt-atypical">label_cpt_atypical<a class="anchor" aria-label="anchor" href="#arg-label-cpt-atypical"></a></dt>
+<dd><p>Label(s) for patient having atypical chest pain.
+Default: <code>c("atypical")</code></p></dd>
+
+
+<dt id="arg-label-cpt-typical">label_cpt_typical<a class="anchor" aria-label="anchor" href="#arg-label-cpt-typical"></a></dt>
+<dd><p>Label(s) for patient having typical chest pain.
+Default: <code>c("typical")</code></p></dd>
+
+
+<dt id="arg-label-cpt-unknown">label_cpt_unknown<a class="anchor" aria-label="anchor" href="#arg-label-cpt-unknown"></a></dt>
+<dd><p>Label(s) for patient having unknown chest pain type symptoms.
+Default: <code>c(NA, NaN)</code></p></dd>
 
 </dl></div>
     <div class="section level2">
