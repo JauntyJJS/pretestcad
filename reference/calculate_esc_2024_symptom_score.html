@@ -69,7 +69,8 @@ ESC 2024 guidelines.</p>
 <span>  label_cpt_nonanginal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"nonanginal"</span><span class="op">)</span>,</span>
 <span>  label_cpt_atypical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"atypical"</span><span class="op">)</span>,</span>
 <span>  label_cpt_typical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"typical"</span><span class="op">)</span>,</span>
-<span>  label_cpt_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
+<span>  label_cpt_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  error_call <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">caller_env</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -132,6 +133,13 @@ Default: <code>c("typical")</code></p></dd>
 <dt id="arg-label-cpt-unknown">label_cpt_unknown<a class="anchor" aria-label="anchor" href="#arg-label-cpt-unknown"></a></dt>
 <dd><p>Label(s) for patient having unknown chest pain type symptoms.
 Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-error-call">error_call<a class="anchor" aria-label="anchor" href="#arg-error-call"></a></dt>
+<dd><p>The execution environment of a currently
+running function, e.g. <code>caller_env()</code>. The function will be
+mentioned in error messages as the source of the error. See the
+<code>call</code> argument of <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort()</a></code> for more information.</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -66,7 +66,8 @@ European Society of Cardiology (ESC) 2024 guidelines.</p>
 <span>  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grouping"</span>, <span class="st">"numeric"</span>, <span class="st">"percentage"</span><span class="op">)</span>,</span>
 <span>  label_sex_male <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"male"</span><span class="op">)</span>,</span>
 <span>  label_sex_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"female"</span><span class="op">)</span>,</span>
-<span>  label_sex_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
+<span>  label_sex_unknown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span>,</span>
+<span>  error_call <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">caller_env</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -124,6 +125,13 @@ Default: <code>c("female")</code></p></dd>
 <dt id="arg-label-sex-unknown">label_sex_unknown<a class="anchor" aria-label="anchor" href="#arg-label-sex-unknown"></a></dt>
 <dd><p>Label(s) for definition(s) of missing sex.
 Default: <code>c(NA, NaN)</code></p></dd>
+
+
+<dt id="arg-error-call">error_call<a class="anchor" aria-label="anchor" href="#arg-error-call"></a></dt>
+<dd><p>The execution environment of a currently
+running function, e.g. <code>caller_env()</code>. The function will be
+mentioned in error messages as the source of the error. See the
+<code>call</code> argument of <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort()</a></code> for more information.</p></dd>
 
 </dl></div>
     <div class="section level2">
