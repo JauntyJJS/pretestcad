@@ -27,7 +27,8 @@ calculate_dcs_1993_pain_index(
   label_have_q_waves_unknown = c(NA, NaN),
   label_have_st_t_changes_no = c("no"),
   label_have_st_t_changes_yes = c("yes"),
-  label_have_st_t_changes_unknown = c(NA, NaN)
+  label_have_st_t_changes_unknown = c(NA, NaN),
+  error_call = rlang::caller_env()
 )
 }
 \arguments{
@@ -111,6 +112,11 @@ Default: \code{c("yes")}}
 
 \item{label_have_st_t_changes_unknown}{Label(s) for patient with unknown ST-T changes on ECG.
 Default: \code{c(NA, NaN)}}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An integer indicating the patient's pain index.

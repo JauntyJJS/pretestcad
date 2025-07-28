@@ -470,3 +470,193 @@ test_that("calculate_esc_2024_fig_4_ptp works", {
 
 })
 
+test_that("calculate_esc_2019_ptp gives error of invalid text input of age", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = "Something",
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric"
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid output option", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 55,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "Something Else",
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid non-positive input of age", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 0,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric"
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid non-integer input of age", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 77.7,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric"
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid input of sex labels", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 55,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric",
+      label_sex_male = c("M"),
+      label_sex_female = c("M"),
+      label_sex_unknown = c("M")
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid input of sex", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 55,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric",
+      label_sex_male = c("M"),
+      label_sex_female = c("F")
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid input of chest_pain_type labels", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 55,
+      sex = "male",
+      chest_pain_type = "typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric",
+      label_cpt_no_chest_pain = c("nonanginal"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("typical"),
+      label_cpt_typical = c("typical"),
+      label_cpt_unknown = c("nonanginal", "typical"),
+    )
+  )
+
+})
+
+test_that("calculate_esc_2019_ptp gives error of invalid input of chest_pain_type", {
+
+  testthat::expect_snapshot(
+    error = TRUE,
+    calculate_esc_2024_fig_4_ptp(
+      age = 55,
+      sex = "male",
+      chest_pain_type = "Typical",
+      have_dyspnoea = "no",
+      have_family_history = "no",
+      have_smoking_history = "no",
+      have_dyslipidemia = "no",
+      have_hypertension = "no",
+      have_diabetes = "no",
+      allow_na_symptom_score = TRUE,
+      max_na_num_of_rf = 0,
+      output = "numeric",
+      label_cpt_no_chest_pain = c("no chest pain"),
+      label_cpt_nonanginal = c("nonanginal"),
+      label_cpt_atypical = c("atypical"),
+      label_cpt_typical = c("typical"),
+      label_cpt_unknown = c(NA, NaN),
+    )
+  )
+
+})

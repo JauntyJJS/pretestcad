@@ -15,7 +15,8 @@ calculate_esc_2024_symptom_score(
   label_cpt_nonanginal = c("nonanginal"),
   label_cpt_atypical = c("atypical"),
   label_cpt_typical = c("typical"),
-  label_cpt_unknown = c(NA, NaN)
+  label_cpt_unknown = c(NA, NaN),
+  error_call = rlang::caller_env()
 )
 }
 \arguments{
@@ -53,6 +54,11 @@ Default: \code{c("typical")}}
 
 \item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
 Default: \code{c(NA, NaN)}}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An integer indicating the symptom score of the patient.

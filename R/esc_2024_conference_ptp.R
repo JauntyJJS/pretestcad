@@ -4,6 +4,7 @@
 #' probability of coronary artery disease (CAD) based on the
 #' ESC 2024 guidelines.
 #' @inheritParams calculate_esc_2019_ptp
+#' @inheritParams rlang::args_error_context
 #' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
 #' allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
 #' Default: \code{TRUE}
@@ -42,14 +43,16 @@ calculate_esc_2024_symptom_score <- function(
     label_cpt_nonanginal = c("nonanginal"),
     label_cpt_atypical = c("atypical"),
     label_cpt_typical = c("typical"),
-    label_cpt_unknown = c(NA, NaN)
+    label_cpt_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
 )
 {
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_dyspnoea_no,
     label_have_dyspnoea_yes,
-    label_cat_missing = label_have_dyspnoea_unknown
+    label_cat_missing = label_have_dyspnoea_unknown,
+    error_call = error_call
   )
 
   check_if_four_categories_are_mutually_exclusive(
@@ -57,7 +60,8 @@ calculate_esc_2024_symptom_score <- function(
     label_cpt_nonanginal,
     label_cpt_atypical,
     label_cpt_typical,
-    label_cat_missing = label_cpt_unknown
+    label_cat_missing = label_cpt_unknown,
+    error_call = error_call
   )
 
   # Ensure dyspnoea is valid and mapped to a unified group (yes, no, NA)
@@ -68,7 +72,8 @@ calculate_esc_2024_symptom_score <- function(
       label_unknown = label_have_dyspnoea_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   # Ensure chest pain type is valid and mapped to a unified group
@@ -84,11 +89,12 @@ calculate_esc_2024_symptom_score <- function(
       harmonise_label_two = "nonanginal",
       harmonise_label_three = "atypical",
       harmonise_label_four = "typical",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   allow_na <- allow_na |>
-    arg_match0_true_or_false()
+    arg_match0_true_or_false(error_call = error_call)
 
   symptom_score <- dplyr::case_when(
     chest_pain_type == "no chest pain" & have_dyspnoea == "no"  ~ 0,
@@ -118,6 +124,7 @@ calculate_esc_2024_symptom_score <- function(
 #' risk factors the patient has. This is used to calculate the pretest
 #' probability of coronary artery disease (CAD) based on the
 #' ESC 2024 guidelines.
+#' @inheritParams rlang::args_error_context
 #' @param have_family_history The value of variable in the parameters
 #' \code{label_have_family_history_no}, \code{label_have_family_history_yes}
 #' and \code{label_have_family_history_unknown}.
@@ -225,38 +232,44 @@ calculate_esc_2024_num_of_rf <- function(
     label_have_hypertension_unknown = c(NA, NaN),
     label_have_diabetes_no = c("no"),
     label_have_diabetes_yes = c("yes"),
-    label_have_diabetes_unknown = c(NA, NaN)
+    label_have_diabetes_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
   )
 {
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_family_history_no,
     label_have_family_history_yes,
-    label_cat_missing = label_have_family_history_unknown
+    label_cat_missing = label_have_family_history_unknown,
+    error_call = error_call
   )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_smoking_history_no,
     label_have_smoking_history_yes,
-    label_cat_missing = label_have_smoking_history_unknown
+    label_cat_missing = label_have_smoking_history_unknown,
+    error_call = error_call
   )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_dyslipidemia_no,
     label_have_dyslipidemia_yes,
-    label_cat_missing = label_have_dyslipidemia_unknown
+    label_cat_missing = label_have_dyslipidemia_unknown,
+    error_call = error_call
   )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_hypertension_no,
     label_have_hypertension_yes,
-    label_cat_missing = label_have_hypertension_unknown
+    label_cat_missing = label_have_hypertension_unknown,
+    error_call = error_call
   )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_diabetes_no,
     label_have_diabetes_yes,
-    label_cat_missing = label_have_diabetes_unknown
+    label_cat_missing = label_have_diabetes_unknown,
+    error_call = error_call
   )
 
   # Ensure have family history is valid and mapped to a unified group (yes, no, NA)
@@ -267,7 +280,8 @@ calculate_esc_2024_num_of_rf <- function(
       label_unknown = label_have_family_history_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   # Ensure have smoking history is valid and mapped to a unified group (yes, no, NA)
@@ -278,7 +292,8 @@ calculate_esc_2024_num_of_rf <- function(
       label_unknown = label_have_smoking_history_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   # Ensure have dyslipidemia is valid and mapped to a unified group (yes, no, NA)
@@ -289,7 +304,8 @@ calculate_esc_2024_num_of_rf <- function(
       label_unknown = label_have_dyslipidemia_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
@@ -300,7 +316,8 @@ calculate_esc_2024_num_of_rf <- function(
       label_unknown = label_have_hypertension_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
@@ -311,7 +328,8 @@ calculate_esc_2024_num_of_rf <- function(
       label_unknown = label_have_diabetes_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   max_na <- max_na |>
@@ -366,6 +384,7 @@ calculate_esc_2024_num_of_rf <- function(
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2024 guidelines.
+#' @inheritParams rlang::args_error_context
 #' @inheritParams calculate_esc_2019_ptp
 #' @param symptom_score An integer indicating the symptom score of the patient.
 #' This value can be calculated via the \code{\link{calculate_esc_2024_symptom_score}}
@@ -415,16 +434,20 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
     output = c("grouping", "numeric", "percentage"),
     label_sex_male = c("male"),
     label_sex_female = c("female"),
-    label_sex_unknown = c(NA, NaN)
+    label_sex_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
     )
 {
-  check_if_positive(x = age, allow_na = TRUE)
-  check_if_integer(x = age, allow_na = TRUE)
+  check_if_positive(x = age, allow_na = TRUE,
+                   error_call = error_call)
+  check_if_integer(x = age, allow_na = TRUE,
+                   error_call = error_call)
 
   check_if_two_categories_are_mutually_exclusive(
     label_sex_male,
     label_sex_female,
-    label_sex_unknown
+    label_sex_unknown,
+    error_call = error_call
   )
 
   # Ensure sex is valid and mapped to a unified group (male, female, NA)
@@ -435,19 +458,22 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
       label_unknown = label_sex_unknown,
       harmonise_label_one = "male",
       harmonise_label_two = "female",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   symptom_score <- symptom_score |>
     arg_match0_integer(values = c(0:3),
-                       allow_na = TRUE)
+                       allow_na = TRUE,
+                       error_call = error_call)
 
   num_of_rf <- num_of_rf |>
     arg_match0_integer(values = c(0:5),
-                       allow_na = TRUE)
+                       allow_na = TRUE,
+                       error_call = error_call)
 
   output <- output |>
-    rlang::arg_match()
+    rlang::arg_match(error_call = error_call)
 
   # TODO: Work on case when age < 30 and age > 80
 
@@ -725,8 +751,7 @@ calculate_esc_2024_fig_4_ptp <- function(
     label_have_hypertension_unknown = label_have_hypertension_unknown,
     label_have_diabetes_no = label_have_diabetes_no,
     label_have_diabetes_yes = label_have_diabetes_yes,
-    label_have_diabetes_unknown = label_have_diabetes_unknown
-
+    label_have_diabetes_unknown = label_have_diabetes_unknown,
   )
 
   ptp_results <- calculate_esc_2024_fig_4_ptp_simplfied(
@@ -737,7 +762,7 @@ calculate_esc_2024_fig_4_ptp <- function(
     output = output,
     label_sex_male = label_sex_male ,
     label_sex_female = label_sex_female,
-    label_sex_unknown = label_sex_unknown
+    label_sex_unknown = label_sex_unknown,
   )
 
   return(ptp_results)

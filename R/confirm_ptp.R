@@ -78,14 +78,16 @@ calculate_confirm_2015_num_of_rf  <- function(
     label_have_family_history_unknown = c(NA, NaN),
     label_is_current_smoker_no = c("no"),
     label_is_current_smoker_yes = c("yes"),
-    label_is_current_smoker_unknown = c(NA, NaN)
+    label_is_current_smoker_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
 )
 {
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_typical_chest_pain_no,
     label_have_typical_chest_pain_yes,
-    label_cat_missing = label_have_typical_chest_pain_unknown
+    label_cat_missing = label_have_typical_chest_pain_unknown,
+    error_call = error_call
   )
 
   # Ensure have typical chest pain is valid and mapped to a unified group (yes, no, NA)
@@ -96,13 +98,15 @@ calculate_confirm_2015_num_of_rf  <- function(
       label_unknown = label_have_typical_chest_pain_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_diabetes_no,
     label_have_diabetes_yes,
-    label_cat_missing = label_have_diabetes_unknown
+    label_cat_missing = label_have_diabetes_unknown,
+    error_call = error_call
   )
 
   # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
@@ -113,13 +117,15 @@ calculate_confirm_2015_num_of_rf  <- function(
       label_unknown = label_have_diabetes_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_hypertension_no,
     label_have_hypertension_yes,
-    label_cat_missing = label_have_hypertension_unknown
+    label_cat_missing = label_have_hypertension_unknown,
+    error_call = error_call
   )
 
   # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
@@ -130,13 +136,15 @@ calculate_confirm_2015_num_of_rf  <- function(
       label_unknown = label_have_hypertension_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_family_history_no,
     label_have_family_history_yes,
-    label_cat_missing = label_have_family_history_unknown
+    label_cat_missing = label_have_family_history_unknown,
+    error_call = error_call
   )
 
   # Ensure have family history is valid and mapped to a unified group (yes, no, NA)
@@ -147,13 +155,15 @@ calculate_confirm_2015_num_of_rf  <- function(
       label_unknown = label_have_family_history_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_is_current_smoker_no,
     label_is_current_smoker_yes,
-    label_cat_missing = label_is_current_smoker_unknown
+    label_cat_missing = label_is_current_smoker_unknown,
+    error_call = error_call
   )
 
   # Ensure is current smoker is valid and mapped to a unified group (yes, no, NA)
@@ -164,14 +174,15 @@ calculate_confirm_2015_num_of_rf  <- function(
       label_unknown = label_is_current_smoker_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   is_current_smoker <- is_current_smoker |>
-    arg_match0_allow_na(values = c("no","yes"))
+    arg_match0_allow_na(values = c("no","yes"), error_call = error_call)
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:5))
+    arg_match0_integer(values = c(0:5), error_call = error_call)
 
   number_of_na <- 0
   num_of_rf <- 0

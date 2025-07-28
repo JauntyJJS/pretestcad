@@ -344,13 +344,15 @@ calculate_dcs_1993_risk_factor_index <- function(
     label_have_dyslipidemia_unknown = c(NA, NaN),
     label_have_diabetes_no = c("no"),
     label_have_diabetes_yes = c("yes"),
-    label_have_diabetes_unknown = c(NA, NaN)
+    label_have_diabetes_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
 ) {
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_hypertension_no,
     label_have_hypertension_yes,
-    label_cat_missing = label_have_hypertension_unknown
+    label_cat_missing = label_have_hypertension_unknown,
+    error_call = error_call
   )
 
   # Ensure have hypertension is valid and mapped to a unified group (yes, no, NA)
@@ -361,13 +363,15 @@ calculate_dcs_1993_risk_factor_index <- function(
       label_unknown = label_have_hypertension_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_dyslipidemia_no,
     label_have_dyslipidemia_yes,
-    label_cat_missing = label_have_dyslipidemia_unknown
+    label_cat_missing = label_have_dyslipidemia_unknown,
+    error_call = error_call
   )
 
   # Ensure have dyslipidemia is valid and mapped to a unified group (yes, no, NA)
@@ -378,13 +382,15 @@ calculate_dcs_1993_risk_factor_index <- function(
       label_unknown = label_have_dyslipidemia_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_diabetes_no,
     label_have_diabetes_yes,
-    label_cat_missing = label_have_diabetes_unknown
+    label_cat_missing = label_have_diabetes_unknown,
+    error_call = error_call
   )
 
   # Ensure have diabetes is valid and mapped to a unified group (yes, no, NA)
@@ -395,11 +401,12 @@ calculate_dcs_1993_risk_factor_index <- function(
       label_unknown = label_have_diabetes_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:3))
+    arg_match0_integer(values = c(0:3), error_call = error_call)
 
   number_of_na <- 0
   risk_factor_index <- 0
@@ -554,19 +561,21 @@ calculate_dcs_1993_pain_index <- function(
     label_have_q_waves_unknown = c(NA, NaN),
     label_have_st_t_changes_no = c("no"),
     label_have_st_t_changes_yes = c("yes"),
-    label_have_st_t_changes_unknown = c(NA, NaN)
+    label_have_st_t_changes_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
 ) {
 
-  check_if_non_negative(x = frequency_of_angina_pain_per_week, allow_na = TRUE)
-  check_if_integer(x = frequency_of_angina_pain_per_week, allow_na = TRUE)
+  check_if_non_negative(x = frequency_of_angina_pain_per_week, allow_na = TRUE, error_call = error_call)
+  check_if_integer(x = frequency_of_angina_pain_per_week, allow_na = TRUE, error_call = error_call)
 
-  check_if_non_negative(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE)
-  check_if_integer(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE)
+  check_if_non_negative(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE, error_call = error_call)
+  check_if_integer(x = max_frequency_of_angina_pain_per_week, allow_na = TRUE, error_call = error_call)
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_typical_chest_pain_no,
     label_have_typical_chest_pain_yes,
-    label_cat_missing = label_have_typical_chest_pain_unknown
+    label_cat_missing = label_have_typical_chest_pain_unknown,
+    error_call = error_call
   )
 
   # Ensure have typical chest pain is valid and mapped to a unified group (yes, no, NA)
@@ -577,13 +586,15 @@ calculate_dcs_1993_pain_index <- function(
       label_unknown = label_have_typical_chest_pain_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_progressive_angina_no,
     label_have_progressive_angina_yes,
-    label_cat_missing = label_have_progressive_angina_unknown
+    label_cat_missing = label_have_progressive_angina_unknown,
+    error_call = error_call
   )
 
   # Ensure have progressive angina is valid and mapped to a unified group (yes, no, NA)
@@ -594,13 +605,15 @@ calculate_dcs_1993_pain_index <- function(
       label_unknown = label_have_progressive_angina_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_nocturnal_angina_no,
     label_have_nocturnal_angina_yes,
-    label_cat_missing = label_have_nocturnal_angina_unknown
+    label_cat_missing = label_have_nocturnal_angina_unknown,
+    error_call = error_call
   )
 
   # Ensure have nocturnal angina is valid and mapped to a unified group (yes, no, NA)
@@ -611,13 +624,15 @@ calculate_dcs_1993_pain_index <- function(
       label_unknown = label_have_nocturnal_angina_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_q_waves_no,
     label_have_q_waves_yes,
-    label_cat_missing = label_have_q_waves_unknown
+    label_cat_missing = label_have_q_waves_unknown,
+    error_call = error_call
   )
 
   # Ensure have q waves is valid and mapped to a unified group (yes, no, NA)
@@ -628,13 +643,15 @@ calculate_dcs_1993_pain_index <- function(
       label_unknown = label_have_q_waves_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_st_t_changes_no,
     label_have_st_t_changes_yes,
-    label_cat_missing = label_have_st_t_changes_unknown
+    label_cat_missing = label_have_st_t_changes_unknown,
+    error_call = error_call
   )
 
   # Ensure have st t changes is valid and mapped to a unified group (yes, no, NA)
@@ -645,11 +662,12 @@ calculate_dcs_1993_pain_index <- function(
       label_unknown = label_have_st_t_changes_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:6))
+    arg_match0_integer(values = c(0:6), error_call = error_call)
 
   number_of_na <- 0
 
@@ -719,6 +737,7 @@ calculate_dcs_1993_pain_index <- function(
 #' vascular disease index. This is used to calculate the likelihood
 #' of severe coronary artery disease in the
 #' Duke Clinical Score 1993 paper.
+#' @inheritParams rlang::args_error_context
 #' @param have_peripheral_vascular_disease The value of variable in the parameters
 #' \code{label_have_pvd_no}, \code{label_have_pvd_yes}
 #' and \code{label_have_pvd_unknown}.
@@ -791,13 +810,15 @@ calculate_dcs_1993_vascular_disease_index <- function(
     label_have_cvd_unknown = c(NA, NaN),
     label_have_carotid_bruits_no = c("no"),
     label_have_carotid_bruits_yes = c("yes"),
-    label_have_carotid_bruits_unknown = c(NA, NaN)
+    label_have_carotid_bruits_unknown = c(NA, NaN),
+    error_call = rlang::caller_env()
 ) {
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_pvd_no,
     label_have_pvd_yes,
-    label_cat_missing = label_have_pvd_unknown
+    label_cat_missing = label_have_pvd_unknown,
+    error_call = error_call
   )
 
   # Ensure have peripheral vascular disease is valid and mapped to a unified group (yes, no, NA)
@@ -808,13 +829,15 @@ calculate_dcs_1993_vascular_disease_index <- function(
       label_unknown = label_have_pvd_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_cvd_no,
     label_have_cvd_yes,
-    label_cat_missing = label_have_cvd_unknown
+    label_cat_missing = label_have_cvd_unknown,
+    error_call = error_call
   )
 
   # Ensure have cerebrovascular disease is valid and mapped to a unified group (yes, no, NA)
@@ -825,13 +848,15 @@ calculate_dcs_1993_vascular_disease_index <- function(
       label_unknown = label_have_cvd_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   check_if_two_categories_are_mutually_exclusive(
     label_have_carotid_bruits_no,
     label_have_carotid_bruits_yes,
-    label_cat_missing = label_have_carotid_bruits_unknown
+    label_cat_missing = label_have_carotid_bruits_unknown,
+    error_call = error_call
   )
 
   # Ensure have carotid bruits is valid and mapped to a unified group (yes, no, NA)
@@ -842,11 +867,12 @@ calculate_dcs_1993_vascular_disease_index <- function(
       label_unknown = label_have_carotid_bruits_unknown,
       harmonise_label_one = "no",
       harmonise_label_two = "yes",
-      harmonise_label_unknown = NA
+      harmonise_label_unknown = NA,
+      error_call = error_call
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:3))
+    arg_match0_integer(values = c(0:3), error_call = error_call)
 
   number_of_na <- 0
   risk_factor_index <- 0

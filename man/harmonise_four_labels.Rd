@@ -15,7 +15,8 @@ harmonise_four_labels(
   harmonise_label_two = "group_2",
   harmonise_label_three = "group_3",
   harmonise_label_four = "group_4",
-  harmonise_label_unknown = NA
+  harmonise_label_unknown = NA,
+  error_call = rlang::caller_env()
 )
 }
 \arguments{
@@ -45,6 +46,11 @@ Default: 'group_4'}
 
 \item{harmonise_label_unknown}{Input character representing the harmonised label for \code{label_unknown}
 Default: NA}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 Character representing one of the four standardise labels.

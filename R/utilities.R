@@ -416,7 +416,7 @@ check_if_numeric <- function(
     x,
     allow_na = TRUE,
     arg = rlang::caller_arg(x),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
   if (is.null(x)) {
@@ -425,7 +425,7 @@ check_if_numeric <- function(
         "Provided input {.arg {arg}}, must be {.cls numeric}, `NA` or `NaN`.
         It is currently of type {.cls {class(x)}}"
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -435,7 +435,7 @@ check_if_numeric <- function(
         "Provided input {.arg {arg}}, must be {.cls numeric}.
         It is currently {.val {x}} of type {.cls {class(x)}}"
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -445,7 +445,7 @@ check_if_numeric <- function(
         "Provided input {.arg {arg}}, must be {.cls numeric}, `NA` or `NaN`.
         It is currently {.val {x}} of type {.cls {class(x)}}"
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -480,17 +480,19 @@ check_if_positive <- function(
     x,
     allow_na = TRUE,
     arg = rlang::caller_arg(x),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
-  check_if_numeric(x, allow_na = allow_na)
+  check_if_numeric(x, allow_na = allow_na,
+                   arg = arg,
+                   error_call = error_call)
 
   if (isTRUE(any(x <= 0))) {
     cli::cli_abort(
       message = c(
         "{.arg {arg}} must be positive, not {.val {x}}"
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -521,7 +523,7 @@ check_if_non_negative <- function(
     x,
     allow_na = TRUE,
     arg = rlang::caller_arg(x),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
   check_if_numeric(x, allow_na = allow_na)
@@ -531,7 +533,7 @@ check_if_non_negative <- function(
       message = c(
         "{.arg {arg}} must be non-negative, not {.val {x}}"
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -562,10 +564,10 @@ check_if_integer <- function(
     x,
     allow_na = TRUE,
     arg = rlang::caller_arg(x),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
-  check_if_numeric(x, allow_na = allow_na)
+  check_if_numeric(x, allow_na = allow_na, error_call = error_call)
 
   if (isFALSE(is_integer_value(input_value = x, allow_na = allow_na))) {
     cli::cli_abort(
@@ -577,7 +579,7 @@ check_if_integer <- function(
         {.href [base::as.integer](https://stat.ethz.ch/R-manual/R-devel/library/base/html/integer.html)}
         before using the function."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -640,7 +642,7 @@ check_if_four_categories_are_mutually_exclusive <- function(
     arg_cat_3 = rlang::caller_arg(label_cat_3),
     arg_cat_4 = rlang::caller_arg(label_cat_4),
     arg_cat_missing = rlang::caller_arg(label_cat_missing),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
   # Check intersection of label_cat_1 and label_cat_2
@@ -756,7 +758,7 @@ check_if_four_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_4}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -844,7 +846,7 @@ check_if_four_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}}, {.arg {arg_cat_4}} and {.arg {arg_cat_missing}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -889,7 +891,7 @@ check_if_three_categories_are_mutually_exclusive <- function(
     arg_cat_2 = rlang::caller_arg(label_cat_2),
     arg_cat_3 = rlang::caller_arg(label_cat_3),
     arg_cat_missing = rlang::caller_arg(label_cat_missing),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
   # Check intersection of label_cat_1 and label_cat_2
@@ -954,7 +956,7 @@ check_if_three_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_3}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -1022,7 +1024,7 @@ check_if_three_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}}, {.arg {arg_cat_3}} and {.arg {arg_cat_missing}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -1063,7 +1065,7 @@ check_if_two_categories_are_mutually_exclusive <- function(
     arg_cat_1 = rlang::caller_arg(label_cat_1),
     arg_cat_2 = rlang::caller_arg(label_cat_2),
     arg_cat_missing = rlang::caller_arg(label_cat_missing),
-    call = rlang::caller_env()
+    error_call = rlang::caller_env()
 ) {
 
   # Check intersection of label_cat_1 and label_cat_2
@@ -1093,7 +1095,7 @@ check_if_two_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}} and {.arg {arg_cat_2}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 
@@ -1142,7 +1144,7 @@ check_if_two_categories_are_mutually_exclusive <- function(
         error_message,
         "Please ensure {.arg {arg_cat_1}}, {.arg {arg_cat_2}} and {.arg {arg_cat_missing}} do not hold common values."
       ),
-      call = call
+      call = error_call
     )
   }
 

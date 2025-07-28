@@ -12,7 +12,8 @@ calculate_esc_2024_fig_4_ptp_simplfied(
   output = c("grouping", "numeric", "percentage"),
   label_sex_male = c("male"),
   label_sex_female = c("female"),
-  label_sex_unknown = c(NA, NaN)
+  label_sex_unknown = c(NA, NaN),
+  error_call = rlang::caller_env()
 )
 }
 \arguments{
@@ -57,6 +58,11 @@ Default: \code{c("female")}}
 
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD

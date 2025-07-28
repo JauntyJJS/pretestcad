@@ -113,7 +113,8 @@ harmonise_two_labels <- function(
     label_unknown,
     harmonise_label_one = "no",
     harmonise_label_two = "yes",
-    harmonise_label_unknown = NA
+    harmonise_label_unknown = NA,
+    error_call = rlang::caller_env()
 )
 {
   # Ensure arg is valid and mapped to a unified group
@@ -126,20 +127,20 @@ harmonise_two_labels <- function(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env())
+      error_call = error_call)
   } else if (is.null(arg) || is.na(arg)) {
     arg_match0_no_na_error_message(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
     )
   } else {
     arg <- rlang::arg_match0(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
       )
   }
 
@@ -300,7 +301,8 @@ harmonise_three_labels <- function(
     harmonise_label_one = "group_1",
     harmonise_label_two = "group_2",
     harmonise_label_three = "group_3",
-    harmonise_label_unknown = NA
+    harmonise_label_unknown = NA,
+    error_call = rlang::caller_env()
 )
 {
   # Ensure arg is valid and mapped to a unified group
@@ -315,20 +317,20 @@ harmonise_three_labels <- function(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env())
+      error_call = error_call)
   } else if (is.null(arg) || is.na(arg)) {
     arg_match0_no_na_error_message(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
     )
   } else {
     arg <- rlang::arg_match0(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
     )
   }
 
@@ -346,6 +348,7 @@ harmonise_three_labels <- function(
 #' @title Harmonise Four Labels
 #' @description Function to map an input from
 #' four different list into one of the four standardise labels
+#' @inheritParams rlang::args_error_context
 #' @param arg Input argument, in characters to be harmonised
 #' @param label_one
 #' Input character vector representing the ways to identify \code{harmonise_label_one}
@@ -551,7 +554,8 @@ harmonise_four_labels <- function(
     harmonise_label_two = "group_2",
     harmonise_label_three = "group_3",
     harmonise_label_four = "group_4",
-    harmonise_label_unknown = NA
+    harmonise_label_unknown = NA,
+    error_call = rlang::caller_env()
 )
 {
   # Ensure arg is valid and mapped to a unified group
@@ -566,20 +570,20 @@ harmonise_four_labels <- function(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env())
+      error_call = error_call)
   } else if (is.null(arg) || is.na(arg)) {
     arg_match0_no_na_error_message(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
     )
   } else {
     arg <- rlang::arg_match0(
       arg = arg,
       values = label_all,
       arg_nm = rlang::caller_arg(arg),
-      error_call = rlang::caller_env()
+      error_call = error_call
     )
   }
 

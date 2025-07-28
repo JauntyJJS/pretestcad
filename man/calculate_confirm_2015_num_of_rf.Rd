@@ -25,7 +25,8 @@ calculate_confirm_2015_num_of_rf(
   label_have_family_history_unknown = c(NA, NaN),
   label_is_current_smoker_no = c("no"),
   label_is_current_smoker_yes = c("yes"),
-  label_is_current_smoker_unknown = c(NA, NaN)
+  label_is_current_smoker_unknown = c(NA, NaN),
+  error_call = rlang::caller_env()
 )
 }
 \arguments{
@@ -101,6 +102,11 @@ Default: \code{c("no")}}
 Default: \code{c("yes")}}
 
 \item{label_is_current_smoker_unknown}{Label(s) for patient with unknown smoking status.}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An integer indicating the number of risk factors the patient has.
