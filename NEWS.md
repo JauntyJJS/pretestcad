@@ -15,7 +15,7 @@ to check for mutually exclusive sets.
 to harmonise list of variables into a standardise list.
 * Add new function `arg_match0_no_na_error_message`
 to ensure a new error message can be given when the argument provided is \code{NA} but a non-missing list is provided.
-* Add new functions `oxford_comma` and `chr_quoted` to ensure phrase list can be quoted and obey oxford comma grammer system if needed.
+* Add new functions `oxford_comma` and `chr_quoted` to ensure phrase list can be quoted and obey Oxford comma grammar system if needed.
 * Add more flexibility to the pretest score functions to accept user input labels.
 
 # pretestcad 1.0.2
