@@ -85,6 +85,12 @@ reference:
     contents:
     - calculate_lah_2022_clinical_ptp
     - calculate_lah_2022_extended_ptp
+  - title: 2025 Rasmussen et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2025 Rasmussen et. al. paper
+    contents:
+    - calculate_rasmussen_2025_rf_cl_ccta_ptp
+    - calculate_rasmussen_2025_cacs_cl_ccta_ptp
   - title: Utilities
     desc: >
       Utilities functions

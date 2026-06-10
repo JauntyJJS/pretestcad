@@ -47,6 +47,8 @@ pak::pak("JauntyJJS/pretestcad")
 
 ## :anatomical_heart: Currently available pretest probability scores
 
+*  2025 Rasmussen et. al. RF-CL~CCTA~ and CACS-CL~CCTA~ PTP 
+   *  [📘 Journal](https://doi.org/10.1093/ehjci/jeaf049){target="_blank"}
 *  2024 ESC Guidelines PTP Score 
    *  [📘 Journal](https://doi.org/10.1093/eurheartj/ehae177){target="_blank"}
 *  2022 Local Assessment of the Heart (LAH) clinical and extended model 

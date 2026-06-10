@@ -40,6 +40,10 @@ pak::pak("JauntyJJS/pretestcad")
 
 ## :anatomical_heart: Currently available pretest probability scores
 
+- 2025 Rasmussen et. al. RF-CL<sub>CCTA</sub> and CACS-CL<sub>CCTA</sub>
+  PTP
+  - <a href="https://doi.org/10.1093/ehjci/jeaf049" target="_blank">📘
+    Journal</a>
 - 2024 ESC Guidelines PTP Score
   - <a href="https://doi.org/10.1093/eurheartj/ehae177" target="_blank">📘
     Journal</a>

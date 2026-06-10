@@ -1,3 +1,8 @@
+# pretestcad 1.1.0.9000
+
+* Add new functions `calculate_rasmussen_2025_rf_cl_ccta_ptp`, 
+`calculate_rasmussen_2025_cacs_cl_ccta_ptp` to calculate pre-test probablity of obstructive CAD from 2025 Winther et. al. paper.
+
 # pretestcad 1.1.0
 
 * Update documentation of `check_if_integer` to include examples.
