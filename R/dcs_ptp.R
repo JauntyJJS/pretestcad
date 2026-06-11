@@ -1,6 +1,6 @@
 #' @title Calculate 1993 Duke Clinical Score for Significant CAD
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of significant (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of significant (>75% luminal diameter narrowing
 #' of at least one major coronary artery) coronary artery disease based on the
 #' 1993 Duke Clinical Score.
 #' @inheritParams calculate_precise_2021_clinical_ptp
@@ -15,7 +15,7 @@
 #' @param label_have_mi_unknown Label(s) for patient with unknown previous history of MI.
 #' Default: \code{c(NA, NaN)}
 #' @return A numeric value representing the patient's PTP for significant
-#' (>75\% luminal diameter narrowing of at least one major coronary artery) CAD
+#' (>75% luminal diameter narrowing of at least one major coronary artery) CAD
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
 #' patients referred for cardiac catheterisation between 1969 and 1983.
@@ -908,7 +908,7 @@ calculate_dcs_1993_vascular_disease_index <- function(
 
 #' @title Calculate 1993 Duke Clinical Score for Severe CAD
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of severe (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of severe (>75% luminal diameter narrowing
 #' of all three major coronary arteries or of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
@@ -932,7 +932,7 @@ calculate_dcs_1993_vascular_disease_index <- function(
 #' In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 #' Default: 35
 #' @return A numeric value representing the patient's PTP for severe
-#' (>75\% luminal diameter narrowing of all three major coronary arteries
+#' (>75% luminal diameter narrowing of all three major coronary arteries
 #' or of the left main coronary artery) CAD
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
@@ -1189,7 +1189,7 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 
 #' @title Calculate 1993 Duke Clinical Score for Left Main Disease
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of severe (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of severe (>75% luminal diameter narrowing
 #' of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
@@ -1206,7 +1206,7 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 #' In the Duke Clinical Score 1993 paper, the maximum value is set as 65.
 #' Default: 65
 #' @return A numeric value representing the patient's PTP for left main disease
-#' (>75\% luminal diameter narrowing of the left main coronary artery)
+#' (>75% luminal diameter narrowing of the left main coronary artery)
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
 #' patients referred for cardiac catheterisation between 1969 and 1983.

@@ -27,10 +27,10 @@ calculate_reeh_2019_basic_ptp(
 \item{symptom_type}{Input characters (typical, atypical, nonanginal, dyspnoea)
 to indicate the symptom characteristics of the patient.
 \itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-  \item dyspnoea stands for the patient having dyspnoea.
+\item typical stands for the patient having typical chest pain.
+\item atypical stands for the patient having atypical chest pain.
+\item nonanginal stands for the patient having nonanginal or non-specific chest pain.
+\item dyspnoea stands for the patient having dyspnoea.
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

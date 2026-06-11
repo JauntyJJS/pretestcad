@@ -68,8 +68,8 @@ Default: 0}
 probability results be expressed
 Default: c("text", "percentage")
 \itemize{
-  \item text means the PTP will be expressed as a probability in text (0 to > 82.4).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item text means the PTP will be expressed as a probability in text (0 to > 82.4).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

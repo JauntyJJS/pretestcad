@@ -183,8 +183,8 @@ coronary artery disease based on the
 The predictive model is based on 38,269 symptomatic
 patients with CACS and interpretable CCTA from 2008 to 2017 across 13 hospitals in Western Denmark. These
 patients are registered under the Western Denmark Heart Registry. It is then further
-calibrated against observed obstructive CAD at CCTA and corresponding prevalence of 
-diagnosed obstructive CAD at ICA.
+calibrated against observed obstructive CAD at CCTA and corresponding prevalence of
+diagnosed obstructive CAD at Invasive Coronary Angiography.
 }
 \examples{
 # 40 year old Male with nonanginal chest pain

@@ -15,7 +15,7 @@ Default: '`'}
 }
 \value{
 A character vector with quotes added in each element.
-(e.g. c("`a`", "`b`", "`c`")).
+(e.g. c("\code{a}", "\code{b}", "\code{c}")).
 }
 \description{
 Add a quote around characters.

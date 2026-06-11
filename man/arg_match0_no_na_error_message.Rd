@@ -47,5 +47,5 @@ arg_match0_allow_na(input, values = c("female","male", NA))
 }
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
- \code{\link[cli]{cli_abort}}
+\code{\link[cli]{cli_abort}}
 }

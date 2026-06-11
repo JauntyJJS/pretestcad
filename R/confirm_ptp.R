@@ -243,7 +243,7 @@ calculate_confirm_2015_num_of_rf  <- function(
 #' Default: c("text", "percentage")
 #' \itemize{
 #'   \item text means the PTP will be expressed as a probability in text (0 to > 82.4).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @return A numeric value representing the patient's risk
 #' score for obstructive CAD based on the 2015 CONFIRM Risk Score.

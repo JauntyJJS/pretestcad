@@ -18,7 +18,7 @@
 #' Default: c("numeric", "percentage")
 #' \itemize{
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #'
 #' @return An integer or percentage representing the patient's PTP for obstructive CAD

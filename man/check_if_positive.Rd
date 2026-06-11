@@ -47,5 +47,5 @@ try(check_if_positive(input))
 }
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
- \code{\link[cli]{cli_abort}}
+\code{\link[cli]{cli_abort}}
 }

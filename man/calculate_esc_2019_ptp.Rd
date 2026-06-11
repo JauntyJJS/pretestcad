@@ -40,14 +40,14 @@ calculate_esc_2019_ptp(
 probability results be expressed
 Default: c("grouping", "numeric", "percentage")
 \itemize{
-  \item grouping means the PTP will be expressed as Low, Intermediate and High.
-  \itemize{
-     \item low if PTP is less than 5\%.
-     \item intermediate if PTP is in between 5\% to 15\%.
-     \item high if PTP is more than 15\%.
-  }
-  \item numeric means the PTP will be expressed as an integer probability (0-100).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item grouping means the PTP will be expressed as Low, Intermediate and High.
+\itemize{
+\item low if PTP is less than 5\%.
+\item intermediate if PTP is in between 5\% to 15\%.
+\item high if PTP is more than 15\%.
+}
+\item numeric means the PTP will be expressed as an integer probability (0-100).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

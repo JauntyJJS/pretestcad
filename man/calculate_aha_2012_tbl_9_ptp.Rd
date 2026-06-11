@@ -32,8 +32,8 @@ calculate_aha_2012_tbl_9_ptp(
 probability results be expressed
 Default: c("numeric", "percentage")
 \itemize{
-  \item numeric means the PTP will be expressed as an integer probability (0-100).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item numeric means the PTP will be expressed as an integer probability (0-100).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

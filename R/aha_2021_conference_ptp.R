@@ -10,15 +10,15 @@
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
 #' \itemize{
-#'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
+#'   \item grouping means the PTP will be expressed as Very Low, Low, Intermediate and High.
 #'   \itemize{
-#'      \item very low if PTP is less than 5\%.
-#'      \item low if PTP is in between 5\% to 15\%.
-#'      \item intermediate if PTP is in between 15\% to 50\%.
-#'      \item high if PTP is more than 50\%.
+#'      \item very low if PTP is less than 5%.
+#'      \item low if PTP is in between 5% to 15%.
+#'      \item intermediate if PTP is in between 15% to 50%.
+#'      \item high if PTP is more than 50%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @param label_have_chest_pain_no Label(s) for patient not having chest pain symptoms.
 #' Default: \code{c("no")}

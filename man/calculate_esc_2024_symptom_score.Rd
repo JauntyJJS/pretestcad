@@ -28,7 +28,7 @@ calculate_esc_2024_symptom_score(
 \code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
 
 \item{allow_na}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
+allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score.
 Default: \code{TRUE}}
 
 \item{label_have_dyspnoea_no}{Label(s) for patient having no dyspnoea symptoms.

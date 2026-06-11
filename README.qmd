@@ -51,6 +51,8 @@ pak::pak("JauntyJJS/pretestcad")
    *  [📘 Journal](https://doi.org/10.1093/ehjci/jeaf049){target="_blank"}
 *  2024 ESC Guidelines PTP Score 
    *  [📘 Journal](https://doi.org/10.1093/eurheartj/ehae177){target="_blank"}
+*  2023 Miller et. al. PTP Score (Likelihood Tables) 
+   *  [📘 Journal](https://doi.org/10.1161/JAHA.123.031601){target="_blank"}
 *  2022 Local Assessment of the Heart (LAH) clinical and extended model 
    *  [📘 Journal](https://doi.org/10.1161/JAHA.121.022697){target="_blank"}
 *  2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain (PRECISE) simple and clinical model 

@@ -402,14 +402,14 @@ calculate_esc_2024_num_of_rf <- function(
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
 #' \itemize{
-#'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
+#'   \item grouping means the PTP will be expressed as Very Low, Low, and Moderate.
 #'   \itemize{
-#'      \item very low if PTP is less than or equal to 5\%.
-#'      \item low if PTP is in between 6\% to 15\%.
-#'      \item moderate if PTP is more than 15\%.
+#'      \item very low if PTP is less than or equal to 5%.
+#'      \item low if PTP is in between 6% to 15%.
+#'      \item moderate if PTP is more than 15%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2024 guidelines.
