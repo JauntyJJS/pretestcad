@@ -9,6 +9,8 @@
 #' Preventive Cardiovascular Nurses Association,
 #' Society for Cardiovascular Angiography and Interventions,
 #' and Society of Thoracic Surgeons 2012 guidelines.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2019_ptp
 #' @param chest_pain_type The value of variable in the parameters,
 #' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and

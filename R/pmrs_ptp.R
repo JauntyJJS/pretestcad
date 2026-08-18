@@ -2,8 +2,10 @@
 #' @description This function returns
 #' a symptomatic (have chest pain or dyspnoea) patient's
 #' minimal risk score for obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2017 PROMISE Minimal-Risk Score.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
 #' @param age Input numeric value to indicate the age of the patient in years.

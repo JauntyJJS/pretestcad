@@ -139,6 +139,8 @@ This function returns
 a patient's risk score for obstructive
 coronary artery disease based on the
 2015 CONFIRM Risk Score.
+Obstructive coronary artery disease was defined by ≥ 50\%
+luminal diameter stenosis in any coronary artery ≥ 1.5 mm in diameter.
 }
 \details{
 The predictive model is based on CCTA images from 9093

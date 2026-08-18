@@ -59,8 +59,10 @@ based on the 2020 Winther et. al. basic model (Basic_PTP).
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2020 Winther et. al. basic model (Basic_PTP).
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on > 40000 symptomatic

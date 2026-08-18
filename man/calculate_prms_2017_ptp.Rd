@@ -172,8 +172,10 @@ score for obstructive CAD based on the 2017 PROMISE Minimal-Risk Score.
 This function returns
 a symptomatic (have chest pain or dyspnoea) patient's
 minimal risk score for obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2017 PROMISE Minimal-Risk Score.
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on CCTA images from 4632

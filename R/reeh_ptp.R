@@ -1,8 +1,11 @@
 #' @title Calculate 2019 Reeh Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2019 Reeh et. al. basic model.
+#' Obstructive CAD was defined from invasive angiography
+#' as >70% stenosis of any epicardial vessel or 50–70% stenosis with a fractional
+#' flow reserve <0.8 or any lesion that was revascularized.
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @param sex The value of variable in the parameters \code{label_sex_male},
 #' \code{label_sex_female} and \code{label_sex_unknown}.
@@ -147,8 +150,11 @@ calculate_reeh_2019_basic_ptp <- function(
 #' @title Calculate 2019 Reeh Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2019 Reeh et. al. clinical model.
+#' Obstructive CAD was defined from invasive angiography
+#' as >70% stenosis of any epicardial vessel or 50–70% stenosis with a fractional
+#' flow reserve <0.8 or any lesion that was revascularized.
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_reeh_2019_basic_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD

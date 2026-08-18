@@ -116,7 +116,7 @@ input value
 \description{
 A function used to calculate the number of
 risk factors the patient has. This is used to calculate the pretest
-probability of coronary artery disease (CAD) based on the
+probability of obstructive coronary artery disease (CAD) based on the
 2015 CONFIRM Risk Score.
 }
 \examples{

@@ -119,8 +119,11 @@ based on the 2019 Reeh et. al. clinical model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2019 Reeh et. al. clinical model.
+Obstructive CAD was defined from invasive angiography
+as >70\% stenosis of any epicardial vessel or 50–70\% stenosis with a fractional
+flow reserve <0.8 or any lesion that was revascularized.
 }
 \details{
 The predictive model is based on 3903

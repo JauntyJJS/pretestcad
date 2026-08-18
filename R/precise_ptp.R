@@ -1,9 +1,11 @@
 #' @title Calculate 2021 PRECISE Simple PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 #' (PRECISE) simple model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_lah_2022_clinical_ptp
 #' @param smoking_history_type The value of variable in the parameters
 #' \code{label_smoking_history_type_current}, \code{label_smoking_history_type_past},
@@ -264,9 +266,11 @@ calculate_precise_2021_simple_ptp <- function(
 #' @title Calculate 2021 PRECISE Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 #' (PRECISE) clinical model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_precise_2021_simple_ptp
 #' @param have_q_waves The value of variable in the parameters
 #' \code{label_have_q_waves_no}, \code{label_have_q_waves_yes}

@@ -1,7 +1,7 @@
 # pretestcad 1.1.0.9000
 
 * Add new functions `calculate_rasmussen_2025_rf_cl_ccta_ptp`, 
-`calculate_rasmussen_2025_cacs_cl_ccta_ptp` to calculate pre-test probability of obstructive CAD from 2025 Winther et. al. paper.
+`calculate_rasmussen_2025_cacs_cl_ccta_ptp` to calculate pre-test probability of obstructive CAD from 2025 Rasmussen et. al. paper.
 
 * Add new functions `calculate_miller_2023_vessel_50_cad_ptp`, 
 `calculate_miller_2023_lm_50_non_lm_70_cad_ptp` to calculate pre-test probability of obstructive CAD from 2023 Miller et. al. paper.

@@ -184,6 +184,8 @@ pre-test probability (PTP) of obstructive
 coronary artery disease based on
 2025 Rasmussen et. al.
 Coronary Artery Calcium Score-Weighted Clinical Likelihood CCTA (\ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}}) model.
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \examples{
 # 40 year old Male with nonanginal chest pain and coronary calcium score of 0

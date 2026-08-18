@@ -3,6 +3,8 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2019 guidelines.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @param age Input integer value to indicate the age of the patient in years.
 #' @param sex The value of variable in the parameters \code{label_sex_male},
 #' \code{label_sex_female} and \code{label_sex_unknown}.

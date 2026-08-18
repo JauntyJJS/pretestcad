@@ -1,8 +1,10 @@
 #' @title Calculate 2011 CAD1 Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2011 CAD Consortium 1 (CAD1) basic model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2011 CAD Consortium 1 (CAD1) basic model.
@@ -109,8 +111,10 @@ calculate_cad1_2011_ptp <- function(
 #' @title Calculate 2012 CAD2 Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) basic model.
+#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2012 CAD Consortium 2 (CAD2) basic model.
@@ -215,8 +219,10 @@ calculate_cad2_2012_basic_ptp <- function(
 #' @title Calculate 2012 CAD2 Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) clinical model.
+#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2012 CAD Consortium 2 (CAD2) clinical model.
@@ -441,8 +447,10 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' @title Calculate 2012 CAD2 Clinical and CCS PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
+#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.

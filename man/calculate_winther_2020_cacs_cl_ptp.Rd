@@ -181,9 +181,11 @@ Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on
+coronary artery disease (CAD) based on
 2020 Winther et. al.
 Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on > 40000 symptomatic

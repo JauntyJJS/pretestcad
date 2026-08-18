@@ -47,6 +47,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2024 ESC Guidelines PTP Score
   - <a href="https://doi.org/10.1093/eurheartj/ehae177" target="_blank">📘
     Journal</a>
+- 2023 Miller et. al. PTP Score (Likelihood Tables)
+  - <a href="https://doi.org/10.1161/JAHA.123.031601" target="_blank">📘
+    Journal</a>
 - 2022 Local Assessment of the Heart (LAH) clinical and extended model
   - <a href="https://doi.org/10.1161/JAHA.121.022697" target="_blank">📘
     Journal</a>

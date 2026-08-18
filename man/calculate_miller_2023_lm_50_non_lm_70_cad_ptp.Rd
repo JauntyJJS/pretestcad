@@ -78,7 +78,7 @@ See parameter option \code{output} for more information.
 This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on 2023 Miller et. al. likelihood table
-likelihood table for CAD (stenosis ≥ 50\% in left main vessel or ≥ 70\% in non-left main vessel)
+likelihood table for CAD (stenosis ≥ 50\% in left main vessel or ≥ 70\% in non-left main vessel).
 }
 \details{
 The predictive model is based on 2055

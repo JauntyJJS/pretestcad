@@ -1,8 +1,10 @@
 #' @title Calculate 2020 Winther Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2020 Winther et. al. basic model (Basic_PTP).
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -125,8 +127,10 @@ calculate_winther_2020_basic_ptp <- function(
 #' @title Calculate 2020 Winther RF-CL PTP model for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -301,9 +305,11 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #' @title Calculate 2020 Winther CACS-CL PTP model for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on
+#' coronary artery disease (CAD) based on
 #' 2020 Winther et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.

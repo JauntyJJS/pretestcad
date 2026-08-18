@@ -2,8 +2,10 @@
 #' @title Calculate 2025 Rasmussen \ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}} PTP model for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2025 Rasmussen et. al. Risk Factor-Weighted Clinical Likelihood CCTA (\ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}}) model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -11,7 +13,7 @@
 #' @details The predictive model is based on 38,269 symptomatic
 #' patients with CACS and interpretable CCTA from 2008 to 2017 across 13 hospitals in Western Denmark. These
 #' patients are registered under the Western Denmark Heart Registry. It is then further
-#' calibrated against observed obstructive CAD at CCTA and corresponding prevalence of 
+#' calibrated against observed obstructive CAD at CCTA and corresponding prevalence of
 #' diagnosed obstructive CAD at Invasive Coronary Angiography.
 #'
 #' @examples
@@ -183,6 +185,8 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
 #' coronary artery disease based on
 #' 2025 Rasmussen et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood CCTA (\ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}}) model.
+#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_rasmussen_2025_rf_cl_ccta_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.

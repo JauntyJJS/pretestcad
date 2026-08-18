@@ -1,8 +1,8 @@
 #' @title Calculate 2023 Miller PTP for obstructive CAD (stenosis ≥ 50% in any vessel)
 #' @description This function returns a patient's
 #' pre-test Probability (PTP) of obstructive
-#' coronary artery disease (CAD) based on 2023 Miller et. al. 
-#' likelihood table for CAD (stenosis ≥ 50% in any vessel)
+#' coronary artery disease (CAD) based on 2023 Miller et. al.
+#' likelihood table for CAD (stenosis ≥ 50% in any vessel).
 #' @inheritParams rlang::args_error_context
 #' @inheritParams calculate_aha_2021_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
@@ -24,8 +24,8 @@
 #' See parameter option \code{output} for more information.
 #' @details The predictive model is based on 2055
 #' patients from 3 multinational sites. They are
-#' Henry Ford Hospital (n=853), 
-#' Ottawa Heart Institute (n=808), and 
+#' Henry Ford Hospital (n=853),
+#' Ottawa Heart Institute (n=808), and
 #' University Hospital Zurich (n=394).
 #' @examples
 #' # 40 female with cardiac chest pain and coronary calcium score of 0
@@ -117,7 +117,7 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
     dplyr::between(coronary_calcium_score, 400, 999) ~ "400-999",
     coronary_calcium_score >= 1000 ~ ">= 1000",
     .default = NA
-  )  
+  )
 
   ptp_percentage_group <- dplyr::case_when(
     age_group == "< 40" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 1.7 ,
@@ -131,18 +131,18 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 39.8,
     age_group == "40-49" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 60.8,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 82.1,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 2.9 ,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 21.8,
     age_group == "50-59" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 46.2,
     age_group == "50-59" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 66.8,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 85.6,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 85.6,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 2.3 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 18.1,
     age_group == "60-69" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 40.5,
     age_group == "60-69" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 61.5,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 82.5, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 82.5,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 2.2 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 17.5,
@@ -161,25 +161,25 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 57.5,
     age_group == "40-49" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 76.0,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 90.4,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 5.7,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 36.3,
     age_group == "50-59" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 63.7,
     age_group == "50-59" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 80.4,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 92.4,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 92.4,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 4.6,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 31.1,
     age_group == "60-69" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 58.2,
     age_group == "60-69" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 76.5,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 90.6, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 90.6,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 4.4,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 30.3,
     age_group == ">= 70" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 57.2,
     age_group == ">= 70" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 75.8,
-    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 90.3,   
-    
+    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 90.3,
+
     age_group == "< 40" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 1.0 ,
     age_group == "< 40" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 9.4,
     age_group == "< 40" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 27.9,
@@ -191,24 +191,24 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 33.9,
     age_group == "40-49" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 55.6,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 66.7,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 1.8 ,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 15.2,
     age_group == "50-59" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 40.0,
     age_group == "50-59" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 62.0,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 72.2,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 72.2,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 1.4 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 12.4,
     age_group == "60-69" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 34.6,
     age_group == "60-69" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 56.4,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 67.4, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 67.4,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 1.3 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 12.0,
     age_group == ">= 70" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 33.7,
     age_group == ">= 70" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 55.4,
-    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 66.5,    
+    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 66.5,
 
     age_group == "< 40" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 2.2 ,
     age_group == "< 40" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 18.3,
@@ -227,12 +227,12 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
     age_group == "50-59" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "yes" ~ 58.9,
     age_group == "50-59" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "yes" ~ 77.8,
     age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 84.8,
-    
+
     age_group == "60-69" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 3.0 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 23.4,
     age_group == "60-69" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "yes" ~ 53.2,
     age_group == "60-69" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "yes" ~ 73.6,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 81.6,  
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 81.6,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 2.8 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 22.7,
@@ -260,9 +260,9 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
   }
 
   if (isTRUE(output == "percentage")) {
-    ptp_percentage_group <- ptp_percentage_group |> 
-      round_to_nearest_digit(digits = 1) |> 
-      formatC(digits = 1, format = "f") |> 
+    ptp_percentage_group <- ptp_percentage_group |>
+      round_to_nearest_digit(digits = 1) |>
+      formatC(digits = 1, format = "f") |>
       stringr::str_c("%")
     return(ptp_percentage_group)
   }
@@ -273,7 +273,7 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
 #' @description This function returns a patient's
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on 2023 Miller et. al. likelihood table
-#' likelihood table for CAD (stenosis ≥ 50% in left main vessel or ≥ 70% in non-left main vessel)
+#' likelihood table for CAD (stenosis ≥ 50% in left main vessel or ≥ 70% in non-left main vessel).
 #' @inheritParams rlang::args_error_context
 #' @inheritParams calculate_miller_2023_vessel_50_cad_ptp
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
@@ -282,8 +282,8 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
 #' See parameter option \code{output} for more information.
 #' @details The predictive model is based on 2055
 #' patients from 3 multinational sites. They are
-#' Henry Ford Hospital (n=853), 
-#' Ottawa Heart Institute (n=808), and 
+#' Henry Ford Hospital (n=853),
+#' Ottawa Heart Institute (n=808), and
 #' University Hospital Zurich (n=394).
 #' @examples
 #' # 40 female with cardiac chest pain and coronary calcium score of 0
@@ -375,7 +375,7 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
     dplyr::between(coronary_calcium_score, 400, 999) ~ "400-999",
     coronary_calcium_score >= 1000 ~ ">= 1000",
     .default = NA
-  )  
+  )
 
   ptp_percentage_group <- dplyr::case_when(
     age_group == "< 40" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 1.2 ,
@@ -389,18 +389,18 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 29.7,
     age_group == "40-49" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 45.3,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 69.9,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 1.2 ,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 6.3,
     age_group == "50-59" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 23.2,
     age_group == "50-59" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 37.2,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 62.4,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 62.4,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 1.3 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 6.7,
     age_group == "60-69" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "no" ~ 24.4,
     age_group == "60-69" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "no" ~ 38.8,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 63.9, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "no" ~ 63.9,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "male" & have_chest_pain == "no" ~ 0.9 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "no" ~ 4.9 ,
@@ -419,25 +419,25 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 46.8,
     age_group == "40-49" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 63.3,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 82.8,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 2.5,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 12.2,
     age_group == "50-59" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 38.6,
     age_group == "50-59" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 55.2,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 77.5,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 77.5,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 2.6,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 13.0,
     age_group == "60-69" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 40.2,
     age_group == "60-69" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 56.9,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 78.7, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 78.7,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "male" & have_chest_pain == "yes" ~ 1.9,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "male" & have_chest_pain == "yes" ~ 9.7,
     age_group == ">= 70" & cacs_group == "100-399" & sex == "male" & have_chest_pain == "yes" ~ 32.6,
     age_group == ">= 70" & cacs_group == "400-999" & sex == "male" & have_chest_pain == "yes" ~ 48.7,
-    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 72.6,   
-    
+    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "male" & have_chest_pain == "yes" ~ 72.6,
+
     age_group == "< 40" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 0.5 ,
     age_group == "< 40" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 4.3 ,
     age_group == "< 40" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 19.8,
@@ -449,24 +449,24 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
     age_group == "40-49" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 25.7,
     age_group == "40-49" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 28.2,
     age_group == "40-49" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 48.1,
-    
+
     age_group == "50-59" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 0.5 ,
     age_group == "50-59" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 4.3 ,
     age_group == "50-59" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 19.8,
     age_group == "50-59" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 22.0,
-    age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 39.8,  
+    age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 39.8,
 
     age_group == "60-69" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 0.5 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 4.6 ,
     age_group == "60-69" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 20.9,
     age_group == "60-69" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 23.1,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 41.4, 
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 41.4,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "female" & have_chest_pain == "no" ~ 0.4 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "no" ~ 3.3 ,
     age_group == ">= 70" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "no" ~ 15.9,
     age_group == ">= 70" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "no" ~ 17.8,
-    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 33.7,    
+    age_group == ">= 70" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "no" ~ 33.7,
 
     age_group == "< 40" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 1.1 ,
     age_group == "< 40" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 9.2 ,
@@ -485,12 +485,12 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
     age_group == "50-59" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "yes" ~ 35.6,
     age_group == "50-59" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "yes" ~ 38.7,
     age_group == "50-59" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 59.8,
-    
+
     age_group == "60-69" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 1.2 ,
     age_group == "60-69" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 9.7 ,
     age_group == "60-69" & cacs_group == "100-399" & sex == "female" & have_chest_pain == "yes" ~ 37.2,
     age_group == "60-69" & cacs_group == "400-999" & sex == "female" & have_chest_pain == "yes" ~ 40.3,
-    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 61.4,  
+    age_group == "60-69" & cacs_group == ">= 1000" & sex == "female" & have_chest_pain == "yes" ~ 61.4,
 
     age_group == ">= 70" & cacs_group == "0"       & sex == "female" & have_chest_pain == "yes" ~ 0.9 ,
     age_group == ">= 70" & cacs_group == "1-99"    & sex == "female" & have_chest_pain == "yes" ~ 7.2 ,
@@ -518,9 +518,9 @@ calculate_miller_2023_lm_50_non_lm_70_cad_ptp <- function(
   }
 
   if (isTRUE(output == "percentage")) {
-    ptp_percentage_group <- ptp_percentage_group |> 
-      round_to_nearest_digit(digits = 1) |> 
-      formatC(digits = 1, format = "f") |> 
+    ptp_percentage_group <- ptp_percentage_group |>
+      round_to_nearest_digit(digits = 1) |>
+      formatC(digits = 1, format = "f") |>
       stringr::str_c("%")
     return(ptp_percentage_group)
   }

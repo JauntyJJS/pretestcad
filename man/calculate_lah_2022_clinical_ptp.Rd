@@ -129,8 +129,10 @@ based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2022 Local Assessment of the Heart (LAH) clinical model.
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on

@@ -72,6 +72,8 @@ American Association for Thoracic Surgery,
 Preventive Cardiovascular Nurses Association,
 Society for Cardiovascular Angiography and Interventions,
 and Society of Thoracic Surgeons 2012 guidelines.
+Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model used to create the guidelines are based on
