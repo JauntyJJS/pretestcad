@@ -60,6 +60,11 @@ reference:
       Functions giving PTP scores from the PROMISE cohort
     contents:
     - calculate_prms_2017_ptp
+  - title: 2018 Chen et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2018 Chen et. al. paper
+    contents:
+    - calculate_chen_2018_mfs_ptp
   - title: 2019 Reeh et. al. PTP scores
     desc: >
       Functions giving PTP scores from the 2019 Reeh et. al. paper

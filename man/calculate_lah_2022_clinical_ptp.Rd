@@ -136,7 +136,7 @@ on coronary CTA.
 }
 \details{
 The predictive model is based on
-patients a mixed Asian cohort within Singapore with stable chest pain.
+patients from a mixed Asian cohort within Singapore with stable chest pain.
 }
 \examples{
 # 40 year old female with typical chest pain,

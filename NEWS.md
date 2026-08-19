@@ -6,6 +6,8 @@
 * Add new functions `calculate_miller_2023_vessel_50_cad_ptp`, 
 `calculate_miller_2023_lm_50_non_lm_70_cad_ptp` to calculate pre-test probability of obstructive CAD from 2023 Miller et. al. paper.
 
+* Add new functions `calculate_chen_2018_mfs_ptp` to calculate pre-test probability of obstructive CAD from 2018 Chen et. al. paper.
+
 # pretestcad 1.1.0
 
 * Update documentation of `check_if_integer` to include examples.

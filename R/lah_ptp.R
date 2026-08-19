@@ -14,7 +14,7 @@
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @details The predictive model is based on
-#' patients a mixed Asian cohort within Singapore with stable chest pain.
+#' patients from a mixed Asian cohort within Singapore with stable chest pain.
 #'
 #' @examples
 #' # 40 year old female with typical chest pain,

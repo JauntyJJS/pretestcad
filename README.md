@@ -69,6 +69,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2019 Reeh et. al. basic and clinical model
   - <a href="https://doi.org/10.1093/eurheartj/ehy806" target="_blank">📘
     Journal</a>
+- 2018 Chen et. al. Modified Framingham Scoring
+  - <a href="https://doi.org/10.1186/s12872-018-0745-0" target="_blank">📘
+    Journal</a>  
 - 2017 PROMISE Minimal-Risk Score
   - <a href="https://doi.org/10.1001/jamacardio.2016.5501"
     target="_blank">📘 Journal</a>
