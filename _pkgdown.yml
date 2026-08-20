@@ -64,7 +64,8 @@ reference:
     desc: >
       Functions giving PTP scores from the 2018 Chen et. al. paper
     contents:
-    - calculate_chen_2018_mfs_ptp
+    - calculate_chen_2018_mfs_formula_ptp
+    - calculate_chen_2018_mfs_fig_3_ptp
   - title: 2019 Reeh et. al. PTP scores
     desc: >
       Functions giving PTP scores from the 2019 Reeh et. al. paper
@@ -96,6 +97,11 @@ reference:
     contents:
     - calculate_miller_2023_vessel_50_cad_ptp
     - calculate_miller_2023_lm_50_non_lm_70_cad_ptp
+  - title: 2025 Zuo et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2025 Zuo et. al. paper
+    contents:
+    - calculate_zuo_2025_predict_ocad_ptp
   - title: 2025 Rasmussen et. al. PTP scores
     desc: >
       Functions giving PTP scores from the 2025 Rasmussen et. al. paper
