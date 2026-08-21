@@ -44,6 +44,9 @@ pak::pak("JauntyJJS/pretestcad")
   PTP
   - <a href="https://doi.org/10.1093/ehjci/jeaf049" target="_blank">📘
     Journal</a>
+- 2025 Wieske et. al. COME-CCT PTP
+  - <a href="https://doi.org/10.1016/j.jacadv.2025.102014"
+    target="_blank">📘 Journal</a>  
 - 2025 Zuo et. al. PREDICT-OCAD PTP
   - <a href="https://doi.org/10.1007/s42058-025-00189-w" target="_blank">📘
     Journal</a>

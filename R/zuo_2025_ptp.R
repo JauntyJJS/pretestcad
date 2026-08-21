@@ -6,6 +6,8 @@
 #' Obstructive CAD was defined as ≥50% stenosis on CCTA.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
+#' @param coronary_calcium_score Input non-negative integer to indicate the
+#' total coronary calcium score of the patient.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2025 Zuo et. al. PREDICT-OCAD model.
 #' @details The predictive model is based on 2649

@@ -49,6 +49,8 @@ pak::pak("JauntyJJS/pretestcad")
 
 *  2025 Rasmussen et. al. RF-CL~CCTA~ and CACS-CL~CCTA~ PTP 
    *  [📘 Journal](https://doi.org/10.1093/ehjci/jeaf049){target="_blank"}
+*  2025 Wieske et. al. COME-CCT PTP 
+   *  [📘 Journal](https://doi.org/10.1016/j.jacadv.2025.102014){target="_blank"}   
 *  2025 Zuo et. al. PREDICT-OCAD PTP 
    *  [📘 Journal](https://doi.org/10.1007/s42058-025-00189-w){target="_blank"}
 *  2024 ESC Guidelines PTP Score 

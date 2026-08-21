@@ -35,7 +35,7 @@ and \code{label_have_dyslipidemia_unknown}.}
 \code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
-\item{coronary_calcium_score}{Input non-negative numeric to indicate the
+\item{coronary_calcium_score}{Input non-negative integer to indicate the
 total coronary calcium score of the patient.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

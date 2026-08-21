@@ -30,6 +30,13 @@ reference:
     contents:
     - calculate_confirm_2015_num_of_rf
     - calculate_confirm_2015_ptp
+  - title: COME-CCT PTP Scores
+    desc: >
+      Functions giving PTP scores from the COME-CCT Consortium cohort
+    contents:
+    - calculate_come_cct_2025_ptp
+    - calculate_cta_alone_2025_ptp
+    - calculate_come_cct_with_cta_2025_ptp
   - title: 1979 Diamond-Forrester PTP Scores
     desc: >
       Functions giving PTP scores from the 1979 Diamond-Forrester paper

@@ -69,7 +69,7 @@ calculate_cad1_2011_ptp <- function(
   )
 
   # Ensure chest pain type is valid and mapped to a unified group
-  # (no chest pain, nonanginal, atypical, typical)
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
     harmonise_three_labels(
       label_one = label_cpt_nonanginal,
@@ -177,7 +177,7 @@ calculate_cad2_2012_basic_ptp <- function(
   )
 
   # Ensure chest pain type is valid and mapped to a unified group
-  # (no chest pain, nonanginal, atypical, typical)
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
     harmonise_three_labels(
       label_one = label_cpt_nonanginal,
@@ -400,7 +400,7 @@ calculate_cad2_2012_clinical_ptp <- function(
   )
 
   # Ensure chest pain type is valid and mapped to a unified group
-  # (no chest pain, nonanginal, atypical, typical)
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
     harmonise_three_labels(
       label_one = label_cpt_nonanginal,
@@ -624,7 +624,7 @@ calculate_cad2_2012_clinical_ccs_ptp <- function(
   )
 
   # Ensure chest pain type is valid and mapped to a unified group
-  # (no chest pain, nonanginal, atypical, typical)
+  # (nonanginal, atypical, typical)
   chest_pain_type <- chest_pain_type |>
     harmonise_three_labels(
       label_one = label_cpt_nonanginal,

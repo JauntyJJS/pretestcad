@@ -8,12 +8,12 @@
 #' (≥50% stenosis by diameter in at least one major
 #' coronary vessel based on coronary angiography)
 #' @inheritParams calculate_prms_2017_ptp
-#' @param age Input numeric value to indicate the age of the patient in years.
-#' @param tc_mg_dl Input positive numeric value to indicate the
+#' @param age Input integer value to indicate the age of the patient in years.
+#' @param tc_mg_dl Input positive integer value to indicate the
 #' patient's total cholesterol in \eqn{mg/dL}.
-#' @param lvef_percent Input positive numeric value to indicate the
+#' @param lvef_percent Input positive integer value to indicate the
 #' patient's Left Ventricular Ejection Fraction (LVEF) in \eqn{\%}
-#' @param hsCRP_mg_dl Input positive numeric value to indicate the
+#' @param hsCRP_mg_dl Input positive integer value to indicate the
 #' patient's high-sensitivity C reactive protein (hs-CRP) in \eqn{mg/dL}.
 #' @param have_anemia The value of variable in the parameters \code{label_have_anemia_no},
 #' \code{label_have_anemia_yes} and \code{label_have_anemia_unknown}.
@@ -325,6 +325,7 @@ calculate_chen_2018_mfs_fig_3_ptp <- function(
 #' Obstructive CAD was defined as
 #' (≥50% stenosis by diameter in at least one major
 #' coronary vessel based on coronary angiography)
+#' @inheritParams calculate_prms_2017_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @param tc_mg_dl Input positive numeric value to indicate the
 #' patient's total cholesterol in \eqn{mg/dL}.

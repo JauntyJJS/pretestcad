@@ -27,8 +27,18 @@ calculate_chen_2018_mfs_formula_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
+\item{sex}{The value of variable in the parameters \code{label_sex_male},
+\code{label_sex_female} and \code{label_sex_unknown}.}
+
+\item{have_hypertension}{The value of variable in the parameters
+\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+and \code{label_have_hypertension_unknown}.}
+
 \item{tc_mg_dl}{Input positive numeric value to indicate the
 patient's total cholesterol in \eqn{mg/dL}.}
+
+\item{hdl_mg_dl}{Input positive numeric value to indicate the
+patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.}
 
 \item{lvef_percent}{Input positive numeric value to indicate the
 patient's Left Ventricular Ejection Fraction (LVEF) in \eqn{\%}}
@@ -38,6 +48,25 @@ patient's high-sensitivity C reactive protein (hs-CRP) in \eqn{mg/dL}.}
 
 \item{have_anemia}{The value of variable in the parameters \code{label_have_anemia_no},
 \code{label_have_anemia_yes} and \code{label_have_anemia_unknown}.}
+
+\item{label_sex_male}{Label(s) for definition(s) of male sex.
+Default: \code{c("male")}}
+
+\item{label_sex_female}{Label(s) for definition(s) of female sex.
+Default: \code{c("female")}}
+
+\item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
+Default: \code{c(NA, NaN)}}
+
+\item{label_have_hypertension_no}{Label(s) for patient with no hypertension.
+Default: \code{c("no")}}
+
+\item{label_have_hypertension_yes}{Label(s) for patient having hypertension.
+Default: \code{c("yes")}}
+
+\item{label_have_hypertension_unknown}{Label(s) for patient
+having unknown hypertension.
+Default: \code{c(NA, NaN)}}
 
 \item{label_have_anemia_no}{Label(s) for patient without anemia.
 Default: \code{c("no")}}
