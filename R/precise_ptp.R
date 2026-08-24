@@ -36,6 +36,26 @@
 #' @details The predictive model is based on
 #' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
+#' An online calculator is accessible at
+#' \url{https://webapps.duke-nus.edu.sg/tools/PRECISE}.
+#'
+#' Model formula is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -6.632\quad+ \\\\
+#' (0.035 * age)\quad+ \\\\
+#' (1.694 * sex\_is\_male)\quad+ \\\\
+#' (0.613 * have\_diabetes)\quad+ \\\\
+#' (0.542 * have\_hypertension)\quad+ \\\\
+#' (0.791 * is\_current\_smoker)\quad+ \\\\
+#' (0.063 * is\_past\_smoker)\quad+ \\\\
+#' (1.395 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.877 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (1.143 * pain\_radiating\_to\_neck)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' # radiating to the neck, has diabetes
@@ -102,7 +122,7 @@ calculate_precise_2021_simple_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -246,7 +266,7 @@ calculate_precise_2021_simple_ptp <- function(
   precise_2021_simple_ptp <- 1 /
     (1 + exp(-(-6.632 +
               (0.035  * age) +
-              (1.694  * sex) +
+              (1.694  * sex_male) +
               (0.613  * have_diabetes) +
               (0.542  * have_hypertension) +
               (0.791  * is_current_smoker) +
@@ -296,6 +316,28 @@ calculate_precise_2021_simple_ptp <- function(
 #' @details The predictive model is based on
 #' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
+#' An online calculator is accessible at
+#' \url{https://webapps.duke-nus.edu.sg/tools/PRECISE}.
+#'
+#' Model formula is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -6.714\quad+ \\\\
+#' (0.033 * age)\quad+ \\\\
+#' (1.75 * sex\_is\_male)\quad+ \\\\
+#' (0.597 * have\_diabetes)\quad+ \\\\
+#' (0.497 * have\_hypertension)\quad+ \\\\
+#' (0.733 * is\_current\_smoker)\quad+ \\\\
+#' (0.07 * is\_past\_smoker)\quad+ \\\\
+#' (1.374 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.875 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (1.157 * pain\_radiating\_to\_neck)\quad+ \\\\
+#' (1.020 * have\_Q\_waves)\quad+ \\\\
+#' (0.552 * have\_ST-T\_changes)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' # radiating to the neck, has diabetes
@@ -372,7 +414,7 @@ calculate_precise_2021_clinical_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -562,7 +604,7 @@ calculate_precise_2021_clinical_ptp <- function(
   precise_2021_clinical_ptp <- 1 /
     (1 + exp(-(-6.714 +
               (0.033  * age) +
-              (1.75   * sex) +
+              (1.75   * sex_male) +
               (0.597  * have_diabetes) +
               (0.497  * have_hypertension) +
               (0.733  * is_current_smoker) +

@@ -177,6 +177,28 @@ Default: \code{c(NA, NaN)}}
 A numeric value representing the patient's PTP for obstructive CAD
 based on the 2025 Rasmussen et. al.
 Coronary Artery Calcium Score-Weighted Clinical Likelihood CCTA (\ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}}) model.
+
+Model formula used is from Development Table 2.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+0.014533\quad+ \\\\
+(0.27093 * rf\_ptp)\quad+ \\\\
+(0.047056 * cacs\_1\_to\_9)\quad+ \\\\
+(0.11890 * cacs\_10\_to\_99)\quad+ \\\\
+(0.34417 * cacs\_100\_to\_399)\quad+ \\\\
+(0.5881 * cacs\_400\_to\_999)\quad+ \\\\
+(0.73892 * cacs\_1000\_or\_more)\quad+ \\\\
+(0.054423 * rf\_ptp * cacs\_1\_to\_9)\quad+ \\\\
+(0.14347 * rf\_ptp * cacs\_10\_to\_99)\quad+ \\\\
+(0.18439 * rf\_ptp * cacs\_100\_to\_399)\quad+ \\\\
+(0.085774 * rf\_ptp * cacs\_400\_to\_999)\quad+ \\\\
+(-0.081776 * rf\_ptp * cacs\_1000\_or\_more)
+\end{array}
+}
 }
 \description{
 This function returns a patient's

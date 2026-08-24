@@ -14,7 +14,7 @@
 #' patients suspected of CAD at Jinling Hospital, Nanjing University
 #' (Jiangsu, China), spanning from January 2010 to December 2020.
 #'
-#' Model formula used is from the web-based calculator, accessible at
+#' Model formula used is taken from the web-based calculator, accessible at
 #' \url{https://predict-obstructive-cad.shinyapps.io/dynnomapp/}.
 #'
 #' It is of the form
@@ -29,7 +29,7 @@
 #' (-0.210570 * no\_diabetes)\quad+ \\\\
 #' (1.925711 * cacs\_1\_to\_100)\quad+ \\\\
 #' (3.362762 * cacs\_101\_to\_400)\quad+ \\\\
-#' (4.377606 * cacs\_more\_than\_400)\quad+ \\\\
+#' (4.377606 * cacs\_more\_than\_400)
 #' \end{array}
 #' }
 #' @examples

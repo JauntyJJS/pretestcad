@@ -176,6 +176,29 @@ on coronary CTA.
 \details{
 The predictive model is based on
 patients a mixed Asian cohort within Singapore with stable chest pain.
+
+An online calculator is accessible at
+\url{https://webapps.duke-nus.edu.sg/tools/PRECISE}.
+
+Model formula is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.714\quad+ \\\\
+(0.033 * age)\quad+ \\\\
+(1.75 * sex\_is\_male)\quad+ \\\\
+(0.597 * have\_diabetes)\quad+ \\\\
+(0.497 * have\_hypertension)\quad+ \\\\
+(0.733 * is\_current\_smoker)\quad+ \\\\
+(0.07 * is\_past\_smoker)\quad+ \\\\
+(1.374 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.875 * have\_atypical\_chest\_pain)\quad+ \\\\
+(1.157 * pain\_radiating\_to\_neck)\quad+ \\\\
+(1.020 * have\_Q\_waves)\quad+ \\\\
+(0.552 * have\_ST-T\_changes)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

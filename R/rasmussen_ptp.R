@@ -16,6 +16,25 @@
 #' calibrated against observed obstructive CAD at CCTA and corresponding prevalence of
 #' diagnosed obstructive CAD at Invasive Coronary Angiography.
 #'
+#' Model formula used is from Development Table 2.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -7.1076\quad+ \\\\
+#' (1.1332 * sex\_is\_male)\quad+ \\\\
+#' (0.072819 * age)\quad+ \\\\
+#' (1.4252 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.55152 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+#' (1.1145 * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.005578 * age * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.0079662 * age * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.11213 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.18948 * sex * risk\_factor\_subgroups)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old Male with nonanginal chest pain
 #' calculate_rasmussen_2025_rf_cl_ccta_ptp(
@@ -92,7 +111,7 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -113,20 +132,20 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
   )
 
   have_typical_chest_pain <- dplyr::case_when(
-    symptom_score == 0  ~ 0,
-    symptom_score == 1  ~ 0,
-    symptom_score == 2  ~ 0,
-    symptom_score == 3  ~ 1,
+    symptom_score == 0  ~ 0L,
+    symptom_score == 1  ~ 0L,
+    symptom_score == 2  ~ 0L,
+    symptom_score == 3  ~ 1L,
     .default = NA_integer_
   )
 
   # In the supplementary document, patients with no chest pain or have one chest pain symptom
   # will be grouped as nonanginal chest pain
   have_nonanginal_chest_pain <- dplyr::case_when(
-    symptom_score == 0  ~ 1,
-    symptom_score == 1  ~ 1,
-    symptom_score == 2  ~ 0,
-    symptom_score == 3  ~ 0,
+    symptom_score == 0  ~ 1L,
+    symptom_score == 1  ~ 1L,
+    symptom_score == 2  ~ 0L,
+    symptom_score == 3  ~ 0L,
     .default = NA_integer_
   )
 
@@ -155,23 +174,23 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
   )
 
   rf_group <- dplyr::case_when(
-    dplyr::between(num_of_rf, 0, 1) ~ 1,
-    dplyr::between(num_of_rf, 2, 3) ~ 2,
-    dplyr::between(num_of_rf, 4, 5) ~ 3,
+    dplyr::between(num_of_rf, 0, 1) ~ 1L,
+    dplyr::between(num_of_rf, 2, 3) ~ 2L,
+    dplyr::between(num_of_rf, 4, 5) ~ 3L,
     .default = NA_integer_
   )
 
   rasmussen_2025_rf_cl_ccta_ptp <- 1 /
     (1 + exp(-(-7.1076 +
-                 ( 1.1332 * sex) +
-                 ( 0.072819 * age) +
-                 ( 1.4252 * have_typical_chest_pain) +
-                 (-0.55152 * have_nonanginal_chest_pain) +
-                 ( 1.1145 * rf_group) +
-                 (-0.005578 * age * have_typical_chest_pain) +
-                 (-0.0079662 * age * rf_group) +
-                 (-0.11213 * have_typical_chest_pain * rf_group) +
-                 (-0.18948 * sex * rf_group))
+              ( 1.1332 * sex_male) +
+              ( 0.072819 * age) +
+              ( 1.4252 * have_typical_chest_pain) +
+              (-0.55152 * have_nonanginal_chest_pain) +
+              ( 1.1145 * rf_group) +
+              (-0.005578 * age * have_typical_chest_pain) +
+              (-0.0079662 * age * rf_group) +
+              (-0.11213 * have_typical_chest_pain * rf_group) +
+              (-0.18948 * sex * rf_group))
     )
     )
 
@@ -193,6 +212,28 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2025 Rasmussen et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood CCTA (\ifelse{html}{\out{RF-CL<sub>CCTA</sub>}}{\eqn{RF-CL_{CCTA}}}) model.
+#'
+#' Model formula used is from Development Table 2.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' 0.014533\quad+ \\\\
+#' (0.27093 * rf\_ptp)\quad+ \\\\
+#' (0.047056 * cacs\_1\_to\_9)\quad+ \\\\
+#' (0.11890 * cacs\_10\_to\_99)\quad+ \\\\
+#' (0.34417 * cacs\_100\_to\_399)\quad+ \\\\
+#' (0.5881 * cacs\_400\_to\_999)\quad+ \\\\
+#' (0.73892 * cacs\_1000\_or\_more)\quad+ \\\\
+#' (0.054423 * rf\_ptp * cacs\_1\_to\_9)\quad+ \\\\
+#' (0.14347 * rf\_ptp * cacs\_10\_to\_99)\quad+ \\\\
+#' (0.18439 * rf\_ptp * cacs\_100\_to\_399)\quad+ \\\\
+#' (0.085774 * rf\_ptp * cacs\_400\_to\_999)\quad+ \\\\
+#' (-0.081776 * rf\_ptp * cacs\_1000\_or\_more)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old Male with nonanginal chest pain and coronary calcium score of 0
 #' calculate_rasmussen_2025_cacs_cl_ccta_ptp(

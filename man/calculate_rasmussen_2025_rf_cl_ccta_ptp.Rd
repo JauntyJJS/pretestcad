@@ -187,6 +187,26 @@ patients with CACS and interpretable CCTA from 2008 to 2017 across 13 hospitals 
 patients are registered under the Western Denmark Heart Registry. It is then further
 calibrated against observed obstructive CAD at CCTA and corresponding prevalence of
 diagnosed obstructive CAD at Invasive Coronary Angiography.
+
+Model formula used is from Development Table 2.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-7.1076\quad+ \\\\
+(1.1332 * sex\_is\_male)\quad+ \\\\
+(0.072819 * age)\quad+ \\\\
+(1.4252 * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.55152 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+(1.1145 * risk\_factor\_subgroups)\quad+ \\\\
+(-0.005578 * age * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.0079662 * age * risk\_factor\_subgroups)\quad+ \\\\
+(-0.11213 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
+(-0.18948 * sex * risk\_factor\_subgroups)
+\end{array}
+}
 }
 \examples{
 # 40 year old Male with nonanginal chest pain

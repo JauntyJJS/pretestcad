@@ -41,6 +41,28 @@
 #' @details The predictive model is based on CCTA images from 4632
 #' patients in the Prospective Multicenter imaging Study for Evaluation
 #' of Chest Pain (PROMISE) trial.
+#'
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -1.783\quad+ \\\\
+#' (0.084 * age)\quad+ \\\\
+#' (-1.026 * sex\_is\_female)\quad+ \\\\
+#' (-0.142 * is\_minority\_ethnicity)\quad+ \\\\
+#' (-0.526 * is\_non\_smoker)\quad+ \\\\
+#' (-0.314 * have\_no\_diabetes)\quad+ \\\\
+#' (-0.412 * have\_no\_dyslipidemia)\quad+ \\\\
+#' (-0.309 * have\_no\_family_history)\quad+ \\\\
+#' (-0.408 * have\_no\_hypertension)\quad+ \\\\
+#' (-0.309 * have\_no\_stress_symptoms)\quad+ \\\\
+#' (-0.195 * have\_unknown\_stress\_symptoms)\quad+ \\\\
+#' (-0.006 * hdl\_mg\_dl)
+#' \end{array}
+#' }
 #' @examples
 #' # 50 year old white female with chest pain
 #' # a medical history of hypertension, and a

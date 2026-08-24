@@ -350,6 +350,22 @@ calculate_chen_2018_mfs_fig_3_ptp <- function(
 #' Predictive Value of Contrast Volume to Creatinine Clearance Ratio (PRECOMIN)
 #' conducted primarily at Guangdong General Hospital.
 #'
+#' Model formula is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -0.0468\quad+ \\\\
+#' (0.0204 * age)\quad+ \\\\
+#' (1.0961 * sex\_is\_male)\quad+ \\\\
+#' (0.5444 * have\_hypertension)\quad+ \\\\
+#' (0.0055 * total\_cholesterol\_mg\_dl)\quad+ \\\\
+#' (-0.0257 * hdl\_mg\_dl)\quad+ \\\\
+#' (-0.022  * LVEF\_\%)\quad+ \\\\
+#' (0.5677 * have\_anemia)\quad+ \\\\
+#' (0.0254 * hs-CRP\_mg\_dl)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with no hypertension
 #' # and anemia. She has a
@@ -413,7 +429,7 @@ calculate_chen_2018_mfs_formula_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -467,14 +483,14 @@ calculate_chen_2018_mfs_formula_ptp <- function(
 
   chen_2018_mfs_formula_ptp <- 1 /
     (1 + exp(-(-0.0468 +
-                0.0204  * age +
-                1.0961  * sex +
-                0.5444  * have_hypertension +
-                0.0055  * tc_mg_dl +
-                -0.0257 * hdl_mg_dl +
-                -0.022  * lvef_percent +
-                0.5677  * have_anemia +
-                0.0254  * hsCRP_mg_dl
+              ( 0.0204 * age) +
+              ( 1.0961 * sex_male) +
+              ( 0.5444 * have_hypertension) +
+              ( 0.0055 * tc_mg_dl) +
+              (-0.0257 * hdl_mg_dl) +
+              (-0.022  * lvef_percent) +
+              ( 0.5677 * have_anemia) +
+              ( 0.0254 * hsCRP_mg_dl)
      )
      )
      )

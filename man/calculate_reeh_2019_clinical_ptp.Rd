@@ -129,6 +129,25 @@ flow reserve <0.8 or any lesion that was revascularized.
 The predictive model is based on 3903
 patients free of CAD and heart failure and suspected of angina, who were referred
 to a single, large, urban university hospital for assessment in 2012–15.
+
+Model formula used is from Table 3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-8.5499\quad+ \\\\
+(1.4468 * sex\_is\_male)\quad+ \\\\
+(0.5031 * (age/10))\quad+ \\\\
+(2.7699 * have\_typical\_chest\_pain)\quad+ \\\\
+(1.7839 * have\_atypical\_chest\_pain)\quad+ \\\\
+(0.8071 * have\_dyspnoea)\quad+ \\\\
+(0.9551 * have\_dyslipidemia)\quad+ \\\\
+(0.4394 * have\_family\_history\_of\_CAD)\quad+ \\\\
+(0.3767 * have\_diabetes)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

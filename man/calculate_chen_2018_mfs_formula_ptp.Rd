@@ -97,6 +97,23 @@ The predictive model is based on
 patients from a prospective observational study
 Predictive Value of Contrast Volume to Creatinine Clearance Ratio (PRECOMIN)
 conducted primarily at Guangdong General Hospital.
+
+Model formula is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-0.0468\quad+ \\\\
+(0.0204 * age)\quad+ \\\\
+(1.0961 * sex\_is\_male)\quad+ \\\\
+(0.5444 * have\_hypertension)\quad+ \\\\
+(0.0055 * total\_cholesterol\_mg\_dl)\quad+ \\\\
+(-0.0257 * hdl\_mg\_dl)\quad+ \\\\
+(-0.022  * LVEF\_\%)\quad+ \\\\
+(0.5677 * have\_anemia)\quad+ \\\\
+(0.0254 * hs-CRP\_mg\_dl)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with no hypertension
