@@ -18,7 +18,9 @@
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula is of the form
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
 #' \deqn{\frac{1}{(1 + e^{-F(x)})}}
 #' where \eqn{F(x)} equals
 #' \deqn{
@@ -161,7 +163,9 @@ calculate_come_cct_2025_ptp <- function(
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula is of the form
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
 #' \deqn{\frac{1}{(1 + e^{-F(x)})}}
 #' where \eqn{F(x)} equals
 #' \deqn{
@@ -240,7 +244,9 @@ calculate_cta_alone_2025_ptp <- function(
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula is of the form
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
 #' \deqn{\frac{1}{(1 + e^{-F(x)})}}
 #' where \eqn{F(x)} equals
 #' \deqn{

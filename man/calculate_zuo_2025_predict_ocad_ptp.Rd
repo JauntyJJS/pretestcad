@@ -82,6 +82,25 @@ Obstructive CAD was defined as ≥50\% stenosis on CCTA.
 The predictive model is based on 2649
 patients suspected of CAD at Jinling Hospital, Nanjing University
 (Jiangsu, China), spanning from January 2010 to December 2020.
+
+Model formula used is from the web-based calculator, accessible at
+\url{https://predict-obstructive-cad.shinyapps.io/dynnomapp/}.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-4.336859\quad+ \\\\
+(-0.422110 * sex\_is\_female)\quad+ \\\\
+(0.029603 * age)\quad+ \\\\
+(-0.539890 * no\_dyslipidemia)\quad+ \\\\
+(-0.210570 * no\_diabetes)\quad+ \\\\
+(1.925711 * cacs\_1\_to\_100)\quad+ \\\\
+(3.362762 * cacs\_101\_to\_400)\quad+ \\\\
+(4.377606 * cacs\_more\_than\_400)\quad+ \\\\
+\end{array}
+}
 }
 \examples{
 # 40 year old female without dyslipidemia and diabetes

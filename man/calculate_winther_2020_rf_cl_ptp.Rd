@@ -185,6 +185,26 @@ on coronary CTA.
 The predictive model is based on > 40000 symptomatic
 patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 patients are registered under the Western Denmark Heart Registry.
+
+Model formula used is from Table S3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-9.5260\quad+ \\\\
+(1.6128 * sex\_is\_male)\quad+ \\\\
+(0.0844 * age)\quad+ \\\\
+(2.7112 * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.4675 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+(1.4940 * risk\_factor\_subgroups)\quad+ \\\\
+(-0.0187 * age * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.0131 * age * risk\_factor\_subgroups)\quad+ \\\\
+(-0.2799 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
+(-0.2091 * sex * risk\_factor\_subgroups)\quad+ \\\\
+\end{array}
+}
 }
 \examples{
 # 40 year old Male with nonanginal chest pain

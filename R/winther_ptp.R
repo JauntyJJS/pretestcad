@@ -13,6 +13,21 @@
 #' patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 #' patients are registered under the Western Denmark Heart Registry.
 #'
+#' Model formula used is from Table S3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -7.0753\quad+ \\\\
+#' (1.2308 * sex\_is\_male)\quad+ \\\\
+#' (0.0642 * age)\quad+ \\\\
+#' (2.2501 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.5095 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+#' (-0.0191 * age * have\_typical\_chest\_pain)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old Male with typical chest pain
 #' calculate_winther_2020_basic_ptp(
@@ -63,7 +78,7 @@ calculate_winther_2020_basic_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -111,7 +126,7 @@ calculate_winther_2020_basic_ptp <- function(
 
   winther_2020_basic_ptp <- 1 /
     (1 + exp(-(-7.0753 +
-              ( 1.2308 * sex) +
+              ( 1.2308 * sex_male) +
               ( 0.0642 * age) +
               ( 2.2501 * have_typical_chest_pain) +
               (-0.5095 * have_nonanginal_chest_pain) +
@@ -139,6 +154,25 @@ calculate_winther_2020_basic_ptp <- function(
 #' patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 #' patients are registered under the Western Denmark Heart Registry.
 #'
+#' Model formula used is from Table S3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -9.5260\quad+ \\\\
+#' (1.6128 * sex\_is\_male)\quad+ \\\\
+#' (0.0844 * age)\quad+ \\\\
+#' (2.7112 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.4675 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+#' (1.4940 * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.0187 * age * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.0131 * age * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.2799 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
+#' (-0.2091 * sex * risk\_factor\_subgroups)\quad+ \\\\
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old Male with nonanginal chest pain
 #' calculate_winther_2020_rf_cl_ptp(
@@ -215,7 +249,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -236,20 +270,20 @@ calculate_winther_2020_rf_cl_ptp <- function(
   )
 
   have_typical_chest_pain <- dplyr::case_when(
-    symptom_score == 0  ~ 0,
-    symptom_score == 1  ~ 0,
-    symptom_score == 2  ~ 0,
-    symptom_score == 3  ~ 1,
+    symptom_score == 0  ~ 0L,
+    symptom_score == 1  ~ 0L,
+    symptom_score == 2  ~ 0L,
+    symptom_score == 3  ~ 1L,
     .default = NA_integer_
   )
 
   # In the supplementary document, patients with no chest pain or have one chest pain symptom
   # will be grouped as nonanginal chest pain
   have_nonanginal_chest_pain <- dplyr::case_when(
-    symptom_score == 0  ~ 1,
-    symptom_score == 1  ~ 1,
-    symptom_score == 2  ~ 0,
-    symptom_score == 3  ~ 0,
+    symptom_score == 0  ~ 1L,
+    symptom_score == 1  ~ 1L,
+    symptom_score == 2  ~ 0L,
+    symptom_score == 3  ~ 0L,
     .default = NA_integer_
   )
 
@@ -278,23 +312,23 @@ calculate_winther_2020_rf_cl_ptp <- function(
   )
 
   rf_group <- dplyr::case_when(
-    dplyr::between(num_of_rf, 0, 1) ~ 1,
-    dplyr::between(num_of_rf, 2, 3) ~ 2,
-    dplyr::between(num_of_rf, 4, 5) ~ 3,
+    dplyr::between(num_of_rf, 0, 1) ~ 1L,
+    dplyr::between(num_of_rf, 2, 3) ~ 2L,
+    dplyr::between(num_of_rf, 4, 5) ~ 3L,
     .default = NA_integer_
   )
 
   winther_2020_rf_cl_ptp <- 1 /
     (1 + exp(-(-9.5260 +
-                 ( 1.6128 * sex) +
-                 ( 0.0844 * age) +
-                 ( 2.7112 * have_typical_chest_pain) +
-                 (-0.4675 * have_nonanginal_chest_pain) +
-                 ( 1.4940 * rf_group) +
-                 (-0.0187 * age * have_typical_chest_pain) +
-                 (-0.0131 * age * rf_group) +
-                 (-0.2799 * have_typical_chest_pain * rf_group) +
-                 (-0.2091 * sex * rf_group))
+              ( 1.6128 * sex_male) +
+              ( 0.0844 * age) +
+              ( 2.7112 * have_typical_chest_pain) +
+              (-0.4675 * have_nonanginal_chest_pain) +
+              ( 1.4940 * rf_group) +
+              (-0.0187 * age * have_typical_chest_pain) +
+              (-0.0131 * age * rf_group) +
+              (-0.2799 * have_typical_chest_pain * rf_group) +
+              (-0.2091 * sex * rf_group))
     )
     )
 
@@ -319,6 +353,28 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #' @details The predictive model is based on > 40000 symptomatic
 #' patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 #' patients are registered under the Western Denmark Heart Registry.
+#'
+#' Model formula used is from Table S3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' 0.0013\quad+ \\\\
+#' (0.2021 * rf\_ptp)\quad+ \\\\
+#' (0.0082 * cacs\_1\_to\_9)\quad+ \\\\
+#' (0.0238 * cacs\_10\_to\_99)\quad+ \\\\
+#' (0.1131 * cacs\_100\_to\_399)\quad+ \\\\
+#' (0.2306 * cacs\_400\_to\_999)\quad+ \\\\
+#' (0.4040 * cacs\_1000\_or\_more)\quad+ \\\\
+#' (0.1311 * rf\_ptp * cacs\_1\_to\_9)\quad+ \\\\
+#' (0.2909 * rf\_ptp * cacs\_10\_to\_99)\quad+ \\\\
+#' (0.4077 * rf\_ptp * cacs\_100\_to\_399)\quad+ \\\\
+#' (0.4658 * rf\_ptp * cacs\_400\_to\_999)\quad+ \\\\
+#' (0.4489 * rf\_ptp * cacs\_1000\_or\_more)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old Male with nonanginal chest pain and coronary calcium score of 0
 #' calculate_winther_2020_cacs_cl_ptp(

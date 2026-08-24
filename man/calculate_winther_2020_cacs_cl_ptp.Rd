@@ -191,6 +191,28 @@ on coronary CTA.
 The predictive model is based on > 40000 symptomatic
 patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 patients are registered under the Western Denmark Heart Registry.
+
+Model formula used is from Table S3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+0.0013\quad+ \\\\
+(0.2021 * rf\_ptp)\quad+ \\\\
+(0.0082 * cacs\_1\_to\_9)\quad+ \\\\
+(0.0238 * cacs\_10\_to\_99)\quad+ \\\\
+(0.1131 * cacs\_100\_to\_399)\quad+ \\\\
+(0.2306 * cacs\_400\_to\_999)\quad+ \\\\
+(0.4040 * cacs\_1000\_or\_more)\quad+ \\\\
+(0.1311 * rf\_ptp * cacs\_1\_to\_9)\quad+ \\\\
+(0.2909 * rf\_ptp * cacs\_10\_to\_99)\quad+ \\\\
+(0.4077 * rf\_ptp * cacs\_100\_to\_399)\quad+ \\\\
+(0.4658 * rf\_ptp * cacs\_400\_to\_999)\quad+ \\\\
+(0.4489 * rf\_ptp * cacs\_1000\_or\_more)
+\end{array}
+}
 }
 \examples{
 # 40 year old Male with nonanginal chest pain and coronary calcium score of 0
