@@ -194,7 +194,7 @@ This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 European Society of Cardiology (ESC) 2024 guidelines.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \examples{

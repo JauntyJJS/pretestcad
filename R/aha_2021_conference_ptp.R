@@ -3,7 +3,7 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' American Heart Association/American College of Cardiology (AHA/ACC) 2021 guidelines.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2019_ptp
 #' @param have_chest_pain The value of variable in the parameters \code{label_have_chest_pain_no},

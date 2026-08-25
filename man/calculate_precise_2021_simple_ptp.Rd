@@ -136,7 +136,7 @@ pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 (PRECISE) simple model.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \details{

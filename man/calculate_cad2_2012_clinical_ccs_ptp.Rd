@@ -135,7 +135,7 @@ This function returns a patient's
 pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
-Obstructive coronary artery disease was defined as ≥50\% diameter stenosis
+Obstructive coronary artery disease was defined as \eqn{\geq}50\% diameter stenosis
 in at least one vessel found on catheter based coronary angiography.
 }
 \details{

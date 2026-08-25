@@ -62,7 +62,7 @@ pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model.
 Obstructive coronary artery disease was defined as at least one
-≥ 50\% diameter stenosis by invasive coronary angiography (ICA).
+\eqn{\geq} 50\% diameter stenosis by invasive coronary angiography (ICA).
 }
 \details{
 The predictive model is based on

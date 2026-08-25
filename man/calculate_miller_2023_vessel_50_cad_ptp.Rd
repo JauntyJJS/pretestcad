@@ -2,7 +2,7 @@
 % Please edit documentation in R/miller_ptp.R
 \name{calculate_miller_2023_vessel_50_cad_ptp}
 \alias{calculate_miller_2023_vessel_50_cad_ptp}
-\title{Calculate 2023 Miller PTP for obstructive CAD (stenosis ≥ 50\% in any vessel)}
+\title{Calculate 2023 Miller PTP for obstructive CAD (stenosis \eqn{\geq} 50\% in any vessel)}
 \usage{
 calculate_miller_2023_vessel_50_cad_ptp(
   age,
@@ -70,14 +70,14 @@ mentioned in error messages as the source of the error. See the
 }
 \value{
 An integer, percentage or category representing the patient's PTP for obstructive CAD
-based on 2023 Miller et. al. likelihood table for CAD defined as stenosis ≥ 50\% in any vessel.
+based on 2023 Miller et. al. likelihood table for CAD defined as stenosis \eqn{\geq} 50\% in any vessel.
 See parameter option \code{output} for more information.
 }
 \description{
 This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on 2023 Miller et. al.
-likelihood table for CAD (stenosis ≥ 50\% in any vessel).
+likelihood table for CAD (stenosis \eqn{\geq} 50\% in any vessel).
 }
 \details{
 The predictive model is based on 2055

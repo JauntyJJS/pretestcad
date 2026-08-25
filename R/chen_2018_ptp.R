@@ -5,7 +5,7 @@
 #' coronary artery disease (CAD) based on the
 #' 2018 Chen et. al. modified Framingham scoring (MFS) model.
 #' Obstructive CAD was defined as
-#' (≥50% stenosis by diameter in at least one major
+#' (\eqn{\geq}50% stenosis by diameter in at least one major
 #' coronary vessel based on coronary angiography)
 #' @inheritParams calculate_prms_2017_ptp
 #' @param age Input integer value to indicate the age of the patient in years.
@@ -31,10 +31,10 @@
 #' \itemize{
 #'   \item risk_group means the PTP will be expressed as Low, Moderate, High and Very High.
 #'   \itemize{
-#'      \item low risk score if MFS is ≤ 17.
+#'      \item low risk score if MFS is \eqn{\leq} 17.
 #'      \item moderate risk score if MFS is in between 18 to 26.
 #'      \item high risk score if MFS is in between 27 to 41.
-#'      \item very high risk score if MFS is ≥ 42.
+#'      \item very high risk score if MFS is \eqn{\geq} 42.
 #'   }
 #'   \item risk_numeric means the PTP will be expressed as an integer probability (0-100).
 #'   \item risk_percentage means the PTP will be expressed as percentage text (0-100%).
@@ -42,7 +42,7 @@
 #'   This value will be later converted to risk of obstructive CAD \code{risk_numeric} based on the table presented in figure 3.
 #' }
 #' @return An integer, percentage or category representing the patient's risk points or PTP for obstructive CAD
-#' based on 2018 Chen et. al. predicted risk if obstructive CAD defined as stenosis ≥ 50% in any vessel..
+#' based on 2018 Chen et. al. predicted risk if obstructive CAD defined as stenosis \eqn{\geq} 50% in any vessel..
 #' See parameter option \code{output} for more information.
 #' @details The predictive model is based on
 #' patients from a prospective observational study
@@ -323,7 +323,7 @@ calculate_chen_2018_mfs_fig_3_ptp <- function(
 #' coronary artery disease (CAD) based on the
 #' 2018 Chen et. al. modified Framingham scoring (MFS) model.
 #' Obstructive CAD was defined as
-#' (≥50% stenosis by diameter in at least one major
+#' (\eqn{\geq}50% stenosis by diameter in at least one major
 #' coronary vessel based on coronary angiography)
 #' @inheritParams calculate_prms_2017_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.

@@ -174,7 +174,7 @@ a symptomatic (have chest pain or dyspnoea) patient's
 minimal risk score for obstructive
 coronary artery disease (CAD) based on the
 2017 PROMISE Minimal-Risk Score.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \details{

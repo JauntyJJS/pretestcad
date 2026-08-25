@@ -3,7 +3,7 @@
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2022 Local Assessment of the Heart (LAH) clinical model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_esc_2024_num_of_rf
@@ -252,7 +252,7 @@ calculate_lah_2022_clinical_ptp <- function(
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2022 Local Assessment of the Heart (LAH) extended model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_lah_2022_clinical_ptp
 #' @param coronary_calcium_score Input non-negative numeric to indicate the

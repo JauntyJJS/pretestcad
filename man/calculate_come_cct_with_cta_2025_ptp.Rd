@@ -60,7 +60,7 @@ Default: \code{c("others")}}
 Default: \code{c(NA, NaN)}}
 
 \item{label_cta_obstructive}{Label(s) for patient having obstructive CAD
-defined as at least one ≥ 50\% diameter stenosis in computed tomography angiography (CTA).
+defined as at least one \eqn{\geq} 50\% diameter stenosis in computed tomography angiography (CTA).
 Default: \code{c("obstructive")}}
 
 \item{label_cta_non_obstructive}{Label(s) for patient having non-obstructive CAD
@@ -81,7 +81,7 @@ pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) with CTA PTP model.
 Obstructive coronary artery disease was defined as at least one
-≥ 50\% diameter stenosis by invasive coronary angiography (ICA).
+\eqn{\geq} 50\% diameter stenosis by invasive coronary angiography (ICA).
 }
 \details{
 The predictive model is based on

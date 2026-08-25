@@ -89,7 +89,7 @@ pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2018 Chen et. al. modified Framingham scoring (MFS) model.
 Obstructive CAD was defined as
-(≥50\% stenosis by diameter in at least one major
+(\eqn{\geq}50\% stenosis by diameter in at least one major
 coronary vessel based on coronary angiography)
 }
 \details{

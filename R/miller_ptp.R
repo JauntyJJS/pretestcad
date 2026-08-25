@@ -1,8 +1,8 @@
-#' @title Calculate 2023 Miller PTP for obstructive CAD (stenosis ≥ 50% in any vessel)
+#' @title Calculate 2023 Miller PTP for obstructive CAD (stenosis \eqn{\geq} 50% in any vessel)
 #' @description This function returns a patient's
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on 2023 Miller et. al.
-#' likelihood table for CAD (stenosis ≥ 50% in any vessel).
+#' likelihood table for CAD (stenosis \eqn{\geq} 50% in any vessel).
 #' @inheritParams rlang::args_error_context
 #' @inheritParams calculate_aha_2021_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp
@@ -20,7 +20,7 @@
 #'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
-#' based on 2023 Miller et. al. likelihood table for CAD defined as stenosis ≥ 50% in any vessel.
+#' based on 2023 Miller et. al. likelihood table for CAD defined as stenosis \eqn{\geq} 50% in any vessel.
 #' See parameter option \code{output} for more information.
 #' @details The predictive model is based on 2055
 #' patients from 3 multinational sites. They are
@@ -269,16 +269,16 @@ calculate_miller_2023_vessel_50_cad_ptp <- function(
 
 }
 
-#' @title Calculate 2023 Miller PTP for obstructive CAD (stenosis ≥ 50% in left main vessel or ≥ 70% in non-left main vessel)
+#' @title Calculate 2023 Miller PTP for obstructive CAD (stenosis \eqn{\geq} 50% in left main vessel or \eqn{\geq} 70% in non-left main vessel)
 #' @description This function returns a patient's
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on 2023 Miller et. al. likelihood table
-#' likelihood table for CAD (stenosis ≥ 50% in left main vessel or ≥ 70% in non-left main vessel).
+#' likelihood table for CAD (stenosis \eqn{\geq} 50% in left main vessel or \eqn{\geq} 70% in non-left main vessel).
 #' @inheritParams rlang::args_error_context
 #' @inheritParams calculate_miller_2023_vessel_50_cad_ptp
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
-#' based on 2023 Miller et. al. likelihood table for CAD defined as stenosis ≥ 50% in left main vessel
-#' or ≥ 70% in non-left main vessel.
+#' based on 2023 Miller et. al. likelihood table for CAD defined as stenosis \eqn{\geq} 50% in left main vessel
+#' or \eqn{\geq} 70% in non-left main vessel.
 #' See parameter option \code{output} for more information.
 #' @details The predictive model is based on 2055
 #' patients from 3 multinational sites. They are

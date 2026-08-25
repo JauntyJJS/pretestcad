@@ -184,7 +184,7 @@ pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on
 2020 Winther et. al.
 Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \details{

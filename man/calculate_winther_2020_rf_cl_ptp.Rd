@@ -178,7 +178,7 @@ This function returns a patient's
 pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \details{
@@ -202,7 +202,7 @@ where \eqn{F(x)} equals
 (-0.0187 * age * have\_typical\_chest\_pain)\quad+ \\\\
 (-0.0131 * age * risk\_factor\_subgroups)\quad+ \\\\
 (-0.2799 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
-(-0.2091 * sex * risk\_factor\_subgroups)
+(-0.2091 * sex\_is\_male * risk\_factor\_subgroups)
 \end{array}
 }
 }

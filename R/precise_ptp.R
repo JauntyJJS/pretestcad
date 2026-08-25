@@ -4,7 +4,7 @@
 #' coronary artery disease (CAD) based on the
 #' 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 #' (PRECISE) simple model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_lah_2022_clinical_ptp
 #' @param smoking_history_type The value of variable in the parameters
@@ -289,7 +289,7 @@ calculate_precise_2021_simple_ptp <- function(
 #' coronary artery disease (CAD) based on the
 #' 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 #' (PRECISE) clinical model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_precise_2021_simple_ptp
 #' @param have_q_waves The value of variable in the parameters

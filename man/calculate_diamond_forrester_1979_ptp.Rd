@@ -65,7 +65,7 @@ based on Diamond-Forrester 1979 model.
 This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on Diamond-Forrester 1979 model.
-Obstructive CAD was defined as a stenosis causing ≥ 50\% diameter stenosis
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
 on coronary CTA.
 }
 \examples{

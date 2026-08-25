@@ -3,7 +3,7 @@
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2020 Winther et. al. basic model (Basic_PTP).
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
@@ -144,7 +144,7 @@ calculate_winther_2020_basic_ptp <- function(
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2020 Winther et. al. Risk Factor-Weighted Clinical Likelihood (RF-CL) model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
@@ -342,7 +342,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
 #' coronary artery disease (CAD) based on
 #' 2020 Winther et. al.
 #' Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_lah_2022_extended_ptp

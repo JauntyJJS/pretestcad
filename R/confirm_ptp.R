@@ -233,8 +233,8 @@ calculate_confirm_2015_num_of_rf  <- function(
 #' a patient's risk score for obstructive
 #' coronary artery disease based on the
 #' 2015 CONFIRM Risk Score.
-#' Obstructive coronary artery disease was defined by ≥ 50%
-#' luminal diameter stenosis in any coronary artery ≥ 1.5 mm in diameter.
+#' Obstructive coronary artery disease was defined by \eqn{\geq} 50%
+#' luminal diameter stenosis in any coronary artery \eqn{\geq} 1.5 mm in diameter.
 #' @inheritParams calculate_esc_2019_ptp
 #' @inheritParams calculate_confirm_2015_num_of_rf
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of

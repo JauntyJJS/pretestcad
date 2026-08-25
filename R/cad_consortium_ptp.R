@@ -3,7 +3,7 @@
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2011 CAD Consortium 1 (CAD1) basic model.
-#' Obstructive CAD was defined as a stenosis causing ≥ 50% diameter stenosis
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -126,7 +126,7 @@ calculate_cad1_2011_ptp <- function(
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) basic model.
-#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' Obstructive coronary artery disease was defined as \eqn{\geq}50% diameter stenosis
 #' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -251,7 +251,7 @@ calculate_cad2_2012_basic_ptp <- function(
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) clinical model.
-#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' Obstructive coronary artery disease was defined as \eqn{\geq}50% diameter stenosis
 #' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -501,7 +501,7 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' pre-test probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' 2012 CAD Consortium 2 (CAD2) clinical and coronary calcium score (CCS) model.
-#' Obstructive coronary artery disease was defined as ≥50% diameter stenosis
+#' Obstructive coronary artery disease was defined as \eqn{\geq}50% diameter stenosis
 #' in at least one vessel found on catheter based coronary angiography.
 #' @inheritParams calculate_lah_2022_extended_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD

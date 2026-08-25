@@ -4,7 +4,7 @@
 #' coronary artery disease (CAD) based on the
 #' 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model.
 #' Obstructive coronary artery disease was defined as at least one
-#' ≥ 50% diameter stenosis by invasive coronary angiography (ICA).
+#' \eqn{\geq} 50% diameter stenosis by invasive coronary angiography (ICA).
 #' @inheritParams calculate_esc_2019_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @param chest_pain_type The value of variable in the parameters,
@@ -146,11 +146,11 @@ calculate_come_cct_2025_ptp <- function(
 #' coronary artery disease (CAD) based on the model that uses
 #' only CTA results from the COME-CCT Consortium cohort.
 #' Obstructive coronary artery disease was defined as at least one
-#' ≥ 50% diameter stenosis by invasive coronary angiography (ICA).
+#' \eqn{\geq} 50% diameter stenosis by invasive coronary angiography (ICA).
 #' @param cta_result The value of variable in the parameters,
 #' \code{label_cta_obstructive}, \code{label_cta_non_obstructive}, and \code{label_cta_unknown}.
 #' @param label_cta_obstructive Label(s) for patient having obstructive CAD
-#' defined as at least one ≥ 50% diameter stenosis in computed tomography angiography (CTA).
+#' defined as at least one \eqn{\geq} 50% diameter stenosis in computed tomography angiography (CTA).
 #' Default: \code{c("obstructive")}
 #' @param label_cta_non_obstructive Label(s) for patient having non-obstructive CAD
 #' defined as at least one < 50% diameter stenosis in computed tomography angiography (CTA).
@@ -234,7 +234,7 @@ calculate_cta_alone_2025_ptp <- function(
 #' coronary artery disease (CAD) based on the
 #' 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) with CTA PTP model.
 #' Obstructive coronary artery disease was defined as at least one
-#' ≥ 50% diameter stenosis by invasive coronary angiography (ICA).
+#' \eqn{\geq} 50% diameter stenosis by invasive coronary angiography (ICA).
 #' @inheritParams calculate_come_cct_2025_ptp
 #' @inheritParams calculate_cta_alone_2025_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD

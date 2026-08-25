@@ -76,7 +76,7 @@ This function returns a patient's
 pre-test probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 2025 Zuo et. al. PREDICT-OCAD model.
-Obstructive CAD was defined as ≥50\% stenosis on CCTA.
+Obstructive CAD was defined as \eqn{\geq}50\% stenosis on CCTA.
 }
 \details{
 The predictive model is based on 2649
