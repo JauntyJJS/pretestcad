@@ -130,6 +130,22 @@ coronary artery disease based on the
 \details{
 The predictive model is based on
 patients referred for cardiac catheterisation between 1969 and 1983.
+
+Model formula used is from Appendix: Study Models.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.7271\quad+ \\\\
+(1.1252 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.0483 * age)\quad+ \\\\
+(-0.5770 * sex\_is\_female)\quad+ \\\\
+(0.5923 * vascular\_disease\_index)\quad+ \\\\
+(0.4027 * log_{10}(duration\_of\_CAD\_symptoms\_year + 1))
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain for one year,

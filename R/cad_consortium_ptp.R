@@ -12,7 +12,20 @@
 #' patients from 14 hospitals in Europe and the United States.
 #'
 #' This model is also called the updated Diamond-Forrester model.
+#' Model formula used is from Table 3.
 #'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -4.37\quad+ \\\\
+#' (0.04 * age)\quad+ \\\\
+#' (1.34 * sex\_is\_male)\quad+ \\\\
+#' (1.91 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.64 * have\_atypical\_chest\_pain)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_cad1_2011_ptp(
@@ -55,7 +68,7 @@ calculate_cad1_2011_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -97,9 +110,9 @@ calculate_cad1_2011_ptp <- function(
   cad1_2011_ptp <- 1 /
     (1 + exp(-(-4.37 +
               (0.04 * age) +
-              (1.34 * sex) +
-              (0.64 * have_atypical_chest_pain) +
-              (1.91 * have_typical_chest_pain)
+              (1.34 * sex_male) +
+              (1.91 * have_typical_chest_pain) +
+              (0.64 * have_atypical_chest_pain)
     )
     )
     )
@@ -121,6 +134,23 @@ calculate_cad1_2011_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
+#' A web-based calculator is accessible at
+#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#'
+#' Model formula used is from Appendix Table 4.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -6.917\quad+ \\\\
+#' (0.063 * age)\quad+ \\\\
+#' (1.358 * sex\_is\_male)\quad+ \\\\
+#' (0.658 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (1.975 * have\_typical\_chest\_pain)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_cad2_2012_basic_ptp(
@@ -163,7 +193,7 @@ calculate_cad2_2012_basic_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -205,7 +235,7 @@ calculate_cad2_2012_basic_ptp <- function(
   cad2_2012_basic_ptp <- 1 /
     (1 + exp(-(-6.917 +
                (0.063 * age) +
-               (1.358 * sex) +
+               (1.358 * sex_male) +
                (0.658 * have_atypical_chest_pain) +
                (1.975 * have_typical_chest_pain)
     )
@@ -229,6 +259,28 @@ calculate_cad2_2012_basic_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
+#' Model formula used is from Appendix Table 4.
+#'
+#' A web-based calculator is accessible at
+#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -7.539\quad+ \\\\
+#' (0.062 * age)\quad+ \\\\
+#' (1.332 * sex\_is\_male)\quad+ \\\\
+#' (0.633 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (1.998 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.828 * have\_diabetes)\quad+ \\\\
+#' (0.338 * have\_hypertension)\quad+ \\\\
+#' (0.422 * have\_dyslipidemia)\quad+ \\\\
+#' (0.461 * have\_smoking\_history)\quad+ \\\\
+#' (-0.402 * have\_diabetes * have\_typical\_chest\_pain)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia
@@ -457,6 +509,29 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
+#' A web-based calculator is accessible at
+#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#'
+#' Model formula used is from Appendix Table 4.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -5.975\quad+ \\\\
+#' (0.011 * age)\quad+ \\\\
+#' (0.786 * sex\_is\_male)\quad+ \\\\
+#' (0.718 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (2.024 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.658 * have\_diabetes)\quad+ \\\\
+#' (0.235 * have\_hypertension)\quad+ \\\\
+#' (0.185 * have\_dyslipidemia)\quad+ \\\\
+#' (0.207 * have\_smoking\_history)\quad+ \\\\
+#' (0.577 * ln(CACS + 1))\quad+ \\\\
+#' (-0.780 * have\_diabetes * have\_typical\_chest\_pain)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia,

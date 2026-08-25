@@ -169,6 +169,32 @@ of at least one major coronary artery) coronary artery disease based on the
 \details{
 The predictive model is based on
 patients referred for cardiac catheterisation between 1969 and 1983.
+
+Model formula used is from Appendix: Study Models.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-7.376\quad+ \\\\
+(0.1126 * age)\quad+ \\\\
+(-0.328 * sex\_is\_female)\quad+ \\\\
+(-0.0301 * age * sex\_is\_female)\quad+ \\\\
+(2.581 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.976 * have\_atypical\_chest\_pain)\quad+ \\\\
+(1.093 * have\_history\_of\_MI)\quad+ \\\\
+(1.213 * have\_Q\_waves)\quad+ \\\\
+(0.741 * have\_history\_of\_MI * have\_Q\_waves)\quad+ \\\\
+(2.596 * have\_smoking\_history)\quad+ \\\\
+(1.845 * have\_dyslipidemia)\quad+ \\\\
+(0.694 * have\_diabetes)\quad+ \\\\
+(0.637 * have\_ST-T\_changes)\quad+ \\\\
+(-0.0404 * age * have\_smoking\_history)\quad+ \\\\
+(-0.0251 * age * have_\_dyslipidemia)\quad+ \\\\
+(0.550 * sex\_is\_female * have\_smoking\_history)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain,

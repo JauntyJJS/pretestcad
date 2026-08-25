@@ -65,6 +65,20 @@ The predictive model is based on
 patients from 14 hospitals in Europe and the United States.
 
 This model is also called the updated Diamond-Forrester model.
+Model formula used is from Table 3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-4.37\quad+ \\\\
+(0.04 * age)\quad+ \\\\
+(1.34 * sex\_is\_male)\quad+ \\\\
+(1.91 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.64 * have\_atypical\_chest\_pain)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

@@ -141,6 +141,30 @@ in at least one vessel found on catheter based coronary angiography.
 \details{
 The predictive model is based on
 patients from 18 hospitals in Europe and the United States.
+
+A web-based calculator is accessible at
+\url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+
+Model formula used is from Appendix Table 4.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-5.975\quad+ \\\\
+(0.011 * age)\quad+ \\\\
+(0.786 * sex\_is\_male)\quad+ \\\\
+(0.718 * have\_atypical\_chest\_pain)\quad+ \\\\
+(2.024 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.658 * have\_diabetes)\quad+ \\\\
+(0.235 * have\_hypertension)\quad+ \\\\
+(0.185 * have\_dyslipidemia)\quad+ \\\\
+(0.207 * have\_smoking\_history)\quad+ \\\\
+(0.577 * ln(CACS + 1))\quad+ \\\\
+(-0.780 * have\_diabetes * have\_typical\_chest\_pain)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain,

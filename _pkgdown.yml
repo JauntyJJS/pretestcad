@@ -16,35 +16,6 @@ reference:
     contents:
     - calculate_aha_2021_ptp
     - calculate_aha_2012_tbl_9_ptp
-  - title: CAD Consortium PTP Scores
-    desc: >
-      Functions giving PTP scores from the CAD Consortium cohort
-    contents:
-    - calculate_cad2_2012_basic_ptp
-    - calculate_cad2_2012_clinical_ptp
-    - calculate_cad2_2012_clinical_ccs_ptp
-    - calculate_cad1_2011_ptp
-  - title: CONFIRM PTP Scores
-    desc: >
-      Functions giving PTP scores from the CONFIRM registry
-    contents:
-    - calculate_confirm_2015_num_of_rf
-    - calculate_confirm_2015_ptp
-  - title: 1979 Diamond-Forrester PTP Scores
-    desc: >
-      Functions giving PTP scores from the 1979 Diamond-Forrester paper
-    contents:
-    - calculate_diamond_forrester_1979_ptp
-  - title: 1993 Duke Clinical Scores
-    desc: >
-      Functions giving PTP scores from the 1993 Pryor et. al. paper
-    contents:
-    - calculate_dcs_1993_sig_cad_ptp
-    - calculate_dcs_1993_risk_factor_index
-    - calculate_dcs_1993_pain_index
-    - calculate_dcs_1993_vascular_disease_index
-    - calculate_dcs_1993_severe_cad_ptp
-    - calculate_dcs_1993_lm_cad_ptp
   - title: ESC Conference PTP Scores
     desc: >
       Functions giving PTP scores from the ESC Conference
@@ -55,53 +26,12 @@ reference:
     - calculate_esc_2024_fig_4_ptp
     - calculate_esc_2019_ptp
     - calculate_esc_2013_ptp
-  - title: PROMISE Risk Scores
+  - title: 2025 Rasmussen et. al. PTP scores
     desc: >
-      Functions giving PTP scores from the PROMISE cohort
+      Functions giving PTP scores from the 2025 Rasmussen et. al. paper
     contents:
-    - calculate_prms_2017_ptp
-  - title: 2018 Chen et. al. PTP scores
-    desc: >
-      Functions giving PTP scores from the 2018 Chen et. al. paper
-    contents:
-    - calculate_chen_2018_mfs_formula_ptp
-    - calculate_chen_2018_mfs_fig_3_ptp
-  - title: 2019 Reeh et. al. PTP scores
-    desc: >
-      Functions giving PTP scores from the 2019 Reeh et. al. paper
-    contents:
-    - calculate_reeh_2019_basic_ptp
-    - calculate_reeh_2019_clinical_ptp
-  - title: 2020 Winther et. al. PTP scores
-    desc: >
-      Functions giving PTP scores from the 2020 Winther et. al. paper
-    contents:
-    - calculate_winther_2020_basic_ptp
-    - calculate_winther_2020_rf_cl_ptp
-    - calculate_winther_2020_cacs_cl_ptp
-  - title: PRECISE PTP scores
-    desc: >
-      Functions giving PTP scores from the 2021 Wang et. al. paper
-    contents:
-    - calculate_precise_2021_simple_ptp
-    - calculate_precise_2021_clinical_ptp
-  - title: LAH PTP scores
-    desc: >
-      Functions giving PTP scores from the 2022 Baskaran et. al. paper
-    contents:
-    - calculate_lah_2022_clinical_ptp
-    - calculate_lah_2022_extended_ptp
-  - title: 2023 Miller et. al. PTP scores
-    desc: >
-      Functions giving PTP scores from the 2023 Miller et. al. paper
-    contents:
-    - calculate_miller_2023_vessel_50_cad_ptp
-    - calculate_miller_2023_lm_50_non_lm_70_cad_ptp
-  - title: 2025 Zuo et. al. PTP scores
-    desc: >
-      Functions giving PTP scores from the 2025 Zuo et. al. paper
-    contents:
-    - calculate_zuo_2025_predict_ocad_ptp
+    - calculate_rasmussen_2025_rf_cl_ccta_ptp
+    - calculate_rasmussen_2025_cacs_cl_ccta_ptp
   - title: COME-CCT PTP Scores
     desc: >
       Functions giving PTP scores from the COME-CCT Consortium cohort
@@ -109,12 +39,82 @@ reference:
     - calculate_come_cct_2025_ptp
     - calculate_cta_alone_2025_ptp
     - calculate_come_cct_with_cta_2025_ptp
-  - title: 2025 Rasmussen et. al. PTP scores
+  - title: 2025 Zuo et. al. PTP scores
     desc: >
-      Functions giving PTP scores from the 2025 Rasmussen et. al. paper
+      Functions giving PTP scores from the 2025 Zuo et. al. paper
     contents:
-    - calculate_rasmussen_2025_rf_cl_ccta_ptp
-    - calculate_rasmussen_2025_cacs_cl_ccta_ptp
+    - calculate_zuo_2025_predict_ocad_ptp
+  - title: 2023 Miller et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2023 Miller et. al. paper
+    contents:
+    - calculate_miller_2023_vessel_50_cad_ptp
+    - calculate_miller_2023_lm_50_non_lm_70_cad_ptp
+  - title: 2022 Baskaran et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2022 Baskaran et. al. paper
+    contents:
+    - calculate_lah_2022_clinical_ptp
+    - calculate_lah_2022_extended_ptp
+  - title: 2021 Wang et. al. PRECISE PTP scores
+    desc: >
+      Functions giving PTP scores from the 2021 Wang et. al. paper
+    contents:
+    - calculate_precise_2021_simple_ptp
+    - calculate_precise_2021_clinical_ptp
+  - title: 2020 Winther et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2020 Winther et. al. paper
+    contents:
+    - calculate_winther_2020_basic_ptp
+    - calculate_winther_2020_rf_cl_ptp
+    - calculate_winther_2020_cacs_cl_ptp
+  - title: 2019 Reeh et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2019 Reeh et. al. paper
+    contents:
+    - calculate_reeh_2019_basic_ptp
+    - calculate_reeh_2019_clinical_ptp
+  - title: 2018 Chen et. al. PTP scores
+    desc: >
+      Functions giving PTP scores from the 2018 Chen et. al. paper
+    contents:
+    - calculate_chen_2018_mfs_formula_ptp
+    - calculate_chen_2018_mfs_fig_3_ptp
+  - title: PROMISE Risk Scores
+    desc: >
+      Functions giving PTP scores from the PROMISE cohort
+    contents:
+    - calculate_prms_2017_ptp
+  - title: CONFIRM PTP Scores
+    desc: >
+      Functions giving PTP scores from the CONFIRM registry
+    contents:
+    - calculate_confirm_2015_num_of_rf
+    - calculate_confirm_2015_ptp
+  - title: CAD Consortium PTP Scores
+    desc: >
+      Functions giving PTP scores from the CAD Consortium cohort
+    contents:
+    - calculate_cad2_2012_basic_ptp
+    - calculate_cad2_2012_clinical_ptp
+    - calculate_cad2_2012_clinical_ccs_ptp
+    - calculate_cad1_2011_ptp
+  - title: 1993 Duke Clinical Scores
+    desc: >
+      Functions giving PTP scores from the 1993 Pryor et. al. paper
+    contents:
+    - calculate_dcs_1993_sig_cad_ptp
+    - calculate_dcs_1993_risk_factor_index
+    - calculate_dcs_1993_pain_index
+    - calculate_dcs_1993_vascular_disease_index
+    - calculate_dcs_1993_severe_cad_ptp
+    - calculate_dcs_1993_lm_cad_ptp
+  - title: 1979 Diamond-Forrester PTP Scores
+    desc: >
+      Functions giving PTP scores from the 1979 Diamond-Forrester paper
+    contents:
+    - calculate_diamond_forrester_1979_ptp
   - title: Utilities
     desc: >
       Utilities functions
