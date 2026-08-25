@@ -20,15 +20,21 @@ calculate_esc_2024_symptom_score(
 )
 }
 \arguments{
-\item{chest_pain_type}{The value of variable in the parameters \code{label_cpt_no_chest_pain},
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters
+\code{label_cpt_no_chest_pain}, \cr
+\code{label_cpt_nonanginal}, \cr
+\code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, \cr
+and \code{label_cpt_unknown}.}
 
-\item{have_dyspnoea}{The value of variable in the parameters \code{label_have_dyspnoea_no},
-\code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
+\item{have_dyspnoea}{The value of variable in the parameters
+\code{label_have_dyspnoea_no}, \cr
+\code{label_have_dyspnoea_yes} and
+\code{label_have_dyspnoea_unknown}.}
 
-\item{allow_na}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score.
+\item{allow_na}{A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+indicating whether we can allow \code{chest_pain_type} or \code{have_dyspnoea} \cr
+to be \code{NA} when calculating the score.
 Default: \code{TRUE}}
 
 \item{label_have_dyspnoea_no}{Label(s) for patient having no dyspnoea symptoms.
@@ -43,7 +49,8 @@ Default: \code{c(NA, NaN)}}
 \item{label_cpt_no_chest_pain}{Label(s) for patient having no chest pain.
 Default: \code{c("no chest pain")}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.

@@ -11,11 +11,11 @@
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @param hdl_mg_dl Input positive numeric value to indicate the
 #' patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.
-#' @param is_minority_ethnicity The value of variable in the parameters
-#' \code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}
+#' @param is_minority_ethnicity The value of variable in the parameters \cr
+#' \code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}, \cr
 #' and \code{label_is_minority_ethnicity_unknown}.
-#' @param have_stress_symptoms The value of variable in the parameters
-#' \code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}
+#' @param have_stress_symptoms The value of variable in the parameters \cr
+#' \code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}, \cr
 #' and \code{label_have_stress_symptoms_unknown}.
 #' Default: \code{NA}
 #' @param label_is_minority_ethnicity_no Label(s) for patient not from a

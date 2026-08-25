@@ -46,15 +46,18 @@ to indicate the symptom characteristics of the patient.
 }}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -73,7 +76,7 @@ Default: \code{c("typical")}}
 Default: \code{c("atypical")}}
 
 \item{label_symptom_type_nonanginal}{Label(s) for patient having nonanginal
-or non-specific chest pain.
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_symptom_type_dyspnoea}{Label(s) for patient having dyspnoea.

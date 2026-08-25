@@ -49,7 +49,7 @@ Default: \code{c("typical")}}
 Default: \code{c("atypical")}}
 
 \item{label_symptom_type_nonanginal}{Label(s) for patient having nonanginal
-or non-specific chest pain.
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_symptom_type_dyspnoea}{Label(s) for patient having dyspnoea.

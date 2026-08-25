@@ -24,15 +24,19 @@ calculate_zuo_2025_predict_ocad_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{coronary_calcium_score}{Input non-negative integer to indicate the
@@ -83,8 +87,8 @@ The predictive model is based on 2649
 patients suspected of CAD at Jinling Hospital, Nanjing University
 (Jiangsu, China), spanning from January 2010 to December 2020.
 
-Model formula used is taken from the web-based calculator, accessible at
-\url{https://predict-obstructive-cad.shinyapps.io/dynnomapp/}.
+Model formula used is taken from the web-based
+\href{https://predict-obstructive-cad.shinyapps.io/dynnomapp/}{calculator}.
 
 It is of the form
 \deqn{\frac{1}{(1 + e^{-F(x)})}}

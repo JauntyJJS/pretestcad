@@ -7,9 +7,10 @@
 #' \eqn{\geq} 50% diameter stenosis by invasive coronary angiography (ICA).
 #' @inheritParams calculate_esc_2019_ptp
 #' @param age Input numeric value to indicate the age of the patient in years.
-#' @param chest_pain_type The value of variable in the parameters,
-#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical},
-#' \code{label_cpt_others} and \code{label_cpt_unknown}.
+#' @param chest_pain_type The value of variable in the parameters, \cr
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+#' \code{label_cpt_typical}, \code{label_cpt_others}, \cr
+#' and \code{label_cpt_unknown}.
 #' @param label_cpt_others Label(s) for patient having other forms of chest pain.
 #' Default: \code{c("others")}
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -147,13 +148,14 @@ calculate_come_cct_2025_ptp <- function(
 #' only CTA results from the COME-CCT Consortium cohort.
 #' Obstructive coronary artery disease was defined as at least one
 #' \eqn{\geq} 50% diameter stenosis by invasive coronary angiography (ICA).
-#' @param cta_result The value of variable in the parameters,
-#' \code{label_cta_obstructive}, \code{label_cta_non_obstructive}, and \code{label_cta_unknown}.
+#' @param cta_result The value of variable in the parameters, \cr
+#' \code{label_cta_obstructive}, \code{label_cta_non_obstructive}, \cr
+#' and \code{label_cta_unknown}.
 #' @param label_cta_obstructive Label(s) for patient having obstructive CAD
-#' defined as at least one \eqn{\geq} 50% diameter stenosis in computed tomography angiography (CTA).
+#' defined as at least one \eqn{\geq} 50% diameter stenosis in computed tomography angiography (CTA). \cr
 #' Default: \code{c("obstructive")}
 #' @param label_cta_non_obstructive Label(s) for patient having non-obstructive CAD
-#' defined as at least one < 50% diameter stenosis in computed tomography angiography (CTA).
+#' defined as at least one < 50% diameter stenosis in computed tomography angiography (CTA). \cr
 #' Default: \code{c("non_obstructive")}
 #' @param label_cta_unknown Label(s) for patient unknown CTA results.
 #' Default: \code{c(NA, NaN)}

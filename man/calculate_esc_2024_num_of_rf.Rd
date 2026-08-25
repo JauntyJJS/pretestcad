@@ -31,23 +31,28 @@ calculate_esc_2024_num_of_rf(
 }
 \arguments{
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{max_na}{Input integer 0 to 5 to indicate the maximum number of

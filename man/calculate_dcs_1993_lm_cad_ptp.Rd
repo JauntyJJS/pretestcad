@@ -34,23 +34,29 @@ calculate_dcs_1993_lm_cad_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{The value of variable in the parameters
-\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-and \code{label_have_typical_chest_pain_unknown}.}
+\item{have_typical_chest_pain}{The value of variable in the parameters \cr
+\code{label_have_typical_chest_pain_no}, \cr
+\code{label_have_typical_chest_pain_yes} and \cr
+\code{label_have_typical_chest_pain_unknown}.}
 
 \item{have_peripheral_vascular_disease}{The value of variable in the parameters
-\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+\code{label_have_pvd_no}, \cr
+\code{label_have_pvd_yes},
 and \code{label_have_pvd_unknown}.}
 
 \item{have_cerebrovascular_disease}{The value of variable in the parameters
-\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+\code{label_have_cvd_no}, \cr
+\code{label_have_cvd_yes},
 and \code{label_have_cvd_unknown}.}
 
 \item{have_carotid_bruits}{The value of variable in the parameters
-\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+\code{label_have_carotid_bruits_no}, \cr
+\code{label_have_carotid_bruits_yes}, \cr
 and \code{label_have_carotid_bruits_unknown}.}
 
 \item{duration_of_cad_symptoms_year}{Input integer to indicate the duration of

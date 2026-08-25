@@ -28,11 +28,14 @@ calculate_chen_2018_mfs_fig_3_ptp(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{tc_mg_dl}{Input positive integer value to indicate the
@@ -47,8 +50,10 @@ patient's Left Ventricular Ejection Fraction (LVEF) in \eqn{\%}}
 \item{hsCRP_mg_dl}{Input positive integer value to indicate the
 patient's high-sensitivity C reactive protein (hs-CRP) in \eqn{mg/dL}.}
 
-\item{have_anemia}{The value of variable in the parameters \code{label_have_anemia_no},
-\code{label_have_anemia_yes} and \code{label_have_anemia_unknown}.}
+\item{have_anemia}{The value of variable in the parameters
+\code{label_have_anemia_no}, \cr
+\code{label_have_anemia_yes}, and \cr
+\code{label_have_anemia_unknown}.}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed

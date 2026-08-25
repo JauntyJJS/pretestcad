@@ -5,8 +5,9 @@
 #' ESC 2024 guidelines.
 #' @inheritParams calculate_esc_2019_ptp
 #' @inheritParams rlang::args_error_context
-#' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
+#' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+#' indicating whether we can allow `chest_pain_type` or `have_dyspnoea` \cr
+#' to be \code{NA} when calculating the score.
 #' Default: \code{TRUE}
 #' @return An integer indicating the symptom score of the patient.
 #' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnoea} are \code{NA}.
@@ -126,19 +127,24 @@ calculate_esc_2024_symptom_score <- function(
 #' ESC 2024 guidelines.
 #' @inheritParams rlang::args_error_context
 #' @param have_family_history The value of variable in the parameters
-#' \code{label_have_family_history_no}, \code{label_have_family_history_yes}
+#' \code{label_have_family_history_no}, \cr
+#' \code{label_have_family_history_yes} \cr
 #' and \code{label_have_family_history_unknown}.
 #' @param have_smoking_history The value of variable in the parameters
-#' \code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+#' \code{label_have_smoking_history_no}, \cr
+#' \code{label_have_smoking_history_yes}, \cr
 #' and \code{label_have_smoking_history_unknown}.
 #' @param have_dyslipidemia The value of variable in the parameters
-#' \code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+#' \code{label_have_dyslipidemia_no}, \cr
+#' \code{label_have_dyslipidemia_yes}
 #' and \code{label_have_dyslipidemia_unknown}.
 #' @param have_hypertension The value of variable in the parameters
-#' \code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+#' \code{label_have_hypertension_no}, \cr
+#' \code{label_have_hypertension_yes},
 #' and \code{label_have_hypertension_unknown}.
 #' @param have_diabetes The value of variable in the parameters
-#' \code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+#' \code{label_have_diabetes_no}, \cr
+#' \code{label_have_diabetes_yes}
 #' and \code{label_have_diabetes_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
@@ -650,8 +656,9 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
 #' @inheritParams calculate_esc_2024_symptom_score
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
-#' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score
+#' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+#' indicating whether we can allow \code{chest_pain_type} \cr
+#' or \code{have_dyspnoea} to be \code{NA} when calculating the score.
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0

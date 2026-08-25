@@ -8,9 +8,9 @@
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @param age Input numeric value to indicate the age of the patient in years.
-#' @param chest_pain_type The value of variable in the parameters,
-#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-#' \code{label_cpt_unknown}.
+#' @param chest_pain_type The value of variable in the parameters, \cr
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+#' \code{label_cpt_typical} and \code{label_cpt_unknown}.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @details The predictive model is based on

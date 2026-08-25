@@ -66,51 +66,61 @@ calculate_dcs_1993_severe_cad_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{have_progressive_angina}{The value of variable in the parameters
-\code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
-and \code{label_have_progressive_angina_unknown}.}
+\code{label_have_progressive_angina_no}, \cr
+\code{label_have_progressive_angina_yes}, and \cr
+\code{label_have_progressive_angina_unknown}.}
 
 \item{have_nocturnal_angina}{The value of variable in the parameters
-\code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
-and \code{label_have_nocturnal_angina_unknown}.}
+\code{label_have_nocturnal_angina_no}, \cr
+\code{label_have_nocturnal_angina_yes}, and \cr
+\code{label_have_nocturnal_angina_unknown}.}
 
 \item{have_peripheral_vascular_disease}{The value of variable in the parameters
-\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+\code{label_have_pvd_no}, \cr
+\code{label_have_pvd_yes},
 and \code{label_have_pvd_unknown}.}
 
 \item{have_cerebrovascular_disease}{The value of variable in the parameters
-\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+\code{label_have_cvd_no}, \cr
+\code{label_have_cvd_yes},
 and \code{label_have_cvd_unknown}.}
 
 \item{have_carotid_bruits}{The value of variable in the parameters
-\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+\code{label_have_carotid_bruits_no}, \cr
+\code{label_have_carotid_bruits_yes}, \cr
 and \code{label_have_carotid_bruits_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
-\item{have_q_waves}{The value of variable in the parameters
-\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+\item{have_q_waves}{The value of variable in the parameters \cr
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}, \cr
 and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{The value of variable in the parameters
-\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+\item{have_st_t_changes}{The value of variable in the parameters \cr
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}, \cr
 and \code{label_have_st_t_changes_unknown}.}
 
 \item{frequency_of_angina_pain_per_week}{Input integer to indicate the patient's
@@ -145,7 +155,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.

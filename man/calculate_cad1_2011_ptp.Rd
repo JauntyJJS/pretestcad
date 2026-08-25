@@ -20,12 +20,14 @@ calculate_cad1_2011_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
 Default: \code{c("male")}}
@@ -36,7 +38,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.

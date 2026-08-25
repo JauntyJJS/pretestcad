@@ -37,28 +37,35 @@ calculate_confirm_2015_ptp(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{The value of variable in the parameters
-\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-and \code{label_have_typical_chest_pain_unknown}.}
+\item{have_typical_chest_pain}{The value of variable in the parameters \cr
+\code{label_have_typical_chest_pain_no}, \cr
+\code{label_have_typical_chest_pain_yes} and \cr
+\code{label_have_typical_chest_pain_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
-\item{is_current_smoker}{The value of variable in the parameters
-\code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
-and \code{label_is_current_smoker_unknown}.}
+\item{is_current_smoker}{The value of variable in the parameters \cr
+\code{label_is_current_smoker_no}, \cr
+\code{label_is_current_smoker_yes}, and \cr
+\code{label_is_current_smoker_unknown}.}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.

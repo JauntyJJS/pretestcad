@@ -13,15 +13,16 @@ calculate_cta_alone_2025_ptp(
 )
 }
 \arguments{
-\item{cta_result}{The value of variable in the parameters,
-\code{label_cta_obstructive}, \code{label_cta_non_obstructive}, and \code{label_cta_unknown}.}
+\item{cta_result}{The value of variable in the parameters, \cr
+\code{label_cta_obstructive}, \code{label_cta_non_obstructive}, \cr
+and \code{label_cta_unknown}.}
 
 \item{label_cta_obstructive}{Label(s) for patient having obstructive CAD
-defined as at least one \eqn{\geq} 50\% diameter stenosis in computed tomography angiography (CTA).
+defined as at least one \eqn{\geq} 50\% diameter stenosis in computed tomography angiography (CTA). \cr
 Default: \code{c("obstructive")}}
 
 \item{label_cta_non_obstructive}{Label(s) for patient having non-obstructive CAD
-defined as at least one < 50\% diameter stenosis in computed tomography angiography (CTA).
+defined as at least one < 50\% diameter stenosis in computed tomography angiography (CTA). \cr
 Default: \code{c("non_obstructive")}}
 
 \item{label_cta_unknown}{Label(s) for patient unknown CTA results.

@@ -15,8 +15,10 @@
 #' patient's Left Ventricular Ejection Fraction (LVEF) in \eqn{\%}
 #' @param hsCRP_mg_dl Input positive integer value to indicate the
 #' patient's high-sensitivity C reactive protein (hs-CRP) in \eqn{mg/dL}.
-#' @param have_anemia The value of variable in the parameters \code{label_have_anemia_no},
-#' \code{label_have_anemia_yes} and \code{label_have_anemia_unknown}.
+#' @param have_anemia The value of variable in the parameters
+#' \code{label_have_anemia_no}, \cr
+#' \code{label_have_anemia_yes}, and \cr
+#' \code{label_have_anemia_unknown}.
 #' @param label_have_anemia_no Label(s) for patient without anemia.
 #' Default: \code{c("no")}
 #' @param label_have_anemia_yes Label(s) for patient with anemia. The
@@ -333,8 +335,10 @@ calculate_chen_2018_mfs_fig_3_ptp <- function(
 #' patient's Left Ventricular Ejection Fraction (LVEF) in \eqn{\%}
 #' @param hsCRP_mg_dl Input positive numeric value to indicate the
 #' patient's high-sensitivity C reactive protein (hs-CRP) in \eqn{mg/dL}.
-#' @param have_anemia The value of variable in the parameters \code{label_have_anemia_no},
-#' \code{label_have_anemia_yes} and \code{label_have_anemia_unknown}.
+#' @param have_anemia The value of variable in the parameters
+#' \code{label_have_anemia_no}, \cr
+#' \code{label_have_anemia_yes}, and \cr
+#' \code{label_have_anemia_unknown}.
 #' @param label_have_anemia_no Label(s) for patient without anemia.
 #' Default: \code{c("no")}
 #' @param label_have_anemia_yes Label(s) for patient with anemia. The

@@ -6,7 +6,8 @@
 #' @inheritParams calculate_precise_2021_clinical_ptp
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param have_mi The value of variable in the parameters
-#' \code{label_have_mi_no}, \code{label_have_mi_yes}
+#' \code{label_have_mi_no}, \cr
+#' \code{label_have_mi_yes}
 #' and \code{label_have_mi_unknown}.
 #' @param label_have_mi_no Label(s) for patient not having a previous history of MI.
 #' Default: \code{c("no")}
@@ -474,11 +475,13 @@ calculate_dcs_1993_risk_factor_index <- function(
 #' @param frequency_of_angina_pain_per_week Input integer to indicate the patient's
 #' frequency of angina per week.
 #' @param have_progressive_angina The value of variable in the parameters
-#' \code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
-#' and \code{label_have_progressive_angina_unknown}.
+#' \code{label_have_progressive_angina_no}, \cr
+#' \code{label_have_progressive_angina_yes}, and \cr
+#' \code{label_have_progressive_angina_unknown}.
 #' @param have_nocturnal_angina The value of variable in the parameters
-#' \code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
-#' and \code{label_have_nocturnal_angina_unknown}.
+#' \code{label_have_nocturnal_angina_no}, \cr
+#' \code{label_have_nocturnal_angina_yes}, and \cr
+#' \code{label_have_nocturnal_angina_unknown}.
 #' @param max_na Input integer 0 to 6 to indicate the maximum number of
 #' missing symptoms to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -503,7 +506,7 @@ calculate_dcs_1993_risk_factor_index <- function(
 #'
 #' @return An integer indicating the patient's pain index.
 #' It can also be \code{NA} if the number of missing symptoms exceeds the \code{max_na}
-#' input value or the frequency of angina per week exceed the
+#' input value or the frequency of angina per week exceed the \cr
 #' \code{max_frequency_of_angina_pain_per_week} input value.
 #' @examples
 #' calculate_dcs_1993_pain_index(
@@ -764,13 +767,16 @@ calculate_dcs_1993_pain_index <- function(
 #' Duke Clinical Score 1993 paper.
 #' @inheritParams rlang::args_error_context
 #' @param have_peripheral_vascular_disease The value of variable in the parameters
-#' \code{label_have_pvd_no}, \code{label_have_pvd_yes}
+#' \code{label_have_pvd_no}, \cr
+#' \code{label_have_pvd_yes},
 #' and \code{label_have_pvd_unknown}.
 #' @param have_cerebrovascular_disease The value of variable in the parameters
-#' \code{label_have_cvd_no}, \code{label_have_cvd_yes}
+#' \code{label_have_cvd_no}, \cr
+#' \code{label_have_cvd_yes},
 #' and \code{label_have_cvd_unknown}.
 #' @param have_carotid_bruits The value of variable in the parameters
-#' \code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+#' \code{label_have_carotid_bruits_no}, \cr
+#' \code{label_have_carotid_bruits_yes}, \cr
 #' and \code{label_have_carotid_bruits_unknown}.
 #' @param max_na Input integer 0 to 3 to indicate the maximum number of
 #' missing disease history to tolerate before outputting an \code{NA}.

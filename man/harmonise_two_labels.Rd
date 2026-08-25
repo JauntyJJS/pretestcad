@@ -18,19 +18,22 @@ harmonise_two_labels(
 \arguments{
 \item{arg}{Input argument, in characters to be harmonised}
 
-\item{label_one}{Input character vector representing the ways to identify \code{harmonise_label_one}}
+\item{label_one}{Input character vector representing the ways to \cr
+identify \code{harmonise_label_one}}
 
-\item{label_two}{Input character vector representing the ways to identify \code{harmonise_label_two}}
+\item{label_two}{Input character vector representing the ways to \cr
+identify \code{harmonise_label_two}}
 
-\item{label_unknown}{Input character vector representing the ways to identify \code{harmonise_label_unknown}}
+\item{label_unknown}{Input character vector representing the ways to \cr
+identify \code{harmonise_label_unknown}}
 
-\item{harmonise_label_one}{Input character representing the harmonised label for \code{label_one}
+\item{harmonise_label_one}{Input character representing the harmonised label for \code{label_one} \cr
 Default: 'group_1'}
 
-\item{harmonise_label_two}{Input character representing the harmonised label for \code{label_two}
+\item{harmonise_label_two}{Input character representing the harmonised label for \code{label_two} \cr
 Default: 'group_2'}
 
-\item{harmonise_label_unknown}{Input character representing the harmonised label for \code{label_unknown}
+\item{harmonise_label_unknown}{Input character representing the harmonised label for \code{label_unknown} \cr
 Default: NA}
 
 \item{error_call}{The execution environment of a currently

@@ -28,7 +28,7 @@
 #' @param label_symptom_type_atypical Label(s) for patient having atypical chest pain.
 #' Default: \code{c("atypical")}
 #' @param label_symptom_type_nonanginal Label(s) for patient having nonanginal
-#' or non-specific chest pain.
+#' or non-specific chest pain. \cr
 #' Default: \code{c("nonanginal")}
 #' @param label_symptom_type_dyspnoea Label(s) for patient having dyspnoea.
 #' Default: \code{c("dyspnoea")}

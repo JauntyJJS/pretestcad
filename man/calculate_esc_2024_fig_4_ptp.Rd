@@ -48,38 +48,51 @@ calculate_esc_2024_fig_4_ptp(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters \code{label_cpt_no_chest_pain},
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters
+\code{label_cpt_no_chest_pain}, \cr
+\code{label_cpt_nonanginal}, \cr
+\code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, \cr
+and \code{label_cpt_unknown}.}
 
-\item{have_dyspnoea}{The value of variable in the parameters \code{label_have_dyspnoea_no},
-\code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
+\item{have_dyspnoea}{The value of variable in the parameters
+\code{label_have_dyspnoea_no}, \cr
+\code{label_have_dyspnoea_yes} and
+\code{label_have_dyspnoea_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
-\item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score}
+\item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+indicating whether we can allow \code{chest_pain_type} \cr
+or \code{have_dyspnoea} to be \code{NA} when calculating the score.}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
@@ -120,7 +133,8 @@ Default: \code{c(NA, NaN)}}
 \item{label_cpt_no_chest_pain}{Label(s) for patient having no chest pain.
 Default: \code{c("no chest pain")}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.

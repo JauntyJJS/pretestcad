@@ -14,8 +14,8 @@
 #' patients suspected of CAD at Jinling Hospital, Nanjing University
 #' (Jiangsu, China), spanning from January 2010 to December 2020.
 #'
-#' Model formula used is taken from the web-based calculator, accessible at
-#' \url{https://predict-obstructive-cad.shinyapps.io/dynnomapp/}.
+#' Model formula used is taken from the web-based
+#' [calculator](https://predict-obstructive-cad.shinyapps.io/dynnomapp/).
 #'
 #' It is of the form
 #' \deqn{\frac{1}{(1 + e^{-F(x)})}}

@@ -25,15 +25,19 @@ calculate_come_cct_with_cta_2025_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical},
-\code{label_cpt_others} and \code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, \code{label_cpt_others}, \cr
+and \code{label_cpt_unknown}.}
 
-\item{cta_result}{The value of variable in the parameters,
-\code{label_cta_obstructive}, \code{label_cta_non_obstructive}, and \code{label_cta_unknown}.}
+\item{cta_result}{The value of variable in the parameters, \cr
+\code{label_cta_obstructive}, \code{label_cta_non_obstructive}, \cr
+and \code{label_cta_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
 Default: \code{c("male")}}
@@ -44,7 +48,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -60,11 +65,11 @@ Default: \code{c("others")}}
 Default: \code{c(NA, NaN)}}
 
 \item{label_cta_obstructive}{Label(s) for patient having obstructive CAD
-defined as at least one \eqn{\geq} 50\% diameter stenosis in computed tomography angiography (CTA).
+defined as at least one \eqn{\geq} 50\% diameter stenosis in computed tomography angiography (CTA). \cr
 Default: \code{c("obstructive")}}
 
 \item{label_cta_non_obstructive}{Label(s) for patient having non-obstructive CAD
-defined as at least one < 50\% diameter stenosis in computed tomography angiography (CTA).
+defined as at least one < 50\% diameter stenosis in computed tomography angiography (CTA). \cr
 Default: \code{c("non_obstructive")}}
 
 \item{label_cta_unknown}{Label(s) for patient unknown CTA results.

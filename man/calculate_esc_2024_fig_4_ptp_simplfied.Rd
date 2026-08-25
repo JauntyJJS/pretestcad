@@ -19,8 +19,10 @@ calculate_esc_2024_fig_4_ptp_simplfied(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{symptom_score}{An integer indicating the symptom score of the patient.
 This value can be calculated via the \code{\link{calculate_esc_2024_symptom_score}}}

@@ -44,38 +44,45 @@ calculate_prms_2017_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{hdl_mg_dl}{Input positive numeric value to indicate the
 patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.}
 
-\item{is_minority_ethnicity}{The value of variable in the parameters
-\code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}
+\item{is_minority_ethnicity}{The value of variable in the parameters \cr
+\code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}, \cr
 and \code{label_is_minority_ethnicity_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
-\item{have_stress_symptoms}{The value of variable in the parameters
-\code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}
+\item{have_stress_symptoms}{The value of variable in the parameters \cr
+\code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}, \cr
 and \code{label_have_stress_symptoms_unknown}.
 Default: \code{NA}}
 

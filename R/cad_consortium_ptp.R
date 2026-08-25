@@ -134,8 +134,8 @@ calculate_cad1_2011_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
-#' A web-based calculator is accessible at
-#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#' A web-based calculator is
+#' [accessible](https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium).
 #'
 #' Model formula used is from Appendix Table 4.
 #'
@@ -261,8 +261,8 @@ calculate_cad2_2012_basic_ptp <- function(
 #'
 #' Model formula used is from Appendix Table 4.
 #'
-#' A web-based calculator is accessible at
-#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#' A web-based calculator is
+#' [accessible](https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium).
 #'
 #' It is of the form
 #' \deqn{\frac{1}{(1 + e^{-F(x)})}}
@@ -509,8 +509,8 @@ calculate_cad2_2012_clinical_ptp <- function(
 #' @details The predictive model is based on
 #' patients from 18 hospitals in Europe and the United States.
 #'
-#' A web-based calculator is accessible at
-#' \url{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}.
+#' A web-based calculator is
+#' [accessible](https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium).
 #'
 #' Model formula used is from Appendix Table 4.
 #'

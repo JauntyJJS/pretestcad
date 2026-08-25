@@ -4,12 +4,14 @@
 #' probability of obstructive coronary artery disease (CAD) based on the
 #' 2015 CONFIRM Risk Score.
 #' @inheritParams calculate_esc_2024_num_of_rf
-#' @param have_typical_chest_pain The value of variable in the parameters
-#' \code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-#' and \code{label_have_typical_chest_pain_unknown}.
-#' @param is_current_smoker The value of variable in the parameters
-#' \code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
-#' and \code{label_is_current_smoker_unknown}.
+#' @param have_typical_chest_pain The value of variable in the parameters \cr
+#' \code{label_have_typical_chest_pain_no}, \cr
+#' \code{label_have_typical_chest_pain_yes} and \cr
+#' \code{label_have_typical_chest_pain_unknown}.
+#' @param is_current_smoker The value of variable in the parameters \cr
+#' \code{label_is_current_smoker_no}, \cr
+#' \code{label_is_current_smoker_yes}, and \cr
+#' \code{label_is_current_smoker_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0

@@ -7,11 +7,13 @@
 #' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_lah_2022_clinical_ptp
-#' @param smoking_history_type The value of variable in the parameters
-#' \code{label_smoking_history_type_current}, \code{label_smoking_history_type_past},
-#' \code{label_smoking_history_type_none} and \code{label_smoking_history_type_unknown}
-#' @param have_neck_radiation The value of variable in the parameters
-#' \code{label_have_neck_radiation_no}, \code{label_have_neck_radiation_yes}
+#' @param smoking_history_type The value of variable in the parameters \cr
+#' \code{label_smoking_history_type_current}, \cr
+#' \code{label_smoking_history_type_past}, \cr
+#' \code{label_smoking_history_type_none} and \cr
+#' \code{label_smoking_history_type_unknown}
+#' @param have_neck_radiation The value of variable in the parameters \cr
+#' \code{label_have_neck_radiation_no}, \code{label_have_neck_radiation_yes}, \cr
 #' and \code{label_have_neck_radiation_unknown}.
 #' @param label_smoking_history_type_current Label(s) for patient who is a current smoker.
 #' Default: \code{c("current")}
@@ -292,11 +294,11 @@ calculate_precise_2021_simple_ptp <- function(
 #' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_precise_2021_simple_ptp
-#' @param have_q_waves The value of variable in the parameters
-#' \code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+#' @param have_q_waves The value of variable in the parameters \cr
+#' \code{label_have_q_waves_no}, \code{label_have_q_waves_yes}, \cr
 #' and \code{label_have_q_waves_unknown}.
-#' @param have_st_t_changes The value of variable in the parameters
-#' \code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+#' @param have_st_t_changes The value of variable in the parameters \cr
+#' \code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}, \cr
 #' and \code{label_have_st_t_changes_unknown}.
 #' @param label_have_q_waves_no Label(s) for patient not having Q waves on ECG.
 #' Default: \code{c("no")}

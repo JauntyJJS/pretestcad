@@ -44,35 +44,41 @@ calculate_dcs_1993_sig_cad_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{have_mi}{The value of variable in the parameters
-\code{label_have_mi_no}, \code{label_have_mi_yes}
+\code{label_have_mi_no}, \cr
+\code{label_have_mi_yes}
 and \code{label_have_mi_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
-\item{have_q_waves}{The value of variable in the parameters
-\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+\item{have_q_waves}{The value of variable in the parameters \cr
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}, \cr
 and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{The value of variable in the parameters
-\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+\item{have_st_t_changes}{The value of variable in the parameters \cr
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}, \cr
 and \code{label_have_st_t_changes_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -84,7 +90,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.

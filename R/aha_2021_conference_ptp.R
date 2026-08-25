@@ -6,8 +6,9 @@
 #' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
 #' on coronary CTA.
 #' @inheritParams calculate_esc_2019_ptp
-#' @param have_chest_pain The value of variable in the parameters \code{label_have_chest_pain_no},
-#' \code{label_have_chest_pain_yes} and \code{label_have_chest_pain_unknown}.
+#' @param have_chest_pain The value of variable in the parameters \cr
+#' \code{label_have_chest_pain_no}, \code{label_have_chest_pain_yes}, \cr
+#' and \code{label_have_chest_pain_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
