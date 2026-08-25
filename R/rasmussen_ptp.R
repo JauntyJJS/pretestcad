@@ -32,7 +32,7 @@
 #' (-0.005578 * age * have\_typical\_chest\_pain)\quad+ \\\\
 #' (-0.0079662 * age * risk\_factor\_subgroups)\quad+ \\\\
 #' (-0.11213 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
-#' (-0.18948 * sex * risk\_factor\_subgroups)
+#' (-0.18948 * sex\_is\_male * risk\_factor\_subgroups)
 #' \end{array}
 #' }
 #' @examples
@@ -190,7 +190,7 @@ calculate_rasmussen_2025_rf_cl_ccta_ptp <- function(
               (-0.005578 * age * have_typical_chest_pain) +
               (-0.0079662 * age * rf_group) +
               (-0.11213 * have_typical_chest_pain * rf_group) +
-              (-0.18948 * sex * rf_group))
+              (-0.18948 * sex_male * rf_group))
     )
     )
 

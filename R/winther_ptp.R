@@ -170,7 +170,7 @@ calculate_winther_2020_basic_ptp <- function(
 #' (-0.0187 * age * have\_typical\_chest\_pain)\quad+ \\\\
 #' (-0.0131 * age * risk\_factor\_subgroups)\quad+ \\\\
 #' (-0.2799 * have\_typical\_chest\_pain * risk\_factor\_subgroups)\quad+ \\\\
-#' (-0.2091 * sex * risk\_factor\_subgroups)
+#' (-0.2091 * sex\_is\_male * risk\_factor\_subgroups)
 #' \end{array}
 #' }
 #' @examples
@@ -328,7 +328,7 @@ calculate_winther_2020_rf_cl_ptp <- function(
               (-0.0187 * age * have_typical_chest_pain) +
               (-0.0131 * age * rf_group) +
               (-0.2799 * have_typical_chest_pain * rf_group) +
-              (-0.2091 * sex * rf_group))
+              (-0.2091 * sex_male * rf_group))
     )
     )
 
