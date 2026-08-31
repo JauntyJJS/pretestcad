@@ -4,7 +4,7 @@
 `calculate_rasmussen_2025_cacs_cl_ccta_ptp` to calculate pre-test probability of obstructive CAD from 2025 Rasmussen et. al. paper.
 
 * Add new functions `calculate_come_cct_2025_ptp`, 
-`calculate_cta_alone_2025_ptp`, `calculate_come_cct_with_cta_2025_ptp` to calculate pre-test probability 
+`calculate_come_cta_alone_2025_ptp`, `calculate_come_cct_with_cta_2025_ptp` to calculate pre-test probability 
 of obstructive CAD from 2025 Wieske et. al. paper.
 
 * Add new functions `calculate_zuo_2025_predict_ocad_ptp`, 

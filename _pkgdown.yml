@@ -37,7 +37,7 @@ reference:
       Functions giving PTP scores from the COME-CCT Consortium cohort
     contents:
     - calculate_come_cct_2025_ptp
-    - calculate_cta_alone_2025_ptp
+    - calculate_come_cta_alone_2025_ptp
     - calculate_come_cct_with_cta_2025_ptp
   - title: 2025 Zuo et. al. PTP scores
     desc: >

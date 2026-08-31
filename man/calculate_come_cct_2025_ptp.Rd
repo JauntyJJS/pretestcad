@@ -15,7 +15,8 @@ calculate_come_cct_2025_ptp(
   label_cpt_atypical = c("atypical"),
   label_cpt_typical = c("typical"),
   label_cpt_others = c("others"),
-  label_cpt_unknown = c(NA, NaN)
+  label_cpt_unknown = c(NA, NaN),
+  use_random_intercept = "yes"
 )
 }
 \arguments{
@@ -55,6 +56,11 @@ Default: \code{c("others")}}
 
 \item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
 Default: \code{c(NA, NaN)}}
+
+\item{use_random_intercept}{Input value \code{c("yes", "no")} to indicate if the random
+intercept value should be used in the calculation. It is highly recommended to include the
+random intercept to account for clustering effects.
+Default: \code{yes}}
 }
 \value{
 A numeric value representing the patient's PTP for obstructive CAD
@@ -81,7 +87,8 @@ where \eqn{F(x)} equals
 \deqn{
 \begin{array}{l}
 -1.434\quad+ \\\\
-(0.036 * (age - 61))\quad+ \\\\
+(0.667 * random\_intercept\_used)\quad+ \\\\
+(0.036 * (age - 61.3))\quad+ \\\\
 (0.986 * sex\_is\_male)\quad+ \\\\
 (1.427 * have\_typical\_chest\_pain)\quad+ \\\\
 (0.307 * have\_atypical\_chest\_pain)\quad+ \\\\

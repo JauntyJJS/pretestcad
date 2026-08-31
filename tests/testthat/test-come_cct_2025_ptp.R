@@ -10,20 +10,37 @@ test_that("calculate_come_cct_2025_ptp works on typical chest pain", {
 
   typical_medical_data <- typical_medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          chest_pain_type = .data[["chest_pain_type"]]
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "yes"
+        ),
+        .f = pretestcad::calculate_come_cct_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "no"
         ),
         .f = pretestcad::calculate_come_cct_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    typical_medical_data[["ptp_numeric"]],
-    c(0.4658035, 0.3102395,
-      0.7863394, 0.6549795),
+    typical_medical_data[["ptp_numeric_with_ri"]],
+    c(0.6269607, 0.4643605,
+      0.8764463, 0.7853634),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    typical_medical_data[["ptp_numeric_without_ri"]],
+    c(0.4631171, 0.3079331,
+      0.7845193, 0.6525348),
     tolerance = 1e-5
   )
 
@@ -41,20 +58,37 @@ test_that("calculate_come_cct_2025_ptp works on atypical chest pain", {
 
   atypical_medical_data <- atypical_medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          chest_pain_type = .data[["chest_pain_type"]]
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "yes"
+        ),
+        .f = pretestcad::calculate_come_cct_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "no"
         ),
         .f = pretestcad::calculate_come_cct_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    atypical_medical_data[["ptp_numeric"]],
-    c(0.2896674, 0.1737902,
-      0.6325100, 0.4702851),
+    atypical_medical_data[["ptp_numeric_with_ri"]],
+    c(0.4400892, 0.2884754,
+      0.7683824, 0.6311608),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    atypical_medical_data[["ptp_numeric_without_ri"]],
+    c(0.2874502, 0.1722449,
+      0.6299961, 0.4675955),
     tolerance = 1e-5
   )
 
@@ -72,20 +106,37 @@ test_that("calculate_come_cct_2025_ptp works on non-anginal chest pain", {
 
   non_anginal_medical_data <- non_anginal_medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          chest_pain_type = .data[["chest_pain_type"]]
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "yes"
+        ),
+        .f = pretestcad::calculate_come_cct_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "no"
         ),
         .f = pretestcad::calculate_come_cct_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    non_anginal_medical_data[["ptp_numeric"]],
-    c(0.3262929, 0.1998871,
-      0.6715050, 0.5132469),
+    non_anginal_medical_data[["ptp_numeric_with_ri"]],
+    c(0.4828068, 0.3250192,
+      0.7975740, 0.6702244),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    non_anginal_medical_data[["ptp_numeric_without_ri"]],
+    c(0.3239233, 0.1981655,
+      0.6691183, 0.5105484),
     tolerance = 1e-5
   )
 
@@ -103,20 +154,37 @@ test_that("calculate_come_cct_2025_ptp works on other forms of chest pain", {
 
   other_chest_pain_medical_data <- other_chest_pain_medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
-          chest_pain_type = .data[["chest_pain_type"]]
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "yes"
+        ),
+        .f = pretestcad::calculate_come_cct_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]],
+          use_random_intercept = "no"
         ),
         .f = pretestcad::calculate_come_cct_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    other_chest_pain_medical_data[["ptp_numeric"]],
-    c(0.2307644, 0.1340052,
-      0.3006930, 0.1815323),
+    other_chest_pain_medical_data[["ptp_numeric_with_ri"]],
+    c(0.3663750, 0.2297364,
+      0.4531875, 0.2994748),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    other_chest_pain_medical_data[["ptp_numeric_without_ri"]],
+    c(0.2288528, 0.1327569,
+      0.2984269, 0.1799332),
     tolerance = 1e-5
   )
 
@@ -132,16 +200,31 @@ test_that("calculate_cta_alone_2025_ptp works on other forms of chest pain", {
 
   cta_medical_data <- cta_medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
-          cta_result = .data[["cta_result"]]
+          cta_result = .data[["cta_result"]],
+          use_random_intercept = "yes"
         ),
-        .f = pretestcad::calculate_cta_alone_2025_ptp
+        .f = pretestcad::calculate_come_cta_alone_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          cta_result = .data[["cta_result"]],
+          use_random_intercept = "no"
+        ),
+        .f = pretestcad::calculate_come_cta_alone_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    cta_medical_data[["ptp_numeric"]],
+    cta_medical_data[["ptp_numeric_with_ri"]],
+    c(0.8065895,
+      0.1758096),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    cta_medical_data[["ptp_numeric_without_ri"]],
     c(0.7464940,
       0.1309028),
     tolerance = 1e-5
@@ -173,23 +256,43 @@ test_that("calculate_come_cct_with_cta_2025_ptp works", {
 
   medical_data <- medical_data |>
     dplyr::mutate(
-      ptp_numeric = purrr::pmap_dbl(
+      ptp_numeric_with_ri = purrr::pmap_dbl(
         .l = list(
           age = .data[["age"]],
           sex = .data[["sex"]],
           chest_pain_type = .data[["chest_pain_type"]],
-          cta_result = .data[["cta_result"]]
+          cta_result = .data[["cta_result"]],
+          use_random_intercept = "yes"
+        ),
+        .f = pretestcad::calculate_come_cct_with_cta_2025_ptp
+      ),
+      ptp_numeric_without_ri = purrr::pmap_dbl(
+        .l = list(
+          age = .data[["age"]],
+          sex = .data[["sex"]],
+          chest_pain_type = .data[["chest_pain_type"]],
+          cta_result = .data[["cta_result"]],
+          use_random_intercept = "no"
         ),
         .f = pretestcad::calculate_come_cct_with_cta_2025_ptp
       )
     )
 
   testthat::expect_equal(
-    medical_data[["ptp_numeric"]],
-    c(0.01870651, 0.05011598,
-      0.32387945, 0.57003648,
-      0.03901547, 0.68503319,
-      0.15264562, 0.90273589),
+    medical_data[["ptp_numeric_with_ri"]],
+    c(0.02680490, 0.07083060,
+      0.40902438, 0.65701046,
+      0.05540952, 0.75859646,
+      0.20652509, 0.93060370),
+    tolerance = 1e-5
+  )
+
+  testthat::expect_equal(
+    medical_data[["ptp_numeric_without_ri"]],
+    c(0.01854201, 0.04968927,
+      0.32191175, 0.56782925,
+      0.03867943, 0.68308809,
+      0.15148515, 0.90194279),
     tolerance = 1e-5
   )
 
