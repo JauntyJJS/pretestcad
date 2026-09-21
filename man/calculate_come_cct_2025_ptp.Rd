@@ -15,8 +15,7 @@ calculate_come_cct_2025_ptp(
   label_cpt_atypical = c("atypical"),
   label_cpt_typical = c("typical"),
   label_cpt_others = c("others"),
-  label_cpt_unknown = c(NA, NaN),
-  use_random_intercept = "yes"
+  label_cpt_unknown = c(NA, NaN)
 )
 }
 \arguments{
@@ -56,15 +55,10 @@ Default: \code{c("others")}}
 
 \item{label_cpt_unknown}{Label(s) for patient having unknown chest pain type symptoms.
 Default: \code{c(NA, NaN)}}
-
-\item{use_random_intercept}{Input value \code{c("yes", "no")} to indicate if the random
-intercept value should be used in the calculation. It is highly recommended to include the
-random intercept to account for clustering effects.
-Default: \code{yes}}
 }
 \value{
 A numeric value representing the patient's PTP for obstructive CAD
-based on the 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model.
+based on the 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model as shown in Table 2.
 }
 \description{
 This function returns a patient's
@@ -79,15 +73,14 @@ The predictive model is based on
 5332 stable chest pain patients with clinically indicated ICA
 from 22 countries.
 
-Model formula used is from Table 3.
+Model formula used is from Table 3 to obtain results as shown in Table 2.
 
 It is of the form
-\deqn{\frac{1}{(1 + e^{-F(x)})}}
+\deqn{\int_{-\infty}^{\infty} \frac{1}{(1 + e^{-(F(x) + \zeta)})} * \frac{1}{\sqrt{2\pi * 0.667}} e^{\frac{-\zeta^2}{2 * 0.667}} \,d\zeta}
 where \eqn{F(x)} equals
 \deqn{
 \begin{array}{l}
 -1.434\quad+ \\\\
-(0.667 * random\_intercept\_used)\quad+ \\\\
 (0.036 * (age - 61.3))\quad+ \\\\
 (0.986 * sex\_is\_male)\quad+ \\\\
 (1.427 * have\_typical\_chest\_pain)\quad+ \\\\

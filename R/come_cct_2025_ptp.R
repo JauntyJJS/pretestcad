@@ -13,25 +13,20 @@
 #' and \code{label_cpt_unknown}.
 #' @param label_cpt_others Label(s) for patient having other forms of chest pain.
 #' Default: \code{c("others")}
-#' @param use_random_intercept Input value \code{c("yes", "no")} to indicate if the random
-#' intercept value should be used in the calculation. It is highly recommended to include the
-#' random intercept to account for clustering effects.
-#' Default: \code{yes}
 #' @return A numeric value representing the patient's PTP for obstructive CAD
-#' based on the 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model.
+#' based on the 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT) PTP model as shown in Table 2.
 #' @details The predictive model is based on
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula used is from Table 3.
+#' Model formula used is from Table 3 to obtain results as shown in Table 2.
 #'
 #' It is of the form
-#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' \deqn{\int_{-\infty}^{\infty} \frac{1}{(1 + e^{-(F(x) + \zeta)})} * \frac{1}{\sqrt{2\pi * 0.667}} e^{\frac{-\zeta^2}{2 * 0.667}} \,d\zeta}
 #' where \eqn{F(x)} equals
 #' \deqn{
 #' \begin{array}{l}
 #' -1.434\quad+ \\\\
-#' (0.667 * random\_intercept\_used)\quad+ \\\\
 #' (0.036 * (age - 61.3))\quad+ \\\\
 #' (0.986 * sex\_is\_male)\quad+ \\\\
 #' (1.427 * have\_typical\_chest\_pain)\quad+ \\\\
@@ -59,23 +54,11 @@ calculate_come_cct_2025_ptp <- function(
     label_cpt_atypical = c("atypical"),
     label_cpt_typical = c("typical"),
     label_cpt_others = c("others"),
-    label_cpt_unknown = c(NA, NaN),
-    use_random_intercept = "yes"
+    label_cpt_unknown = c(NA, NaN)
 )
 {
 
   check_if_positive(x = age, allow_na = TRUE)
-
-  use_random_intercept <- rlang::arg_match0(
-    use_random_intercept,
-    c("yes", "no")
-  )
-
-  random_intercept_used <- dplyr::case_when(
-    use_random_intercept == "no" ~ 0L,
-    use_random_intercept == "yes" ~ 1L,
-    .default = NA_integer_
-  )
 
   check_if_two_categories_are_mutually_exclusive(
     label_sex_male,
@@ -142,17 +125,24 @@ calculate_come_cct_2025_ptp <- function(
     .default = NA
   )
 
-  come_cct_2025_ptp <- 1 /
-    (1 + exp(-(-1.434 +
-              ( 0.667 * random_intercept_used) +
-              ( 0.036 * (age - 61.3)) +
-              ( 0.986 * sex_male) +
-              ( 1.427 * have_typical_chest_pain) +
-              ( 0.307 * have_atypical_chest_pain) +
-              ( 0.119 * have_nonanginal_chest_pain)
-    )
-    )
-    )
+  systematic_component <- -1.434 +
+    ( 0.036 * (age - 61.3)) +
+    ( 0.986 * sex_male) +
+    ( 1.427 * have_typical_chest_pain) +
+    ( 0.307 * have_atypical_chest_pain) +
+    ( 0.119 * have_nonanginal_chest_pain)
+
+  prediction_function <- function(zeta) {
+    (1/(1 + exp(-(systematic_component + zeta)))) *
+      stats::dnorm(x = zeta, sd = sqrt(0.667))
+  }
+
+  come_cct_2025_ptp <- stats::integrate(
+      f = prediction_function,
+      lower = -Inf,
+      upper = Inf,
+      abs.tol = 0.00001
+    )$value
 
   return(come_cct_2025_ptp)
 
@@ -177,25 +167,20 @@ calculate_come_cct_2025_ptp <- function(
 #' Default: \code{c("non_obstructive")}
 #' @param label_cta_unknown Label(s) for patient unknown CTA results.
 #' Default: \code{c(NA, NaN)}
-#' @param use_random_intercept Input value \code{c("yes", "no")} to indicate if the random
-#' intercept value should be used in the calculation. It is highly recommended to include the
-#' random intercept to account for clustering effects.
-#' Default: \code{yes}
 #' @return A numeric value representing the patient's PTP for obstructive CAD
-#' based on the model that uses only CTA results from the COME-CCT Consortium cohort.
+#' based on the model that uses only CTA results from the COME-CCT Consortium cohort as shown in Table 2.
 #' @details The predictive model is based on
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula used is from Table 3.
+#' Model formula used is from Table 3 to obtain results as shown in Table 2.
 #'
 #' It is of the form
-#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' \deqn{\int_{-\infty}^{\infty} \frac{1}{(1 + e^{-(F(x) + \zeta)})} * \frac{1}{\sqrt{2\pi * 0.348}} e^{\frac{-\zeta^2}{2 * 0.348}} \,d\zeta}
 #' where \eqn{F(x)} equals
 #' \deqn{
 #' \begin{array}{l}
 #' -1.893\quad+ \\\\
-#' (0.348 * random\_intercept\_used)\quad+ \\\\
 #' (2.973 * have\_obstructive\_CAD\_in\_CTA)
 #' \end{array}
 #' }
@@ -215,20 +200,9 @@ calculate_come_cta_alone_2025_ptp <- function(
     cta_result,
     label_cta_obstructive = c("obstructive"),
     label_cta_non_obstructive = c("non_obstructive"),
-    label_cta_unknown = c(NA, NaN),
-    use_random_intercept = "yes"
+    label_cta_unknown = c(NA, NaN)
 )
 {
-  use_random_intercept <- rlang::arg_match0(
-    use_random_intercept,
-    c("yes", "no")
-  )
-
-  random_intercept_used <- dplyr::case_when(
-    use_random_intercept == "no" ~ 0L,
-    use_random_intercept == "yes" ~ 1L,
-    .default = NA_integer_
-  )
 
   check_if_two_categories_are_mutually_exclusive(
     label_cta_obstructive,
@@ -254,13 +228,20 @@ calculate_come_cta_alone_2025_ptp <- function(
     .default = NA_integer_
   )
 
-  cta_alone_2025_ptp <- 1 /
-    (1 + exp(-(-1.893 +
-              ( 0.348 * random_intercept_used) +
-              ( 2.973 * have_obstructuive_cad_in_cta)
-    )
-    )
-    )
+  systematic_component <- -1.893 +
+    ( 2.973 * have_obstructuive_cad_in_cta)
+
+  prediction_function <- function(zeta) {
+    (1/(1 + exp(-(systematic_component + zeta)))) *
+      stats::dnorm(x = zeta, sd = sqrt(0.348))
+  }
+
+  cta_alone_2025_ptp <- stats::integrate(
+    f = prediction_function,
+    lower = -Inf,
+    upper = Inf,
+    abs.tol = 0.00001
+  )$value
 
   return(cta_alone_2025_ptp)
 
@@ -277,20 +258,19 @@ calculate_come_cta_alone_2025_ptp <- function(
 #' @inheritParams calculate_come_cta_alone_2025_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2025 Collaborative Meta-Analysis of Cardiac CT (COME-CCT)
-#' with CTA PTP model.
+#' with CTA PTP model as shown in Table 2.
 #' @details The predictive model is based on
 #' 5332 stable chest pain patients with clinically indicated ICA
 #' from 22 countries.
 #'
-#' Model formula used is from Table 3.
+#' Model formula used is from Table 3 to obtain results as shown in Table 2.
 #'
 #' It is of the form
-#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' \deqn{\int_{-\infty}^{\infty} \frac{1}{(1 + e^{-(F(x) + \zeta)})} * \frac{1}{\sqrt{2\pi * 0.377}} e^{\frac{-\zeta^2}{2 * 0.377}} \,d\zeta}
 #' where \eqn{F(x)} equals
 #' \deqn{
 #' \begin{array}{l}
 #' -3.030\quad+ \\\\
-#' (0.377 * random\_intercept\_used)\quad+ \\\\
 #' (0.030 * (age - 61.3))\quad+ \\\\
 #' (0.868 * sex\_is\_male)\quad+ \\\\
 #' (1.346 * have\_typical\_chest\_pain)\quad+ \\\\
@@ -325,22 +305,10 @@ calculate_come_cct_with_cta_2025_ptp <- function(
     label_cpt_unknown = c(NA, NaN),
     label_cta_obstructive = c("obstructive"),
     label_cta_non_obstructive = c("non_obstructive"),
-    label_cta_unknown = c(NA, NaN),
-    use_random_intercept = "yes"
+    label_cta_unknown = c(NA, NaN)
 )
 {
   check_if_positive(x = age, allow_na = TRUE)
-
-  use_random_intercept <- rlang::arg_match0(
-    use_random_intercept,
-    c("yes", "no")
-  )
-
-  random_intercept_used <- dplyr::case_when(
-    use_random_intercept == "no" ~ 0L,
-    use_random_intercept == "yes" ~ 1L,
-    .default = NA_integer_
-  )
 
   check_if_two_categories_are_mutually_exclusive(
     label_sex_male,
@@ -431,18 +399,25 @@ calculate_come_cct_with_cta_2025_ptp <- function(
     .default = NA_integer_
   )
 
-  come_cct_with_cta_2025_ptp <- 1 /
-    (1 + exp(-(-3.030 +
-              ( 0.377 * random_intercept_used) +
-              ( 0.030 * (age - 61.3)) +
-              ( 0.868 * sex_male) +
-              ( 1.346 * have_typical_chest_pain) +
-              ( 0.195 * have_atypical_chest_pain) +
-              ( 0.156 * have_nonanginal_chest_pain) +
-              ( 2.924 * have_obstructuive_cad_in_cta)
-    )
-    )
-    )
+  systematic_component <- -3.030 +
+    ( 0.030 * (age - 61.3)) +
+    ( 0.868 * sex_male) +
+    ( 1.346 * have_typical_chest_pain) +
+    ( 0.195 * have_atypical_chest_pain) +
+    ( 0.156 * have_nonanginal_chest_pain) +
+    ( 2.924 * have_obstructuive_cad_in_cta)
+
+  prediction_function <- function(zeta) {
+    (1/(1 + exp(-(systematic_component + zeta)))) *
+      stats::dnorm(x = zeta, sd = sqrt(0.377))
+  }
+
+  come_cct_with_cta_2025_ptp <- stats::integrate(
+    f = prediction_function,
+    lower = -Inf,
+    upper = Inf,
+    abs.tol = 0.00001
+  )$value
 
   return(come_cct_with_cta_2025_ptp)
 
