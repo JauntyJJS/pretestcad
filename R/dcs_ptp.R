@@ -1,12 +1,13 @@
 #' @title Calculate 1993 Duke Clinical Score for Significant CAD
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of significant (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of significant (>75% luminal diameter narrowing
 #' of at least one major coronary artery) coronary artery disease based on the
 #' 1993 Duke Clinical Score.
 #' @inheritParams calculate_precise_2021_clinical_ptp
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @param have_mi The value of variable in the parameters
-#' \code{label_have_mi_no}, \code{label_have_mi_yes}
+#' \code{label_have_mi_no}, \cr
+#' \code{label_have_mi_yes}
 #' and \code{label_have_mi_unknown}.
 #' @param label_have_mi_no Label(s) for patient not having a previous history of MI.
 #' Default: \code{c("no")}
@@ -15,11 +16,36 @@
 #' @param label_have_mi_unknown Label(s) for patient with unknown previous history of MI.
 #' Default: \code{c(NA, NaN)}
 #' @return A numeric value representing the patient's PTP for significant
-#' (>75\% luminal diameter narrowing of at least one major coronary artery) CAD
+#' (>75% luminal diameter narrowing of at least one major coronary artery) CAD
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
 #' patients referred for cardiac catheterisation between 1969 and 1983.
 #'
+#' Model formula used is from Appendix: Study Models.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -7.376\quad+ \\\\
+#' (0.1126 * age)\quad+ \\\\
+#' (-0.328 * sex\_is\_female)\quad+ \\\\
+#' (-0.0301 * age * sex\_is\_female)\quad+ \\\\
+#' (2.581 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.976 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (1.093 * have\_history\_of\_MI)\quad+ \\\\
+#' (1.213 * have\_Q\_waves)\quad+ \\\\
+#' (0.741 * have\_history\_of\_MI * have\_Q\_waves)\quad+ \\\\
+#' (2.596 * have\_smoking\_history)\quad+ \\\\
+#' (1.845 * have\_dyslipidemia)\quad+ \\\\
+#' (0.694 * have\_diabetes)\quad+ \\\\
+#' (0.637 * have\_ST-T\_changes)\quad+ \\\\
+#' (-0.0404 * age * have\_smoking\_history)\quad+ \\\\
+#' (-0.0251 * age * have_\_dyslipidemia)\quad+ \\\\
+#' (0.550 * sex\_is\_female * have\_smoking\_history)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # previous history of MI,
@@ -95,7 +121,7 @@ calculate_dcs_1993_sig_cad_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_female <- dplyr::case_when(
     sex == "female" ~ 1L,
     sex == "male" ~ 0L,
     .default = NA_integer_
@@ -275,8 +301,8 @@ calculate_dcs_1993_sig_cad_ptp <- function(
   dcs_1993_sig_cad_ptp <- 1 /
     (1 + exp(-(-7.376 +
               (0.1126  * age) +
-              (-0.328  * sex) +
-              (-0.0301 * age * sex) +
+              (-0.328  * sex_female) +
+              (-0.0301 * age * sex_female) +
               (2.581   * have_typical_chest_pain) +
               (0.976   * have_atypical_chest_pain) +
               (1.093   * have_mi) +
@@ -288,7 +314,7 @@ calculate_dcs_1993_sig_cad_ptp <- function(
               (0.637   * have_st_t_changes) +
               (-0.0404 * age * have_smoking_history) +
               (-0.0251 * age * have_dyslipidemia) +
-              (0.550   * sex * have_smoking_history)
+              (0.550   * sex_female * have_smoking_history)
     )
     )
     )
@@ -406,32 +432,32 @@ calculate_dcs_1993_risk_factor_index <- function(
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:3), error_call = error_call)
+    arg_match0_integer(values = c(0L:3L), error_call = error_call)
 
-  number_of_na <- 0
-  risk_factor_index <- 0
+  number_of_na <- 0L
+  risk_factor_index <- 0L
 
   number_of_na <- dplyr::case_when(
-    is.na(have_hypertension) ~ number_of_na + 1,
+    is.na(have_hypertension) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_dyslipidemia) ~ number_of_na + 1,
+    is.na(have_dyslipidemia) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_diabetes) ~ number_of_na + 1,
+    is.na(have_diabetes) ~ number_of_na + 1L,
     .default = number_of_na
   )
 
   if (number_of_na > max_na) {return(NA)}
 
   risk_factor_index <- dplyr::case_when(
-    have_hypertension == "yes" ~ risk_factor_index + 1,
+    have_hypertension == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   ) + dplyr::case_when(
-    have_dyslipidemia == "yes" ~ risk_factor_index + 1,
+    have_dyslipidemia == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   ) + dplyr::case_when(
-    have_diabetes == "yes" ~ risk_factor_index + 1,
+    have_diabetes == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   )
 
@@ -449,11 +475,13 @@ calculate_dcs_1993_risk_factor_index <- function(
 #' @param frequency_of_angina_pain_per_week Input integer to indicate the patient's
 #' frequency of angina per week.
 #' @param have_progressive_angina The value of variable in the parameters
-#' \code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
-#' and \code{label_have_progressive_angina_unknown}.
+#' \code{label_have_progressive_angina_no}, \cr
+#' \code{label_have_progressive_angina_yes}, and \cr
+#' \code{label_have_progressive_angina_unknown}.
 #' @param have_nocturnal_angina The value of variable in the parameters
-#' \code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
-#' and \code{label_have_nocturnal_angina_unknown}.
+#' \code{label_have_nocturnal_angina_no}, \cr
+#' \code{label_have_nocturnal_angina_yes}, and \cr
+#' \code{label_have_nocturnal_angina_unknown}.
 #' @param max_na Input integer 0 to 6 to indicate the maximum number of
 #' missing symptoms to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -478,7 +506,7 @@ calculate_dcs_1993_risk_factor_index <- function(
 #'
 #' @return An integer indicating the patient's pain index.
 #' It can also be \code{NA} if the number of missing symptoms exceeds the \code{max_na}
-#' input value or the frequency of angina per week exceed the
+#' input value or the frequency of angina per week exceed the \cr
 #' \code{max_frequency_of_angina_pain_per_week} input value.
 #' @examples
 #' calculate_dcs_1993_pain_index(
@@ -667,34 +695,34 @@ calculate_dcs_1993_pain_index <- function(
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:6), error_call = error_call)
+    arg_match0_integer(values = c(0L:6L), error_call = error_call)
 
-  number_of_na <- 0
+  number_of_na <- 0L
 
   number_of_na <- dplyr::case_when(
-    is.na(have_typical_chest_pain) ~ number_of_na + 1,
+    is.na(have_typical_chest_pain) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(frequency_of_angina_pain_per_week) ~ number_of_na + 1,
+    is.na(frequency_of_angina_pain_per_week) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_progressive_angina) ~ number_of_na + 1,
+    is.na(have_progressive_angina) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_nocturnal_angina) ~ number_of_na + 1,
+    is.na(have_nocturnal_angina) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_q_waves) ~ number_of_na + 1,
+    is.na(have_q_waves) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_st_t_changes) ~ number_of_na + 1,
+    is.na(have_st_t_changes) ~ number_of_na + 1L,
     .default = number_of_na
   )
 
   if (number_of_na > max_na) {return(NA)}
 
   if (is.na(frequency_of_angina_pain_per_week)) {
-    frequency_of_angina_pain_per_week = 0
+    frequency_of_angina_pain_per_week = 0L
   }
 
   if (!is.na(max_frequency_of_angina_pain_per_week)) {
@@ -704,28 +732,28 @@ calculate_dcs_1993_pain_index <- function(
   }
 
   have_typical_chest_pain_score <- dplyr::case_when(
-    have_typical_chest_pain == "yes" ~ 1,
-    .default = 0
+    have_typical_chest_pain == "yes" ~ 1L,
+    .default = 0L
   )
 
   have_progressive_angina <- dplyr::case_when(
-    have_progressive_angina == "yes" ~ 1,
-    .default = 0
+    have_progressive_angina == "yes" ~ 1L,
+    .default = 0L
   )
 
   have_nocturnal_angina <- dplyr::case_when(
-    have_nocturnal_angina == "yes" ~ 1,
-    .default = 0
+    have_nocturnal_angina == "yes" ~ 1L,
+    .default = 0L
   )
 
   have_st_t_changes_but_no_q_waves <- dplyr::case_when(
-    have_st_t_changes == "yes" & have_q_waves == "no" ~ 1,
-    .default = 0
+    have_st_t_changes == "yes" & have_q_waves == "no" ~ 1L,
+    .default = 0L
   )
 
   pain_index <-
     (have_typical_chest_pain_score * frequency_of_angina_pain_per_week) *
-    (1 * have_progressive_angina + 4 * have_st_t_changes_but_no_q_waves + 2 * have_nocturnal_angina)
+    (1L * have_progressive_angina + 4L * have_st_t_changes_but_no_q_waves + 2L * have_nocturnal_angina)
 
   return(pain_index)
 
@@ -739,13 +767,16 @@ calculate_dcs_1993_pain_index <- function(
 #' Duke Clinical Score 1993 paper.
 #' @inheritParams rlang::args_error_context
 #' @param have_peripheral_vascular_disease The value of variable in the parameters
-#' \code{label_have_pvd_no}, \code{label_have_pvd_yes}
+#' \code{label_have_pvd_no}, \cr
+#' \code{label_have_pvd_yes},
 #' and \code{label_have_pvd_unknown}.
 #' @param have_cerebrovascular_disease The value of variable in the parameters
-#' \code{label_have_cvd_no}, \code{label_have_cvd_yes}
+#' \code{label_have_cvd_no}, \cr
+#' \code{label_have_cvd_yes},
 #' and \code{label_have_cvd_unknown}.
 #' @param have_carotid_bruits The value of variable in the parameters
-#' \code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+#' \code{label_have_carotid_bruits_no}, \cr
+#' \code{label_have_carotid_bruits_yes}, \cr
 #' and \code{label_have_carotid_bruits_unknown}.
 #' @param max_na Input integer 0 to 3 to indicate the maximum number of
 #' missing disease history to tolerate before outputting an \code{NA}.
@@ -872,32 +903,32 @@ calculate_dcs_1993_vascular_disease_index <- function(
     )
 
   max_na <- max_na |>
-    arg_match0_integer(values = c(0:3), error_call = error_call)
+    arg_match0_integer(values = c(0L:3L), error_call = error_call)
 
-  number_of_na <- 0
-  risk_factor_index <- 0
+  number_of_na <- 0L
+  risk_factor_index <- 0L
 
   number_of_na <- dplyr::case_when(
-    is.na(have_peripheral_vascular_disease) ~ number_of_na + 1,
+    is.na(have_peripheral_vascular_disease) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_cerebrovascular_disease) ~ number_of_na + 1,
+    is.na(have_cerebrovascular_disease) ~ number_of_na + 1L,
     .default = number_of_na
   ) + dplyr::case_when(
-    is.na(have_carotid_bruits) ~ number_of_na + 1,
+    is.na(have_carotid_bruits) ~ number_of_na + 1L,
     .default = number_of_na
   )
 
   if (number_of_na > max_na) {return(NA)}
 
   vascular_disease_index <- dplyr::case_when(
-    have_peripheral_vascular_disease == "yes" ~ risk_factor_index + 1,
+    have_peripheral_vascular_disease == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   ) + dplyr::case_when(
-    have_cerebrovascular_disease == "yes" ~ risk_factor_index + 1,
+    have_cerebrovascular_disease == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   ) + dplyr::case_when(
-    have_carotid_bruits == "yes" ~ risk_factor_index + 1,
+    have_carotid_bruits == "yes" ~ risk_factor_index + 1L,
     .default = risk_factor_index
   )
 
@@ -908,7 +939,7 @@ calculate_dcs_1993_vascular_disease_index <- function(
 
 #' @title Calculate 1993 Duke Clinical Score for Severe CAD
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of severe (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of severe (>75% luminal diameter narrowing
 #' of all three major coronary arteries or of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
@@ -932,12 +963,31 @@ calculate_dcs_1993_vascular_disease_index <- function(
 #' In the Duke Clinical Score 1993 paper, the maximum value is set as 35.
 #' Default: 35
 #' @return A numeric value representing the patient's PTP for severe
-#' (>75\% luminal diameter narrowing of all three major coronary arteries
+#' (>75% luminal diameter narrowing of all three major coronary arteries
 #' or of the left main coronary artery) CAD
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
 #' patients referred for cardiac catheterisation between 1969 and 1983.
 #'
+#' Model formula used is from Appendix: Study Models.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -3.4732\quad+ \\\\
+#' (0.3424 * log_{10}(duration\_of\_CAD\_symptoms\_year + 1))\quad+ \\\\
+#' (0.3014 * chest\_pain\_type)\quad+ \\\\
+#' (0.1559 * log_{10}(duration\_of\_CAD\_symptoms\_year + 1) * chest\_pain\_type)\quad+ \\\\
+#' (0.0299 * age)\quad+ \\\\
+#' (0.3513 * have\_Q\_waves)\quad+ \\\\
+#' (0.0054 * pain\_index)\quad+ \\\\
+#' (-0.3823 * sex\_is\_female)\quad+ \\\\
+#' (0.1734 * risk\_factor\_index)\quad+ \\\\
+#' (0.2402 * vascular\_disease\_index)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain for one year,
 #' # She has progressive angina but no nocturnal angina.
@@ -1049,7 +1099,7 @@ calculate_dcs_1993_severe_cad_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_female <- dplyr::case_when(
     sex == "female" ~ 1L,
     sex == "male" ~ 0L,
     .default = NA_integer_
@@ -1176,7 +1226,7 @@ calculate_dcs_1993_severe_cad_ptp <- function(
               ( 0.0299 * age) +
               ( 0.3513 * have_q_waves) +
               ( 0.0054 * pain_index) +
-              (-0.3823 * sex) +
+              (-0.3823 * sex_female) +
               ( 0.1734 * risk_factor_index) +
               ( 0.2402 * vascular_disease_index)
 
@@ -1189,7 +1239,7 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 
 #' @title Calculate 1993 Duke Clinical Score for Left Main Disease
 #' @description This function returns a patient's
-#' pre-test probability (PTP) of severe (>75\% luminal diameter narrowing
+#' pre-test probability (PTP) of severe (>75% luminal diameter narrowing
 #' of the left main coronary artery)
 #' coronary artery disease based on the
 #' 1993 Duke Clinical Score.
@@ -1206,11 +1256,26 @@ calculate_dcs_1993_severe_cad_ptp <- function(
 #' In the Duke Clinical Score 1993 paper, the maximum value is set as 65.
 #' Default: 65
 #' @return A numeric value representing the patient's PTP for left main disease
-#' (>75\% luminal diameter narrowing of the left main coronary artery)
+#' (>75% luminal diameter narrowing of the left main coronary artery)
 #' based on the 1993 Duke Clinical Score.
 #' @details The predictive model is based on
 #' patients referred for cardiac catheterisation between 1969 and 1983.
 #'
+#' Model formula used is from Appendix: Study Models.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -6.7271\quad+ \\\\
+#' (1.1252 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (0.0483 * age)\quad+ \\\\
+#' (-0.5770 * sex\_is\_female)\quad+ \\\\
+#' (0.5923 * vascular\_disease\_index)\quad+ \\\\
+#' (0.4027 * log_{10}(duration\_of\_CAD\_symptoms\_year + 1))
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain for one year,
 #' # She has peripheral vascular and cerebrovascular disease.
@@ -1278,7 +1343,7 @@ calculate_dcs_1993_lm_cad_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_female <- dplyr::case_when(
     sex == "female" ~ 1L,
     sex == "male" ~ 0L,
     .default = NA_integer_
@@ -1333,7 +1398,7 @@ calculate_dcs_1993_lm_cad_ptp <- function(
     (1 + exp(-(-6.7271 +
               ( 1.1252 * have_typical_chest_pain) +
               ( 0.0483 * age) +
-              (-0.5770 * sex) +
+              (-0.5770 * sex_female) +
               ( 0.5923 * vascular_disease_index) +
               ( 0.4027 * log_transformed_duration_of_cad_symptoms_year)
 

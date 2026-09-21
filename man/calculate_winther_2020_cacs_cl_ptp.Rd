@@ -48,41 +48,54 @@ calculate_winther_2020_cacs_cl_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters \code{label_cpt_no_chest_pain},
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters
+\code{label_cpt_no_chest_pain}, \cr
+\code{label_cpt_nonanginal}, \cr
+\code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, \cr
+and \code{label_cpt_unknown}.}
 
-\item{have_dyspnoea}{The value of variable in the parameters \code{label_have_dyspnoea_no},
-\code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.}
+\item{have_dyspnoea}{The value of variable in the parameters
+\code{label_have_dyspnoea_no}, \cr
+\code{label_have_dyspnoea_yes} and
+\code{label_have_dyspnoea_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{coronary_calcium_score}{Input non-negative numeric to indicate the
 total coronary calcium score of the patient.}
 
-\item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score}
+\item{allow_na_symptom_score}{A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+indicating whether we can allow \code{chest_pain_type} \cr
+or \code{have_dyspnoea} to be \code{NA} when calculating the score.}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
@@ -109,7 +122,8 @@ Default: \code{c(NA, NaN)}}
 \item{label_cpt_no_chest_pain}{Label(s) for patient having no chest pain.
 Default: \code{c("no chest pain")}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -181,14 +195,38 @@ Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on
+coronary artery disease (CAD) based on
 2020 Winther et. al.
 Coronary Artery Calcium Score-Weighted Clinical Likelihood (CACS-CL) model.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on > 40000 symptomatic
 patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 patients are registered under the Western Denmark Heart Registry.
+
+Model formula used is from Table S3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+0.0013\quad+ \\\\
+(0.2021 * rf\_ptp)\quad+ \\\\
+(0.0082 * cacs\_1\_to\_9)\quad+ \\\\
+(0.0238 * cacs\_10\_to\_99)\quad+ \\\\
+(0.1131 * cacs\_100\_to\_399)\quad+ \\\\
+(0.2306 * cacs\_400\_to\_999)\quad+ \\\\
+(0.4040 * cacs\_1000\_or\_more)\quad+ \\\\
+(0.1311 * rf\_ptp * cacs\_1\_to\_9)\quad+ \\\\
+(0.2909 * rf\_ptp * cacs\_10\_to\_99)\quad+ \\\\
+(0.4077 * rf\_ptp * cacs\_100\_to\_399)\quad+ \\\\
+(0.4658 * rf\_ptp * cacs\_400\_to\_999)\quad+ \\\\
+(0.4489 * rf\_ptp * cacs\_1000\_or\_more)
+\end{array}
+}
 }
 \examples{
 # 40 year old Male with nonanginal chest pain and coronary calcium score of 0

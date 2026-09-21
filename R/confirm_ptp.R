@@ -1,15 +1,17 @@
 #' @title Calculate Number Of Risk Factors (CONFIRM 2015)
 #' @description A function used to calculate the number of
 #' risk factors the patient has. This is used to calculate the pretest
-#' probability of coronary artery disease (CAD) based on the
+#' probability of obstructive coronary artery disease (CAD) based on the
 #' 2015 CONFIRM Risk Score.
 #' @inheritParams calculate_esc_2024_num_of_rf
-#' @param have_typical_chest_pain The value of variable in the parameters
-#' \code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-#' and \code{label_have_typical_chest_pain_unknown}.
-#' @param is_current_smoker The value of variable in the parameters
-#' \code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
-#' and \code{label_is_current_smoker_unknown}.
+#' @param have_typical_chest_pain The value of variable in the parameters \cr
+#' \code{label_have_typical_chest_pain_no}, \cr
+#' \code{label_have_typical_chest_pain_yes} and \cr
+#' \code{label_have_typical_chest_pain_unknown}.
+#' @param is_current_smoker The value of variable in the parameters \cr
+#' \code{label_is_current_smoker_no}, \cr
+#' \code{label_is_current_smoker_yes}, and \cr
+#' \code{label_is_current_smoker_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0
@@ -233,6 +235,8 @@ calculate_confirm_2015_num_of_rf  <- function(
 #' a patient's risk score for obstructive
 #' coronary artery disease based on the
 #' 2015 CONFIRM Risk Score.
+#' Obstructive coronary artery disease was defined by \eqn{\geq} 50%
+#' luminal diameter stenosis in any coronary artery \eqn{\geq} 1.5 mm in diameter.
 #' @inheritParams calculate_esc_2019_ptp
 #' @inheritParams calculate_confirm_2015_num_of_rf
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
@@ -243,7 +247,7 @@ calculate_confirm_2015_num_of_rf  <- function(
 #' Default: c("text", "percentage")
 #' \itemize{
 #'   \item text means the PTP will be expressed as a probability in text (0 to > 82.4).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @return A numeric value representing the patient's risk
 #' score for obstructive CAD based on the 2015 CONFIRM Risk Score.

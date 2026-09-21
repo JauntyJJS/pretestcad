@@ -5,8 +5,9 @@
 #' ESC 2024 guidelines.
 #' @inheritParams calculate_esc_2019_ptp
 #' @inheritParams rlang::args_error_context
-#' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow `chest_pain_type` or `have_dyspnoea` to be \code{NA} when calculating the score.
+#' @param allow_na A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+#' indicating whether we can allow `chest_pain_type` or `have_dyspnoea` \cr
+#' to be \code{NA} when calculating the score.
 #' Default: \code{TRUE}
 #' @return An integer indicating the symptom score of the patient.
 #' It can also be \code{NA} if both \code{chest_pain_type} and \code{have_dyspnoea} are \code{NA}.
@@ -126,19 +127,24 @@ calculate_esc_2024_symptom_score <- function(
 #' ESC 2024 guidelines.
 #' @inheritParams rlang::args_error_context
 #' @param have_family_history The value of variable in the parameters
-#' \code{label_have_family_history_no}, \code{label_have_family_history_yes}
+#' \code{label_have_family_history_no}, \cr
+#' \code{label_have_family_history_yes} \cr
 #' and \code{label_have_family_history_unknown}.
 #' @param have_smoking_history The value of variable in the parameters
-#' \code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+#' \code{label_have_smoking_history_no}, \cr
+#' \code{label_have_smoking_history_yes}, \cr
 #' and \code{label_have_smoking_history_unknown}.
 #' @param have_dyslipidemia The value of variable in the parameters
-#' \code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+#' \code{label_have_dyslipidemia_no}, \cr
+#' \code{label_have_dyslipidemia_yes}
 #' and \code{label_have_dyslipidemia_unknown}.
 #' @param have_hypertension The value of variable in the parameters
-#' \code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+#' \code{label_have_hypertension_no}, \cr
+#' \code{label_have_hypertension_yes},
 #' and \code{label_have_hypertension_unknown}.
 #' @param have_diabetes The value of variable in the parameters
-#' \code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+#' \code{label_have_diabetes_no}, \cr
+#' \code{label_have_diabetes_yes}
 #' and \code{label_have_diabetes_unknown}.
 #' @param max_na Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
@@ -402,14 +408,14 @@ calculate_esc_2024_num_of_rf <- function(
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
 #' \itemize{
-#'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
+#'   \item grouping means the PTP will be expressed as Very Low, Low, and Moderate.
 #'   \itemize{
-#'      \item very low if PTP is less than or equal to 5\%.
-#'      \item low if PTP is in between 6\% to 15\%.
-#'      \item moderate if PTP is more than 15\%.
+#'      \item very low if PTP is less than or equal to 5%.
+#'      \item low if PTP is in between 6% to 15%.
+#'      \item moderate if PTP is more than 15%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @return An integer, percentage or category representing the patient's PTP for obstructive CAD
 #' based on the ESC 2024 guidelines.
@@ -502,113 +508,113 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
   )
 
   ptp_percentage_group <- dplyr::case_when(
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 0  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 1  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 1  ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 2  ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 4  ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 0L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 1L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 1L  ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 2L  ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "0-1" ~ 4L  ,
 
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 1  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 1  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 2  ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 4  ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 7  ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 1L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 1L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 2L  ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 4L  ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "2-3" ~ 7L  ,
 
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 2  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 3  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 5  ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 7  ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 11 ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 2L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 3L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 5L  ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 7L  ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "female" & rf_group == "4-5" ~ 11L ,
 
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 1  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 2  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 4  ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 8  ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 15 ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 1L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 2L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 4L  ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 8L  ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "0-1" ~ 15L ,
 
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 2  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 4  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 7  ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 12 ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 19 ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 2L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 4L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 7L  ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 12L ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "2-3" ~ 19L ,
 
-    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 5  ,
-    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 8  ,
-    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 12 ,
-    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 17 ,
-    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 24 ,
+    age_group == "30-39" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 5L  ,
+    age_group == "40-49" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 8L  ,
+    age_group == "50-59" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 12L ,
+    age_group == "60-69" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 17L ,
+    age_group == "70-80" & symptom_score_group == "0-1" & sex == "male"   & rf_group == "4-5" ~ 24L ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 0  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 1  ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 2  ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 3  ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 6  ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 0L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 1L  ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 2L  ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 3L  ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "0-1" ~ 6L  ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 1  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 2  ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 3  ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 6  ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 10 ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 1L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 2L  ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 3L  ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 6L  ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "2-3" ~ 10L ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 3  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 5  ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 7  ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 11 ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 16 ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 3L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 5L  ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 7L  ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 11L ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "female" & rf_group == "4-5" ~ 16L ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 2  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 3  ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 6  ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 12 ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 22 ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 2L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 3L  ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 6L  ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 12L ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "0-1" ~ 22L ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 4  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 6  ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 11 ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 17 ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 27 ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 4L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 6L  ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 11L ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 17L ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "2-3" ~ 27L ,
 
-    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 8  ,
-    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 12 ,
-    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 17 ,
-    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 25 ,
-    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 34 ,
+    age_group == "30-39" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 8L  ,
+    age_group == "40-49" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 12L ,
+    age_group == "50-59" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 17L ,
+    age_group == "60-69" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 25L ,
+    age_group == "70-80" & symptom_score_group == "2"   & sex == "male"   & rf_group == "4-5" ~ 34L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 2  ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 4  ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 6  ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 10 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 16 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 2L  ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 4L  ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 6L  ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 10L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "0-1" ~ 16L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 5  ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 7  ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 10 ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 14 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 19 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 5L  ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 7L  ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 10L ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 14L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "2-3" ~ 19L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 10 ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 12 ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 15 ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 19 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 23 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 10L ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 12L ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 15L ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 19L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "female" & rf_group == "4-5" ~ 23L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 9  ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 14 ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 21 ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 32 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 44 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 9L  ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 14L ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 21L ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 32L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "0-1" ~ 44L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 14 ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 20 ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 27 ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 35 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 44 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 14L ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 20L ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 27L ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 35L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "2-3" ~ 44L ,
 
-    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 22 ,
-    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 27 ,
-    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 33 ,
-    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 39 ,
-    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 45 ,
+    age_group == "30-39" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 22L ,
+    age_group == "40-49" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 27L ,
+    age_group == "50-59" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 33L ,
+    age_group == "60-69" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 39L ,
+    age_group == "70-80" & symptom_score_group == "3"   & sex == "male"   & rf_group == "4-5" ~ 45L ,
 
     .default = NA
   )
@@ -645,11 +651,14 @@ calculate_esc_2024_fig_4_ptp_simplfied <- function(
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2024 guidelines.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_symptom_score
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_esc_2024_fig_4_ptp_simplfied
-#' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} indicating whether we can
-#' allow \code{chest_pain_type} or \code{have_dyspnoea} to be \code{NA} when calculating the score
+#' @param allow_na_symptom_score A logical evaluating to \code{TRUE} or \code{FALSE} \cr
+#' indicating whether we can allow \code{chest_pain_type} \cr
+#' or \code{have_dyspnoea} to be \code{NA} when calculating the score.
 #' @param max_na_num_of_rf Input integer 0 to 5 to indicate the maximum number of
 #' missing risk factors to tolerate before outputting an \code{NA}.
 #' Default: 0

@@ -613,8 +613,12 @@ check_if_integer <- function(
 #' cat_3 <- c("atypical")
 #' cat_4 <- c("nonanginal")
 #' cat_missing <- c("NA")
-#' check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4)
-#' check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing)
+#' check_if_four_categories_are_mutually_exclusive(
+#'   cat_1, cat_2, cat_3, cat_4
+#' )
+#' check_if_four_categories_are_mutually_exclusive(
+#'   cat_1, cat_2, cat_3, cat_4, cat_missing
+#' )
 #'
 #' # Common labels found
 #' cat_1 <- c("no chest pain","typical", "atypical", "nonanginal")
@@ -623,9 +627,13 @@ check_if_integer <- function(
 #' cat_4 <- c("no chest pain","typical", "atypical", "nonanginal")
 #' cat_missing <- c("no chest pain","typical", "atypical", "nonanginal")
 #'
-#' try(check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4))
+#' try(check_if_four_categories_are_mutually_exclusive(
+#'   cat_1, cat_2, cat_3, cat_4
+#' ))
 #'
-#' try(check_if_four_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_4, cat_missing))
+#' try(check_if_four_categories_are_mutually_exclusive(
+#'   cat_1, cat_2, cat_3, cat_4, cat_missing
+#' ))
 #' @seealso
 #'  \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
 #'  \code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}

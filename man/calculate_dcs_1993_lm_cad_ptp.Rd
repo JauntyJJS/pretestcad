@@ -34,23 +34,29 @@ calculate_dcs_1993_lm_cad_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{The value of variable in the parameters
-\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-and \code{label_have_typical_chest_pain_unknown}.}
+\item{have_typical_chest_pain}{The value of variable in the parameters \cr
+\code{label_have_typical_chest_pain_no}, \cr
+\code{label_have_typical_chest_pain_yes} and \cr
+\code{label_have_typical_chest_pain_unknown}.}
 
 \item{have_peripheral_vascular_disease}{The value of variable in the parameters
-\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+\code{label_have_pvd_no}, \cr
+\code{label_have_pvd_yes},
 and \code{label_have_pvd_unknown}.}
 
 \item{have_cerebrovascular_disease}{The value of variable in the parameters
-\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+\code{label_have_cvd_no}, \cr
+\code{label_have_cvd_yes},
 and \code{label_have_cvd_unknown}.}
 
 \item{have_carotid_bruits}{The value of variable in the parameters
-\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+\code{label_have_carotid_bruits_no}, \cr
+\code{label_have_carotid_bruits_yes}, \cr
 and \code{label_have_carotid_bruits_unknown}.}
 
 \item{duration_of_cad_symptoms_year}{Input integer to indicate the duration of
@@ -130,6 +136,22 @@ coronary artery disease based on the
 \details{
 The predictive model is based on
 patients referred for cardiac catheterisation between 1969 and 1983.
+
+Model formula used is from Appendix: Study Models.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.7271\quad+ \\\\
+(1.1252 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.0483 * age)\quad+ \\\\
+(-0.5770 * sex\_is\_female)\quad+ \\\\
+(0.5923 * vascular\_disease\_index)\quad+ \\\\
+(0.4027 * log_{10}(duration\_of\_CAD\_symptoms\_year + 1))
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain for one year,

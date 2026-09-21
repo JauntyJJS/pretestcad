@@ -44,38 +44,45 @@ calculate_prms_2017_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{hdl_mg_dl}{Input positive numeric value to indicate the
 patient's high-density lipoprotein (HDL) in \eqn{mg/dL}.}
 
-\item{is_minority_ethnicity}{The value of variable in the parameters
-\code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}
+\item{is_minority_ethnicity}{The value of variable in the parameters \cr
+\code{label_is_minority_ethnicity_no}, \code{label_is_minority_ethnicity_yes}, \cr
 and \code{label_is_minority_ethnicity_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
-\item{have_stress_symptoms}{The value of variable in the parameters
-\code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}
+\item{have_stress_symptoms}{The value of variable in the parameters \cr
+\code{label_have_stress_symptoms_no}, \code{label_have_stress_symptoms_yes}, \cr
 and \code{label_have_stress_symptoms_unknown}.
 Default: \code{NA}}
 
@@ -172,13 +179,37 @@ score for obstructive CAD based on the 2017 PROMISE Minimal-Risk Score.
 This function returns
 a symptomatic (have chest pain or dyspnoea) patient's
 minimal risk score for obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2017 PROMISE Minimal-Risk Score.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on CCTA images from 4632
 patients in the Prospective Multicenter imaging Study for Evaluation
 of Chest Pain (PROMISE) trial.
+
+Model formula used is from Table 3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-1.783\quad+ \\\\
+(0.084 * age)\quad+ \\\\
+(-1.026 * sex\_is\_female)\quad+ \\\\
+(-0.142 * is\_minority\_ethnicity)\quad+ \\\\
+(-0.526 * is\_non\_smoker)\quad+ \\\\
+(-0.314 * have\_no\_diabetes)\quad+ \\\\
+(-0.412 * have\_no\_dyslipidemia)\quad+ \\\\
+(-0.309 * have\_no\_family_history)\quad+ \\\\
+(-0.408 * have\_no\_hypertension)\quad+ \\\\
+(-0.309 * have\_no\_stress_symptoms)\quad+ \\\\
+(-0.195 * have\_unknown\_stress\_symptoms)\quad+ \\\\
+(-0.006 * hdl\_mg\_dl)
+\end{array}
+}
 }
 \examples{
 # 50 year old white female with chest pain

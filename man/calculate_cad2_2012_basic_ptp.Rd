@@ -20,12 +20,14 @@ calculate_cad2_2012_basic_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
 Default: \code{c("male")}}
@@ -36,7 +38,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -55,12 +58,32 @@ based on the 2012 CAD Consortium 2 (CAD2) basic model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2012 CAD Consortium 2 (CAD2) basic model.
+Obstructive coronary artery disease was defined as \eqn{\geq}50\% diameter stenosis
+in at least one vessel found on catheter based coronary angiography.
 }
 \details{
 The predictive model is based on
 patients from 18 hospitals in Europe and the United States.
+
+A web-based calculator is
+\href{https://qxmd.com/calculate/calculator_287/pre-test-probability-of-cad-cad-consortium}{accessible}.
+
+Model formula used is from Appendix Table 4.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.917\quad+ \\\\
+(0.063 * age)\quad+ \\\\
+(1.358 * sex\_is\_male)\quad+ \\\\
+(0.658 * have\_atypical\_chest\_pain)\quad+ \\\\
+(1.975 * have\_typical\_chest\_pain)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

@@ -3,22 +3,25 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' American Heart Association/American College of Cardiology (AHA/ACC) 2021 guidelines.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2019_ptp
-#' @param have_chest_pain The value of variable in the parameters \code{label_have_chest_pain_no},
-#' \code{label_have_chest_pain_yes} and \code{label_have_chest_pain_unknown}.
+#' @param have_chest_pain The value of variable in the parameters \cr
+#' \code{label_have_chest_pain_no}, \code{label_have_chest_pain_yes}, \cr
+#' and \code{label_have_chest_pain_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
 #' \itemize{
-#'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
+#'   \item grouping means the PTP will be expressed as Very Low, Low, Intermediate and High.
 #'   \itemize{
-#'      \item very low if PTP is less than 5\%.
-#'      \item low if PTP is in between 5\% to 15\%.
-#'      \item intermediate if PTP is in between 15\% to 50\%.
-#'      \item high if PTP is more than 50\%.
+#'      \item very low if PTP is less than 5%.
+#'      \item low if PTP is in between 5% to 15%.
+#'      \item intermediate if PTP is in between 15% to 50%.
+#'      \item high if PTP is more than 50%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @param label_have_chest_pain_no Label(s) for patient not having chest pain symptoms.
 #' Default: \code{c("no")}

@@ -3,6 +3,8 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2013 guidelines.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @param age Input integer value to indicate the age of the patient.
 #' @param sex Input characters (female, male) to indicate the sex of the patient.
 #' \itemize{
@@ -22,7 +24,7 @@
 #' Default: c("numeric", "percentage")
 #' \itemize{
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #'
 #' @return An integer or percentage representing the patient's PTP for obstructive CAD

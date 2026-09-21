@@ -71,5 +71,5 @@ try(check_if_three_categories_are_mutually_exclusive(cat_1, cat_2, cat_3, cat_mi
 }
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
- \code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}
+\code{\link[cli]{cli_vec}}, \code{\link[cli]{cli_abort}}
 }

@@ -32,27 +32,30 @@ calculate_dcs_1993_pain_index(
 )
 }
 \arguments{
-\item{have_typical_chest_pain}{The value of variable in the parameters
-\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-and \code{label_have_typical_chest_pain_unknown}.}
+\item{have_typical_chest_pain}{The value of variable in the parameters \cr
+\code{label_have_typical_chest_pain_no}, \cr
+\code{label_have_typical_chest_pain_yes} and \cr
+\code{label_have_typical_chest_pain_unknown}.}
 
 \item{frequency_of_angina_pain_per_week}{Input integer to indicate the patient's
 frequency of angina per week.}
 
 \item{have_progressive_angina}{The value of variable in the parameters
-\code{label_have_progressive_angina_no}, \code{label_have_progressive_angina_yes}
-and \code{label_have_progressive_angina_unknown}.}
+\code{label_have_progressive_angina_no}, \cr
+\code{label_have_progressive_angina_yes}, and \cr
+\code{label_have_progressive_angina_unknown}.}
 
 \item{have_nocturnal_angina}{The value of variable in the parameters
-\code{label_have_nocturnal_angina_no}, \code{label_have_nocturnal_angina_yes}
-and \code{label_have_nocturnal_angina_unknown}.}
+\code{label_have_nocturnal_angina_no}, \cr
+\code{label_have_nocturnal_angina_yes}, and \cr
+\code{label_have_nocturnal_angina_unknown}.}
 
-\item{have_q_waves}{The value of variable in the parameters
-\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+\item{have_q_waves}{The value of variable in the parameters \cr
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}, \cr
 and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{The value of variable in the parameters
-\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+\item{have_st_t_changes}{The value of variable in the parameters \cr
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}, \cr
 and \code{label_have_st_t_changes_unknown}.}
 
 \item{max_na}{Input integer 0 to 6 to indicate the maximum number of
@@ -121,7 +124,7 @@ mentioned in error messages as the source of the error. See the
 \value{
 An integer indicating the patient's pain index.
 It can also be \code{NA} if the number of missing symptoms exceeds the \code{max_na}
-input value or the frequency of angina per week exceed the
+input value or the frequency of angina per week exceed the \cr
 \code{max_frequency_of_angina_pain_per_week} input value.
 }
 \description{

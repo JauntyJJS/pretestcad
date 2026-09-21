@@ -52,5 +52,5 @@ try(check_if_numeric(input, allow_na = FALSE))
 }
 \seealso{
 \code{\link[rlang]{caller_arg}}, \code{\link[rlang]{stack}}
- \code{\link[cli]{cli_abort}}
+\code{\link[cli]{cli_abort}}
 }

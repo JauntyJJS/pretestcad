@@ -2,13 +2,15 @@
 #' @description This function returns a patient's
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on Diamond-Forrester 1979 model.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_aha_2012_tbl_9_ptp
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("numeric", "percentage")
 #' \itemize{
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #'
 #' @return A numeric or percentage representing the patient's PTP for obstructive CAD

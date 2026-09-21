@@ -140,7 +140,6 @@ test_that("calculate_winther_2020_rf_cl_ptp works", {
 })
 
 
-
 test_that("calculate_winther_2020_cacs_cl_ptp works", {
 
   # Verified with https://github.com/CardioLab/cadptp/blob/master/R/cadptp.R

@@ -1,19 +1,39 @@
 #' @title Calculate 2022 LAH Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2022 Local Assessment of the Heart (LAH) clinical model.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2024_fig_4_ptp
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @param age Input numeric value to indicate the age of the patient in years.
-#' @param chest_pain_type The value of variable in the parameters,
-#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-#' \code{label_cpt_unknown}.
+#' @param chest_pain_type The value of variable in the parameters, \cr
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+#' \code{label_cpt_typical} and \code{label_cpt_unknown}.
 #' @return A numeric value representing the patient's PTP for obstructive CAD
 #' based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 #' @details The predictive model is based on
-#' patients a mixed Asian cohort within Singapore with stable chest pain.
+#' patients from a mixed Asian cohort within Singapore with stable chest pain.
 #'
+#' Model formula used is from Table 2.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -6.268\quad+ \\\\
+#' (0.067 * age)\quad+ \\\\
+#' (1.518 * sex\_is\_male)\quad+ \\\\
+#' (0.164 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.090 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (0.457 * have\_hypertension)\quad+ \\\\
+#' (0.417 * have\_diabetes)\quad+ \\\\
+#' (0.370 * have\_dyslipidemia)\quad+ \\\\
+#' (-0.364 * have\_smoking\_history)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia
@@ -78,7 +98,7 @@ calculate_lah_2022_clinical_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
       sex == "female" ~ 0L,
       sex == "male" ~ 1L,
       .default = NA_integer_
@@ -211,13 +231,13 @@ calculate_lah_2022_clinical_ptp <- function(
 
   lah_2022_clinical_ptp <- 1 /
     (1 + exp(-(-6.268 +
-              (0.067  * age) +
-              (1.518  * sex) +
+              ( 0.067 * age) +
+              ( 1.518 * sex_male) +
+              ( 0.164 * have_typical_chest_pain) +
               (-0.090 * have_atypical_chest_pain) +
-              (0.164  * have_typical_chest_pain) +
-              (0.417  * have_diabetes) +
-              (0.457  * have_hypertension) +
-              (0.370  * have_dyslipidemia) +
+              ( 0.457 * have_hypertension) +
+              ( 0.417 * have_diabetes) +
+              ( 0.370 * have_dyslipidemia) +
               (-0.364 * have_smoking_history)
     )
     )
@@ -230,8 +250,10 @@ calculate_lah_2022_clinical_ptp <- function(
 #' @title Calculate 2022 LAH Extended PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2022 Local Assessment of the Heart (LAH) extended model.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_lah_2022_clinical_ptp
 #' @param coronary_calcium_score Input non-negative numeric to indicate the
 #' total coronary calcium score of the patient.
@@ -240,6 +262,25 @@ calculate_lah_2022_clinical_ptp <- function(
 #' @details The predictive model is based on
 #' patients a mixed Asian cohort within Singapore with stable chest pain.
 #'
+#' Model formula used is from Table 2.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -4.241\quad+ \\\\
+#' (0 * age)\quad+ \\\\
+#' (0.544 * sex\_is\_male)\quad+ \\\\
+#' (0.139 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (-0.242 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (-0.143 * have\_hypertension)\quad+ \\\\
+#' (-0.002 * have\_diabetes)\quad+ \\\\
+#' (-0.157 * have\_dyslipidemia)\quad+ \\\\
+#' (-0.315 * have\_smoking\_history)\quad+ \\\\
+#' (0.905 * ln(CACS + 1))
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain,
 #' # diabetes but no hypertension, dyslipidemia,
@@ -446,10 +487,10 @@ calculate_lah_2022_extended_ptp <- function(
     (1 + exp(-(-4.241 +
               (0      * age) +
               (0.544  * sex) +
-              (-0.242 * have_atypical_chest_pain) +
               (0.139  * have_typical_chest_pain) +
-              (-0.002 * have_diabetes) +
+              (-0.242 * have_atypical_chest_pain) +
               (-0.143 * have_hypertension) +
+              (-0.002 * have_diabetes) +
               (-0.157 * have_dyslipidemia) +
               (-0.315 * have_smoking_history) +
               (0.905  * log_transformed_ccs)

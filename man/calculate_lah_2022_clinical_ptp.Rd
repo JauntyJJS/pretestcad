@@ -36,27 +36,33 @@ calculate_lah_2022_clinical_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_dyslipidemia}{The value of variable in the parameters
-\code{label_have_dyslipidemia_no}, \code{label_have_dyslipidemia_yes}
+\code{label_have_dyslipidemia_no}, \cr
+\code{label_have_dyslipidemia_yes}
 and \code{label_have_dyslipidemia_unknown}.}
 
 \item{have_smoking_history}{The value of variable in the parameters
-\code{label_have_smoking_history_no}, \code{label_have_smoking_history_yes}
+\code{label_have_smoking_history_no}, \cr
+\code{label_have_smoking_history_yes}, \cr
 and \code{label_have_smoking_history_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -68,7 +74,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -129,12 +136,33 @@ based on the 2022 Local Assessment of the Heart (LAH) clinical model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2022 Local Assessment of the Heart (LAH) clinical model.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on
-patients a mixed Asian cohort within Singapore with stable chest pain.
+patients from a mixed Asian cohort within Singapore with stable chest pain.
+
+Model formula used is from Table 2.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.268\quad+ \\\\
+(0.067 * age)\quad+ \\\\
+(1.518 * sex\_is\_male)\quad+ \\\\
+(0.164 * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.090 * have\_atypical\_chest\_pain)\quad+ \\\\
+(0.457 * have\_hypertension)\quad+ \\\\
+(0.417 * have\_diabetes)\quad+ \\\\
+(0.370 * have\_dyslipidemia)\quad+ \\\\
+(-0.364 * have\_smoking\_history)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain,

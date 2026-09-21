@@ -45,35 +45,41 @@ calculate_precise_2021_clinical_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
-\item{have_neck_radiation}{The value of variable in the parameters
-\code{label_have_neck_radiation_no}, \code{label_have_neck_radiation_yes}
+\item{have_neck_radiation}{The value of variable in the parameters \cr
+\code{label_have_neck_radiation_no}, \code{label_have_neck_radiation_yes}, \cr
 and \code{label_have_neck_radiation_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
-\item{smoking_history_type}{The value of variable in the parameters
-\code{label_smoking_history_type_current}, \code{label_smoking_history_type_past},
-\code{label_smoking_history_type_none} and \code{label_smoking_history_type_unknown}}
+\item{smoking_history_type}{The value of variable in the parameters \cr
+\code{label_smoking_history_type_current}, \cr
+\code{label_smoking_history_type_past}, \cr
+\code{label_smoking_history_type_none} and \cr
+\code{label_smoking_history_type_unknown}}
 
-\item{have_q_waves}{The value of variable in the parameters
-\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}
+\item{have_q_waves}{The value of variable in the parameters \cr
+\code{label_have_q_waves_no}, \code{label_have_q_waves_yes}, \cr
 and \code{label_have_q_waves_unknown}.}
 
-\item{have_st_t_changes}{The value of variable in the parameters
-\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}
+\item{have_st_t_changes}{The value of variable in the parameters \cr
+\code{label_have_st_t_changes_no}, \code{label_have_st_t_changes_yes}, \cr
 and \code{label_have_st_t_changes_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -85,7 +91,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -167,13 +174,38 @@ with chEst pain (PRECISE) clinical model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain
 (PRECISE) clinical model.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on
 patients a mixed Asian cohort within Singapore with stable chest pain.
+
+An online calculator is accessible at
+\url{https://webapps.duke-nus.edu.sg/tools/PRECISE}.
+
+Model formula is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-6.714\quad+ \\\\
+(0.033 * age)\quad+ \\\\
+(1.75 * sex\_is\_male)\quad+ \\\\
+(0.597 * have\_diabetes)\quad+ \\\\
+(0.497 * have\_hypertension)\quad+ \\\\
+(0.733 * is\_current\_smoker)\quad+ \\\\
+(0.07 * is\_past\_smoker)\quad+ \\\\
+(1.374 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.875 * have\_atypical\_chest\_pain)\quad+ \\\\
+(1.157 * pain\_radiating\_to\_neck)\quad+ \\\\
+(1.020 * have\_Q\_waves)\quad+ \\\\
+(0.552 * have\_ST-T\_changes)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

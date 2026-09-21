@@ -1,8 +1,11 @@
 #' @title Calculate 2019 Reeh Basic PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2019 Reeh et. al. basic model.
+#' Obstructive CAD was defined from invasive angiography
+#' as >70% stenosis of any epicardial vessel or 50–70% stenosis with a fractional
+#' flow reserve <0.8 or any lesion that was revascularized.
 #' @param age Input numeric value to indicate the age of the patient in years.
 #' @param sex The value of variable in the parameters \code{label_sex_male},
 #' \code{label_sex_female} and \code{label_sex_unknown}.
@@ -25,7 +28,7 @@
 #' @param label_symptom_type_atypical Label(s) for patient having atypical chest pain.
 #' Default: \code{c("atypical")}
 #' @param label_symptom_type_nonanginal Label(s) for patient having nonanginal
-#' or non-specific chest pain.
+#' or non-specific chest pain. \cr
 #' Default: \code{c("nonanginal")}
 #' @param label_symptom_type_dyspnoea Label(s) for patient having dyspnoea.
 #' Default: \code{c("dyspnoea")}
@@ -38,6 +41,21 @@
 #' patients free of CAD and heart failure and suspected of angina, who were referred
 #' to a single, large, urban university hospital for assessment in 2012–15.
 #'
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -7.6348\quad+ \\\\
+#' (1.4067 * sex\_is\_male)\quad+ \\\\
+#' (0.4820 * (age/10))\quad+ \\\\
+#' (2.8779 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (1.8690 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (0.7916 * have\_dyspnoea)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_reeh_2019_basic_ptp(
@@ -80,7 +98,7 @@ calculate_reeh_2019_basic_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -130,7 +148,7 @@ calculate_reeh_2019_basic_ptp <- function(
 
   reeh_2019_basic_ptp <- 1 /
     (1 + exp(-(-7.6348 +
-              (1.4067 * sex) +
+              (1.4067 * sex_male) +
               (0.4820 * age / 10) +
               (2.8779 * have_typical_chest_pain) +
               (1.8690 * have_atypical_chest_pain) +
@@ -147,8 +165,11 @@ calculate_reeh_2019_basic_ptp <- function(
 #' @title Calculate 2019 Reeh Clinical PTP for obstructive CAD
 #' @description This function returns a patient's
 #' pre-test probability (PTP) of obstructive
-#' coronary artery disease based on the
+#' coronary artery disease (CAD) based on the
 #' 2019 Reeh et. al. clinical model.
+#' Obstructive CAD was defined from invasive angiography
+#' as >70% stenosis of any epicardial vessel or 50–70% stenosis with a fractional
+#' flow reserve <0.8 or any lesion that was revascularized.
 #' @inheritParams calculate_esc_2024_num_of_rf
 #' @inheritParams calculate_reeh_2019_basic_ptp
 #' @return A numeric value representing the patient's PTP for obstructive CAD
@@ -157,6 +178,24 @@ calculate_reeh_2019_basic_ptp <- function(
 #' patients free of CAD and heart failure and suspected of angina, who were referred
 #' to a single, large, urban university hospital for assessment in 2012–15.
 #'
+#' Model formula used is from Table 3.
+#'
+#' It is of the form
+#' \deqn{\frac{1}{(1 + e^{-F(x)})}}
+#' where \eqn{F(x)} equals
+#' \deqn{
+#' \begin{array}{l}
+#' -8.5499\quad+ \\\\
+#' (1.4468 * sex\_is\_male)\quad+ \\\\
+#' (0.5031 * (age/10))\quad+ \\\\
+#' (2.7699 * have\_typical\_chest\_pain)\quad+ \\\\
+#' (1.7839 * have\_atypical\_chest\_pain)\quad+ \\\\
+#' (0.8071 * have\_dyspnoea)\quad+ \\\\
+#' (0.9551 * have\_dyslipidemia)\quad+ \\\\
+#' (0.4394 * have\_family\_history\_of\_CAD)\quad+ \\\\
+#' (0.3767 * have\_diabetes)
+#' \end{array}
+#' }
 #' @examples
 #' # 40 year old female with typical chest pain
 #' calculate_reeh_2019_clinical_ptp(
@@ -214,7 +253,7 @@ calculate_reeh_2019_clinical_ptp <- function(
       harmonise_label_unknown = NA
     )
 
-  sex <- dplyr::case_when(
+  sex_male <- dplyr::case_when(
     sex == "female" ~ 0L,
     sex == "male" ~ 1L,
     .default = NA_integer_
@@ -333,7 +372,7 @@ calculate_reeh_2019_clinical_ptp <- function(
 
   reeh_2019_clinical_ptp <- 1 /
     (1 + exp(-(-8.5499 +
-              (1.4468 * sex) +
+              (1.4468 * sex_male) +
               (0.5031 * age / 10) +
               (2.7699 * have_typical_chest_pain) +
               (1.7839 * have_atypical_chest_pain) +

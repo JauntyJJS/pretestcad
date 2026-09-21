@@ -21,19 +21,21 @@ calculate_diamond_forrester_1979_ptp(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, and \code{label_cpt_unknown}.}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed
 Default: c("numeric", "percentage")
 \itemize{
-  \item numeric means the PTP will be expressed as an integer probability (0-100).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item numeric means the PTP will be expressed as an integer probability (0-100).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -45,7 +47,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -65,6 +68,8 @@ based on Diamond-Forrester 1979 model.
 This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on Diamond-Forrester 1979 model.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \examples{
 # 35 year old female with typical chest pain

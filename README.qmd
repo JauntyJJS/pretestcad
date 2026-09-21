@@ -47,8 +47,16 @@ pak::pak("JauntyJJS/pretestcad")
 
 ## :anatomical_heart: Currently available pretest probability scores
 
+*  2025 Rasmussen et. al. RF-CL~CCTA~ and CACS-CL~CCTA~ PTP 
+   *  [📘 Journal](https://doi.org/10.1093/ehjci/jeaf049){target="_blank"}
+*  2025 Wieske et. al. COME-CCT PTP 
+   *  [📘 Journal](https://doi.org/10.1016/j.jacadv.2025.102014){target="_blank"}   
+*  2025 Zuo et. al. PREDICT-OCAD PTP 
+   *  [📘 Journal](https://doi.org/10.1007/s42058-025-00189-w){target="_blank"}
 *  2024 ESC Guidelines PTP Score 
    *  [📘 Journal](https://doi.org/10.1093/eurheartj/ehae177){target="_blank"}
+*  2023 Miller et. al. PTP Score (Likelihood Tables) 
+   *  [📘 Journal](https://doi.org/10.1161/JAHA.123.031601){target="_blank"}
 *  2022 Local Assessment of the Heart (LAH) clinical and extended model 
    *  [📘 Journal](https://doi.org/10.1161/JAHA.121.022697){target="_blank"}
 *  2021 Predictive Risk scorE for CAD In Southeast Asians with chEst pain (PRECISE) simple and clinical model 
@@ -61,6 +69,8 @@ pak::pak("JauntyJJS/pretestcad")
    *  [📘 Journal](https://doi.org/10.1007/s00059-020-04935-x){target="_blank"}
 *  2019 Reeh et. al. basic and clinical model 
    *  [📘 Journal](https://doi.org/10.1093/eurheartj/ehy806){target="_blank"}
+*  2018 Chen et. al. Modified Framingham Scoring 
+   *  [📘 Journal](https://doi.org/10.1186/s12872-018-0745-0){target="_blank"}   
 *  2017 PROMISE Minimal-Risk Score 
    *  [📘 Journal](https://doi.org/10.1001/jamacardio.2016.5501){target="_blank"}
 *  2015 CONFIRM Risk Score 

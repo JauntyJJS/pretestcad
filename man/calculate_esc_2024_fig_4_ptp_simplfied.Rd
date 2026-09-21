@@ -19,8 +19,10 @@ calculate_esc_2024_fig_4_ptp_simplfied(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
 \item{symptom_score}{An integer indicating the symptom score of the patient.
 This value can be calculated via the \code{\link{calculate_esc_2024_symptom_score}}}
@@ -29,25 +31,25 @@ This value can be calculated via the \code{\link{calculate_esc_2024_symptom_scor
 This value can be calculated via the \code{\link{calculate_esc_2024_num_of_rf}}
 Risk factors are:
 \itemize{
-  \item having a family history of CAD.
-  \item having a smoking history (current and past smoker).
-  \item having dyslipidemia.
-  \item having hypertension.
-  \item having diabetes.
+\item having a family history of CAD.
+\item having a smoking history (current and past smoker).
+\item having dyslipidemia.
+\item having hypertension.
+\item having diabetes.
 }}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed
 Default: c("grouping", "numeric", "percentage")
 \itemize{
-  \item grouping means the PTP will be expressed as Low, Intermediate and High.
-  \itemize{
-     \item very low if PTP is less than or equal to 5\%.
-     \item low if PTP is in between 6\% to 15\%.
-     \item moderate if PTP is more than 15\%.
-  }
-  \item numeric means the PTP will be expressed as an integer probability (0-100).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item grouping means the PTP will be expressed as Very Low, Low, and Moderate.
+\itemize{
+\item very low if PTP is less than or equal to 5\%.
+\item low if PTP is in between 6\% to 15\%.
+\item moderate if PTP is more than 15\%.
+}
+\item numeric means the PTP will be expressed as an integer probability (0-100).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.

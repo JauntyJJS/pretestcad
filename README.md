@@ -40,8 +40,21 @@ pak::pak("JauntyJJS/pretestcad")
 
 ## :anatomical_heart: Currently available pretest probability scores
 
+- 2025 Rasmussen et. al. RF-CL<sub>CCTA</sub> and CACS-CL<sub>CCTA</sub>
+  PTP
+  - <a href="https://doi.org/10.1093/ehjci/jeaf049" target="_blank">📘
+    Journal</a>
+- 2025 Wieske et. al. COME-CCT PTP
+  - <a href="https://doi.org/10.1016/j.jacadv.2025.102014"
+    target="_blank">📘 Journal</a>  
+- 2025 Zuo et. al. PREDICT-OCAD PTP
+  - <a href="https://doi.org/10.1007/s42058-025-00189-w" target="_blank">📘
+    Journal</a>
 - 2024 ESC Guidelines PTP Score
   - <a href="https://doi.org/10.1093/eurheartj/ehae177" target="_blank">📘
+    Journal</a>
+- 2023 Miller et. al. PTP Score (Likelihood Tables)
+  - <a href="https://doi.org/10.1161/JAHA.123.031601" target="_blank">📘
     Journal</a>
 - 2022 Local Assessment of the Heart (LAH) clinical and extended model
   - <a href="https://doi.org/10.1161/JAHA.121.022697" target="_blank">📘
@@ -62,6 +75,9 @@ pak::pak("JauntyJJS/pretestcad")
 - 2019 Reeh et. al. basic and clinical model
   - <a href="https://doi.org/10.1093/eurheartj/ehy806" target="_blank">📘
     Journal</a>
+- 2018 Chen et. al. Modified Framingham Scoring
+  - <a href="https://doi.org/10.1186/s12872-018-0745-0" target="_blank">📘
+    Journal</a>  
 - 2017 PROMISE Minimal-Risk Score
   - <a href="https://doi.org/10.1001/jamacardio.2016.5501"
     target="_blank">📘 Journal</a>

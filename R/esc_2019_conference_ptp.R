@@ -3,26 +3,35 @@
 #' pre-test Probability (PTP) of obstructive
 #' coronary artery disease (CAD) based on the
 #' European Society of Cardiology (ESC) 2019 guidelines.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @param age Input integer value to indicate the age of the patient in years.
-#' @param sex The value of variable in the parameters \code{label_sex_male},
-#' \code{label_sex_female} and \code{label_sex_unknown}.
-#' @param have_dyspnoea The value of variable in the parameters \code{label_have_dyspnoea_no},
-#' \code{label_have_dyspnoea_yes} and \code{label_have_dyspnoea_unknown}.
-#' @param chest_pain_type The value of variable in the parameters \code{label_cpt_no_chest_pain},
-#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-#' \code{label_cpt_unknown}.
+#' @param sex The value of variable in the parameters
+#' \code{label_sex_male}, \cr
+#' \code{label_sex_female}
+#' and \code{label_sex_unknown}.
+#' @param have_dyspnoea The value of variable in the parameters
+#' \code{label_have_dyspnoea_no}, \cr
+#' \code{label_have_dyspnoea_yes} and
+#' \code{label_have_dyspnoea_unknown}.
+#' @param chest_pain_type The value of variable in the parameters
+#' \code{label_cpt_no_chest_pain}, \cr
+#' \code{label_cpt_nonanginal}, \cr
+#' \code{label_cpt_atypical}, \cr
+#' \code{label_cpt_typical}, \cr
+#' and \code{label_cpt_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("grouping", "numeric", "percentage")
 #' \itemize{
 #'   \item grouping means the PTP will be expressed as Low, Intermediate and High.
 #'   \itemize{
-#'      \item low if PTP is less than 5\%.
-#'      \item intermediate if PTP is in between 5\% to 15\%.
-#'      \item high if PTP is more than 15\%.
+#'      \item low if PTP is less than 5%.
+#'      \item intermediate if PTP is in between 5% to 15%.
+#'      \item high if PTP is more than 15%.
 #'   }
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #' @param label_sex_male Label(s) for definition(s) of male sex.
 #' Default: \code{c("male")}
@@ -38,7 +47,8 @@
 #' Default: \code{c(NA, NaN)}
 #' @param label_cpt_no_chest_pain Label(s) for patient having no chest pain.
 #' Default: \code{c("no chest pain")}
-#' @param label_cpt_nonanginal Label(s) for patient having nonanginal or non-specific chest pain.
+#' @param label_cpt_nonanginal Label(s) for patient having nonanginal
+#' or non-specific chest pain. \cr
 #' Default: \code{c("nonanginal")}
 #' @param label_cpt_atypical Label(s) for patient having atypical chest pain.
 #' Default: \code{c("atypical")}

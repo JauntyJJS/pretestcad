@@ -23,15 +23,18 @@ calculate_dcs_1993_vascular_disease_index(
 }
 \arguments{
 \item{have_peripheral_vascular_disease}{The value of variable in the parameters
-\code{label_have_pvd_no}, \code{label_have_pvd_yes}
+\code{label_have_pvd_no}, \cr
+\code{label_have_pvd_yes},
 and \code{label_have_pvd_unknown}.}
 
 \item{have_cerebrovascular_disease}{The value of variable in the parameters
-\code{label_have_cvd_no}, \code{label_have_cvd_yes}
+\code{label_have_cvd_no}, \cr
+\code{label_have_cvd_yes},
 and \code{label_have_cvd_unknown}.}
 
 \item{have_carotid_bruits}{The value of variable in the parameters
-\code{label_have_carotid_bruits_no}, \code{label_have_carotid_bruits_yes}
+\code{label_have_carotid_bruits_no}, \cr
+\code{label_have_carotid_bruits_yes}, \cr
 and \code{label_have_carotid_bruits_unknown}.}
 
 \item{max_na}{Input integer 0 to 3 to indicate the maximum number of

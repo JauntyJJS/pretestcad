@@ -21,12 +21,17 @@ calculate_winther_2020_basic_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters \code{label_cpt_no_chest_pain},
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters
+\code{label_cpt_no_chest_pain}, \cr
+\code{label_cpt_nonanginal}, \cr
+\code{label_cpt_atypical}, \cr
+\code{label_cpt_typical}, \cr
+and \code{label_cpt_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
 Default: \code{c("male")}}
@@ -40,7 +45,8 @@ Default: \code{c(NA, NaN)}}
 \item{label_cpt_no_chest_pain}{Label(s) for patient having no chest pain.
 Default: \code{c("no chest pain")}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -59,13 +65,31 @@ based on the 2020 Winther et. al. basic model (Basic_PTP).
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2020 Winther et. al. basic model (Basic_PTP).
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on > 40000 symptomatic
 patients from 2008 to 2017 from 13 hospitals in Western Denmark. These
 patients are registered under the Western Denmark Heart Registry.
+
+Model formula used is from Table S3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-7.0753\quad+ \\\\
+(1.2308 * sex\_is\_male)\quad+ \\\\
+(0.0642 * age)\quad+ \\\\
+(2.2501 * have\_typical\_chest\_pain)\quad+ \\\\
+(-0.5095 * have\_nonanginal\_chest\_pain)\quad+ \\\\
+(-0.0191 * age * have\_typical\_chest\_pain)
+\end{array}
+}
 }
 \examples{
 # 40 year old Male with typical chest pain

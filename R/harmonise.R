@@ -351,29 +351,34 @@ harmonise_three_labels <- function(
 #' @inheritParams rlang::args_error_context
 #' @param arg Input argument, in characters to be harmonised
 #' @param label_one
-#' Input character vector representing the ways to identify \code{harmonise_label_one}
+#' Input character vector representing the ways to \cr
+#' identify \code{harmonise_label_one}
 #' @param label_two
-#' Input character vector representing the ways to identify \code{harmonise_label_two}
+#' Input character vector representing the ways to \cr
+#' identify \code{harmonise_label_two}
 #' @param label_three
-#' Input character vector representing the ways to identify \code{harmonise_label_three}
+#' Input character vector representing the ways to \cr
+#' identify \code{harmonise_label_three}
 #' @param label_four
-#' Input character vector representing the ways to identify \code{harmonise_label_four}
+#' Input character vector representing the ways to \cr
+#' identify \code{harmonise_label_four}
 #' @param label_unknown
-#' Input character vector representing the ways to identify \code{harmonise_label_unknown}
+#' Input character vector representing the ways to \cr
+#' identify \code{harmonise_label_unknown}
 #' @param harmonise_label_one
-#' Input character representing the harmonised label for \code{label_one}
+#' Input character representing the harmonised label for \code{label_one} \cr
 #' Default: 'group_1'
 #' @param harmonise_label_two
-#' Input character representing the harmonised label for \code{label_two}
+#' Input character representing the harmonised label for \code{label_two} \cr
 #' Default: 'group_2'
 #' @param harmonise_label_three
-#' Input character representing the harmonised label for \code{label_three}
+#' Input character representing the harmonised label for \code{label_three} \cr
 #' Default: 'group_3'
 #' @param harmonise_label_four
-#' Input character representing the harmonised label for \code{label_four}
+#' Input character representing the harmonised label for \code{label_four} \cr
 #' Default: 'group_4'
 #' @param harmonise_label_unknown
-#' Input character representing the harmonised label for \code{label_unknown}
+#' Input character representing the harmonised label for \code{label_unknown} \cr
 #' Default: NA
 #' @return Character representing one of the four standardise labels.
 #' @examples

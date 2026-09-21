@@ -27,10 +27,10 @@ calculate_reeh_2019_basic_ptp(
 \item{symptom_type}{Input characters (typical, atypical, nonanginal, dyspnoea)
 to indicate the symptom characteristics of the patient.
 \itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
-  \item dyspnoea stands for the patient having dyspnoea.
+\item typical stands for the patient having typical chest pain.
+\item atypical stands for the patient having atypical chest pain.
+\item nonanginal stands for the patient having nonanginal or non-specific chest pain.
+\item dyspnoea stands for the patient having dyspnoea.
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -49,7 +49,7 @@ Default: \code{c("typical")}}
 Default: \code{c("atypical")}}
 
 \item{label_symptom_type_nonanginal}{Label(s) for patient having nonanginal
-or non-specific chest pain.
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_symptom_type_dyspnoea}{Label(s) for patient having dyspnoea.
@@ -65,13 +65,32 @@ based on the 2019 Reeh et. al. basic model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2019 Reeh et. al. basic model.
+Obstructive CAD was defined from invasive angiography
+as >70\% stenosis of any epicardial vessel or 50–70\% stenosis with a fractional
+flow reserve <0.8 or any lesion that was revascularized.
 }
 \details{
 The predictive model is based on 3903
 patients free of CAD and heart failure and suspected of angina, who were referred
 to a single, large, urban university hospital for assessment in 2012–15.
+
+Model formula used is from Table 3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-7.6348\quad+ \\\\
+(1.4067 * sex\_is\_male)\quad+ \\\\
+(0.4820 * (age/10))\quad+ \\\\
+(2.8779 * have\_typical\_chest\_pain)\quad+ \\\\
+(1.8690 * have\_atypical\_chest\_pain)\quad+ \\\\
+(0.7916 * have\_dyspnoea)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

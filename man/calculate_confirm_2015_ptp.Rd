@@ -37,28 +37,35 @@ calculate_confirm_2015_ptp(
 \arguments{
 \item{age}{Input integer value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{have_typical_chest_pain}{The value of variable in the parameters
-\code{label_have_typical_chest_pain_no}, \code{label_have_typical_chest_pain_yes}
-and \code{label_have_typical_chest_pain_unknown}.}
+\item{have_typical_chest_pain}{The value of variable in the parameters \cr
+\code{label_have_typical_chest_pain_no}, \cr
+\code{label_have_typical_chest_pain_yes} and \cr
+\code{label_have_typical_chest_pain_unknown}.}
 
 \item{have_diabetes}{The value of variable in the parameters
-\code{label_have_diabetes_no}, \code{label_have_diabetes_yes}
+\code{label_have_diabetes_no}, \cr
+\code{label_have_diabetes_yes}
 and \code{label_have_diabetes_unknown}.}
 
 \item{have_hypertension}{The value of variable in the parameters
-\code{label_have_hypertension_no}, \code{label_have_hypertension_yes}
+\code{label_have_hypertension_no}, \cr
+\code{label_have_hypertension_yes},
 and \code{label_have_hypertension_unknown}.}
 
 \item{have_family_history}{The value of variable in the parameters
-\code{label_have_family_history_no}, \code{label_have_family_history_yes}
+\code{label_have_family_history_no}, \cr
+\code{label_have_family_history_yes} \cr
 and \code{label_have_family_history_unknown}.}
 
-\item{is_current_smoker}{The value of variable in the parameters
-\code{label_is_current_smoker_no}, \code{label_is_current_smoker_yes}
-and \code{label_is_current_smoker_unknown}.}
+\item{is_current_smoker}{The value of variable in the parameters \cr
+\code{label_is_current_smoker_no}, \cr
+\code{label_is_current_smoker_yes}, and \cr
+\code{label_is_current_smoker_unknown}.}
 
 \item{max_na_num_of_rf}{Input integer 0 to 5 to indicate the maximum number of
 missing risk factors to tolerate before outputting an \code{NA}.
@@ -68,8 +75,8 @@ Default: 0}
 probability results be expressed
 Default: c("text", "percentage")
 \itemize{
-  \item text means the PTP will be expressed as a probability in text (0 to > 82.4).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item text means the PTP will be expressed as a probability in text (0 to > 82.4).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
@@ -139,6 +146,8 @@ This function returns
 a patient's risk score for obstructive
 coronary artery disease based on the
 2015 CONFIRM Risk Score.
+Obstructive coronary artery disease was defined by \eqn{\geq} 50\%
+luminal diameter stenosis in any coronary artery \eqn{\geq} 1.5 mm in diameter.
 }
 \details{
 The predictive model is based on CCTA images from 9093

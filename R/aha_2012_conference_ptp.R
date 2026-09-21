@@ -9,20 +9,23 @@
 #' Preventive Cardiovascular Nurses Association,
 #' Society for Cardiovascular Angiography and Interventions,
 #' and Society of Thoracic Surgeons 2012 guidelines.
+#' Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50% diameter stenosis
+#' on coronary CTA.
 #' @inheritParams calculate_esc_2019_ptp
-#' @param chest_pain_type The value of variable in the parameters,
-#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-#' \code{label_cpt_unknown}.
+#' @param chest_pain_type The value of variable in the parameters, \cr
+#' \code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+#' \code{label_cpt_typical}, and \code{label_cpt_unknown}.
 #' @param output Input text to indicate the how pre-test
 #' probability results be expressed
 #' Default: c("numeric", "percentage")
 #' \itemize{
 #'   \item numeric means the PTP will be expressed as an integer probability (0-100).
-#'   \item percentage means the PTP will be expressed as percentage text (0-100\%).
+#'   \item percentage means the PTP will be expressed as percentage text (0-100%).
 #' }
 #'
 #' @return An integer or percentage representing the patient's PTP for obstructive CAD
-#' based on the ACCF/AHA/ACP/AATS/PCNA/SCAI/STS 2012 guidelines.
+#' based on the \cr
+#' ACCF/AHA/ACP/AATS/PCNA/SCAI/STS 2012 guidelines.
 #'
 #' @details The predictive model used to create the guidelines are based on
 #' patients from the Diamond and Forrester and the Coronary Artery Surgery Study.

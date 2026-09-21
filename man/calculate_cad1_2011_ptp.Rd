@@ -20,12 +20,14 @@ calculate_cad1_2011_ptp(
 \arguments{
 \item{age}{Input numeric value to indicate the age of the patient in years.}
 
-\item{sex}{The value of variable in the parameters \code{label_sex_male},
-\code{label_sex_female} and \code{label_sex_unknown}.}
+\item{sex}{The value of variable in the parameters
+\code{label_sex_male}, \cr
+\code{label_sex_female}
+and \code{label_sex_unknown}.}
 
-\item{chest_pain_type}{The value of variable in the parameters,
-\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \code{label_cpt_typical} and
-\code{label_cpt_unknown}.}
+\item{chest_pain_type}{The value of variable in the parameters, \cr
+\code{label_cpt_nonanginal}, \code{label_cpt_atypical}, \cr
+\code{label_cpt_typical} and \code{label_cpt_unknown}.}
 
 \item{label_sex_male}{Label(s) for definition(s) of male sex.
 Default: \code{c("male")}}
@@ -36,7 +38,8 @@ Default: \code{c("female")}}
 \item{label_sex_unknown}{Label(s) for definition(s) of missing sex.
 Default: \code{c(NA, NaN)}}
 
-\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal or non-specific chest pain.
+\item{label_cpt_nonanginal}{Label(s) for patient having nonanginal
+or non-specific chest pain. \cr
 Default: \code{c("nonanginal")}}
 
 \item{label_cpt_atypical}{Label(s) for patient having atypical chest pain.
@@ -55,14 +58,30 @@ based on the 2011 CAD Consortium 1 (CAD1) basic model.
 \description{
 This function returns a patient's
 pre-test probability (PTP) of obstructive
-coronary artery disease based on the
+coronary artery disease (CAD) based on the
 2011 CAD Consortium 1 (CAD1) basic model.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model is based on
 patients from 14 hospitals in Europe and the United States.
 
 This model is also called the updated Diamond-Forrester model.
+Model formula used is from Table 3.
+
+It is of the form
+\deqn{\frac{1}{(1 + e^{-F(x)})}}
+where \eqn{F(x)} equals
+\deqn{
+\begin{array}{l}
+-4.37\quad+ \\\\
+(0.04 * age)\quad+ \\\\
+(1.34 * sex\_is\_male)\quad+ \\\\
+(1.91 * have\_typical\_chest\_pain)\quad+ \\\\
+(0.64 * have\_atypical\_chest\_pain)
+\end{array}
+}
 }
 \examples{
 # 40 year old female with typical chest pain

@@ -16,24 +16,24 @@ calculate_esc_2013_ptp(
 
 \item{sex}{Input characters (female, male) to indicate the sex of the patient.
 \itemize{
-  \item female
-  \item male
+\item female
+\item male
 }}
 
 \item{chest_pain_type}{Input characters (typical, atypical, nonanginal)
 to indicate the chest pain characteristics of the patient.
 \itemize{
-  \item typical stands for the patient having typical chest pain.
-  \item atypical stands for the patient having atypical chest pain.
-  \item nonanginal stands for the patient having nonanginal or non-specific chest pain.
+\item typical stands for the patient having typical chest pain.
+\item atypical stands for the patient having atypical chest pain.
+\item nonanginal stands for the patient having nonanginal or non-specific chest pain.
 }}
 
 \item{output}{Input text to indicate the how pre-test
 probability results be expressed
 Default: c("numeric", "percentage")
 \itemize{
-  \item numeric means the PTP will be expressed as an integer probability (0-100).
-  \item percentage means the PTP will be expressed as percentage text (0-100\%).
+\item numeric means the PTP will be expressed as an integer probability (0-100).
+\item percentage means the PTP will be expressed as percentage text (0-100\%).
 }}
 }
 \value{
@@ -45,6 +45,8 @@ This function returns a patient's
 pre-test Probability (PTP) of obstructive
 coronary artery disease (CAD) based on the
 European Society of Cardiology (ESC) 2013 guidelines.
+Obstructive CAD was defined as a stenosis causing \eqn{\geq} 50\% diameter stenosis
+on coronary CTA.
 }
 \details{
 The predictive model used to create the guidelines are based on
