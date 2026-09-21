@@ -39,7 +39,8 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
 
-      - name: Install knitr via binary
+      - name: Install knitr via binary in macOS
+        if: runner.os == 'macOS'
         run: |
           install.packages("knitr", type = "both")
         shell: Rscript {0}
