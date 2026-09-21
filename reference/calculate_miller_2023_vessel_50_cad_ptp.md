@@ -1,0 +1,127 @@
+# Calculate 2023 Miller PTP for obstructive CAD (stenosis \\\geq\\ 50% in any vessel)
+
+This function returns a patient's pre-test Probability (PTP) of
+obstructive coronary artery disease (CAD) based on 2023 Miller et. al.
+likelihood table for CAD (stenosis \\\geq\\ 50% in any vessel).
+
+## Usage
+
+``` r
+calculate_miller_2023_vessel_50_cad_ptp(
+  age,
+  sex,
+  have_chest_pain,
+  coronary_calcium_score,
+  output = c("grouping", "numeric", "percentage"),
+  label_sex_male = c("male"),
+  label_sex_female = c("female"),
+  label_sex_unknown = c(NA, NaN),
+  label_have_chest_pain_no = c("no"),
+  label_have_chest_pain_yes = c("yes"),
+  label_have_chest_pain_unknown = c(NA, NaN),
+  error_call = rlang::caller_env()
+)
+```
+
+## Arguments
+
+- age:
+
+  Input integer value to indicate the age of the patient in years.
+
+- sex:
+
+  The value of variable in the parameters `label_sex_male`,  
+  `label_sex_female` and `label_sex_unknown`.
+
+- have_chest_pain:
+
+  The value of variable in the parameters  
+  `label_have_chest_pain_no`, `label_have_chest_pain_yes`,  
+  and `label_have_chest_pain_unknown`.
+
+- coronary_calcium_score:
+
+  Input non-negative numeric to indicate the total coronary calcium
+  score of the patient.
+
+- output:
+
+  Input text to indicate the how pre-test probability results be
+  expressed Default: c("grouping", "numeric", "percentage")
+
+  - grouping means the PTP will be expressed as Low, Intermediate and
+    High.
+
+    - low if PTP is less than 15%.
+
+    - intermediate if PTP is in between 15% to 50%.
+
+    - high if PTP is more than 50%.
+
+  - numeric means the PTP will be expressed as an integer probability
+    (0-100).
+
+  - percentage means the PTP will be expressed as percentage text
+    (0-100%).
+
+- label_sex_male:
+
+  Label(s) for definition(s) of male sex. Default: `c("male")`
+
+- label_sex_female:
+
+  Label(s) for definition(s) of female sex. Default: `c("female")`
+
+- label_sex_unknown:
+
+  Label(s) for definition(s) of missing sex. Default: `c(NA, NaN)`
+
+- label_have_chest_pain_no:
+
+  Label(s) for patient not having chest pain symptoms. Default:
+  `c("no")`
+
+- label_have_chest_pain_yes:
+
+  Label(s) for patient having chest pain symptoms. Default: `c("yes")`
+
+- label_have_chest_pain_unknown:
+
+  Label(s) for patient with unknown chest pain symptoms. Default:
+  `c(NA, NaN)`
+
+- error_call:
+
+  The execution environment of a currently running function, e.g.
+  `caller_env()`. The function will be mentioned in error messages as
+  the source of the error. See the `call` argument of
+  [`abort()`](https://rlang.r-lib.org/reference/abort.html) for more
+  information.
+
+## Value
+
+An integer, percentage or category representing the patient's PTP for
+obstructive CAD based on 2023 Miller et. al. likelihood table for CAD
+defined as stenosis \\\geq\\ 50% in any vessel. See parameter option
+`output` for more information.
+
+## Details
+
+The predictive model is based on 2055 patients from 3 multinational
+sites. They are Henry Ford Hospital (n=853), Ottawa Heart Institute
+(n=808), and University Hospital Zurich (n=394).
+
+## Examples
+
+``` r
+# 40 female with cardiac chest pain and coronary calcium score of 0
+calculate_miller_2023_vessel_50_cad_ptp(
+  age = 40,
+  sex = "female",
+  have_chest_pain = "yes",
+  coronary_calcium_score = 0,
+  output = "percentage"
+)
+#> [1] "2.9%"
+```

@@ -1,0 +1,65 @@
+# Changelog
+
+## pretestcad 1.2.0
+
+- Add new functions `calculate_rasmussen_2025_rf_cl_ccta_ptp`,
+  `calculate_rasmussen_2025_cacs_cl_ccta_ptp` to calculate pre-test
+  probability of obstructive CAD from 2025 Rasmussen et. al. paper.
+- Add new functions `calculate_come_cct_2025_ptp`,
+  `calculate_come_cta_alone_2025_ptp`,
+  `calculate_come_cct_with_cta_2025_ptp` to calculate pre-test
+  probability of obstructive CAD from 2025 Wieske et. al. paper.
+- Add new functions `calculate_zuo_2025_predict_ocad_ptp`, to calculate
+  pre-test probability of obstructive CAD from 2025 Zuo et. al. paper.
+- Add new functions `calculate_miller_2023_vessel_50_cad_ptp`,
+  `calculate_miller_2023_lm_50_non_lm_70_cad_ptp` to calculate pre-test
+  probability of obstructive CAD from 2023 Miller et. al. paper.
+- Add new functions `calculate_chen_2018_mfs_formula_ptp`,
+  `calculate_chen_2018_mfs_fig_3_ptp` to calculate pre-test probability
+  of obstructive CAD from 2018 Chen et. al. paper.
+- Update documentation to include formulas of pretest scores for greater
+  transparency.
+
+## pretestcad 1.1.0
+
+CRAN release: 2025-09-03
+
+- Update documentation of `check_if_integer` to include examples.
+- Update documentation of `check_if_non_negative` to include examples.
+- Update documentation of `check_if_positive` to include examples.
+- Update documentation of `check_if_numeric` to include examples.
+- Update documentation of `arg_match0_allow_na` to include examples.
+- Update documentation of `arg_match0_true_or_false` to include
+  examples.
+- Update documentation of `arg_match0_integer` to include examples.
+- Add new functions `check_if_two_categories_are_mutually_exclusive`,
+  `check_if_three_categories_are_mutually_exclusive` and
+  `check_if_four_categories_are_mutually_exclusive` to check for
+  mutually exclusive sets.
+- Add new functions `harmonise_two_labels`, `harmonise_two_labels` and
+  `harmonise_two_labels` to harmonise list of variables into a
+  standardise list.
+- Add new function `arg_match0_no_na_error_message` to ensure a new
+  error message can be given when the argument provided is but a
+  non-missing list is provided.
+- Add new functions `oxford_comma` and `chr_quoted` to ensure phrase
+  list can be quoted and obey Oxford comma grammar system if needed.
+- Add more flexibility to the pretest score functions to accept user
+  input labels.
+
+## pretestcad 1.0.2
+
+CRAN release: 2025-05-19
+
+- Indicate the return value in file `round_to_nearest_digit.Rd`.
+- Correct spelling error in file `DESCRIPTION` from et. al. to et al.
+- Add the full name of abbreviations RF-CL and CACS-CL in file
+  `DESCRIPTION`.
+
+## pretestcad 1.0.1
+
+- Resolve invalid URL in `README.md` file.
+
+## pretestcad 1.0.0
+
+- Initial CRAN submission.
